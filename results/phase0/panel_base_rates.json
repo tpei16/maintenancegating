@@ -1,0 +1,23 @@
+{
+  "panel_rows_known_system": 514975,
+  "panel_rows_recent_activity": 380031,
+  "n_universities": 9,
+  "n_buildings": 2983,
+  "n_cells": 22546,
+  "n_systems": 21,
+  "period_q_range": [
+    8010,
+    8084
+  ],
+  "year_range": [
+    2002,
+    2021
+  ],
+  "occurrence_base_rate_known_system": 0.2899305791543279,
+  "occurrence_base_rate_recent_activity": 0.3786296381084701,
+  "severity_base_rate_known_system_p50": 0.13475217243555512,
+  "severity_base_rate_known_system_p75": 0.06806349822806933,
+  "severity_base_rate_known_system_p90": 0.027438225156560997,
+  "severity_base_rate_recent_activity_p75": 0.0897689925295568,
+  "active_row_share": 0.4742812757900869
+}

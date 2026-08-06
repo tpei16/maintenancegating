@@ -1,0 +1,71 @@
+{
+  "all_cellquarters": {
+    "label": "all known-system cell-quarters",
+    "n_rows": 514975,
+    "outcome": "log1p(upm_labour)",
+    "building": {
+      "n_groups": 3400,
+      "n_obs": 514975,
+      "var_between": 0.34456697957447907,
+      "var_within": 1.0163139239301084,
+      "icc": 0.2531940735498149,
+      "eta2_oneway": 0.2579956715009383
+    },
+    "system": {
+      "n_groups": 21,
+      "n_obs": 514975,
+      "var_between": 0.17370269498051347,
+      "var_within": 1.2005725926955815,
+      "icc": 0.1263958513539492,
+      "eta2_oneway": 0.11768002587213282
+    },
+    "cell": {
+      "n_groups": 22546,
+      "n_obs": 514975,
+      "var_between": 0.8730576478230659,
+      "var_within": 0.4876478578196957,
+      "icc": 0.6416213090948407,
+      "eta2_oneway": 0.6572959851483902
+    },
+    "building_to_system_icc_ratio": 2.003183418107527,
+    "building_to_system_eta2_ratio": 2.1923488679486502
+  },
+  "active_only": {
+    "label": "active cell-quarters (UPM labour > 0)",
+    "n_rows": 148330,
+    "outcome": "log1p(upm_labour)",
+    "building": {
+      "n_groups": 2716,
+      "n_obs": 148330,
+      "var_between": 0.3099798009420141,
+      "var_within": 1.1450679329086764,
+      "icc": 0.21303754765602945,
+      "eta2_oneway": 0.22725732257095074
+    },
+    "system": {
+      "n_groups": 21,
+      "n_obs": 148330,
+      "var_between": 0.19245496457411157,
+      "var_within": 1.2860319964526017,
+      "icc": 0.1301702143118422,
+      "eta2_oneway": 0.11606609132696005
+    },
+    "cell": {
+      "n_groups": 16442,
+      "n_obs": 148330,
+      "var_between": 0.7875773668507235,
+      "var_within": 0.6672407543146682,
+      "icc": 0.5413579576667834,
+      "eta2_oneway": 0.5921613685293283
+    },
+    "building_to_system_icc_ratio": 1.6366074895264917,
+    "building_to_system_eta2_ratio": 1.9579992741442735
+  },
+  "headline": {
+    "building_icc_pct": 25.3,
+    "system_icc_pct": 12.6,
+    "cell_icc_pct": 64.2,
+    "ratio": 2.0
+  },
+  "reading": "In a variance decomposition of cell-quarter reactive burden (log(1+UPM labour-hours)), building identity accounts for 25% of the variance (two-level ICC), versus 13% for system type, a factor of ~2. The cell (building x system) accounts for 64%, the structural counterpart of the documented persistence. Building-level factors are thus the dominant structural unit of reactive burden, yet building-level aggregate features add no predictive value (M1b): a cell's own reactive history already encodes its building's risk level. The building is the correct unit of action (inspection); the cell is the sufficient unit of prediction."
+}

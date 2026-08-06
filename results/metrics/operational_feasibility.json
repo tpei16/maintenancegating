@@ -1,0 +1,89 @@
+{
+  "topk_budget": 0.1,
+  "cells_per_campus_quarter": {
+    "median": 1642.0,
+    "iqr": [
+      135.0,
+      2546.0
+    ],
+    "per_campus_median": {
+      "1": 1363.0,
+      "10": 34.0,
+      "11": 3729.0,
+      "2": 1255.0,
+      "3": 2082.0,
+      "4": 1269.0,
+      "5": 2549.0,
+      "6": 2190.5,
+      "7": 53.0
+    },
+    "max_campus": 3729.0,
+    "min_campus": 34.0
+  },
+  "inspections_at_10pct": {
+    "per_quarter_median": 164.20000000000002,
+    "per_week_median": 12.630769230769232,
+    "per_quarter_largest_campus": 372.90000000000003,
+    "per_week_largest_campus": 28.684615384615388
+  },
+  "preventive_to_corrective": {
+    "ppm_to_upm_count_ratio": 2.1531628253693658,
+    "ppm_to_upm_labour_ratio": 1.8568233201863154,
+    "upm_share_of_orders": 0.31714188431828244
+  },
+  "ppm_to_upm_by_top_systems": [
+    {
+      "SystemCode": "D30",
+      "desc": "HVAC",
+      "ppm_to_upm": 2.7666075534776375
+    },
+    {
+      "SystemCode": "D20",
+      "desc": "Plumbing",
+      "ppm_to_upm": 1.029069661029358
+    },
+    {
+      "SystemCode": "D50",
+      "desc": "Electrical",
+      "ppm_to_upm": 2.7404046567546505
+    },
+    {
+      "SystemCode": "C10",
+      "desc": "Interior Construction",
+      "ppm_to_upm": 0.3577378342832091
+    },
+    {
+      "SystemCode": "E10",
+      "desc": "Equipment",
+      "ppm_to_upm": 2.0473474994276675
+    },
+    {
+      "SystemCode": "C30",
+      "desc": "Interior Finishes",
+      "ppm_to_upm": 0.7679623983739837
+    },
+    {
+      "SystemCode": "D40",
+      "desc": "Fire Protection",
+      "ppm_to_upm": 12.949993308649686
+    },
+    {
+      "SystemCode": "E20",
+      "desc": "Furnishings",
+      "ppm_to_upm": 0.4128849270664506
+    }
+  ],
+  "fci": {
+    "record_coverage": 0.14779123103403208,
+    "building_coverage": 0.09185441941074524,
+    "n_buildings_with_fci": 371,
+    "median_fci": 0.4015775219209953,
+    "fci_iqr": [
+      0.23305251729579374,
+      0.6082600177605619
+    ],
+    "spearman_fci_vs_upm_burden": -0.05038907349770398,
+    "spearman_p": 0.3357310318741241,
+    "n_buildings_paired": 367
+  }
+}

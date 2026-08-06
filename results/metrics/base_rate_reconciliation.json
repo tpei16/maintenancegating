@@ -1,0 +1,108 @@
+{
+  "base_rates": {
+    "occurrence_full_panel": {
+      "value": 0.2899305791543279,
+      "definition": "P(any UPM in t+1) over all known-system cell-quarters"
+    },
+    "highburden_p75_pooled": {
+      "value": 0.06806349822806933,
+      "definition": "P(next-qtr UPM labour > system p75) pooled over the full panel"
+    },
+    "highburden_p50_pooled": {
+      "value": 0.13475217243555512,
+      "definition": "as above, p50 threshold"
+    },
+    "highburden_p90_pooled": {
+      "value": 0.027438225156560997,
+      "definition": "as above, p90 threshold (extreme high-burden)"
+    },
+    "highburden_p75_LOUO_median": {
+      "value": 0.0808,
+      "definition": "median p75 base rate across the 9 held-out campuses (campuses differ; from decomposition_summary.json)"
+    },
+    "recent_activity_p75": {
+      "value": 0.0957,
+      "definition": "p75 base rate restricted to cells active in the prior 4 quarters (removes dormant negatives; from recent_activity_summary.json)"
+    },
+    "coescalation_4q_marginal": {
+      "value": 0.1471,
+      "definition": "P(a cell is high-burden in any of t+1..t+4); 4-quarter window inflates vs the single-quarter rate (from coescalation.json)"
+    }
+  },
+  "median_threshold_p75_hours": 10.5,
+  "median_threshold_p90_hours": 21.377500000000055,
+  "major_systems": [
+    {
+      "system": "HVAC",
+      "system_code": "D30",
+      "n_pos": 25511,
+      "p75_hours": 40.775,
+      "p90_hours": 88.5,
+      "median_hours": 15.0
+    },
+    {
+      "system": "Plumbing",
+      "system_code": "D20",
+      "n_pos": 26020,
+      "p75_hours": 27.0,
+      "p90_hours": 58.0,
+      "median_hours": 10.0
+    },
+    {
+      "system": "Electrical",
+      "system_code": "D50",
+      "n_pos": 22368,
+      "p75_hours": 20.0,
+      "p90_hours": 48.0,
+      "median_hours": 6.75
+    },
+    {
+      "system": "Interior Finishes",
+      "system_code": "C30",
+      "n_pos": 10393,
+      "p75_hours": 18.5,
+      "p90_hours": 44.29800000000006,
+      "median_hours": 7.0
+    },
+    {
+      "system": "Equipment",
+      "system_code": "E10",
+      "n_pos": 10805,
+      "p75_hours": 11.25,
+      "p90_hours": 27.5,
+      "median_hours": 4.25
+    },
+    {
+      "system": "Fire Protection",
+      "system_code": "D40",
+      "n_pos": 8057,
+      "p75_hours": 7.5,
+      "p90_hours": 17.5,
+      "median_hours": 3.0
+    },
+    {
+      "system": "Roofing",
+      "system_code": "B30",
+      "n_pos": 3323,
+      "p75_hours": 13.0,
+      "p90_hours": 26.0,
+      "median_hours": 6.0
+    },
+    {
+      "system": "Conveying",
+      "system_code": "D10",
+      "n_pos": 1516,
+      "p75_hours": 4.0,
+      "p90_hours": 10.0,
+      "median_hours": 2.0
+    },
+    {
+      "system": "Stairs",
+      "system_code": "C20",
+      "n_pos": 674,
+      "p75_hours": 6.5,
+      "p90_hours": 14.0,
+      "median_hours": 2.75
+    }
+  ]
+}

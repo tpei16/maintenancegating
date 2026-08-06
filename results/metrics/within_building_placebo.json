@@ -1,0 +1,14 @@
+{
+  "observed_mh_rr": 0.9208958510844866,
+  "n_informative_buildings": 1364,
+  "n_permutations": 1000,
+  "null_mean": 0.9993526804362216,
+  "null_median": 0.999029231090065,
+  "null_ci95": [
+    0.9801295867641358,
+    1.0183770183491527
+  ],
+  "observed_inside_null_ci": false,
+  "p_lower_tail": 0.000999000999000999,
+  "reading": "Under the within-building permutation null the MH RR is centred at 0.999 (95% null interval 0.980-1.018), confirming the estimator is unbiased (no mechanical below-one pull). The observed 0.921 is below the null interval, so the slight reversal is a small but real within-building negative association, consistent with baseline composition (scheduling, finite capacity, mean-reversion) rather than propagation. The large positive pooled association vanishes within building either way."
+}

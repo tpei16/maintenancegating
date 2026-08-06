@@ -1,0 +1,834 @@
+{
+  "purpose": "does the record-evidence sufficiency score S recover a known ground truth about whether a stratum's records can support a decision?",
+  "decision_rule": "records are actionable when S >= 0.67",
+  "gate_code": {
+    "source": "scripts/37_cepi.py, imported and used unchanged",
+    "objects_used": [
+      "THR",
+      "GATES",
+      "HARD_GATES",
+      "PASS/CAUTION/FAIL",
+      "build_gates",
+      "calibration_gate",
+      "sufficiency"
+    ],
+    "thresholds": {
+      "data_npos": 500,
+      "lift_pass": 2.0,
+      "lift_caution": 1.5,
+      "transfer_pass": 0.8,
+      "transfer_caution": 0.6,
+      "cal_top": 2.0,
+      "cal_top_caution": 1.5,
+      "zp_pass": 0.1,
+      "zp_fail": 0.25
+    },
+    "gates": [
+      "data_sufficiency",
+      "risk_concentration",
+      "transfer_stability",
+      "calibration_reliability",
+      "antecedent_signal"
+    ],
+    "hard_gates": [
+      "data_sufficiency",
+      "transfer_stability",
+      "calibration_reliability"
+    ],
+    "new_code": "sufficiency_subset(), needed only for the counterfactual; asserted equal to 37_cepi.sufficiency() on the full gate set for every combination encountered"
+  },
+  "harness_verification": {
+    "inputs": {
+      "n_contexts_evaluable": 7,
+      "n_pos": 620,
+      "pooled_lift_top10": 2.4,
+      "frac_contexts_meet_2x": 0.55,
+      "positives_per_score_quintile": [
+        2,
+        4,
+        8,
+        16,
+        40
+      ],
+      "n_extreme_events": 200,
+      "zero_prior_share": 0.18
+    },
+    "hand_computed": {
+      "gate_scores": {
+        "data_sufficiency": 1.0,
+        "risk_concentration": 1.0,
+        "transfer_stability": 0.0,
+        "calibration_reliability": 1.0,
+        "antecedent_signal": 0.5
+      },
+      "top_band_lift": 2.857,
+      "band_spearman": 1.0,
+      "S": 0.5,
+      "S_without_transfer_gate": 0.875
+    },
+    "computed_by_37_cepi": {
+      "gate_scores": {
+        "data_sufficiency": 1.0,
+        "risk_concentration": 1.0,
+        "transfer_stability": 0.0,
+        "calibration_reliability": 1.0,
+        "antecedent_signal": 0.5
+      },
+      "top_band_lift": 2.857,
+      "band_spearman": 1.0,
+      "S": 0.5,
+      "S_without_transfer_gate": 0.875
+    },
+    "agree": true
+  },
+  "protocol": {
+    "design": "leave-one-context-out, mirroring the study's leave-one-campus-out",
+    "model": "fmscreen.models.make_gbdt (the pipeline's own factory: XGBoost, 500 trees, depth 6, lr 0.06, class-balanced), forced to CPU",
+    "threads": 4,
+    "topk_budget": 0.1,
+    "R": "within-held-out-context percentile rank of the model score",
+    "context_evaluability": "n >= 100 and n_pos >= 10 (as in 40_outer_s.py)"
+  },
+  "experiment": {
+    "base_seed": 20260802,
+    "n_replicates": 50,
+    "regimes": {
+      "A_sufficient": "actionable",
+      "B_shock": "not actionable",
+      "C_non_transferable": "not actionable",
+      "D_scarce": "not actionable"
+    },
+    "strata_per_regime": 3,
+    "stratum_variants": [
+      {
+        "tag": "1",
+        "base_rate": 0.12,
+        "units_delta": -5,
+        "signal": 0.92
+      },
+      {
+        "tag": "2",
+        "base_rate": 0.15,
+        "units_delta": 0,
+        "signal": 1.0
+      },
+      {
+        "tag": "3",
+        "base_rate": 0.18,
+        "units_delta": 5,
+        "signal": 1.08
+      }
+    ],
+    "n_decisions": 600,
+    "features": [
+      "b_lag1",
+      "b_lag2",
+      "b_mean4",
+      "b_max4",
+      "n_lag1",
+      "n_sum4",
+      "level",
+      "n_prior_high",
+      "t_since_high",
+      "u1_lag1",
+      "u2_lag1",
+      "u3_lag1",
+      "u4_lag1",
+      "u5_lag1",
+      "u6_lag1"
+    ],
+    "warmup_quarters": 4,
+    "generative_parameters": {
+      "A_sufficient": {
+        "n_ctx": 8,
+        "n_units": 60,
+        "n_q": 20,
+        "base_rate": 0.15,
+        "sigma_e": 0.5,
+        "log_lam0": -2.2,
+        "kappa": 0.5,
+        "theta": 0.65,
+        "sigma_dorm": 1.0,
+        "jitter": 0.15,
+        "ctx_levels": null,
+        "w_chan": 0.0,
+        "chan": null,
+        "phi": 0.82,
+        "sigma_ctx": 0.2,
+        "sigma_unit": 0.45,
+        "w_z": 1.3
+      },
+      "B_shock": {
+        "n_ctx": 8,
+        "n_units": 60,
+        "n_q": 20,
+        "base_rate": 0.15,
+        "sigma_e": 0.5,
+        "log_lam0": -2.2,
+        "kappa": 0.5,
+        "theta": 0.65,
+        "sigma_dorm": 1.0,
+        "jitter": 0.15,
+        "ctx_levels": null,
+        "w_chan": 0.0,
+        "chan": null,
+        "phi": 0.0,
+        "sigma_ctx": 0.2,
+        "sigma_unit": 0.0,
+        "w_z": 1.3
+      },
+      "C_non_transferable": {
+        "n_ctx": 8,
+        "n_units": 60,
+        "n_q": 20,
+        "base_rate": 0.15,
+        "sigma_e": 0.5,
+        "log_lam0": -2.2,
+        "kappa": 0.5,
+        "theta": 0.65,
+        "sigma_dorm": 1.0,
+        "jitter": 0.15,
+        "ctx_levels": [
+          0.4,
+          0.4,
+          0.4,
+          0.4,
+          -0.4,
+          -0.4,
+          -0.4,
+          -0.4
+        ],
+        "w_chan": 1.5,
+        "chan": [
+          [
+            1,
+            1
+          ],
+          [
+            1,
+            1
+          ],
+          [
+            1,
+            1
+          ],
+          [
+            1,
+            1
+          ],
+          [
+            2,
+            1
+          ],
+          [
+            3,
+            1
+          ],
+          [
+            4,
+            1
+          ],
+          [
+            5,
+            1
+          ]
+        ],
+        "phi": 0.82,
+        "sigma_ctx": 0.0,
+        "sigma_unit": 0.0,
+        "w_z": 0.0
+      },
+      "D_scarce": {
+        "n_ctx": 2,
+        "n_units": 18,
+        "n_q": 16,
+        "base_rate": 0.15,
+        "sigma_e": 0.5,
+        "log_lam0": -2.2,
+        "kappa": 0.5,
+        "theta": 0.65,
+        "sigma_dorm": 1.0,
+        "jitter": 0.15,
+        "ctx_levels": null,
+        "w_chan": 0.0,
+        "chan": null,
+        "phi": 0.82,
+        "sigma_ctx": 0.2,
+        "sigma_unit": 0.45,
+        "w_z": 1.3
+      }
+    },
+    "sensitivity_parameters": {
+      "sensitivity_sign_flip": {
+        "n_ctx": 8,
+        "n_units": 60,
+        "n_q": 20,
+        "base_rate": 0.15,
+        "sigma_e": 0.5,
+        "log_lam0": -2.2,
+        "kappa": 0.5,
+        "theta": 0.65,
+        "sigma_dorm": 1.0,
+        "jitter": 0.15,
+        "ctx_levels": [
+          0.4,
+          0.4,
+          0.4,
+          0.4,
+          -0.4,
+          -0.4,
+          -0.4,
+          -0.4
+        ],
+        "w_chan": 1.5,
+        "chan": [
+          [
+            1,
+            1
+          ],
+          [
+            1,
+            1
+          ],
+          [
+            1,
+            1
+          ],
+          [
+            1,
+            1
+          ],
+          [
+            2,
+            1
+          ],
+          [
+            2,
+            1
+          ],
+          [
+            2,
+            -1
+          ],
+          [
+            2,
+            -1
+          ]
+        ],
+        "phi": 0.82,
+        "sigma_ctx": 0.0,
+        "sigma_unit": 0.0,
+        "w_z": 0.0
+      }
+    },
+    "design_notes": {
+      "note_1_antecedent_in_C": "in the non-transferable regime the antecedent gate returns caution or fail because severity is driven by a recorded attribute rather than by persistent activity; it is soft and never decides that regime's verdict",
+      "note_2_intensity_coupling": "in the non-transferable regime the four contexts sharing the common driver are also the higher-intensity half; without that coupling pooled lift sits at about 2.0 rather than comfortably above it",
+      "note_3_sign_flip": "an alternative rendering of non-transferability is reported under `sensitivity_sign_flip`"
+    }
+  },
+  "headline": {
+    "overall_recovery_rate": 0.9983,
+    "per_regime_recovery_rate": {
+      "A_sufficient": 1.0,
+      "B_shock": 1.0,
+      "C_non_transferable": 0.9933,
+      "D_scarce": 1.0
+    },
+    "per_regime_S_median": {
+      "A_sufficient": 1.0,
+      "B_shock": 0.0,
+      "C_non_transferable": 0.5,
+      "D_scarce": 0.5
+    }
+  },
+  "per_regime": {
+    "A_sufficient": {
+      "ground_truth_actionable": true,
+      "n_strata_scored": 150,
+      "S": {
+        "median": 1.0,
+        "q25": 1.0,
+        "q75": 1.0,
+        "min": 0.9,
+        "max": 1.0,
+        "n": 150
+      },
+      "recovery_rate": 1.0,
+      "recovery_rate_without_transfer_gate": 1.0,
+      "gate_firing_rates": {
+        "data_sufficiency": {
+          "fail": 0.0,
+          "caution": 0.0,
+          "pass": 1.0
+        },
+        "risk_concentration": {
+          "fail": 0.0,
+          "caution": 0.0,
+          "pass": 1.0
+        },
+        "transfer_stability": {
+          "fail": 0.0,
+          "caution": 0.0,
+          "pass": 1.0
+        },
+        "calibration_reliability": {
+          "fail": 0.0,
+          "caution": 0.0867,
+          "pass": 0.9133
+        },
+        "antecedent_signal": {
+          "fail": 0.0,
+          "caution": 0.0,
+          "pass": 1.0
+        }
+      },
+      "evidence": {
+        "pooled_lift_top10": {
+          "median": 3.9545,
+          "q25": 3.7781,
+          "q75": 4.187,
+          "min": 3.5098,
+          "max": 4.5859,
+          "n": 150
+        },
+        "frac_contexts_meet_2x": {
+          "median": 1.0,
+          "q25": 1.0,
+          "q75": 1.0,
+          "min": 1.0,
+          "max": 1.0,
+          "n": 150
+        },
+        "calibration_top_band_lift": {
+          "median": 2.9265,
+          "q25": 2.8662,
+          "q75": 3.0078,
+          "min": 2.713,
+          "max": 3.294,
+          "n": 150
+        },
+        "n_pos": {
+          "median": 1073.5,
+          "q25": 807.0,
+          "q75": 1381.0,
+          "min": 743.0,
+          "max": 1462.0,
+          "n": 150
+        },
+        "n_contexts_evaluable": {
+          "median": 8.0,
+          "q25": 8.0,
+          "q75": 8.0,
+          "min": 8.0,
+          "max": 8.0,
+          "n": 150
+        },
+        "zero_prior_share": {
+          "median": 0.0374,
+          "q25": 0.0275,
+          "q75": 0.0484,
+          "min": 0.009,
+          "max": 0.0939,
+          "n": 150
+        }
+      },
+      "S_value_counts": {
+        "0.9": 13,
+        "1.0": 137
+      }
+    },
+    "B_shock": {
+      "ground_truth_actionable": false,
+      "n_strata_scored": 150,
+      "S": {
+        "median": 0.0,
+        "q25": 0.0,
+        "q75": 0.0,
+        "min": 0.0,
+        "max": 0.0,
+        "n": 150
+      },
+      "recovery_rate": 1.0,
+      "recovery_rate_without_transfer_gate": 1.0,
+      "gate_firing_rates": {
+        "data_sufficiency": {
+          "fail": 0.0,
+          "caution": 0.0,
+          "pass": 1.0
+        },
+        "risk_concentration": {
+          "fail": 1.0,
+          "caution": 0.0,
+          "pass": 0.0
+        },
+        "transfer_stability": {
+          "fail": 1.0,
+          "caution": 0.0,
+          "pass": 0.0
+        },
+        "calibration_reliability": {
+          "fail": 1.0,
+          "caution": 0.0,
+          "pass": 0.0
+        },
+        "antecedent_signal": {
+          "fail": 0.9,
+          "caution": 0.1,
+          "pass": 0.0
+        }
+      },
+      "evidence": {
+        "pooled_lift_top10": {
+          "median": 0.9956,
+          "q25": 0.9284,
+          "q75": 1.0628,
+          "min": 0.7109,
+          "max": 1.2937,
+          "n": 150
+        },
+        "frac_contexts_meet_2x": {
+          "median": 0.0,
+          "q25": 0.0,
+          "q75": 0.0,
+          "min": 0.0,
+          "max": 0.0,
+          "n": 150
+        },
+        "calibration_top_band_lift": {
+          "median": 1.001,
+          "q25": 0.9607,
+          "q75": 1.039,
+          "min": 0.845,
+          "max": 1.274,
+          "n": 150
+        },
+        "n_pos": {
+          "median": 1080.0,
+          "q25": 800.25,
+          "q75": 1393.75,
+          "min": 766.0,
+          "max": 1450.0,
+          "n": 150
+        },
+        "n_contexts_evaluable": {
+          "median": 8.0,
+          "q25": 8.0,
+          "q75": 8.0,
+          "min": 8.0,
+          "max": 8.0,
+          "n": 150
+        },
+        "zero_prior_share": {
+          "median": 0.3113,
+          "q25": 0.2808,
+          "q75": 0.3378,
+          "min": 0.2227,
+          "max": 0.4485,
+          "n": 150
+        }
+      },
+      "S_value_counts": {
+        "0.0": 150
+      }
+    },
+    "C_non_transferable": {
+      "ground_truth_actionable": false,
+      "n_strata_scored": 150,
+      "S": {
+        "median": 0.5,
+        "q25": 0.5,
+        "q75": 0.5,
+        "min": 0.5,
+        "max": 0.7,
+        "n": 150
+      },
+      "recovery_rate": 0.9933,
+      "recovery_rate_without_transfer_gate": 0.24,
+      "gate_firing_rates": {
+        "data_sufficiency": {
+          "fail": 0.0,
+          "caution": 0.0,
+          "pass": 1.0
+        },
+        "risk_concentration": {
+          "fail": 0.0,
+          "caution": 0.0,
+          "pass": 1.0
+        },
+        "transfer_stability": {
+          "fail": 0.9867,
+          "caution": 0.0133,
+          "pass": 0.0
+        },
+        "calibration_reliability": {
+          "fail": 0.0,
+          "caution": 0.42,
+          "pass": 0.58
+        },
+        "antecedent_signal": {
+          "fail": 0.48,
+          "caution": 0.52,
+          "pass": 0.0
+        }
+      },
+      "evidence": {
+        "pooled_lift_top10": {
+          "median": 3.2725,
+          "q25": 3.0428,
+          "q75": 3.6394,
+          "min": 2.4409,
+          "max": 4.2771,
+          "n": 150
+        },
+        "frac_contexts_meet_2x": {
+          "median": 0.5,
+          "q25": 0.5,
+          "q75": 0.5,
+          "min": 0.5,
+          "max": 0.625,
+          "n": 150
+        },
+        "calibration_top_band_lift": {
+          "median": 2.552,
+          "q25": 2.4002,
+          "q75": 2.7248,
+          "min": 2.169,
+          "max": 2.981,
+          "n": 150
+        },
+        "n_pos": {
+          "median": 1141.5,
+          "q25": 842.0,
+          "q75": 1464.0,
+          "min": 796.0,
+          "max": 1508.0,
+          "n": 150
+        },
+        "n_contexts_evaluable": {
+          "median": 8.0,
+          "q25": 8.0,
+          "q75": 8.0,
+          "min": 8.0,
+          "max": 8.0,
+          "n": 150
+        },
+        "zero_prior_share": {
+          "median": 0.2475,
+          "q25": 0.2144,
+          "q75": 0.2733,
+          "min": 0.1739,
+          "max": 0.3413,
+          "n": 150
+        }
+      },
+      "S_value_counts": {
+        "0.5": 148,
+        "0.6": 1,
+        "0.7": 1
+      }
+    },
+    "D_scarce": {
+      "ground_truth_actionable": false,
+      "n_strata_scored": 150,
+      "S": {
+        "median": 0.5,
+        "q25": 0.5,
+        "q75": 0.5,
+        "min": 0.0,
+        "max": 0.5,
+        "n": 150
+      },
+      "recovery_rate": 1.0,
+      "recovery_rate_without_transfer_gate": 1.0,
+      "gate_firing_rates": {
+        "data_sufficiency": {
+          "fail": 1.0,
+          "caution": 0.0,
+          "pass": 0.0
+        },
+        "risk_concentration": {
+          "fail": 0.02,
+          "caution": 0.04,
+          "pass": 0.94
+        },
+        "transfer_stability": {
+          "fail": 0.1667,
+          "caution": 0.8333,
+          "pass": 0.0
+        },
+        "calibration_reliability": {
+          "fail": 0.0533,
+          "caution": 0.64,
+          "pass": 0.3067
+        },
+        "antecedent_signal": {
+          "fail": 0.0,
+          "caution": 1.0,
+          "pass": 0.0
+        }
+      },
+      "evidence": {
+        "pooled_lift_top10": {
+          "median": 3.2919,
+          "q25": 2.6404,
+          "q75": 3.7292,
+          "min": 0.9778,
+          "max": 5.314,
+          "n": 150
+        },
+        "frac_contexts_meet_2x": {
+          "median": 1.0,
+          "q25": 1.0,
+          "q75": 1.0,
+          "min": 0.0,
+          "max": 1.0,
+          "n": 150
+        },
+        "calibration_top_band_lift": {
+          "median": 2.6365,
+          "q25": 2.2477,
+          "q75": 2.904,
+          "min": 1.453,
+          "max": 3.808,
+          "n": 150
+        },
+        "n_pos": {
+          "median": 58.5,
+          "q25": 45.0,
+          "q75": 76.0,
+          "min": 32.0,
+          "max": 94.0,
+          "n": 150
+        },
+        "n_contexts_evaluable": {
+          "median": 2.0,
+          "q25": 2.0,
+          "q75": 2.0,
+          "min": 1.0,
+          "max": 2.0,
+          "n": 150
+        },
+        "zero_prior_share": {
+          "median": 0.0,
+          "q25": 0.0,
+          "q75": 0.0909,
+          "min": 0.0,
+          "max": 0.375,
+          "n": 150
+        }
+      },
+      "S_value_counts": {
+        "0.0": 30,
+        "0.4": 1,
+        "0.5": 119
+      }
+    }
+  },
+  "non_redundancy": {
+    "claim": "the non-transferable regime is caught by the transfer-stability gate and not by risk concentration: pooled lift stays above its pass level while the fraction of held-out contexts clearing 2x falls below it",
+    "n_strata": 150,
+    "risk_concentration_pass_rate": 1.0,
+    "transfer_stability_fail_rate": 0.9867,
+    "calibration_pass_rate": 0.58,
+    "pooled_lift_top10": {
+      "median": 3.2725,
+      "q25": 3.0428,
+      "q75": 3.6394,
+      "min": 2.4409,
+      "max": 4.2771,
+      "n": 150
+    },
+    "frac_contexts_meet_2x": {
+      "median": 0.5,
+      "q25": 0.5,
+      "q75": 0.5,
+      "min": 0.5,
+      "max": 0.625,
+      "n": 150
+    },
+    "share_with_pooled_lift_ge_2": 1.0,
+    "share_with_transfer_as_only_hard_fail": 0.9867
+  },
+  "counterfactual_drop_transfer_gate": {
+    "definition": "S recomputed with transfer_stability removed from the mean AND from the hard-fail set; everything else unchanged",
+    "accuracy_with_all_five_gates": 0.9983,
+    "accuracy_without_transfer_gate": 0.81,
+    "accuracy_change": -0.1883,
+    "per_regime_recovery_without_transfer_gate": {
+      "A_sufficient": 1.0,
+      "B_shock": 1.0,
+      "C_non_transferable": 0.24,
+      "D_scarce": 1.0
+    },
+    "n_decisions_flipped": 113,
+    "flips_by_regime": {
+      "C_non_transferable": 113
+    },
+    "flip_direction": "all flips are insufficient -> sufficient, i.e. strata whose records cannot support a decision are wrongly certified"
+  },
+  "sensitivity_sign_flip": {
+    "design": "the four idiosyncratic contexts share one recorded attribute with flipped signs instead of holding private ones; ground truth is still not actionable",
+    "n_strata": 50,
+    "S": {
+      "median": 0.5,
+      "q25": 0.5,
+      "q75": 0.5,
+      "min": 0.5,
+      "max": 0.8,
+      "n": 50
+    },
+    "recovery_rate": 0.82,
+    "gate_firing_rates": {
+      "data_sufficiency": {
+        "fail": 0.0,
+        "caution": 0.0,
+        "pass": 1.0
+      },
+      "risk_concentration": {
+        "fail": 0.0,
+        "caution": 0.0,
+        "pass": 1.0
+      },
+      "transfer_stability": {
+        "fail": 0.82,
+        "caution": 0.18,
+        "pass": 0.0
+      },
+      "calibration_reliability": {
+        "fail": 0.0,
+        "caution": 0.0,
+        "pass": 1.0
+      },
+      "antecedent_signal": {
+        "fail": 0.42,
+        "caution": 0.58,
+        "pass": 0.0
+      }
+    },
+    "pooled_lift_top10": {
+      "median": 3.2621,
+      "q25": 3.0713,
+      "q75": 3.4717,
+      "min": 2.6947,
+      "max": 3.9327,
+      "n": 50
+    },
+    "frac_contexts_meet_2x": {
+      "median": 0.5,
+      "q25": 0.5,
+      "q75": 0.5,
+      "min": 0.5,
+      "max": 0.75,
+      "n": 50
+    },
+    "reading": "the boosted model partially recovers a sign-flipped driver through a symmetric function of it, so the idiosyncratic contexts land near 1.5x rather than at chance and the transfer gate sits on its caution/fail boundary"
+  },
+  "runtime_seconds": 709.2,
+  "environment": {
+    "python": "3.13.13",
+    "numpy": "2.4.6",
+    "pandas": "3.0.3",
+    "xgboost": "3.3.0"
+  }
+}

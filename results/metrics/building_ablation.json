@@ -1,0 +1,54 @@
+{
+  "n_campuses": 9,
+  "median_lift": {
+    "M0": 5.905887302427415,
+    "M1": 6.133963262037931,
+    "M1b": 6.160814268535179
+  },
+  "median_capture": {
+    "M0": 0.5906140257528999,
+    "M1": 0.6135481945687854,
+    "M1b": 0.6162339600119368
+  },
+  "delta_M1_minus_M0": {
+    "median": 0.3171089038060133,
+    "ci95": [
+      0.09815216455452314,
+      0.6139210606522401
+    ],
+    "n_campuses_M1_gt_M0": 9
+  },
+  "delta_M1b_minus_M1": {
+    "median": 0.022247823965691804,
+    "ci95": [
+      -0.03511608666308241,
+      0.041125493044618544
+    ],
+    "n_campuses_M1b_gt_M1": 5
+  },
+  "delta_M1b_minus_rule": {
+    "median": 0.16358694092420478,
+    "ci95": [
+      -0.3586097334987457,
+      0.4351845493231066
+    ],
+    "n_campuses_beat_rule": 6
+  },
+  "delta_M1_minus_rule": {
+    "median": 0.3043114069688073,
+    "ci95": [
+      -0.3234936468356633,
+      0.4351845493231066
+    ],
+    "n_campuses_beat_rule": 7
+  },
+  "M1b_frac_meet_2x": 1.0,
+  "building_features": [
+    "bld_lab_y1_excl",
+    "bld_lab_cum_excl",
+    "bld_cnt_w4_excl",
+    "bld_n_active_sys",
+    "bld_ppm_upm_ratio",
+    "bld_active_share"
+  ]
+}

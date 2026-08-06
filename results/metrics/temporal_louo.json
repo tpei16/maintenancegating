@@ -1,0 +1,132 @@
+{
+  "design": "train other campuses through 2016; test held-out campus 2017-2019",
+  "n_campuses_total": 9,
+  "n_campuses_evaluable": 9,
+  "lift_median": 5.7926829268292686,
+  "lift_iqr": [
+    4.710814933018297,
+    6.909486605477204
+  ],
+  "capture_median": 0.5792682926829268,
+  "n_meet_2x": 9,
+  "n_beat_rule": 4,
+  "per_campus": [
+    {
+      "held_out_university": "1",
+      "evaluable": true,
+      "n_test": 16881,
+      "n_pos": 2008,
+      "base_rate": 0.11895029915289379,
+      "lift_top10": 6.440789240904941,
+      "capture_top10": 0.6444223107569721,
+      "pr_auc": 0.786128028952863,
+      "best_rule_lift": 6.20187279301975,
+      "meets_2x": true,
+      "beats_rule": true
+    },
+    {
+      "held_out_university": "2",
+      "evaluable": true,
+      "n_test": 15087,
+      "n_pos": 1804,
+      "base_rate": 0.1195731424405117,
+      "lift_top10": 4.710814933018297,
+      "capture_top10": 0.47117516629711753,
+      "pr_auc": 0.5577494350932394,
+      "best_rule_lift": 4.81057336689398,
+      "meets_2x": true,
+      "beats_rule": false
+    },
+    {
+      "held_out_university": "3",
+      "evaluable": true,
+      "n_test": 29773,
+      "n_pos": 900,
+      "base_rate": 0.03022873072918416,
+      "lift_top10": 6.909486605477204,
+      "capture_top10": 0.6911111111111111,
+      "pr_auc": 0.3263040135271155,
+      "best_rule_lift": 7.06500559659727,
+      "meets_2x": true,
+      "beats_rule": false
+    },
+    {
+      "held_out_university": "4",
+      "evaluable": true,
+      "n_test": 15421,
+      "n_pos": 2255,
+      "base_rate": 0.14622916801763827,
+      "lift_top10": 5.540003994867027,
+      "capture_top10": 0.5543237250554324,
+      "pr_auc": 0.7717615363845923,
+      "best_rule_lift": 5.256355790329836,
+      "meets_2x": true,
+      "beats_rule": true
+    },
+    {
+      "held_out_university": "5",
+      "evaluable": true,
+      "n_test": 33025,
+      "n_pos": 2350,
+      "base_rate": 0.07115821347464042,
+      "lift_top10": 7.07552450705677,
+      "capture_top10": 0.7076595744680851,
+      "pr_auc": 0.6338952838712281,
+      "best_rule_lift": 7.092543207013612,
+      "meets_2x": true,
+      "beats_rule": false
+    },
+    {
+      "held_out_university": "6",
+      "evaluable": true,
+      "n_test": 25536,
+      "n_pos": 7690,
+      "base_rate": 0.3011434837092732,
+      "lift_top10": 2.9904288436100135,
+      "capture_top10": 0.29908972691807545,
+      "pr_auc": 0.7622973463994522,
+      "best_rule_lift": 2.8656109440506388,
+      "meets_2x": true,
+      "beats_rule": true
+    },
+    {
+      "held_out_university": "7",
+      "evaluable": true,
+      "n_test": 1071,
+      "n_pos": 89,
+      "base_rate": 0.08309990662931839,
+      "lift_top10": 2.3398876404494384,
+      "capture_top10": 0.23595505617977527,
+      "pr_auc": 0.2029947817769659,
+      "best_rule_lift": 3.008426966292135,
+      "meets_2x": true,
+      "beats_rule": false
+    },
+    {
+      "held_out_university": "10",
+      "evaluable": true,
+      "n_test": 33350,
+      "n_pos": 3444,
+      "base_rate": 0.10326836581709145,
+      "lift_top10": 5.7926829268292686,
+      "capture_top10": 0.5792682926829268,
+      "pr_auc": 0.6283831476087165,
+      "best_rule_lift": 6.06562137049942,
+      "meets_2x": true,
+      "beats_rule": false
+    },
+    {
+      "held_out_university": "11",
+      "evaluable": true,
+      "n_test": 46138,
+      "n_pos": 1569,
+      "base_rate": 0.03400667562529802,
+      "lift_top10": 7.711584135958867,
+      "capture_top10": 0.7711918419375399,
+      "pr_auc": 0.5624632994835678,
+      "best_rule_lift": 7.558627095245632,
+      "meets_2x": true,
+      "beats_rule": true
+    }
+  ]
+}

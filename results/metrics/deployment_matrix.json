@@ -1,0 +1,41 @@
+{
+  "high_burden__works_screening": {
+    "n": 11,
+    "systems": [
+      "D50",
+      "E20",
+      "C10",
+      "D20",
+      "G20",
+      "D30",
+      "E10",
+      "C30",
+      "D40",
+      "B20",
+      "B30"
+    ],
+    "action": "Use record-based top-k inspection"
+  },
+  "high_burden__fails_screening": {
+    "n": 0,
+    "systems": [],
+    "action": "Improve data / add inspection or condition data / consider targeted sensing"
+  },
+  "low_burden__works_screening": {
+    "n": 3,
+    "systems": [
+      "F10",
+      "G30",
+      "F20"
+    ],
+    "action": "Low-risk monitoring: simple rules or periodic review"
+  },
+  "low_burden__fails_screening": {
+    "n": 2,
+    "systems": [
+      "D10",
+      "C20"
+    ],
+    "action": "Low priority: avoid over-investing in analytics"
+  }
+}

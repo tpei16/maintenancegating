@@ -1,0 +1,151 @@
+{
+  "n_test": 107531,
+  "n_test_pos": 7080,
+  "top15": [
+    {
+      "rank": 1,
+      "feature": "upm_labour_y1",
+      "label": "Prior-year UPM labor",
+      "mean_abs_shap": 0.9557006359100342,
+      "shap_share": 0.20174784220323472,
+      "gain_share": 0.38162589715479167,
+      "group": "record_history"
+    },
+    {
+      "rank": 2,
+      "feature": "SystemCode",
+      "label": "System type (UNIFORMAT II)",
+      "mean_abs_shap": 0.5410758852958679,
+      "shap_share": 0.11422080118498765,
+      "gain_share": 0.019706396094732053,
+      "group": "taxonomy"
+    },
+    {
+      "rank": 3,
+      "feature": "upm_labour_cum",
+      "label": "Cumulative UPM labor",
+      "mean_abs_shap": 0.36168792843818665,
+      "shap_share": 0.07635210898847954,
+      "gain_share": 0.016068104298753612,
+      "group": "record_history"
+    },
+    {
+      "rank": 4,
+      "feature": "upm_cnt_w1",
+      "label": "UPM count, last quarter",
+      "mean_abs_shap": 0.326559454202652,
+      "shap_share": 0.06893650873604003,
+      "gain_share": 0.1113039724457804,
+      "group": "record_history"
+    },
+    {
+      "rank": 5,
+      "feature": "time_since_upm",
+      "label": "Quarters since last UPM",
+      "mean_abs_shap": 0.3174465298652649,
+      "shap_share": 0.06701277576763144,
+      "gain_share": 0.06932983280317459,
+      "group": "record_history"
+    },
+    {
+      "rank": 6,
+      "feature": "periods_since_first",
+      "label": "Cell age (quarters)",
+      "mean_abs_shap": 0.25621163845062256,
+      "shap_share": 0.054086126201588425,
+      "gain_share": 0.015180803254221659,
+      "group": "record_history"
+    },
+    {
+      "rank": 7,
+      "feature": "active_share_hist",
+      "label": "Active-quarter share (data density)",
+      "mean_abs_shap": 0.2201009839773178,
+      "shap_share": 0.0464631882785654,
+      "gain_share": 0.017541790642724993,
+      "group": "record_history"
+    },
+    {
+      "rank": 8,
+      "feature": "upm_cnt_w2",
+      "label": "UPM count, last 2 quarters",
+      "mean_abs_shap": 0.19474543631076813,
+      "shap_share": 0.04111064707748452,
+      "gain_share": 0.1387004025596537,
+      "group": "record_history"
+    },
+    {
+      "rank": 9,
+      "feature": "ppm_labour_cum",
+      "label": "Cumulative PPM labor",
+      "mean_abs_shap": 0.14369924366474152,
+      "shap_share": 0.030334825829630967,
+      "gain_share": 0.012312459161848383,
+      "group": "record_history"
+    },
+    {
+      "rank": 10,
+      "feature": "ppm_labour_y1",
+      "label": "Prior-year PPM labor",
+      "mean_abs_shap": 0.12959009408950806,
+      "shap_share": 0.027356392651739902,
+      "gain_share": 0.010911412516622053,
+      "group": "record_history"
+    },
+    {
+      "rank": 11,
+      "feature": "upm_cost_y1",
+      "label": "Prior-year UPM cost",
+      "mean_abs_shap": 0.11592437326908112,
+      "shap_share": 0.024471567023212758,
+      "gain_share": 0.012823183745549183,
+      "group": "record_history"
+    },
+    {
+      "rank": 12,
+      "feature": "max_temp",
+      "label": "Max temperature",
+      "mean_abs_shap": 0.10710511356592178,
+      "shap_share": 0.022609826486388603,
+      "gain_share": 0.00868070090881532,
+      "group": "weather_season"
+    },
+    {
+      "rank": 13,
+      "feature": "active_cum",
+      "label": "Cumulative active quarters",
+      "mean_abs_shap": 0.10483559966087341,
+      "shap_share": 0.022130733435709867,
+      "gain_share": 0.015050669241116229,
+      "group": "record_history"
+    },
+    {
+      "rank": 14,
+      "feature": "min_temp",
+      "label": "Min temperature",
+      "mean_abs_shap": 0.10340125113725662,
+      "shap_share": 0.021827943305899464,
+      "gain_share": 0.008797993080984497,
+      "group": "weather_season"
+    },
+    {
+      "rank": 15,
+      "feature": "upm_cnt_cum",
+      "label": "Cumulative UPM count",
+      "mean_abs_shap": 0.09364194422960281,
+      "shap_share": 0.01976775935703828,
+      "gain_share": 0.00989886016510697,
+      "group": "record_history"
+    }
+  ],
+  "group_shap_share": {
+    "premium": 0.013364537270562549,
+    "record_history": 0.7801610904279821,
+    "taxonomy": 0.11422080118498765,
+    "weather_season": 0.09225357111646772
+  },
+  "weather_season_total_shap_share": 0.09225357111646772,
+  "premium_total_shap_share": 0.013364537270562549,
+  "premium_best_rank": 24,
+  "top_feature": "upm_labour_y1"
+}

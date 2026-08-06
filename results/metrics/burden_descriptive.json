@@ -1,0 +1,29 @@
+{
+  "n_systems_with_premium": 20,
+  "median_lab_premium_across_systems": 1.0,
+  "systems_with_lab_premium_gt_1": 5,
+  "top5_systems_by_upm_labour": [
+    {
+      "SystemDescription": "HVAC",
+      "share_of_total_upm_labour": 0.32406028606390347
+    },
+    {
+      "SystemDescription": "Plumbing",
+      "share_of_total_upm_labour": 0.20073113173668142
+    },
+    {
+      "SystemDescription": "Electrical",
+      "share_of_total_upm_labour": 0.15946682669923634
+    },
+    {
+      "SystemDescription": "Interior Finishes",
+      "share_of_total_upm_labour": 0.07088039358652806
+    },
+    {
+      "SystemDescription": "Interior Construction",
+      "share_of_total_upm_labour": 0.06930896796068647
+    }
+  ],
+  "cost_premium_available": true,
+  "median_cost_premium_across_systems": 0.43181236031129955
+}

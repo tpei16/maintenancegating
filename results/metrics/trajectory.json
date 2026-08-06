@@ -1,0 +1,114 @@
+{
+  "p90_threshold_note": "system-specific p90 of positive UPM labour (full data)",
+  "n_p90_events_with_history": 12012,
+  "events": {
+    "n": 12012,
+    "escalating": 0.4934232434232434,
+    "non_escalating": 0.5065767565767566,
+    "zero_prior_activity": 0.033466533466533464,
+    "declining": 0.423992673992674,
+    "flat": 0.08258408258408259
+  },
+  "controls_active": {
+    "n": 181761,
+    "escalating": 0.32530080710383413,
+    "non_escalating": 0.6746991928961659,
+    "zero_prior_activity": 0.28216173986718823,
+    "declining": 0.31926540897112143,
+    "flat": 0.35543378392504443
+  },
+  "by_system": [
+    {
+      "system": "C20",
+      "system_desc": "Stairs",
+      "n_events": 53,
+      "non_escalating": 0.7547169811320755,
+      "zero_prior": 0.4339622641509434
+    },
+    {
+      "system": "B30",
+      "system_desc": "Roofing",
+      "n_events": 304,
+      "non_escalating": 0.6743421052631579,
+      "zero_prior": 0.24671052631578946
+    },
+    {
+      "system": "B20",
+      "system_desc": "Exterior Enclosure",
+      "n_events": 576,
+      "non_escalating": 0.6076388888888888,
+      "zero_prior": 0.1111111111111111
+    },
+    {
+      "system": "G20",
+      "system_desc": "Site Improvements",
+      "n_events": 100,
+      "non_escalating": 0.59,
+      "zero_prior": 0.05
+    },
+    {
+      "system": "C30",
+      "system_desc": "Interior Finishes",
+      "n_events": 820,
+      "non_escalating": 0.552439024390244,
+      "zero_prior": 0.06341463414634146
+    },
+    {
+      "system": "D40",
+      "system_desc": "Fire Protection",
+      "n_events": 625,
+      "non_escalating": 0.5472,
+      "zero_prior": 0.0752
+    },
+    {
+      "system": "E20",
+      "system_desc": "Furnishings",
+      "n_events": 390,
+      "non_escalating": 0.5384615384615384,
+      "zero_prior": 0.08205128205128205
+    },
+    {
+      "system": "E10",
+      "system_desc": "Equipment",
+      "n_events": 919,
+      "non_escalating": 0.5092491838955386,
+      "zero_prior": 0.011969532100108813
+    },
+    {
+      "system": "C10",
+      "system_desc": "Interior Construction",
+      "n_events": 1649,
+      "non_escalating": 0.5075803517283202,
+      "zero_prior": 0.006064281382656155
+    },
+    {
+      "system": "D50",
+      "system_desc": "Electrical",
+      "n_events": 1839,
+      "non_escalating": 0.47797716150081565,
+      "zero_prior": 0.010331702011963024
+    },
+    {
+      "system": "D20",
+      "system_desc": "Plumbing",
+      "n_events": 2269,
+      "non_escalating": 0.4755398854120758,
+      "zero_prior": 0.007933010136624064
+    },
+    {
+      "system": "D30",
+      "system_desc": "HVAC",
+      "n_events": 2278,
+      "non_escalating": 0.46532045654082527,
+      "zero_prior": 0.0021949078138718174
+    },
+    {
+      "system": "D10",
+      "system_desc": "Conveying",
+      "n_events": 111,
+      "non_escalating": 0.45045045045045046,
+      "zero_prior": 0.2072072072072072
+    }
+  ],
+  "headline": "51% of p90 events were non-escalating (flat/declining prior activity); 3% had zero prior-year activity (sudden onset). Controls: 67% non-escalating."
+}

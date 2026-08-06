@@ -1,0 +1,17 @@
+{
+  "n_cells": 22546,
+  "n_buildings": 3400,
+  "gini_cells": 0.8691810067335407,
+  "gini_buildings": 0.843077951192898,
+  "cell_top10_share": 0.7848544589565208,
+  "cell_top20_share": 0.9180827738067251,
+  "building_top10_share": 0.7221147850351133,
+  "building_top20_share": 0.9049495517241929,
+  "persistence": {
+    "marginal_severe_rate_active": 0.15015783461552634,
+    "persist_t1": 0.5196416854477506,
+    "persist_t2": 0.50199370409234,
+    "persist_t4": 0.49911669611012965,
+    "persist_t8": 0.4724676483712628
+  }
+}

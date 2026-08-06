@@ -1,0 +1,387 @@
+{
+  "gates": [
+    {
+      "system": "D50",
+      "system_desc": "Electrical",
+      "burden_share": 0.15457644516807287,
+      "lift_top10": 6.748629038943585,
+      "frac_campuses_meet_2x": 1.0,
+      "n_campuses_evaluable": 8,
+      "n_pos": 5506,
+      "data_sufficiency": 1.0,
+      "risk_concentration": 1.0,
+      "transfer_stability": 1.0,
+      "calibration_reliability": 1.0,
+      "antecedent_signal": 1.0,
+      "_cal": {
+        "top_band_lift": 3.797,
+        "band_spearman": 1.0,
+        "n_bands": 5
+      },
+      "_ant": {
+        "zero_prior": 0.01,
+        "n_events": 1839
+      }
+    },
+    {
+      "system": "E20",
+      "system_desc": "Furnishings",
+      "burden_share": 0.023822814967221783,
+      "lift_top10": 6.683883716796463,
+      "frac_campuses_meet_2x": 1.0,
+      "n_campuses_evaluable": 7,
+      "n_pos": 1336,
+      "data_sufficiency": 1.0,
+      "risk_concentration": 1.0,
+      "transfer_stability": 1.0,
+      "calibration_reliability": 1.0,
+      "antecedent_signal": 1.0,
+      "_cal": {
+        "top_band_lift": 2.923,
+        "band_spearman": 1.0,
+        "n_bands": 5
+      },
+      "_ant": {
+        "zero_prior": 0.082,
+        "n_events": 390
+      }
+    },
+    {
+      "system": "C10",
+      "system_desc": "Interior Construction",
+      "burden_share": 0.07882568136914372,
+      "lift_top10": 6.17900190469941,
+      "frac_campuses_meet_2x": 1.0,
+      "n_campuses_evaluable": 8,
+      "n_pos": 4578,
+      "data_sufficiency": 1.0,
+      "risk_concentration": 1.0,
+      "transfer_stability": 1.0,
+      "calibration_reliability": 1.0,
+      "antecedent_signal": 1.0,
+      "_cal": {
+        "top_band_lift": 3.42,
+        "band_spearman": 1.0,
+        "n_bands": 5
+      },
+      "_ant": {
+        "zero_prior": 0.006,
+        "n_events": 1649
+      }
+    },
+    {
+      "system": "D20",
+      "system_desc": "Plumbing",
+      "burden_share": 0.21014614072580662,
+      "lift_top10": 6.053477708476401,
+      "frac_campuses_meet_2x": 1.0,
+      "n_campuses_evaluable": 8,
+      "n_pos": 6359,
+      "data_sufficiency": 1.0,
+      "risk_concentration": 1.0,
+      "transfer_stability": 1.0,
+      "calibration_reliability": 1.0,
+      "antecedent_signal": 1.0,
+      "_cal": {
+        "top_band_lift": 3.722,
+        "band_spearman": 1.0,
+        "n_bands": 5
+      },
+      "_ant": {
+        "zero_prior": 0.008,
+        "n_events": 2269
+      }
+    },
+    {
+      "system": "G20",
+      "system_desc": "Site Improvements",
+      "burden_share": 0.008524451118195261,
+      "lift_top10": 5.946230442580228,
+      "frac_campuses_meet_2x": 1.0,
+      "n_campuses_evaluable": 3,
+      "n_pos": 353,
+      "data_sufficiency": 0.5,
+      "risk_concentration": 1.0,
+      "transfer_stability": 1.0,
+      "calibration_reliability": 1.0,
+      "antecedent_signal": 1.0,
+      "_cal": {
+        "top_band_lift": 2.932,
+        "band_spearman": 1.0,
+        "n_bands": 5
+      },
+      "_ant": {
+        "zero_prior": 0.05,
+        "n_events": 100
+      }
+    },
+    {
+      "system": "D30",
+      "system_desc": "HVAC",
+      "burden_share": 0.33503808513472416,
+      "lift_top10": 5.938034019130401,
+      "frac_campuses_meet_2x": 0.8888888888888888,
+      "n_campuses_evaluable": 9,
+      "n_pos": 6606,
+      "data_sufficiency": 1.0,
+      "risk_concentration": 1.0,
+      "transfer_stability": 1.0,
+      "calibration_reliability": 1.0,
+      "antecedent_signal": 1.0,
+      "_cal": {
+        "top_band_lift": 3.85,
+        "band_spearman": 1.0,
+        "n_bands": 5
+      },
+      "_ant": {
+        "zero_prior": 0.002,
+        "n_events": 2278
+      }
+    },
+    {
+      "system": "E10",
+      "system_desc": "Equipment",
+      "burden_share": 0.04869629791687341,
+      "lift_top10": 5.81343178990466,
+      "frac_campuses_meet_2x": 1.0,
+      "n_campuses_evaluable": 8,
+      "n_pos": 2704,
+      "data_sufficiency": 1.0,
+      "risk_concentration": 1.0,
+      "transfer_stability": 1.0,
+      "calibration_reliability": 1.0,
+      "antecedent_signal": 1.0,
+      "_cal": {
+        "top_band_lift": 3.484,
+        "band_spearman": 1.0,
+        "n_bands": 5
+      },
+      "_ant": {
+        "zero_prior": 0.012,
+        "n_events": 919
+      }
+    },
+    {
+      "system": "C30",
+      "system_desc": "Interior Finishes",
+      "burden_share": 0.07242709083489046,
+      "lift_top10": 5.598273832875638,
+      "frac_campuses_meet_2x": 1.0,
+      "n_campuses_evaluable": 8,
+      "n_pos": 2549,
+      "data_sufficiency": 1.0,
+      "risk_concentration": 1.0,
+      "transfer_stability": 1.0,
+      "calibration_reliability": 1.0,
+      "antecedent_signal": 1.0,
+      "_cal": {
+        "top_band_lift": 2.705,
+        "band_spearman": 1.0,
+        "n_bands": 5
+      },
+      "_ant": {
+        "zero_prior": 0.063,
+        "n_events": 820
+      }
+    },
+    {
+      "system": "D40",
+      "system_desc": "Fire Protection",
+      "burden_share": 0.024694347755251065,
+      "lift_top10": 5.553745649482403,
+      "frac_campuses_meet_2x": 0.8888888888888888,
+      "n_campuses_evaluable": 9,
+      "n_pos": 2029,
+      "data_sufficiency": 1.0,
+      "risk_concentration": 1.0,
+      "transfer_stability": 1.0,
+      "calibration_reliability": 1.0,
+      "antecedent_signal": 1.0,
+      "_cal": {
+        "top_band_lift": 2.615,
+        "band_spearman": 1.0,
+        "n_bands": 5
+      },
+      "_ant": {
+        "zero_prior": 0.075,
+        "n_events": 625
+      }
+    },
+    {
+      "system": "F10",
+      "system_desc": "Special Construction",
+      "burden_share": 0.0008629587901488645,
+      "lift_top10": 5.390633654591781,
+      "frac_campuses_meet_2x": 1.0,
+      "n_campuses_evaluable": 3,
+      "n_pos": 102,
+      "data_sufficiency": 0.5,
+      "risk_concentration": 1.0,
+      "transfer_stability": 1.0,
+      "calibration_reliability": 1.0,
+      "antecedent_signal": 0.5,
+      "_cal": {
+        "top_band_lift": 2.793,
+        "band_spearman": 1.0,
+        "n_bands": 5
+      },
+      "_ant": {
+        "note": "few p90 events"
+      }
+    },
+    {
+      "system": "D10",
+      "system_desc": "Conveying",
+      "burden_share": 0.007857151954725574,
+      "lift_top10": 5.389672597115486,
+      "frac_campuses_meet_2x": 0.7142857142857143,
+      "n_campuses_evaluable": 7,
+      "n_pos": 345,
+      "data_sufficiency": 0.5,
+      "risk_concentration": 1.0,
+      "transfer_stability": 0.5,
+      "calibration_reliability": 0.5,
+      "antecedent_signal": 0.5,
+      "_cal": {
+        "top_band_lift": 3.014,
+        "band_spearman": 0.9,
+        "n_bands": 5
+      },
+      "_ant": {
+        "zero_prior": 0.207,
+        "n_events": 111
+      }
+    },
+    {
+      "system": "G30",
+      "system_desc": "Site Mechanical Utilities",
+      "burden_share": 0.0005890518969331821,
+      "lift_top10": 5.1713813751806725,
+      "frac_campuses_meet_2x": 1.0,
+      "n_campuses_evaluable": 1,
+      "n_pos": 29,
+      "data_sufficiency": 0.0,
+      "risk_concentration": 1.0,
+      "transfer_stability": 1.0,
+      "calibration_reliability": 0.5,
+      "antecedent_signal": 0.5,
+      "_cal": {
+        "note": "sparse",
+        "n": 5009,
+        "n_pos": 29
+      },
+      "_ant": {
+        "note": "few p90 events"
+      }
+    },
+    {
+      "system": "B20",
+      "system_desc": "Exterior Enclosure",
+      "burden_share": 0.015793453352940644,
+      "lift_top10": 5.08550881951992,
+      "frac_campuses_meet_2x": 0.8571428571428571,
+      "n_campuses_evaluable": 7,
+      "n_pos": 1789,
+      "data_sufficiency": 1.0,
+      "risk_concentration": 1.0,
+      "transfer_stability": 1.0,
+      "calibration_reliability": 1.0,
+      "antecedent_signal": 0.5,
+      "_cal": {
+        "top_band_lift": 2.149,
+        "band_spearman": 1.0,
+        "n_bands": 5
+      },
+      "_ant": {
+        "zero_prior": 0.111,
+        "n_events": 576
+      }
+    },
+    {
+      "system": "B30",
+      "system_desc": "Roofing",
+      "burden_share": 0.014433822932382896,
+      "lift_top10": 4.927583691063782,
+      "frac_campuses_meet_2x": 1.0,
+      "n_campuses_evaluable": 5,
+      "n_pos": 1039,
+      "data_sufficiency": 0.5,
+      "risk_concentration": 1.0,
+      "transfer_stability": 1.0,
+      "calibration_reliability": 1.0,
+      "antecedent_signal": 0.5,
+      "_cal": {
+        "top_band_lift": 3.566,
+        "band_spearman": 1.0,
+        "n_bands": 5
+      },
+      "_ant": {
+        "zero_prior": 0.247,
+        "n_events": 304
+      }
+    },
+    {
+      "system": "C20",
+      "system_desc": "Stairs",
+      "burden_share": 0.0023709143987972387,
+      "lift_top10": 2.873320313638616,
+      "frac_campuses_meet_2x": 0.6,
+      "n_campuses_evaluable": 5,
+      "n_pos": 174,
+      "data_sufficiency": 0.5,
+      "risk_concentration": 1.0,
+      "transfer_stability": 0.5,
+      "calibration_reliability": 0.0,
+      "antecedent_signal": 0.0,
+      "_cal": {
+        "top_band_lift": 1.35,
+        "band_spearman": 0.8,
+        "n_bands": 5
+      },
+      "_ant": {
+        "zero_prior": 0.434,
+        "n_events": 53
+      }
+    },
+    {
+      "system": "F20",
+      "system_desc": "Selective Building Demolition",
+      "burden_share": 0.0010785160621992632,
+      "lift_top10": 2.082908163265306,
+      "frac_campuses_meet_2x": 1.0,
+      "n_campuses_evaluable": 1,
+      "n_pos": 72,
+      "data_sufficiency": 0.0,
+      "risk_concentration": 1.0,
+      "transfer_stability": 1.0,
+      "calibration_reliability": 0.0,
+      "antecedent_signal": 0.5,
+      "_cal": {
+        "top_band_lift": 1.041,
+        "band_spearman": 0.6,
+        "n_bands": 5
+      },
+      "_ant": {
+        "note": "few p90 events"
+      }
+    }
+  ],
+  "S_by_system": {
+    "D30": 1.0,
+    "D20": 1.0,
+    "D50": 1.0,
+    "C10": 1.0,
+    "C30": 1.0,
+    "E10": 1.0,
+    "D40": 1.0,
+    "E20": 1.0,
+    "B20": 0.9,
+    "B30": 0.8,
+    "G20": 0.9,
+    "D10": 0.6,
+    "C20": 0.4,
+    "F20": 0.0,
+    "F10": 0.8,
+    "G30": 0.5
+  }
+}

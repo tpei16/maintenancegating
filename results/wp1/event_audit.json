@@ -1,0 +1,98 @@
+{
+  "provenance": {
+    "raw_rows_read": 3731442,
+    "events_kept": 2854673,
+    "universities": [
+      "1",
+      "10",
+      "11",
+      "2",
+      "3",
+      "4",
+      "5",
+      "6",
+      "7"
+    ],
+    "note": "restricted to the nine panel universities and to rows with a building, a system and a parseable start date"
+  },
+  "timestamp_precision": {
+    "n_events": 2854673,
+    "share_with_nonzero_time_of_day": 0.618433354713482,
+    "share_at_exact_midnight": 0.38156664528651796,
+    "distinct_times_of_day": 74943,
+    "distinct_dates": 6596,
+    "distinct_seconds_resolution": 786427,
+    "date_min": "2002-09-06 12:09:12",
+    "date_max": "2021-05-28 00:00:00"
+  },
+  "tied_events": {
+    "share_tied_exact_instant": 0.48375628311894214,
+    "share_same_day_not_tied": 0.13178392061017147,
+    "share_gap_ge_1day": 0.37619510185579924,
+    "median_gap_days": 1.1574074074074073e-05,
+    "note": "events sharing an exact instant within a cell have no recoverable order; the plan requires an order-invariant representation for them (sec 10.4)"
+  },
+  "sequence_lengths": {
+    "n_cells_with_events": 23593,
+    "events_per_cell_mean": 120.996609163735,
+    "events_per_cell_quantiles": {
+      "0.05": 1.0,
+      "0.25": 2.0,
+      "0.5": 11.0,
+      "0.75": 60.0,
+      "0.95": 534.0,
+      "0.99": 1856.4799999999886
+    },
+    "events_per_cell_max": 18577,
+    "share_cells_with_lt10_events": 0.4831941677616242,
+    "history_at_anchor_quantiles": {
+      "0.05": 1.0,
+      "0.25": 2.0,
+      "0.5": 8.0,
+      "0.75": 37.0,
+      "0.95": 329.0,
+      "0.99": 1144.0
+    },
+    "share_anchors_with_ge8_events": 0.5076867809116947
+  },
+  "field_completeness": {
+    "subsystem_present": 0.9999996496971807,
+    "component_present": 0.9999996496971807,
+    "labour_present": 0.9411063894183327,
+    "labour_positive": 0.8473688580093062,
+    "n_distinct_subsystem": 81,
+    "n_distinct_component": 430
+  },
+  "context_shift": {
+    "events_per_cell_median": {
+      "min": 6.0,
+      "median": 13.0,
+      "max": 38.0,
+      "max_over_min": 6.333333333333333
+    },
+    "ppm_to_upm_ratio": {
+      "min": 0.6867803373588777,
+      "median": 1.1095771179484277,
+      "max": 7.441017733230532,
+      "max_over_min": 10.83464002747391
+    },
+    "median_gap_days": {
+      "min": 0.0,
+      "median": 0.20277777777777778,
+      "max": 4.0,
+      "max_over_min": null
+    },
+    "labour_median": {
+      "min": 0.51,
+      "median": 1.0,
+      "max": 2.0,
+      "max_over_min": 3.9215686274509802
+    },
+    "component_present": {
+      "min": 0.9999978472262586,
+      "median": 1.0,
+      "max": 1.0,
+      "max_over_min": 1.0000021527783758
+    }
+  }
+}

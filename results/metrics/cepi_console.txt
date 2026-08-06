@@ -1,0 +1,72 @@
+
+=== GATE TABLE (pass=1 caution=.5 fail=0) ===
+system                   system_desc  burden_share data_sufficiency risk_concentration transfer_stability calibration_reliability antecedent_signal   S   G
+   D30                          HVAC      0.324060             pass               pass               pass                    pass              pass 1.0 0.0
+   D20                      Plumbing      0.200731             pass               pass               pass                    pass              pass 1.0 0.0
+   D50                    Electrical      0.159467             pass               pass               pass                    pass              pass 1.0 0.0
+   C30             Interior Finishes      0.070880             pass               pass               pass                    pass           caution 0.9 0.1
+   C10         Interior Construction      0.069309             pass               pass               pass                    pass              pass 1.0 0.0
+   E10                     Equipment      0.047734             pass               pass               pass                    pass              pass 1.0 0.0
+   D40               Fire Protection      0.028520             pass               pass               pass                    pass              pass 1.0 0.0
+   E20                   Furnishings      0.027394             pass               pass               pass                    pass              pass 1.0 0.0
+   B20            Exterior Enclosure      0.019996             pass               pass               pass                    pass           caution 0.9 0.1
+   B30                       Roofing      0.015609          caution               pass               pass                    pass           caution 0.8 0.2
+   G20             Site Improvements      0.010218          caution               pass               pass                    pass           caution 0.8 0.2
+   D10                     Conveying      0.006011          caution               pass            caution                 caution           caution 0.6 0.4
+   C20                        Stairs      0.004515          caution               pass            caution                    fail              fail 0.4 0.6
+   F10          Special Construction      0.002687          caution               pass               pass                    pass           caution 0.8 0.2
+   G30     Site Mechanical Utilities      0.001387             fail               pass               pass                 caution           caution 0.5 0.5
+   F20 Selective Building Demolition      0.001160             fail               pass               pass                    fail           caution 0.0 1.0
+
+=== S / G by system ===
+system                   system_desc   S   G
+   D30                          HVAC 1.0 0.0
+   D20                      Plumbing 1.0 0.0
+   D50                    Electrical 1.0 0.0
+   C30             Interior Finishes 0.9 0.1
+   C10         Interior Construction 1.0 0.0
+   E10                     Equipment 1.0 0.0
+   D40               Fire Protection 1.0 0.0
+   E20                   Furnishings 1.0 0.0
+   B20            Exterior Enclosure 0.9 0.1
+   B30                       Roofing 0.8 0.2
+   G20             Site Improvements 0.8 0.2
+   D10                     Conveying 0.6 0.4
+   C20                        Stairs 0.4 0.6
+   F10          Special Construction 0.8 0.2
+   G30     Site Mechanical Utilities 0.5 0.5
+   F20 Selective Building Demolition 0.0 1.0
+
+=== CEPI CLASS COUNTS (units) ===
+  records_informative_high_risk             50835  ( 10.3%)
+  evidence_insufficient_high_risk             659  (  0.1%)
+  watchlist                                 37593  (  7.6%)
+  routine_monitoring                       403917  ( 81.9%)
+  high-CEPI (>=0.45): 2114 units (0.4%)
+
+=== PRIORITY MAP (system) ===
+                  system_desc  burden_share  mean_R   S   G  mean_CEPI  frac_high_CEPI_0.45     dominant_class
+                         HVAC         0.324   0.510 1.0 0.0      0.000                0.000 routine_monitoring
+                     Plumbing         0.201   0.561 1.0 0.0      0.000                0.000 routine_monitoring
+                   Electrical         0.159   0.557 1.0 0.0      0.000                0.000 routine_monitoring
+            Interior Finishes         0.071   0.578 0.9 0.1      0.058                0.000 routine_monitoring
+        Interior Construction         0.069   0.568 1.0 0.0      0.000                0.000 routine_monitoring
+                    Equipment         0.048   0.548 1.0 0.0      0.000                0.000 routine_monitoring
+              Fire Protection         0.029   0.524 1.0 0.0      0.000                0.000 routine_monitoring
+                  Furnishings         0.027   0.478 1.0 0.0      0.000                0.000 routine_monitoring
+           Exterior Enclosure         0.020   0.538 0.9 0.1      0.054                0.000 routine_monitoring
+                      Roofing         0.016   0.466 0.8 0.2      0.093                0.000 routine_monitoring
+            Site Improvements         0.010   0.427 0.8 0.2      0.085                0.000 routine_monitoring
+                    Conveying         0.006   0.483 0.6 0.4      0.193                0.000          watchlist
+                       Stairs         0.005   0.434 0.4 0.6      0.260                0.108          watchlist
+         Special Construction         0.003   0.457 0.8 0.2      0.091                0.000 routine_monitoring
+    Site Mechanical Utilities         0.001   0.215 0.5 0.5      0.108                0.003          watchlist
+Selective Building Demolition         0.001   0.222 0.0 1.0      0.222                0.168          watchlist
+
+=== SENSITIVITY: gate weights -> # systems insufficient ===
+  equal                4
+  reliability_heavy    4
+  evidence_gap_heavy   4
+  hard-fail on/off: 4 4
+
+Wrote cepi_gates.csv, cepi_priority_map.csv, cepi_gates.json, cepi_summary.json

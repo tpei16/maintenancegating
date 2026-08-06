@@ -1,0 +1,27 @@
+{
+  "n_p90_events_scored": 12012,
+  "overall_capture_rate_at_top10": 0.6746586746586747,
+  "capture_by_trajectory": [
+    {
+      "traj": "escalating",
+      "n": 5927,
+      "capture_rate": 0.7302176480512907
+    },
+    {
+      "traj": "non_escalating",
+      "n": 5683,
+      "capture_rate": 0.661270455745205
+    },
+    {
+      "traj": "zero_prior",
+      "n": 402,
+      "capture_rate": 0.04477611940298507
+    }
+  ],
+  "share_of_missed_that_are_non_escalating": 0.5908393039918116,
+  "share_of_captured_that_are_non_escalating": 0.46594274432379074,
+  "miss_rate_escalating": 0.2697823519487093,
+  "miss_rate_non_escalating": 0.37945768282662284,
+  "risk_ratio_missed_nonesc_vs_esc": 1.4065326367188202,
+  "reading": "Captured p90 events skew escalating; missed p90 events skew non-escalating, so the ceiling is on escalating-trend early warning, not on CMMS-only ranking."
+}

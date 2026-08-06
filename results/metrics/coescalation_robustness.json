@@ -1,0 +1,174 @@
+{
+  "full_panel_cellpair_rr": {
+    "rr": 2.7552103054347534,
+    "conditional": 0.4053462496017746,
+    "marginal": 0.1471198945511398,
+    "n_trigger_events": 31520,
+    "n_multisys_bq": 60598,
+    "n_buildings": 3213,
+    "ci95": [
+      2.5617169011678316,
+      2.8701412298766487
+    ]
+  },
+  "within_building": {
+    "mh_rr_within_building": 0.9208958510844866,
+    "pooled_rr_contrast": 3.2117714801962762,
+    "ci95": [
+      0.8809146275473971,
+      0.9691323694193733
+    ],
+    "n_informative_buildings": 1364,
+    "exposed_rate": 0.30606935546933745,
+    "unexposed_rate": 0.09529611846812747
+  },
+  "lag_decay": [
+    {
+      "lag_quarters": 1,
+      "rr": 3.3738450827029256,
+      "conditional": 0.2281419628427865,
+      "marginal": 0.06762075828923735,
+      "n_buildings": 3400
+    },
+    {
+      "lag_quarters": 2,
+      "rr": 3.292817557996467,
+      "conditional": 0.2232751894415277,
+      "marginal": 0.06780672949805962,
+      "n_buildings": 3342
+    },
+    {
+      "lag_quarters": 3,
+      "rr": 3.240003870883451,
+      "conditional": 0.21954963463183202,
+      "marginal": 0.06776215195445662,
+      "n_buildings": 3261
+    },
+    {
+      "lag_quarters": 4,
+      "rr": 3.2433867477562663,
+      "conditional": 0.21861098984082783,
+      "marginal": 0.06740207284624941,
+      "n_buildings": 3213
+    },
+    {
+      "lag_quarters": 5,
+      "rr": 3.1547359580276417,
+      "conditional": 0.21073256906128898,
+      "marginal": 0.06679879770129483,
+      "n_buildings": 3164
+    },
+    {
+      "lag_quarters": 6,
+      "rr": 3.113301762898781,
+      "conditional": 0.20602382423481422,
+      "marginal": 0.06617534692267876,
+      "n_buildings": 3114
+    },
+    {
+      "lag_quarters": 7,
+      "rr": 3.0562149635130154,
+      "conditional": 0.1998112425104746,
+      "marginal": 0.0653786611530749,
+      "n_buildings": 3075
+    },
+    {
+      "lag_quarters": 8,
+      "rr": 3.051934624053429,
+      "conditional": 0.197304458816181,
+      "marginal": 0.06464897945753863,
+      "n_buildings": 3023
+    }
+  ],
+  "age_coverage_buildings": 0.22323529411764706,
+  "strata": [
+    {
+      "dimension": "building_age",
+      "stratum": "low (oldest/smallest)",
+      "range": "[-inf, 1958)",
+      "rr": 2.2997117271713137,
+      "conditional": 0.49862279098110907,
+      "marginal": 0.21681969313363633,
+      "ci_lo": 2.0283515679034867,
+      "ci_hi": 2.6186416608826524,
+      "n_buildings": 246,
+      "n_trigger_events": 3779
+    },
+    {
+      "dimension": "building_age",
+      "stratum": "mid",
+      "range": "[1958, 1986)",
+      "rr": 2.7593170098332993,
+      "conditional": 0.4912255534834792,
+      "marginal": 0.17802432693775766,
+      "ci_lo": 2.3614255290173762,
+      "ci_hi": 3.215573749120017,
+      "n_buildings": 253,
+      "n_trigger_events": 3797
+    },
+    {
+      "dimension": "building_age",
+      "stratum": "high (newest/largest)",
+      "range": "[1986, inf)",
+      "rr": 2.279218847941451,
+      "conditional": 0.4751331463709574,
+      "marginal": 0.20846315254021747,
+      "ci_lo": 1.9679556959694975,
+      "ci_hi": 2.7082811838095115,
+      "n_buildings": 249,
+      "n_trigger_events": 3520
+    },
+    {
+      "dimension": "n_systems",
+      "stratum": "mid",
+      "range": "[3, 9)",
+      "rr": 5.4732935754532095,
+      "conditional": 0.10987261146496816,
+      "marginal": 0.020074313564638326,
+      "ci_lo": 4.203116334561118,
+      "ci_hi": 6.925463100023895,
+      "n_buildings": 1187,
+      "n_trigger_events": 783
+    },
+    {
+      "dimension": "n_systems",
+      "stratum": "high (newest/largest)",
+      "range": "[9, inf)",
+      "rr": 2.1078078117828243,
+      "conditional": 0.40812686653823593,
+      "marginal": 0.19362622353744594,
+      "ci_lo": 1.996827963500526,
+      "ci_hi": 2.2212107292740706,
+      "n_buildings": 1251,
+      "n_trigger_events": 30722
+    },
+    {
+      "dimension": "upm_volume",
+      "stratum": "mid",
+      "range": "[2, 59)",
+      "rr": 2.962075386163311,
+      "conditional": 0.04261264407963675,
+      "marginal": 0.01438607682933811,
+      "ci_lo": 2.3622262399122027,
+      "ci_hi": 3.699330847398088,
+      "n_buildings": 1297,
+      "n_trigger_events": 635
+    },
+    {
+      "dimension": "upm_volume",
+      "stratum": "high (newest/largest)",
+      "range": "[59, inf)",
+      "rr": 1.9187833804073988,
+      "conditional": 0.4084503271065573,
+      "marginal": 0.21286943136845107,
+      "ci_lo": 1.823863523991884,
+      "ci_hi": 2.0181448942661837,
+      "n_buildings": 1137,
+      "n_trigger_events": 30881
+    }
+  ],
+  "built_year_tertile_cuts": [
+    1958.0,
+    1986.0
+  ]
+}

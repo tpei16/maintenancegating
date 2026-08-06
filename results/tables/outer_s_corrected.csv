@@ -1,0 +1,17 @@
+system,system_desc,S_pooled,S_median_outer,S_min,S_max,folds_certified,folds_gated
+D30,HVAC,1.0,1.0,1.0,1.0,9,9
+D20,Plumbing,1.0,1.0,1.0,1.0,9,9
+D50,Electrical,1.0,1.0,1.0,1.0,9,9
+C30,Interior Finishes,1.0,1.0,1.0,1.0,9,9
+C10,Interior Construction,1.0,1.0,1.0,1.0,9,9
+E10,Equipment,1.0,1.0,1.0,1.0,9,9
+D40,Fire Protection,1.0,1.0,1.0,1.0,9,9
+E20,Furnishings,1.0,1.0,0.9,1.0,9,9
+B20,Exterior Enclosure,0.9,0.9,0.5,0.9,8,9
+B30,Roofing,0.7,0.7,0.6,0.7,8,9
+G20,Site Improvements,0.7,0.5,0.5,0.8,4,9
+D10,Conveying,0.6,0.6,0.5,0.7,4,9
+C20,Stairs,0.4,0.4,0.0,0.6,0,9
+F10,Special Construction,0.7,0.5,0.0,0.7,2,9
+G30,Site Mechanical Utilities,0.5,0.5,0.5,0.5,0,7
+F20,Selective Building Demolition,0.0,0.0,0.0,0.5,0,8

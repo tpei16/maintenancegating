@@ -1,0 +1,362 @@
+{
+  "leakage_only__single_nested_vs_nesting_only": {
+    "n_stratum_fold_pairs": 141,
+    "max_abs_delta_S": 0.7,
+    "mean_abs_delta_S": 0.03972,
+    "n_certification_flips": 12,
+    "flips": [
+      {
+        "campus": "1",
+        "system": "D10",
+        "S_from": 0.7,
+        "S_to": 0.6,
+        "certified_from": true,
+        "certified_to": false
+      },
+      {
+        "campus": "10",
+        "system": "G20",
+        "S_from": 0.9,
+        "S_to": 0.5,
+        "certified_from": true,
+        "certified_to": false
+      },
+      {
+        "campus": "11",
+        "system": "D10",
+        "S_from": 0.7,
+        "S_to": 0.5,
+        "certified_from": true,
+        "certified_to": false
+      },
+      {
+        "campus": "2",
+        "system": "D10",
+        "S_from": 0.6,
+        "S_to": 0.7,
+        "certified_from": false,
+        "certified_to": true
+      },
+      {
+        "campus": "2",
+        "system": "G20",
+        "S_from": 0.9,
+        "S_to": 0.5,
+        "certified_from": true,
+        "certified_to": false
+      },
+      {
+        "campus": "3",
+        "system": "C20",
+        "S_from": 0.0,
+        "S_to": 0.7,
+        "certified_from": false,
+        "certified_to": true
+      },
+      {
+        "campus": "5",
+        "system": "B30",
+        "S_from": 0.6,
+        "S_to": 0.7,
+        "certified_from": false,
+        "certified_to": true
+      },
+      {
+        "campus": "5",
+        "system": "D10",
+        "S_from": 0.7,
+        "S_to": 0.5,
+        "certified_from": true,
+        "certified_to": false
+      },
+      {
+        "campus": "5",
+        "system": "F10",
+        "S_from": 0.8,
+        "S_to": 0.6,
+        "certified_from": true,
+        "certified_to": false
+      },
+      {
+        "campus": "6",
+        "system": "D10",
+        "S_from": 0.6,
+        "S_to": 0.8,
+        "certified_from": false,
+        "certified_to": true
+      },
+      {
+        "campus": "7",
+        "system": "D10",
+        "S_from": 0.6,
+        "S_to": 0.7,
+        "certified_from": false,
+        "certified_to": true
+      },
+      {
+        "campus": "7",
+        "system": "F10",
+        "S_from": 0.8,
+        "S_to": 0.6,
+        "certified_from": true,
+        "certified_to": false
+      }
+    ],
+    "route_counts_from": {
+      "pma": 48910,
+      "verify": 2592,
+      "continue": 360386,
+      "watch": 103087
+    },
+    "route_counts_to": {
+      "pma": 50167,
+      "verify": 1335,
+      "continue": 378009,
+      "watch": 85464
+    },
+    "delta_route_counts": {
+      "pma": 1257,
+      "verify": -1257,
+      "continue": 17623,
+      "watch": -17623
+    },
+    "share_high_risk_cleared_from": 0.9497,
+    "share_high_risk_cleared_to": 0.9741
+  },
+  "ranking_only__single_nested_vs_ranking_only": {
+    "n_stratum_fold_pairs": 142,
+    "max_abs_delta_S": 0.1,
+    "mean_abs_delta_S": 0.00493,
+    "n_certification_flips": 4,
+    "flips": [
+      {
+        "campus": "1",
+        "system": "D10",
+        "S_from": 0.7,
+        "S_to": 0.6,
+        "certified_from": true,
+        "certified_to": false
+      },
+      {
+        "campus": "11",
+        "system": "D10",
+        "S_from": 0.7,
+        "S_to": 0.6,
+        "certified_from": true,
+        "certified_to": false
+      },
+      {
+        "campus": "5",
+        "system": "B30",
+        "S_from": 0.6,
+        "S_to": 0.7,
+        "certified_from": false,
+        "certified_to": true
+      },
+      {
+        "campus": "5",
+        "system": "D10",
+        "S_from": 0.7,
+        "S_to": 0.6,
+        "certified_from": true,
+        "certified_to": false
+      }
+    ],
+    "route_counts_from": {
+      "pma": 48910,
+      "verify": 2592,
+      "continue": 360386,
+      "watch": 103087
+    },
+    "route_counts_to": {
+      "pma": 50116,
+      "verify": 1557,
+      "continue": 373195,
+      "watch": 90107
+    },
+    "delta_route_counts": {
+      "pma": 1206,
+      "verify": -1035,
+      "continue": 12809,
+      "watch": -12980
+    },
+    "share_high_risk_cleared_from": 0.9497,
+    "share_high_risk_cleared_to": 0.9699
+  },
+  "transfer_gate__single_nested_vs_transfer_only": {
+    "n_stratum_fold_pairs": 142,
+    "max_abs_delta_S": 0.1,
+    "mean_abs_delta_S": 0.01408,
+    "n_certification_flips": 1,
+    "flips": [
+      {
+        "campus": "11",
+        "system": "B30",
+        "S_from": 0.7,
+        "S_to": 0.6,
+        "certified_from": true,
+        "certified_to": false
+      }
+    ],
+    "route_counts_from": {
+      "pma": 48910,
+      "verify": 2592,
+      "continue": 360386,
+      "watch": 103087
+    },
+    "route_counts_to": {
+      "pma": 48668,
+      "verify": 2834,
+      "continue": 356537,
+      "watch": 106936
+    },
+    "delta_route_counts": {
+      "pma": -242,
+      "verify": 242,
+      "continue": -3849,
+      "watch": 3849
+    },
+    "share_high_risk_cleared_from": 0.9497,
+    "share_high_risk_cleared_to": 0.945
+  },
+  "all_three__single_nested_vs_corrected": {
+    "n_stratum_fold_pairs": 141,
+    "max_abs_delta_S": 0.6,
+    "mean_abs_delta_S": 0.04752,
+    "n_certification_flips": 14,
+    "flips": [
+      {
+        "campus": "1",
+        "system": "D10",
+        "S_from": 0.7,
+        "S_to": 0.6,
+        "certified_from": true,
+        "certified_to": false
+      },
+      {
+        "campus": "10",
+        "system": "G20",
+        "S_from": 0.9,
+        "S_to": 0.5,
+        "certified_from": true,
+        "certified_to": false
+      },
+      {
+        "campus": "11",
+        "system": "B30",
+        "S_from": 0.7,
+        "S_to": 0.6,
+        "certified_from": true,
+        "certified_to": false
+      },
+      {
+        "campus": "11",
+        "system": "D10",
+        "S_from": 0.7,
+        "S_to": 0.5,
+        "certified_from": true,
+        "certified_to": false
+      },
+      {
+        "campus": "2",
+        "system": "D10",
+        "S_from": 0.6,
+        "S_to": 0.7,
+        "certified_from": false,
+        "certified_to": true
+      },
+      {
+        "campus": "2",
+        "system": "G20",
+        "S_from": 0.9,
+        "S_to": 0.5,
+        "certified_from": true,
+        "certified_to": false
+      },
+      {
+        "campus": "3",
+        "system": "D10",
+        "S_from": 0.7,
+        "S_to": 0.6,
+        "certified_from": true,
+        "certified_to": false
+      },
+      {
+        "campus": "3",
+        "system": "F10",
+        "S_from": 0.8,
+        "S_to": 0.6,
+        "certified_from": true,
+        "certified_to": false
+      },
+      {
+        "campus": "5",
+        "system": "B30",
+        "S_from": 0.6,
+        "S_to": 0.7,
+        "certified_from": false,
+        "certified_to": true
+      },
+      {
+        "campus": "5",
+        "system": "D10",
+        "S_from": 0.7,
+        "S_to": 0.5,
+        "certified_from": true,
+        "certified_to": false
+      },
+      {
+        "campus": "5",
+        "system": "F10",
+        "S_from": 0.8,
+        "S_to": 0.5,
+        "certified_from": true,
+        "certified_to": false
+      },
+      {
+        "campus": "6",
+        "system": "D10",
+        "S_from": 0.6,
+        "S_to": 0.7,
+        "certified_from": false,
+        "certified_to": true
+      },
+      {
+        "campus": "7",
+        "system": "D10",
+        "S_from": 0.6,
+        "S_to": 0.7,
+        "certified_from": false,
+        "certified_to": true
+      },
+      {
+        "campus": "7",
+        "system": "F10",
+        "S_from": 0.8,
+        "S_to": 0.6,
+        "certified_from": true,
+        "certified_to": false
+      }
+    ],
+    "route_counts_from": {
+      "pma": 48910,
+      "verify": 2592,
+      "continue": 360386,
+      "watch": 103087
+    },
+    "route_counts_to": {
+      "pma": 49801,
+      "verify": 1872,
+      "continue": 366410,
+      "watch": 96892
+    },
+    "delta_route_counts": {
+      "pma": 891,
+      "verify": -720,
+      "continue": 6024,
+      "watch": -6195
+    },
+    "share_high_risk_cleared_from": 0.9497,
+    "share_high_risk_cleared_to": 0.9638
+  }
+}

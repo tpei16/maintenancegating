@@ -1,0 +1,26 @@
+{
+  "gbdt": {
+    "n_campuses_evaluable": 7,
+    "lift_median": 4.822887233993141,
+    "lift_iqr": [
+      4.09936354234819,
+      5.659996882682465
+    ],
+    "capture_median": 0.48240813135261923,
+    "frac_folds_meet_2x": 1.0,
+    "frac_folds_beat_rule": 0.5714285714285714,
+    "median_cost_pos_share": 0.3550948389942655
+  },
+  "logreg": {
+    "n_campuses_evaluable": 7,
+    "lift_median": 4.6313787457713715,
+    "lift_iqr": [
+      3.7461789860499737,
+      5.81180411499138
+    ],
+    "capture_median": 0.46325254104769353,
+    "frac_folds_meet_2x": 1.0,
+    "frac_folds_beat_rule": 0.0,
+    "median_cost_pos_share": 0.3550948389942655
+  }
+}

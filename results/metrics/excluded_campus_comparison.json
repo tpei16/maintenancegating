@@ -1,0 +1,83 @@
+{
+  "excluded_universities": [
+    "12",
+    "8",
+    "9"
+  ],
+  "excluded": {
+    "n_records": 820330,
+    "n_universities": 3,
+    "upm_count": 538634,
+    "ppm_count": 261755,
+    "upm_share": 0.6729652706371527,
+    "ppm_to_upm_ratio": 0.4859607822751627,
+    "median_upm_labour_hours": 1.0,
+    "mean_upm_labour_hours": 2.3848976448144628,
+    "labour_coverage": 0.9666953812793102
+  },
+  "included": {
+    "n_records": 2911112,
+    "n_universities": 9,
+    "upm_count": 930570,
+    "ppm_count": 1962908,
+    "upm_share": 0.32160949556208823,
+    "ppm_to_upm_ratio": 2.109360929322888,
+    "median_upm_labour_hours": 1.5,
+    "mean_upm_labour_hours": 3.3987508134060103,
+    "labour_coverage": 0.9957971995658574
+  },
+  "system_burden_spearman_rho": 0.9189723320158102,
+  "system_burden_spearman_p": 6.050839398792507e-10,
+  "system_burden_cosine_similarity": 0.9832514998890468,
+  "labour_mannwhitney_p": 0.0,
+  "top_systems_included_vs_excluded": [
+    {
+      "SystemCode": "D30",
+      "system_desc": "HVAC",
+      "included_share": 0.26186037190105027,
+      "excluded_share": 0.28509313426074623
+    },
+    {
+      "SystemCode": "D20",
+      "system_desc": "Plumbing",
+      "included_share": 0.24528027992785142,
+      "excluded_share": 0.19481054748055718
+    },
+    {
+      "SystemCode": "D50",
+      "system_desc": "Electrical",
+      "included_share": 0.18916037894257903,
+      "excluded_share": 0.16293900648124598
+    },
+    {
+      "SystemCode": "C10",
+      "system_desc": "Interior Construction",
+      "included_share": 0.11534240787784572,
+      "excluded_share": 0.07853057102171988
+    },
+    {
+      "SystemCode": "E10",
+      "system_desc": "Equipment",
+      "included_share": 0.05365861585210623,
+      "excluded_share": 0.05230296808018848
+    },
+    {
+      "SystemCode": "C30",
+      "system_desc": "Interior Finishes",
+      "included_share": 0.04457504373872678,
+      "excluded_share": 0.04509952082223266
+    },
+    {
+      "SystemCode": "D40",
+      "system_desc": "Fire Protection",
+      "included_share": 0.025287754781468864,
+      "excluded_share": 0.037923921942851414
+    },
+    {
+      "SystemCode": "E20",
+      "system_desc": "Furnishings",
+      "included_share": 0.023208878826122988,
+      "excluded_share": 0.031162335624945463
+    }
+  ]
+}

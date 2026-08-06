@@ -1,0 +1,108 @@
+{
+  "logic": "gate-then-rank: R>=0.90 first; S>=0.67 routes high-risk; CEPI ranks the verification queue only",
+  "primary_cuts": {
+    "R": 0.9,
+    "S": 0.67
+  },
+  "n_units": 493004,
+  "route_counts": {
+    "plan_maintenance": 50835,
+    "verify_condition_first": 659,
+    "continue_standard": 403917,
+    "evidence_watchlist": 37593
+  },
+  "route_shares": {
+    "plan_maintenance": 0.1031,
+    "verify_condition_first": 0.0013,
+    "continue_standard": 0.8193,
+    "evidence_watchlist": 0.0763
+  },
+  "route_labels": {
+    "plan_maintenance": "PLAN MAINTENANCE (high R, S sufficient)",
+    "verify_condition_first": "VERIFY CONDITION FIRST (high R, S insufficient)",
+    "continue_standard": "CONTINUE STANDARD MAINTENANCE (low R, S sufficient)",
+    "evidence_watchlist": "EVIDENCE WATCHLIST (low R, S insufficient)"
+  },
+  "verification_queue": {
+    "n": 659,
+    "by_system_cepi_order": [
+      {
+        "system": "F20",
+        "system_desc": "Selective Building Demolition",
+        "n": 15,
+        "S": 0.0,
+        "mean_CEPI": 0.9280663419933461
+      },
+      {
+        "system": "C20",
+        "system_desc": "Stairs",
+        "n": 217,
+        "S": 0.4,
+        "mean_CEPI": 0.5555671382311838
+      },
+      {
+        "system": "G30",
+        "system_desc": "Site Mechanical Utilities",
+        "n": 16,
+        "S": 0.5,
+        "mean_CEPI": 0.4657115269370991
+      },
+      {
+        "system": "D10",
+        "system_desc": "Conveying",
+        "n": 411,
+        "S": 0.6,
+        "mean_CEPI": 0.37094960295854446
+      }
+    ],
+    "by_campus": [
+      {
+        "held_out_university": "3",
+        "n": 338
+      },
+      {
+        "held_out_university": "5",
+        "n": 202
+      },
+      {
+        "held_out_university": "2",
+        "n": 65
+      },
+      {
+        "held_out_university": "11",
+        "n": 47
+      },
+      {
+        "held_out_university": "10",
+        "n": 6
+      },
+      {
+        "held_out_university": "1",
+        "n": 1
+      }
+    ],
+    "share_of_queue_top2_systems": 0.352
+  },
+  "queue_size_sensitivity": {
+    "top5pct": {
+      "S<0.5": 21,
+      "S<0.67": 76,
+      "S<0.85": 349
+    },
+    "top10pct": {
+      "S<0.5": 232,
+      "S<0.67": 659,
+      "S<0.85": 2398
+    },
+    "top15pct": {
+      "S<0.5": 567,
+      "S<0.67": 1462,
+      "S<0.85": 5475
+    },
+    "top20pct": {
+      "S<0.5": 941,
+      "S<0.67": 2393,
+      "S<0.85": 9406
+    }
+  }
+}

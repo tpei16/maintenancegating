@@ -1,0 +1,20 @@
+{
+  "gbdt": {
+    "M0_lift": 6.700004202877079,
+    "M1_lift": 7.050257373685156,
+    "M1_nosys_lift": 7.0544943072029955,
+    "M1_minus_M0 (reactive-burden gain)": 0.3502531708080765,
+    "M1_minus_M1nosys (taxonomy gain)": -0.004236933517839603,
+    "best_rule_lift": 6.560185396788372,
+    "M1_beats_rule": true
+  },
+  "logreg": {
+    "M0_lift": 6.618090154865514,
+    "M1_lift": 6.804515229650457,
+    "M1_nosys_lift": 6.707065758740145,
+    "M1_minus_M0 (reactive-burden gain)": 0.1864250747849434,
+    "M1_minus_M1nosys (taxonomy gain)": 0.09744947091031175,
+    "best_rule_lift": 6.560185396788372,
+    "M1_beats_rule": true
+  }
+}

@@ -1,0 +1,96 @@
+{
+  "basic": {
+    "n_records": 3731442,
+    "n_universities": 12,
+    "n_buildings": 3573,
+    "n_PPM": 2224663,
+    "n_UPM": 1469204,
+    "ppm_upm_other": 37575,
+    "missing_building_share": 0.22492323343093634,
+    "n_systemcodes": 23,
+    "n_subsystemcodes": 88,
+    "n_componentcodes": 470
+  },
+  "gate1_temporal": {
+    "n_parsed": 3731442,
+    "nat_share": 0.0,
+    "distinct_months": 12,
+    "distinct_days": 31,
+    "share_not_jan1": 0.997309887169625,
+    "share_with_time_of_day": 0.6664659399770919,
+    "decision": "quarter",
+    "framing": "near-term operational screening"
+  },
+  "gate2_cost": {
+    "totalcost_nonnull_share": 0.4877052892688671,
+    "totalcost_pos_share": 0.44165365561088715,
+    "laborcost_nonnull_share": 0.5026094469644711,
+    "laborcost_pos_share": 0.44692105625653566,
+    "laborhours_nonnull_share": 0.9406896851136907,
+    "laborhours_pos_share": 0.8230466934766774,
+    "share_total_eq_labor_plus_material_plus_other": 0.9789745714467833,
+    "share_records_with_material_or_other_cost": 0.09882077759750788,
+    "decision": "both"
+  },
+  "completeness": {
+    "cost_universities_above_thresh": 9,
+    "labour_universities_above_thresh": 12,
+    "n_universities": 12
+  },
+  "coverage": {
+    "median_span_years": 7.0,
+    "min_span_years": 4,
+    "max_span_years": 19,
+    "universities_span_ge_6y": 8
+  },
+  "density": {
+    "n_building_system_cells": 23593,
+    "median_records_per_cell": 11.0,
+    "median_active_quarters_per_cell": 7.0,
+    "share_cells_lt_8_quarters": 0.5310049590980376,
+    "share_cells_ge_12_quarters": 0.3537489933454838,
+    "share_records_missing_building": 0.22492323343093634
+  },
+  "base_rate_preview": {
+    "n_active_cell_quarters": 253875,
+    "occurrence_rate_among_active_cellquarters": 0.6380147710487445,
+    "global_pos_labour_p75": 17.997500000000002,
+    "severity_rate_above_global_p75_among_active": 0.15134613490891186,
+    "note": "approximate; panel base rate over all known-system cells computed in 01_build_panel.py"
+  },
+  "coding_consistency": {
+    "n_system_codes": 23,
+    "median_universities_per_system": 12.0,
+    "share_systems_in_ge_half_universities": 0.9130434782608695,
+    "share_systems_in_all_universities": 0.5652173913043478
+  },
+  "text_richness": {
+    "wodesc_nonnull_share": 0.9997129795934119,
+    "wodesc_median_char_len": 50.0,
+    "wodesc_median_word_count": 8.0,
+    "n_unique_descriptions": 1441558,
+    "samples": [
+      "YEARLY INSPECTION OF SAFETY RELIEF VALVES",
+      "REVIEW STEAM SYSTEM THROUGHOUT CAMPUS FOR EMERGENCIES",
+      "YEARLY REFRIGERATION INSPECTION - ZONE 3",
+      "CPPAINTER - J BUILDING - GYM - REPAIR DAMAGED WALLS - SEE TASKS",
+      "AIR FLOW TOO LOW OR TOO HIGH",
+      "STEAM CHAMBERS - MONTHLY INSPECTION",
+      "REPLACE FAN 5247 MORRIS ST",
+      "CHECK HEATING SYSTEM"
+    ]
+  },
+  "metadata_availability": {
+    "built_year_nonnull_share": 0.23781530035841372,
+    "size_nonnull_share": 0.11517611690065127,
+    "type_nonnull_share": 0.11517611690065127,
+    "fci_nonnull_share": 0.11454954947711904,
+    "crv_nonnull_share": 0.11517611690065127,
+    "dmc_nonnull_share": 0.11509759497802727,
+    "weather_nonnull_share": 0.99999946401418,
+    "built_year_range": [
+      1850.0,
+      2018.0
+    ]
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "core_systems": [
+    "B20",
+    "B30",
+    "D20",
+    "D30",
+    "D40",
+    "D50"
+  ],
+  "n_core_cells": 12107,
+  "cellpair_rr": 2.9829290383179217,
+  "conditional": 0.47865141947352,
+  "marginal": 0.16046356226544106,
+  "ci95": [
+    2.726578840183516,
+    3.100902190210021
+  ],
+  "n_trigger_events": 20041,
+  "within_building_mh_rr": 0.8525841858281887,
+  "within_building_ci95": [
+    0.8221976633330754,
+    0.8866938729769718
+  ],
+  "n_informative_buildings": 1217,
+  "reading": "Coupling holds for engineering-core systems (RR>1, full-panel-like); within-building MH near 1 confirms it is building-level, not propagation."
+}

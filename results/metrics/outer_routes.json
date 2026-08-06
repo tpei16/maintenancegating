@@ -1,0 +1,27 @@
+{
+  "design": "nested outer-campus: S derived per fold from the other campuses only, frozen, then routes campus j",
+  "gate5": "prior-record trace (zero-prior share): pass<0.10, caution 0.10-0.25, fail>=0.25",
+  "n_routed_units": 489290,
+  "route_counts": {
+    "pma": 48910,
+    "verify": 2571,
+    "continue": 360386,
+    "watch": 77423
+  },
+  "route_shares": {
+    "pma": 0.1,
+    "verify": 0.0053,
+    "continue": 0.7365,
+    "watch": 0.1582
+  },
+  "verification_queue_by_system": {
+    "B30": 1213,
+    "B20": 964,
+    "C20": 217,
+    "D10": 65,
+    "G20": 54,
+    "F10": 40,
+    "F20": 15,
+    "G30": 3
+  }
+}

@@ -1,0 +1,227 @@
+{
+  "burden": {
+    "n_strata_total": 22,
+    "n_strata_gated": 16,
+    "share_labor_in_gated_strata": 98.97,
+    "ungated_strata": {
+      "D90": 0.778,
+      "G40": 0.197,
+      "B10": 0.033,
+      "G10": 0.019,
+      "A10": 0.005,
+      "G90": 0.0
+    }
+  },
+  "certification": {
+    "n_certified": 12,
+    "n_gated": 16,
+    "certified_systems": [
+      "HVAC",
+      "Plumbing",
+      "Electrical",
+      "Interior Finishes",
+      "Interior Construction",
+      "Equipment",
+      "Fire Protection",
+      "Furnishings",
+      "Exterior Enclosure",
+      "Roofing",
+      "Site Improvements",
+      "Special Construction"
+    ],
+    "uncertified_systems": [
+      "Conveying",
+      "Stairs",
+      "Site Mechanical Utilities",
+      "Selective Building Demolition"
+    ],
+    "share_labor_certified": 97.66,
+    "share_labor_uncertified": 1.31,
+    "n_all_nine_folds": 8,
+    "share_labor_all_nine_folds": 92.81,
+    "folds_certified": {
+      "HVAC": "9/9",
+      "Plumbing": "9/9",
+      "Electrical": "9/9",
+      "Interior Finishes": "9/9",
+      "Interior Construction": "9/9",
+      "Equipment": "9/9",
+      "Fire Protection": "9/9",
+      "Furnishings": "9/9",
+      "Exterior Enclosure": "8/9",
+      "Roofing": "8/9",
+      "Site Improvements": "4/9",
+      "Conveying": "4/9",
+      "Stairs": "0/9",
+      "Special Construction": "2/9",
+      "Site Mechanical Utilities": "0/7",
+      "Selective Building Demolition": "0/8"
+    }
+  },
+  "pooled_lift": {
+    "min_all_gated": 2.08,
+    "min_all_gated_system": "Selective Building Demolition",
+    "max_all_gated": 6.75,
+    "max_all_gated_system": "Electrical",
+    "min_multi_context": 2.87,
+    "n_pass_risk_concentration": 16
+  },
+  "no_antecedent": {
+    "min": 0.002,
+    "min_system": "HVAC",
+    "max": 0.434,
+    "max_system": "Stairs",
+    "ratio": 217.0
+  },
+  "routing_corrected": {
+    "n_units_routed": 514975,
+    "counts": {
+      "pma": 49801,
+      "verify": 1872,
+      "continue": 366410,
+      "watch": 96892
+    },
+    "shares_pct": {
+      "pma": 9.7,
+      "verify": 0.4,
+      "continue": 71.2,
+      "watch": 18.8
+    },
+    "n_high_risk": 51673,
+    "pct_high_risk_cleared": 96.4,
+    "pct_high_risk_diverted": 3.6,
+    "units_in_gated_strata": 486070,
+    "units_in_ungated_strata": 28905,
+    "pct_units_ungated": 5.61,
+    "queue_by_system": {
+      "B20": 957,
+      "B30": 268,
+      "C20": 254,
+      "D10": 218,
+      "F10": 75,
+      "G20": 50,
+      "F20": 25,
+      "G30": 18,
+      "G40": 6,
+      "A10": 1
+    }
+  },
+  "routing_single_nested": {
+    "n_units_routed": 514975,
+    "counts": {
+      "pma": 48910,
+      "verify": 2592,
+      "continue": 360386,
+      "watch": 103087
+    },
+    "shares_pct": {
+      "pma": 9.5,
+      "verify": 0.5,
+      "continue": 70.0,
+      "watch": 20.0
+    },
+    "n_high_risk": 51502,
+    "pct_high_risk_cleared": 95.0,
+    "pct_high_risk_diverted": 5.0,
+    "units_in_gated_strata": 489290,
+    "units_in_ungated_strata": 25685,
+    "pct_units_ungated": 4.99,
+    "queue_by_system": {
+      "B30": 1213,
+      "B20": 964,
+      "C20": 217,
+      "D10": 65,
+      "G20": 54,
+      "F10": 40,
+      "G30": 16,
+      "F20": 15,
+      "G40": 7,
+      "A10": 1
+    }
+  },
+  "verification_queue": {
+    "total_tasks": 1872,
+    "stable_core_tasks": 297,
+    "stable_core_by_system": {
+      "Stairs": 254,
+      "Selective Building Demolition": 25,
+      "Site Mechanical Utilities": 18
+    },
+    "fold_dependent_tasks": 1575,
+    "fold_dependent_by_system": {
+      "Exterior Enclosure": 957,
+      "Roofing": 268,
+      "Conveying": 218,
+      "Special Construction": 75,
+      "Site Improvements": 50,
+      "G40": 6,
+      "A10": 1
+    },
+    "pct_fold_dependent": 84.1
+  },
+  "corrections": {
+    "leakage_only__single_nested_vs_nesting_only": {
+      "n_flips": 12,
+      "max_abs_delta_S": 0.7,
+      "mean_abs_delta_S": 0.03972,
+      "n_pairs": 141,
+      "delta_routes": {
+        "pma": 1257,
+        "verify": -1257,
+        "continue": 17623,
+        "watch": -17623
+      },
+      "cleared_from": 0.9497,
+      "cleared_to": 0.9741
+    },
+    "ranking_only__single_nested_vs_ranking_only": {
+      "n_flips": 4,
+      "max_abs_delta_S": 0.1,
+      "mean_abs_delta_S": 0.00493,
+      "n_pairs": 142,
+      "delta_routes": {
+        "pma": 1206,
+        "verify": -1035,
+        "continue": 12809,
+        "watch": -12980
+      },
+      "cleared_from": 0.9497,
+      "cleared_to": 0.9699
+    },
+    "transfer_gate__single_nested_vs_transfer_only": {
+      "n_flips": 1,
+      "max_abs_delta_S": 0.1,
+      "mean_abs_delta_S": 0.01408,
+      "n_pairs": 142,
+      "delta_routes": {
+        "pma": -242,
+        "verify": 242,
+        "continue": -3849,
+        "watch": 3849
+      },
+      "cleared_from": 0.9497,
+      "cleared_to": 0.945
+    },
+    "all_three__single_nested_vs_corrected": {
+      "n_flips": 14,
+      "max_abs_delta_S": 0.6,
+      "mean_abs_delta_S": 0.04752,
+      "n_pairs": 141,
+      "delta_routes": {
+        "pma": 891,
+        "verify": -720,
+        "continue": 6024,
+        "watch": -6195
+      },
+      "cleared_from": 0.9497,
+      "cleared_to": 0.9638
+    },
+    "flip_systems": [
+      "Conveying",
+      "Roofing",
+      "Site Improvements",
+      "Special Construction"
+    ],
+    "core_strata_stable": true
+  }
+}

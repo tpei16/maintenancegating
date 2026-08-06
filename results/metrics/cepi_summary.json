@@ -1,0 +1,314 @@
+{
+  "unit_of_analysis": "building-system-quarter (out-of-fold LOUO scored units)",
+  "target": "severity_labour p75, layer M1, gbdt",
+  "n_units": 493004,
+  "n_positive": 35570,
+  "base_rate": 0.0721,
+  "R_definition": "within-held-out-campus percentile rank of model score",
+  "S_definition": "equal-weighted mean of 5 gate scores {0,0.5,1}, hard-fail capped",
+  "class_thresholds": {
+    "R_high": 0.9,
+    "S_high": 0.67
+  },
+  "class_counts": {
+    "records_informative_high_risk": 50835,
+    "evidence_insufficient_high_risk": 659,
+    "watchlist": 37593,
+    "routine_monitoring": 403917
+  },
+  "class_shares": {
+    "records_informative_high_risk": 0.1031,
+    "evidence_insufficient_high_risk": 0.0013,
+    "watchlist": 0.0763,
+    "routine_monitoring": 0.8193
+  },
+  "class_actions": {
+    "records_informative_high_risk": "CMMS-led action (supervisor review, planned intervention, replacement assessment)",
+    "evidence_insufficient_high_risk": "Prioritise condition evidence (inspection, BAS/BMS review, asset survey, targeted sensing)",
+    "watchlist": "Watchlist unless safety/criticality overrides",
+    "routine_monitoring": "Routine monitoring"
+  },
+  "high_CEPI_ge_0.45": {
+    "n_units": 2114,
+    "share": 0.0043
+  },
+  "n_systems": 16,
+  "n_systems_fully_sufficient_S_ge_0.67": 12,
+  "n_systems_insufficient_S_lt_0.67": 4,
+  "systems_lowest_S": [
+    {
+      "system": "F20",
+      "system_desc": "Selective Building Demolition",
+      "S": 0.0
+    },
+    {
+      "system": "C20",
+      "system_desc": "Stairs",
+      "S": 0.4
+    },
+    {
+      "system": "G30",
+      "system_desc": "Site Mechanical Utilities",
+      "S": 0.5
+    },
+    {
+      "system": "D10",
+      "system_desc": "Conveying",
+      "S": 0.6
+    }
+  ],
+  "insufficient_systems_context": {
+    "n_insufficient_systems": 4,
+    "insufficient_systems": [
+      "C20",
+      "D10",
+      "F20",
+      "G30"
+    ],
+    "reactive_labour_share_of_insufficient_systems": 0.0119,
+    "share_of_high_risk_units_in_insufficient_systems": 0.0128,
+    "share_of_all_units_in_insufficient_systems": 0.0776
+  },
+  "sensitivity": {
+    "R_threshold": {
+      "top5pct": {
+        "records_informative_high_risk": 25675,
+        "evidence_insufficient_high_risk": 76,
+        "watchlist": 38176,
+        "routine_monitoring": 429077
+      },
+      "top10pct": {
+        "records_informative_high_risk": 50835,
+        "evidence_insufficient_high_risk": 659,
+        "watchlist": 37593,
+        "routine_monitoring": 403917
+      },
+      "top15pct": {
+        "records_informative_high_risk": 75776,
+        "evidence_insufficient_high_risk": 1462,
+        "watchlist": 36790,
+        "routine_monitoring": 378976
+      },
+      "top20pct": {
+        "records_informative_high_risk": 100583,
+        "evidence_insufficient_high_risk": 2393,
+        "watchlist": 35859,
+        "routine_monitoring": 354169
+      }
+    },
+    "CEPI_threshold": {
+      "0.35": 5294,
+      "0.45": 2114,
+      "0.55": 675
+    },
+    "gate_weights": {
+      "equal": {
+        "n_systems_insufficient": 4,
+        "S_by_system": {
+          "D30": 1.0,
+          "D20": 1.0,
+          "D50": 1.0,
+          "C10": 1.0,
+          "C30": 1.0,
+          "E10": 1.0,
+          "D40": 1.0,
+          "E20": 1.0,
+          "B20": 0.9,
+          "B30": 0.8,
+          "G20": 0.9,
+          "D10": 0.6,
+          "C20": 0.4,
+          "F20": 0.0,
+          "F10": 0.8,
+          "G30": 0.5
+        }
+      },
+      "reliability_heavy": {
+        "n_systems_insufficient": 4,
+        "S_by_system": {
+          "D30": 1.0,
+          "D20": 1.0,
+          "D50": 1.0,
+          "C10": 1.0,
+          "C30": 1.0,
+          "E10": 1.0,
+          "D40": 1.0,
+          "E20": 1.0,
+          "B20": 0.929,
+          "B30": 0.857,
+          "G20": 0.929,
+          "D10": 0.571,
+          "C20": 0.357,
+          "F20": 0.0,
+          "F10": 0.857,
+          "G30": 0.5
+        }
+      },
+      "evidence_gap_heavy": {
+        "n_systems_insufficient": 4,
+        "S_by_system": {
+          "D30": 1.0,
+          "D20": 1.0,
+          "D50": 1.0,
+          "C10": 1.0,
+          "C30": 1.0,
+          "E10": 1.0,
+          "D40": 1.0,
+          "E20": 1.0,
+          "B20": 0.857,
+          "B30": 0.786,
+          "G20": 0.929,
+          "D10": 0.643,
+          "C20": 0.429,
+          "F20": 0.0,
+          "F10": 0.786,
+          "G30": 0.5
+        }
+      }
+    },
+    "hard_fail": {
+      "on": {
+        "n_systems_insufficient": 4,
+        "S_by_system": {
+          "D30": 1.0,
+          "D20": 1.0,
+          "D50": 1.0,
+          "C10": 1.0,
+          "C30": 1.0,
+          "E10": 1.0,
+          "D40": 1.0,
+          "E20": 1.0,
+          "B20": 0.9,
+          "B30": 0.8,
+          "G20": 0.9,
+          "D10": 0.6,
+          "C20": 0.4,
+          "F20": 0.0,
+          "F10": 0.8,
+          "G30": 0.5
+        }
+      },
+      "off": {
+        "n_systems_insufficient": 4,
+        "S_by_system": {
+          "D30": 1.0,
+          "D20": 1.0,
+          "D50": 1.0,
+          "C10": 1.0,
+          "C30": 1.0,
+          "E10": 1.0,
+          "D40": 1.0,
+          "E20": 1.0,
+          "B20": 0.9,
+          "B30": 0.8,
+          "G20": 0.9,
+          "D10": 0.6,
+          "C20": 0.4,
+          "F20": 0.5,
+          "F10": 0.8,
+          "G30": 0.6
+        }
+      }
+    },
+    "within_gate_threshold": {
+      "risk_concentration lift 1.8": {
+        "n_insufficient": 4,
+        "insufficient_systems": [
+          "C20",
+          "D10",
+          "F20",
+          "G30"
+        ],
+        "core4_all_insufficient": true
+      },
+      "risk_concentration lift 2.2": {
+        "n_insufficient": 4,
+        "insufficient_systems": [
+          "C20",
+          "D10",
+          "F20",
+          "G30"
+        ],
+        "core4_all_insufficient": true
+      },
+      "transfer 70%": {
+        "n_insufficient": 3,
+        "insufficient_systems": [
+          "C20",
+          "F20",
+          "G30"
+        ],
+        "core4_all_insufficient": false
+      },
+      "transfer 90%": {
+        "n_insufficient": 4,
+        "insufficient_systems": [
+          "C20",
+          "D10",
+          "F20",
+          "G30"
+        ],
+        "core4_all_insufficient": true
+      },
+      "calibration top 1.8x": {
+        "n_insufficient": 4,
+        "insufficient_systems": [
+          "C20",
+          "D10",
+          "F20",
+          "G30"
+        ],
+        "core4_all_insufficient": true
+      },
+      "calibration top 2.2x": {
+        "n_insufficient": 4,
+        "insufficient_systems": [
+          "C20",
+          "D10",
+          "F20",
+          "G30"
+        ],
+        "core4_all_insufficient": true
+      },
+      "data support 300": {
+        "n_insufficient": 3,
+        "insufficient_systems": [
+          "C20",
+          "F20",
+          "G30"
+        ],
+        "core4_all_insufficient": false
+      },
+      "data support 700": {
+        "n_insufficient": 4,
+        "insufficient_systems": [
+          "C20",
+          "D10",
+          "F20",
+          "G30"
+        ],
+        "core4_all_insufficient": true
+      },
+      "prior-trace -5pp": {
+        "n_insufficient": 4,
+        "insufficient_systems": [
+          "C20",
+          "D10",
+          "F20",
+          "G30"
+        ],
+        "core4_all_insufficient": true
+      },
+      "prior-trace +5pp": {
+        "n_insufficient": 4,
+        "insufficient_systems": [
+          "C20",
+          "D10",
+          "F20",
+          "G30"
+        ],
+        "core4_all_insufficient": true
+      }
+    }
+  }
+}

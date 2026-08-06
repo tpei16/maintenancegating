@@ -1,0 +1,9 @@
+{
+  "GATE1_PERIOD": "quarter",
+  "GATE1_FRAMING": "near-term operational screening",
+  "GATE2_BURDEN_TARGETS": "both",
+  "COST_DEFLATION_BASE_YEAR": 2021,
+  "TEMPORAL_TRAIN_END_YEAR_SUGGESTED": 2018,
+  "n_records": 3731442,
+  "n_universities": 12
+}

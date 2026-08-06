@@ -1,0 +1,58 @@
+{
+  "occurrence_p75_gbdt_M0": {
+    "base_rate_median": 0.4040105056905824,
+    "lift_median": 2.4344287891426575,
+    "capture_median": 0.2434733257661748,
+    "frac_meet_2x": 0.7777777777777778,
+    "frac_beat_rule": 0.6666666666666666
+  },
+  "occurrence_p75_gbdt_M1": {
+    "base_rate_median": 0.4040105056905824,
+    "lift_median": 2.4437145950770858,
+    "capture_median": 0.24440202249509854,
+    "frac_meet_2x": 0.7777777777777778,
+    "frac_beat_rule": 0.7777777777777778
+  },
+  "occurrence_p75_logreg_M0": {
+    "base_rate_median": 0.4040105056905824,
+    "lift_median": 2.426690617530634,
+    "capture_median": 0.24269941182540503,
+    "frac_meet_2x": 0.7777777777777778,
+    "frac_beat_rule": 0.7777777777777778
+  },
+  "occurrence_p75_logreg_M1": {
+    "base_rate_median": 0.4040105056905824,
+    "lift_median": 2.429785886175443,
+    "capture_median": 0.24300897740171293,
+    "frac_meet_2x": 0.7777777777777778,
+    "frac_beat_rule": 0.6666666666666666
+  },
+  "severity_labour_p75_gbdt_M0": {
+    "base_rate_median": 0.09571851419518906,
+    "lift_median": 5.067836508087938,
+    "capture_median": 0.5068204502606188,
+    "frac_meet_2x": 1.0,
+    "frac_beat_rule": 0.3333333333333333
+  },
+  "severity_labour_p75_gbdt_M1": {
+    "base_rate_median": 0.09571851419518906,
+    "lift_median": 5.5136286910751044,
+    "capture_median": 0.5514029056227127,
+    "frac_meet_2x": 1.0,
+    "frac_beat_rule": 0.7777777777777778
+  },
+  "severity_labour_p75_logreg_M0": {
+    "base_rate_median": 0.09571851419518906,
+    "lift_median": 5.55022357176808,
+    "capture_median": 0.5550626594210935,
+    "frac_meet_2x": 0.8888888888888888,
+    "frac_beat_rule": 0.4444444444444444
+  },
+  "severity_labour_p75_logreg_M1": {
+    "base_rate_median": 0.09571851419518906,
+    "lift_median": 5.612282953527232,
+    "capture_median": 0.5612745098039216,
+    "frac_meet_2x": 1.0,
+    "frac_beat_rule": 0.5555555555555556
+  }
+}

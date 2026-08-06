@@ -1,0 +1,116 @@
+{
+  "n_severe_events_in_multisys_bq": 31520,
+  "n_multisystem_building_quarters": 60598,
+  "mean_systems_per_building": 6.631176470588235,
+  "severity_marginal_next4": 0.1471198945511398,
+  "cellpair_conditional_next4": 0.4053462496017746,
+  "cellpair_risk_ratio": 2.7552103054347534,
+  "cellpair_risk_ratio_ci95_building_clustered": [
+    2.5617169011678316,
+    2.8701412298766487
+  ],
+  "building_any_follower_prob": 0.8452855745353299,
+  "building_marginal_prob": 0.3397141819862042,
+  "building_risk_ratio": 2.488225747871948,
+  "top_pairs": [
+    {
+      "A_desc": "Fire Protection",
+      "B_desc": "Superstructure",
+      "elig": 107,
+      "P_B_given_A": 0.056074766355140186,
+      "baseline_B": 0.010046885465505693,
+      "risk_ratio": 5.581308411214954
+    },
+    {
+      "A_desc": "Electrical",
+      "B_desc": "Superstructure",
+      "elig": 269,
+      "P_B_given_A": 0.048327137546468404,
+      "baseline_B": 0.010046885465505693,
+      "risk_ratio": 4.810161090458489
+    },
+    {
+      "A_desc": "Interior Finishes",
+      "B_desc": "Superstructure",
+      "elig": 109,
+      "P_B_given_A": 0.045871559633027525,
+      "baseline_B": 0.010046885465505693,
+      "risk_ratio": 4.565749235474007
+    },
+    {
+      "A_desc": "Furnishings",
+      "B_desc": "Electrical",
+      "elig": 1073,
+      "P_B_given_A": 0.8322460391425909,
+      "baseline_B": 0.1854877868558279,
+      "risk_ratio": 4.486796965179502
+    },
+    {
+      "A_desc": "Furnishings",
+      "B_desc": "Special Construction",
+      "elig": 163,
+      "P_B_given_A": 0.2331288343558282,
+      "baseline_B": 0.05384880911287539,
+      "risk_ratio": 4.329322007236118
+    },
+    {
+      "A_desc": "Furnishings",
+      "B_desc": "Exterior Enclosure",
+      "elig": 1004,
+      "P_B_given_A": 0.5029880478087649,
+      "baseline_B": 0.11629477475449507,
+      "risk_ratio": 4.325113048893225
+    },
+    {
+      "A_desc": "Interior Construction",
+      "B_desc": "Superstructure",
+      "elig": 209,
+      "P_B_given_A": 0.0430622009569378,
+      "baseline_B": 0.010046885465505693,
+      "risk_ratio": 4.286124401913876
+    },
+    {
+      "A_desc": "Furnishings",
+      "B_desc": "Plumbing",
+      "elig": 1073,
+      "P_B_given_A": 0.8611369990680335,
+      "baseline_B": 0.20913400573557814,
+      "risk_ratio": 4.117632596569807
+    },
+    {
+      "A_desc": "Furnishings",
+      "B_desc": "HVAC",
+      "elig": 1071,
+      "P_B_given_A": 0.8403361344537815,
+      "baseline_B": 0.20517278012787082,
+      "risk_ratio": 4.095748636490936
+    },
+    {
+      "A_desc": "Furnishings",
+      "B_desc": "Fire Protection",
+      "elig": 1043,
+      "P_B_given_A": 0.5397890699904123,
+      "baseline_B": 0.13421561338289964,
+      "risk_ratio": 4.021805335348462
+    },
+    {
+      "A_desc": "Fire Protection",
+      "B_desc": "Electrical",
+      "elig": 1712,
+      "P_B_given_A": 0.7190420560747663,
+      "baseline_B": 0.1854877868558279,
+      "risk_ratio": 3.8764927236619005
+    },
+    {
+      "A_desc": "Interior Finishes",
+      "B_desc": "Electrical",
+      "elig": 2371,
+      "P_B_given_A": 0.7161535217207929,
+      "baseline_B": 0.1854877868558279,
+      "risk_ratio": 3.860920084606055
+    }
+  ],
+  "median_pairwise_RR": 2.6059230952949606,
+  "share_pairs_RR_gt_1": 0.8697478991596639,
+  "n_pairs": 238
+}

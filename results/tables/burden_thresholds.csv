@@ -1,0 +1,21 @@
+system_code,system,n_pos,p75_hours,p90_hours,median_hours
+D20,Plumbing,26020,27.0,58.0,10.0
+D30,HVAC,25511,40.775,88.5,15.0
+D50,Electrical,22368,20.0,48.0,6.75
+C10,Interior Construction,19660,11.0,22.75500000000011,4.5
+E10,Equipment,10805,11.25,27.5,4.25
+C30,Interior Finishes,10393,18.5,44.29800000000006,7.0
+D40,Fire Protection,8057,7.5,17.5,3.0
+B20,Exterior Enclosure,6856,6.0,12.5,3.0
+E20,Furnishings,4946,11.25,29.0,4.0
+B30,Roofing,3323,13.0,26.0,6.0
+D10,Conveying,1516,4.0,10.0,2.0
+G20,Site Improvements,1301,4.5,11.75,2.0
+C20,Stairs,674,6.5,14.0,2.75
+F10,Special Construction,435,4.0,8.0,2.0
+F20,Selective Building Demolition,231,9.0,20.0,5.0
+G30,Site Mechanical Utilities,121,10.0,30.5,4.0
+G40,Site Electrical Utilities,13,16.5,33.00000000000001,3.5
+B10,Superstructure,12,11.625,18.450000000000003,4.0
+D90,General,1,2.0,2.0,2.0
+G10,Site Preparation,1,2.0,2.0,2.0

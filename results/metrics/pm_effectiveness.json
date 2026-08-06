@@ -1,0 +1,12 @@
+{
+  "n_pm_increase_cells": 15202,
+  "n_control": 110401,
+  "treat_frac_upm_declined": 0.5565715037495066,
+  "control_frac_upm_declined": 0.5873950417115787,
+  "treat_median_rel_change": -0.13906469760900142,
+  "control_median_rel_change": -0.25,
+  "pm_responsive_fraction": 0.5565715037495066,
+  "pm_resistant_fraction": 0.4434284962504934,
+  "caveat": "associational only; PM is directed at deteriorating cells (endogeneity)",
+  "interpretation": "After a >=50% PPM increase, UPM burden declined in the next year for 56% of cells (controls 59%); the remaining 44% were PM-resistant (candidates for capital renewal rather than more maintenance)."
+}

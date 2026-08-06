@@ -1,0 +1,90 @@
+{
+  "item20_score_distribution": {
+    "Certified strata": {
+      "n_missed": 14401,
+      "n_captured": 19437,
+      "median_R_missed": 0.766,
+      "share_missed_below_median_R": 0.146,
+      "share_missed_in_bottom_quartile": 0.037
+    },
+    "Uncertified strata": {
+      "n_missed": 1442,
+      "n_captured": 300,
+      "median_R_missed": 0.684,
+      "share_missed_below_median_R": 0.266,
+      "share_missed_in_bottom_quartile": 0.095
+    },
+    "highest_no_antecedent_stratum": {
+      "system": "C20",
+      "n_positives": 174,
+      "median_R": 0.537,
+      "share_below_R_0.5": 0.42
+    }
+  },
+  "item21_vignette": {
+    "campus": "5",
+    "quarter_index": 8070,
+    "active_cells_this_quarter": 3119,
+    "capacity_rho": 0.9,
+    "flagged_units": 312,
+    "decision_queue": 268,
+    "verification_queue": 44,
+    "verification_by_system": {
+      "B20": 44
+    },
+    "top_verification_tasks": [
+      {
+        "system": "B20",
+        "R": 0.963,
+        "S": 0.5,
+        "CEPI": 0.482
+      },
+      {
+        "system": "B20",
+        "R": 0.962,
+        "S": 0.5,
+        "CEPI": 0.481
+      },
+      {
+        "system": "B20",
+        "R": 0.957,
+        "S": 0.5,
+        "CEPI": 0.479
+      },
+      {
+        "system": "B20",
+        "R": 0.952,
+        "S": 0.5,
+        "CEPI": 0.476
+      },
+      {
+        "system": "B20",
+        "R": 0.951,
+        "S": 0.5,
+        "CEPI": 0.475
+      }
+    ],
+    "certificates_in_play": {
+      "B20": 0.5,
+      "B30": 0.7,
+      "C10": 1.0,
+      "C30": 1.0,
+      "D20": 1.0,
+      "D30": 1.0,
+      "D40": 1.0,
+      "D50": 1.0,
+      "E10": 1.0,
+      "E20": 1.0
+    },
+    "minimum_fields_required": [
+      "university id",
+      "building id",
+      "system code",
+      "work-order start date",
+      "maintenance category (PPM/UPM)",
+      "labor hours"
+    ],
+    "minimum_history": "four quarters of prior activity per cell for the trajectory gate",
+    "compute": "45 model fits and one post-processing pass; 1.7 min on 6 cores here"
+  }
+}

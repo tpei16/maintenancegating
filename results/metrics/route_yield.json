@@ -1,0 +1,20 @@
+{
+  "design": "nested outer-campus replay (see 40_outer_s.py); outcome = next-quarter UPM labour above the system-specific p75 threshold",
+  "n_routed_units": 489290,
+  "pma_n": 48910,
+  "pma_outcome_rate": 0.3895,
+  "pma_nna": 2.6,
+  "verify_n": 2571,
+  "verify_outcome_rate": 0.212,
+  "verify_nna": 4.7,
+  "pma_share_of_highrisk": 0.9501,
+  "verify_share_of_highrisk": 0.0499,
+  "highrisk_rate_ratio": 1.84,
+  "lowrisk_n": 437809,
+  "lowrisk_outcome_rate": 0.0363,
+  "louo_prec_top10_median": 0.5192,
+  "louo_prec_iqr": [
+    0.2569,
+    0.727
+  ]
+}

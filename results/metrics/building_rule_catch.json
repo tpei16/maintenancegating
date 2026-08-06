@@ -1,0 +1,11 @@
+{
+  "n_high_burden_events": 35580,
+  "recall_screen_alone": 0.5508150646430579,
+  "recall_building_rule_alone": 0.8003653738055088,
+  "recall_screen_plus_building_rule": 0.877796514896009,
+  "incremental_recall_from_building_rule": 0.3269814502529511,
+  "events_missed_by_both": 0.12220348510399101,
+  "extra_inspection_load_building_rule_only": 0.2514957036749357,
+  "screen_inspection_load": 0.10000679644642944,
+  "reading": "The screen alone captures 55% of high-burden events; the building rule adds 33% that the screen missed, raising combined recall to 88%, at an extra inspection load of 25% of cells."
+}
