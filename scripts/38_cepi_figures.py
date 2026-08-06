@@ -109,7 +109,11 @@ def priority_map():
     ax.axhspan(-0.12, 0.67, facecolor="none", edgecolor=CORAL, alpha=0.16,
                hatch="///", lw=0.0, zorder=0)
     ax.axhline(0.67, color=CORAL_D, lw=2.1, ls=(0, (5.5, 2.4)), zorder=3)
-    ax.text(0.097, 0.672, "$S = 0.67$ decision threshold", ha="left", va="center",
+    # the threshold label sits at the right end of its own line: the left end is
+    # where the three borderline systems cluster, and a label there collides
+    # with their markers.
+    ax.text(0.986, 0.672, "$S = 0.67$ decision threshold",
+            transform=ax.get_yaxis_transform(), ha="right", va="center",
             fontsize=9.8, color=CORAL_D, fontweight="bold", zorder=6,
             bbox=dict(boxstyle="round,pad=0.25", fc="white", ec="none", alpha=0.9))
 
@@ -117,17 +121,23 @@ def priority_map():
     # (no proxy glyphs: they would read as data points; the marker shape is
     #  identified by the region each banner sits in)
     ytr = ax.get_yaxis_transform()  # x in axes fraction, y in data units
-    ax.text(0.975, 0.775, "CERTIFIED", transform=ytr, ha="right", va="center",
-            fontsize=9.6, fontweight="bold", color=NAVY_D, zorder=6)
-    ax.text(0.975, 0.722, "high-risk units $\\rightarrow$ MAINTENANCE DECISION TASK",
-            transform=ytr, ha="right", va="center", fontsize=8.6, color=NAVY_D, zorder=6)
+    # Each banner is broken over three short lines, right-aligned into the empty
+    # right-hand part of its own region.  One long line would run back into the
+    # borderline cluster at S = 0.70, and 0.08 in S is the smallest line pitch
+    # that keeps 9.6 pt type from touching the line below it.
+    for y, s, fs, bold in ((0.94, "CERTIFIED", 9.6, "bold"),
+                           (0.86, "high-risk units $\\rightarrow$", 8.6, "normal"),
+                           (0.78, "MAINTENANCE DECISION TASK", 8.6, "normal")):
+        ax.text(0.975, y, s, transform=ytr, ha="right", va="center",
+                fontsize=fs, fontweight=bold, color=NAVY_D, zorder=6)
 
     # placed low-right, in the empty part of the uncertified region: every
     # uncertified system sits at a small labour share, i.e. on the left.
-    ax.text(0.975, 0.300, "NOT CERTIFIED", transform=ytr, ha="right", va="center",
-            fontsize=9.6, fontweight="bold", color=CORAL_D, zorder=6)
-    ax.text(0.975, 0.247, "high-risk units $\\rightarrow$ VERIFY CONDITION FIRST",
-            transform=ytr, ha="right", va="center", fontsize=8.6, color=CORAL_D, zorder=6)
+    for y, s, fs, bold in ((0.34, "NOT CERTIFIED", 9.6, "bold"),
+                           (0.26, "high-risk units $\\rightarrow$", 8.6, "normal"),
+                           (0.18, "VERIFY CONDITION FIRST", 8.6, "normal")):
+        ax.text(0.975, y, s, transform=ytr, ha="right", va="center",
+                fontsize=fs, fontweight=bold, color=CORAL_D, zorder=6)
 
     # ---- the systems -----------------------------------------------------
     ax.scatter(pm.loc[suff, "x"], pm.loc[suff, "S"], marker="o", s=96,
@@ -158,23 +168,30 @@ def priority_map():
 
     # ---- direct labels: every record-insufficient system, plus the four
     #      record-sufficient systems that sit closest to the threshold -----
-    off = {   # (dx pt, dy pt, ha, va)
-        "Exterior enclosure": (11, -3, "left", "center"),
-        "Site improvements": (-11, -3, "right", "center"),
-        "Roofing": (11, -3, "left", "center"),
-        "Special construction": (12, -3, "left", "center"),
-        "Conveying": (12, -3, "left", "center"),
-        "Stairs": (12, -3, "left", "center"),
-        "Site mechanical utilities": (12, -3, "left", "center"),
-        "Selective building demolition": (12, -3, "left", "center"),
+    # Special construction, site improvements and roofing all sit at S = 0.70.
+    # Their labels are stacked at three different heights, each with a leader
+    # line, because side-by-side placement makes them overlap each other.
+    off = {   # (dx pt, dy pt, ha, va, leader)
+        "Exterior enclosure": (11, -3, "left", "center", False),
+        "Roofing": (12, -3, "left", "center", False),
+        "Site improvements": (0, 15, "center", "bottom", True),
+        "Special construction": (-9, 30, "center", "bottom", True),
+        "Conveying": (12, -3, "left", "center", False),
+        "Stairs": (12, -3, "left", "center", False),
+        "Site mechanical utilities": (12, -3, "left", "center", False),
+        "Selective building demolition": (12, -3, "left", "center", False),
     }
     for _, r in pm.iterrows():
         if r["name"] not in off:
             continue
-        dx, dy, ha, va = off[r["name"]]
+        dx, dy, ha, va, leader = off[r["name"]]
+        colour = NAVY_D if r.S >= 0.67 else CORAL_D
+        kw = {}
+        if leader:
+            kw["arrowprops"] = dict(arrowstyle="-", color=colour, lw=0.7,
+                                    alpha=0.55, shrinkA=1.0, shrinkB=4.0)
         ax.annotate(r["name"], (r.x, r.S), xytext=(dx, dy), textcoords="offset points",
-                    ha=ha, va=va, fontsize=9.0, zorder=6,
-                    color=NAVY_D if r.S >= 0.67 else CORAL_D)
+                    ha=ha, va=va, fontsize=9.0, zorder=6, color=colour, **kw)
 
     ax.set_xscale("log")
     # lower bound set from the data with headroom, so the smallest system's
@@ -204,14 +221,17 @@ def sensitivity():
     ax_b = fig.add_subplot(gs[1, 0])
     ax_c = fig.add_subplot(gs[1, 1])
 
-    # (a) route shares under the four action labels
-    ax = ax_a
-    cls_order = ["records_informative_high_risk", "evidence_insufficient_high_risk",
-                 "watchlist", "routine_monitoring"]
+    # (a) route shares under the four action labels.
+    # Read from the corrected double-nested routing, not from cepi_summary.json,
+    # whose class_shares predate the nesting, ranking and transfer-cap
+    # corrections and are the numbers the main text no longer reports.
+    routing = json.load(open(MET / "manuscript_numbers.json"))["routing_corrected"]
+    cls_order = ["pma", "verify", "watch", "continue"]
     labels = ["OPEN MAINTENANCE\nDECISION TASK", "VERIFY CONDITION\nFIRST",
               "EVIDENCE\nWATCHLIST", "CONTINUE STANDARD\nMAINTENANCE"]
     cols = [NAVY, CORAL, AMBER, LGREY]
-    vals = [s["class_shares"][k] * 100 for k in cls_order]
+    ax = ax_a
+    vals = [routing["shares_pct"][k] for k in cls_order]
     y = np.arange(len(cls_order))[::-1]
     bars = ax.barh(y, vals, color=cols, edgecolor="white", height=0.66)
     for yi, v in zip(y, vals):
@@ -235,12 +255,20 @@ def sensitivity():
                       edgecolor="white", label=sc.replace("S<", "$S<$"))
         for b, v in zip(bars, vals):
             if v >= 100:
+                # white backing: the primary-cut rule falls on the centre bar of
+                # the top-10% group and would otherwise run through its label
                 ax.text(b.get_x() + b.get_width() / 2, v * 1.05, f"{v:,}",
-                        ha="center", fontsize=6.4, color=INK, rotation=90)
+                        ha="center", fontsize=6.4, color=INK, rotation=90,
+                        zorder=6, bbox=dict(boxstyle="square,pad=0.12",
+                                            fc="white", ec="none", alpha=0.92))
     ax.axvline(1 + 0.0, color=CORAL_D, lw=0.9, ls=(0, (3, 2)), alpha=0.55)
-    ax.text(1.02, 0.97, "primary", transform=ax.get_xaxis_transform(),
-            fontsize=7.2, color=CORAL_D, ha="left", va="top", rotation=90)
-    ax.set_yscale("log"); ax.set_ylim(8, 3e4)
+    # the marker sits above the top spine: inside the axes it lands between the
+    # rotated value labels of the two tallest bars of this group.
+    ax.annotate("primary", xy=(1.0, 1.0), xycoords=ax.get_xaxis_transform(),
+                xytext=(-2, 3), textcoords="offset points",
+                fontsize=7.2, color=CORAL_D, ha="right", va="bottom")
+    # top raised so the tallest rotated value label is not clipped by the spine
+    ax.set_yscale("log"); ax.set_ylim(8, 6e4)
     ax.set_xticks(xs); ax.set_xticklabels(rticks, fontsize=8.4)
     ax.set_xlabel("Risk cut (share of units flagged high-risk)")
     ax.set_ylabel("Verification-queue size (units, log)")
