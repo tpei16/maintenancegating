@@ -14,6 +14,8 @@ import matplotlib.pyplot as plt
 from matplotlib.patches import Rectangle, Patch
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "src"))
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+import figcheck
 from fmscreen import config as C
 from fmscreen import figstyle
 from fmscreen.figstyle import (NAVY, TEAL, AMBER, CORAL, SLATE, GREEN, INK, GRIDC,
@@ -109,13 +111,16 @@ def priority_map():
     ax.axhspan(-0.12, 0.67, facecolor="none", edgecolor=CORAL, alpha=0.16,
                hatch="///", lw=0.0, zorder=0)
     ax.axhline(0.67, color=CORAL_D, lw=2.1, ls=(0, (5.5, 2.4)), zorder=3)
-    # the threshold label sits at the right end of its own line: the left end is
-    # where the three borderline systems cluster, and a label there collides
-    # with their markers.
-    ax.text(0.986, 0.672, "$S = 0.67$ decision threshold",
+    # The label sits BELOW its own line, not on it.  On the line the dashes are
+    # drawn through the glyphs: a white bbox does not help, because the rule is
+    # a single artist spanning the axes and any part of it to the right of the
+    # text is still crossing the text's own band.  Below the line the right-hand
+    # side of the uncertified region is empty, so the label reads as attached to
+    # the rule without touching it.
+    ax.text(0.986, 0.590, "$S = 0.67$ decision threshold",
             transform=ax.get_yaxis_transform(), ha="right", va="center",
             fontsize=9.8, color=CORAL_D, fontweight="bold", zorder=6,
-            bbox=dict(boxstyle="round,pad=0.25", fc="white", ec="none", alpha=0.9))
+            bbox=dict(boxstyle="round,pad=0.25", fc="white", ec="none", alpha=1.0))
 
     # ---- region banners, each inside the region it describes -------------
     # (no proxy glyphs: they would read as data points; the marker shape is
@@ -140,9 +145,14 @@ def priority_map():
                 fontsize=fs, fontweight=bold, color=CORAL_D, zorder=6)
 
     # ---- the systems -----------------------------------------------------
-    ax.scatter(pm.loc[suff, "x"], pm.loc[suff, "S"], marker="o", s=96,
-               facecolor=NAVY_D, edgecolor="white", lw=1.2, zorder=5)
-    ax.scatter(pm.loc[~suff, "x"], pm.loc[~suff, "S"], marker="s", s=96,
+    # No white marker edge on the certified series.  Fire protection (2.85% of
+    # labour) and furnishings (2.74%) differ by 1.3 pt on this axis, so a white
+    # ring around the front marker used to bite a crescent out of the one behind
+    # it, which read as a stray ")" glyph rather than as two close systems.  With
+    # the edge in the fill colour a coincident pair merges into one smooth shape.
+    ax.scatter(pm.loc[suff, "x"], pm.loc[suff, "S"], marker="o", s=88,
+               facecolor=NAVY_D, edgecolor=NAVY_D, lw=0.8, zorder=5)
+    ax.scatter(pm.loc[~suff, "x"], pm.loc[~suff, "S"], marker="s", s=88,
                facecolor="white", edgecolor=CORAL_D, lw=2.1, zorder=5)
 
     # ---- grouped annotation for the eight systems sitting at S = 1.0 -----
@@ -158,24 +168,28 @@ def priority_map():
     # lower-case the descriptive names but leave acronyms (HVAC) alone
     names = [str(s) if str(s).isupper() else str(s).lower() for s in
              core.sort_values("burden_share", ascending=False)["system_desc"]]
-    half = (len(names) + 1) // 2
+    # three name lines, not two: over two lines the longer one is wide enough to
+    # run past the right spine once it is centred on the bracket it labels.
+    per = int(np.ceil(len(names) / 3))
+    rows = [" · ".join(names[i:i + per]) for i in range(0, len(names), per)]
     ax.text(np.sqrt(x0 * x1), yb + 0.030,
             f"{len(core)} core systems at $S = 1.0$: {core_share:.0f}% of "
-            "portfolio reactive labor\n"
-            + " · ".join(names[:half]) + "\n" + " · ".join(names[half:]),
-            ha="center", va="bottom", fontsize=8.6, color=NAVY_D, linespacing=1.45,
+            "portfolio reactive labor\n" + "\n".join(rows),
+            ha="center", va="bottom", fontsize=8.2, color=NAVY_D, linespacing=1.42,
             clip_on=False, zorder=6)
 
     # ---- direct labels: every record-insufficient system, plus the four
     #      record-sufficient systems that sit closest to the threshold -----
-    # Special construction, site improvements and roofing all sit at S = 0.70.
-    # Their labels are stacked at three different heights, each with a leader
-    # line, because side-by-side placement makes them overlap each other.
+    # Roofing, site improvements and special construction all sit at S = 0.70,
+    # three points above a rule at 0.67.  Every one of them is therefore labelled
+    # upward on a vertical leader, at three separated heights: a label placed
+    # beside its marker lands within a few points of the rule and the dashes are
+    # drawn through it.  Vertical leaders also cannot cross one another.
     off = {   # (dx pt, dy pt, ha, va, leader)
         "Exterior enclosure": (11, -3, "left", "center", False),
-        "Roofing": (12, -3, "left", "center", False),
-        "Site improvements": (0, 15, "center", "bottom", True),
-        "Special construction": (-9, 30, "center", "bottom", True),
+        "Roofing": (0, 13, "center", "bottom", True),
+        "Site improvements": (0, 31, "right", "bottom", True),
+        "Special construction": (0, 49, "center", "bottom", True),
         "Conveying": (12, -3, "left", "center", False),
         "Stairs": (12, -3, "left", "center", False),
         "Site mechanical utilities": (12, -3, "left", "center", False),
@@ -206,6 +220,7 @@ def priority_map():
     ax.set_ylabel("Record-evidence certificate  $S$", fontsize=10.8)
     ax.tick_params(labelsize=10.0)
     figstyle.despine(ax)
+    figcheck.assert_clean(fig, ax, "fig_cepi_priority_map")
     fig.savefig(FIG / "fig_cepi_priority_map.pdf"); fig.savefig(FIG / "fig_cepi_priority_map.png", dpi=300)
     plt.close(fig); print("[fig] fig_cepi_priority_map")
 

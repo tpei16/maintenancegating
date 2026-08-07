@@ -117,15 +117,23 @@ def barlabels(ax, bars, fmt="{:.2f}", pad=3, fontsize=8.5, color=INK, tops=None)
     `tops` gives the anchor coordinate to place each label against, overriding the
     bar end. Pass the upper error-bar caps when the bars carry yerr/xerr, otherwise
     the label is drawn at the bar end and collides with the whisker.
+
+    Every label carries an opaque badge and sits above the reference lines. A bar
+    whose value lands near a reference line puts its label on that line, and a
+    dashed rule drawn through the digits is unreadable: in the co-escalation
+    robustness panel the pooled rule ran straight through "2.11".
     """
+    badge = dict(boxstyle="square,pad=0.10", fc="white", ec="none", alpha=1.0)
     for i, b in enumerate(bars):
         w = b.get_width(); h = b.get_height()
         anchor = None if tops is None else float(tops[i])
         if abs(w) >= abs(h):   # horizontal bars
             ax.annotate(fmt.format(w), (w if anchor is None else anchor, b.get_y() + h / 2),
                         xytext=(pad, 0), textcoords="offset points",
-                        va="center", ha="left", fontsize=fontsize, color=color)
+                        va="center", ha="left", fontsize=fontsize, color=color,
+                        zorder=6, bbox=badge)
         else:                   # vertical bars
             ax.annotate(fmt.format(h), (b.get_x() + w / 2, h if anchor is None else anchor),
                         xytext=(0, pad), textcoords="offset points",
-                        va="bottom", ha="center", fontsize=fontsize, color=color)
+                        va="bottom", ha="center", fontsize=fontsize, color=color,
+                        zorder=6, bbox=badge)

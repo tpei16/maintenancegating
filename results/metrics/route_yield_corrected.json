@@ -1,0 +1,53 @@
+{
+  "design": "corrected double-nested replay (45_certification_corrected.py, arm 'corrected'); outcome = next-quarter UPM labour above the system-specific p75 threshold",
+  "corrected": {
+    "risk_column": "R_quarter",
+    "n_routed_units": 514975,
+    "pma_n": 49801,
+    "pma_outcome_rate": 0.3903,
+    "verify_n": 1872,
+    "verify_outcome_rate": 0.1603,
+    "lowrisk_n": 463302,
+    "lowrisk_outcome_rate": 0.0342,
+    "pma_share_of_highrisk": 0.9638,
+    "verify_share_of_highrisk": 0.0362,
+    "highrisk_rate_ratio": 2.44,
+    "louo_prec_top10_median": 0.5014,
+    "louo_prec_iqr": [
+      0.2314,
+      0.7229
+    ],
+    "gated_strata_only": {
+      "pma_n": 49801,
+      "pma_outcome_rate": 0.3903,
+      "verify_n": 1848,
+      "verify_outcome_rate": 0.1602,
+      "highrisk_rate_ratio": 2.44
+    }
+  },
+  "single_nested": {
+    "risk_column": "R_pooled",
+    "n_routed_units": 514975,
+    "pma_n": 48910,
+    "pma_outcome_rate": 0.3895,
+    "verify_n": 2592,
+    "verify_outcome_rate": 0.2114,
+    "lowrisk_n": 463473,
+    "lowrisk_outcome_rate": 0.0345,
+    "pma_share_of_highrisk": 0.9497,
+    "verify_share_of_highrisk": 0.0503,
+    "highrisk_rate_ratio": 1.84,
+    "louo_prec_top10_median": 0.5192,
+    "louo_prec_iqr": [
+      0.2569,
+      0.727
+    ],
+    "gated_strata_only": {
+      "pma_n": 48910,
+      "pma_outcome_rate": 0.3895,
+      "verify_n": 2571,
+      "verify_outcome_rate": 0.212,
+      "highrisk_rate_ratio": 1.84
+    }
+  }
+}

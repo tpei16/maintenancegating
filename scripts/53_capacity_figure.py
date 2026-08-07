@@ -3,7 +3,7 @@
 Figure: escalating model capacity does not move the ceiling.
 
 Reads the two capacity experiments and draws one exhibit for the manuscript
-section "Enlarging the Model Does Not Move the Ceiling":
+section "Higher-Capacity Configurations Do Not Improve Held-Out Ranking":
 
   results/wp1/chronology_value.json  representation escalation (event sequence)
   results/wp3/transformer.json       architecture and adaptation escalation
@@ -23,6 +23,8 @@ import matplotlib.pyplot as plt
 
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / "src"))
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+import figcheck
 from fmscreen import figstyle
 from fmscreen.figstyle import NAVY, TEAL, AMBER, NAVY_D, CORAL_D, SLATE, INK, LGREY
 
@@ -83,11 +85,17 @@ def main():
         ax.scatter(v, np.full_like(v, y), s=17, color=block_fill[blk],
                    edgecolor="none", zorder=2, alpha=0.85)
         med = float(np.median(v))
+        # no white ring on the median diamond: where a campus point sits at the
+        # median the ring bit a crescent out of it, which read as a stray glyph
         ax.scatter([med], [y], s=62, marker="D", color=block_line[blk],
-                   edgecolor="white", linewidth=0.8, zorder=4)
+                   edgecolor="none", zorder=4)
+        # opaque badge: several medians sit within hundredths of the incumbent,
+        # so the reference rule runs vertically through their labels
         ax.annotate(f"{med:.2f}", (med, y), textcoords="offset points",
                     xytext=(0, 9), ha="center", fontsize=8.2, color=INK,
-                    fontweight="bold", zorder=5)
+                    fontweight="bold", zorder=6,
+                    bbox=dict(boxstyle="square,pad=0.12", fc="white",
+                              ec="none", alpha=1.0))
 
     ax.axvline(ref, ls="--", color=CORAL_D, lw=1.4, zorder=1)
     ax.annotate("incumbent median", (ref - 0.06, -0.42), fontsize=8.2,
@@ -109,6 +117,7 @@ def main():
     figstyle.despine(ax, left=False)
     ax.tick_params(axis="y", length=0)
     fig.tight_layout()
+    figcheck.assert_clean(fig, ax, "fig_capacity_ladder")
     for ext in ("pdf", "png"):
         fig.savefig(FIGS / f"fig_capacity_ladder.{ext}", dpi=300,
                     bbox_inches="tight")
