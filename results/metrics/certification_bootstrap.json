@@ -1,0 +1,6587 @@
+{
+  "design": "Building-level bootstrap of the certificate: scheme W resamples buildings with replacement within every campus, scheme B resamples campuses (each draw a separate context) and then buildings within each drawn campus; each replicate rebuilds the prediction frame and the event-level prior-record-trace table and recomputes the five gates and S with the functions of 45_certification_corrected.py, holding the fitted scores, labels and extreme-event thresholds fixed.",
+  "reference_check": {
+    "n_stratum_folds": 141,
+    "pooled_certified": "12/16",
+    "route_counts": {
+      "pma": 50968,
+      "verify": 705,
+      "continue": 385725,
+      "watch": 77577
+    },
+    "matches_cert_corrected_json": true
+  },
+  "checks": [
+    "event-level trace tables aggregate to trace_for(None) and trace_for(c) for all nine c",
+    "the identity resample reproduces the pooled map and all 141 stratum-fold certificates under both schemes"
+  ],
+  "B": 1000,
+  "B_note": "B = 1000, the design value",
+  "seeds": "per-replicate seeds drawn from numpy.random.default_rng(RANDOM_SEED) as a (B, 2) array, column 0 for scheme W and column 1 for scheme B",
+  "scheme_B_folds": "for the certificate governing campus c, its eight certifying campuses are resampled with replacement (eight draws) and read through f^(-{c,d})",
+  "not_certified_if_ungated": "a stratum that fails the eligibility filter (20 positives, 200 rows) in a replicate counts as not certified",
+  "n_pooled_certified": {
+    "W": {
+      "point": 12,
+      "mean": 10.638,
+      "p2.5": 9.0,
+      "p97.5": 12.024999999999977,
+      "distribution": {
+        "8": 0.009,
+        "9": 0.113,
+        "10": 0.327,
+        "11": 0.358,
+        "12": 0.168,
+        "13": 0.025
+      }
+    },
+    "B": {
+      "point": 12,
+      "mean": 10.249,
+      "p2.5": 8.0,
+      "p97.5": 13.0,
+      "distribution": {
+        "7": 0.003,
+        "8": 0.038,
+        "9": 0.28,
+        "10": 0.279,
+        "11": 0.225,
+        "12": 0.137,
+        "13": 0.037,
+        "14": 0.001
+      }
+    }
+  },
+  "strata": {
+    "B20": {
+      "system_desc": "Exterior Enclosure",
+      "S_pooled": 0.9,
+      "certified_pooled": true,
+      "scores_pooled": {
+        "data_sufficiency": "pass",
+        "risk_concentration": "pass",
+        "transfer_stability": "pass",
+        "risk_gradient": "pass",
+        "prior_record_trace": "caution"
+      },
+      "margins_pooled": {
+        "n_campuses": {
+          "value": 7,
+          "nearest_threshold": 6,
+          "margin": 1.0
+        },
+        "n_pos": {
+          "value": 1789,
+          "nearest_threshold": 500,
+          "margin": 1289.0
+        },
+        "pooled_lift": {
+          "value": 5.09,
+          "nearest_threshold": 2.0,
+          "margin": 3.09
+        },
+        "frac_2x": {
+          "value": 0.857,
+          "nearest_threshold": 0.8,
+          "margin": 0.057
+        },
+        "top_band": {
+          "value": 2.73,
+          "nearest_threshold": 2.0,
+          "margin": 0.73
+        },
+        "rho": {
+          "value": 1.0,
+          "nearest_threshold": 0.9,
+          "margin": 0.1
+        },
+        "zero_prior_share": {
+          "value": 0.111,
+          "nearest_threshold": 0.1,
+          "margin": 0.011
+        },
+        "n_trace_events": {
+          "value": 576,
+          "nearest_threshold": 30,
+          "margin": 546.0
+        }
+      },
+      "folds_certified": 9,
+      "folds_gated": 9,
+      "fold_frequency": 1.0,
+      "W": {
+        "pooled": {
+          "p_certified": 0.928,
+          "share_gated": 1.0,
+          "S_distribution": {
+            "0.5": 0.072,
+            "0.7": 0.009,
+            "0.8": 0.297,
+            "0.9": 0.5,
+            "1.0": 0.122
+          },
+          "gate_shares_among_gated": {
+            "data_sufficiency": {
+              "fail": 0.0,
+              "caution": 0.016,
+              "pass": 0.984
+            },
+            "risk_concentration": {
+              "fail": 0.0,
+              "caution": 0.0,
+              "pass": 1.0
+            },
+            "transfer_stability": {
+              "fail": 0.072,
+              "caution": 0.403,
+              "pass": 0.525
+            },
+            "risk_gradient": {
+              "fail": 0.0,
+              "caution": 0.0,
+              "pass": 1.0
+            },
+            "prior_record_trace": {
+              "fail": 0.0,
+              "caution": 0.755,
+              "pass": 0.245
+            }
+          }
+        },
+        "folds": {
+          "1": {
+            "S_point": 0.9,
+            "p_certified": 0.897,
+            "share_gated": 1.0
+          },
+          "10": {
+            "S_point": 0.9,
+            "p_certified": 0.937,
+            "share_gated": 1.0
+          },
+          "11": {
+            "S_point": 0.9,
+            "p_certified": 0.974,
+            "share_gated": 1.0
+          },
+          "2": {
+            "S_point": 0.9,
+            "p_certified": 0.908,
+            "share_gated": 1.0
+          },
+          "3": {
+            "S_point": 0.9,
+            "p_certified": 0.94,
+            "share_gated": 1.0
+          },
+          "4": {
+            "S_point": 0.9,
+            "p_certified": 0.981,
+            "share_gated": 1.0
+          },
+          "5": {
+            "S_point": 1.0,
+            "p_certified": 0.848,
+            "share_gated": 1.0
+          },
+          "6": {
+            "S_point": 0.9,
+            "p_certified": 0.998,
+            "share_gated": 1.0
+          },
+          "7": {
+            "S_point": 0.9,
+            "p_certified": 0.923,
+            "share_gated": 1.0
+          }
+        },
+        "fold_mean_p_certified": 0.934,
+        "fold_expected_certified": 8.41,
+        "fold_gate_shares_among_gated": {
+          "data_sufficiency": {
+            "fail": 0.0,
+            "caution": 0.184,
+            "pass": 0.816
+          },
+          "risk_concentration": {
+            "fail": 0.0,
+            "caution": 0.0,
+            "pass": 1.0
+          },
+          "transfer_stability": {
+            "fail": 0.0658,
+            "caution": 0.4221,
+            "pass": 0.5121
+          },
+          "risk_gradient": {
+            "fail": 0.0,
+            "caution": 0.042,
+            "pass": 0.958
+          },
+          "prior_record_trace": {
+            "fail": 0.0,
+            "caution": 0.674,
+            "pass": 0.326
+          }
+        }
+      },
+      "B": {
+        "pooled": {
+          "p_certified": 0.873,
+          "share_gated": 1.0,
+          "S_distribution": {
+            "0.4": 0.001,
+            "0.5": 0.11,
+            "0.6": 0.016,
+            "0.7": 0.086,
+            "0.8": 0.206,
+            "0.9": 0.482,
+            "1.0": 0.099
+          },
+          "gate_shares_among_gated": {
+            "data_sufficiency": {
+              "fail": 0.001,
+              "caution": 0.155,
+              "pass": 0.844
+            },
+            "risk_concentration": {
+              "fail": 0.0,
+              "caution": 0.0,
+              "pass": 1.0
+            },
+            "transfer_stability": {
+              "fail": 0.108,
+              "caution": 0.428,
+              "pass": 0.464
+            },
+            "risk_gradient": {
+              "fail": 0.0,
+              "caution": 0.104,
+              "pass": 0.896
+            },
+            "prior_record_trace": {
+              "fail": 0.007,
+              "caution": 0.608,
+              "pass": 0.385
+            }
+          }
+        },
+        "folds": {
+          "1": {
+            "S_point": 0.9,
+            "p_certified": 0.79,
+            "share_gated": 1.0
+          },
+          "10": {
+            "S_point": 0.9,
+            "p_certified": 0.792,
+            "share_gated": 1.0
+          },
+          "11": {
+            "S_point": 0.9,
+            "p_certified": 0.904,
+            "share_gated": 1.0
+          },
+          "2": {
+            "S_point": 0.9,
+            "p_certified": 0.845,
+            "share_gated": 1.0
+          },
+          "3": {
+            "S_point": 0.9,
+            "p_certified": 0.862,
+            "share_gated": 1.0
+          },
+          "4": {
+            "S_point": 0.9,
+            "p_certified": 0.892,
+            "share_gated": 1.0
+          },
+          "5": {
+            "S_point": 1.0,
+            "p_certified": 0.758,
+            "share_gated": 1.0
+          },
+          "6": {
+            "S_point": 0.9,
+            "p_certified": 0.905,
+            "share_gated": 1.0
+          },
+          "7": {
+            "S_point": 0.9,
+            "p_certified": 0.848,
+            "share_gated": 1.0
+          }
+        },
+        "fold_mean_p_certified": 0.844,
+        "fold_expected_certified": 7.6,
+        "fold_gate_shares_among_gated": {
+          "data_sufficiency": {
+            "fail": 0.0066,
+            "caution": 0.3112,
+            "pass": 0.6822
+          },
+          "risk_concentration": {
+            "fail": 0.0,
+            "caution": 0.0001,
+            "pass": 0.9999
+          },
+          "transfer_stability": {
+            "fail": 0.1133,
+            "caution": 0.4592,
+            "pass": 0.4274
+          },
+          "risk_gradient": {
+            "fail": 0.0011,
+            "caution": 0.1266,
+            "pass": 0.8723
+          },
+          "prior_record_trace": {
+            "fail": 0.0178,
+            "caution": 0.5978,
+            "pass": 0.3844
+          }
+        }
+      }
+    },
+    "B30": {
+      "system_desc": "Roofing",
+      "S_pooled": 0.7,
+      "certified_pooled": true,
+      "scores_pooled": {
+        "data_sufficiency": "caution",
+        "risk_concentration": "pass",
+        "transfer_stability": "caution",
+        "risk_gradient": "pass",
+        "prior_record_trace": "caution"
+      },
+      "margins_pooled": {
+        "n_campuses": {
+          "value": 5,
+          "nearest_threshold": 6,
+          "margin": -1.0
+        },
+        "n_pos": {
+          "value": 1039,
+          "nearest_threshold": 500,
+          "margin": 539.0
+        },
+        "pooled_lift": {
+          "value": 4.93,
+          "nearest_threshold": 2.0,
+          "margin": 2.93
+        },
+        "frac_2x": {
+          "value": 1.0,
+          "nearest_threshold": 0.8,
+          "margin": 0.2
+        },
+        "top_band": {
+          "value": 2.54,
+          "nearest_threshold": 2.0,
+          "margin": 0.54
+        },
+        "rho": {
+          "value": 1.0,
+          "nearest_threshold": 0.9,
+          "margin": 0.1
+        },
+        "zero_prior_share": {
+          "value": 0.247,
+          "nearest_threshold": 0.25,
+          "margin": -0.003
+        },
+        "n_trace_events": {
+          "value": 304,
+          "nearest_threshold": 30,
+          "margin": 274.0
+        }
+      },
+      "folds_certified": 8,
+      "folds_gated": 9,
+      "fold_frequency": 0.8889,
+      "W": {
+        "pooled": {
+          "p_certified": 0.454,
+          "share_gated": 1.0,
+          "S_distribution": {
+            "0.5": 0.082,
+            "0.6": 0.464,
+            "0.7": 0.379,
+            "0.8": 0.036,
+            "0.9": 0.039
+          },
+          "gate_shares_among_gated": {
+            "data_sufficiency": {
+              "fail": 0.0,
+              "caution": 0.914,
+              "pass": 0.086
+            },
+            "risk_concentration": {
+              "fail": 0.0,
+              "caution": 0.0,
+              "pass": 1.0
+            },
+            "transfer_stability": {
+              "fail": 0.001,
+              "caution": 0.927,
+              "pass": 0.072
+            },
+            "risk_gradient": {
+              "fail": 0.0,
+              "caution": 0.193,
+              "pass": 0.807
+            },
+            "prior_record_trace": {
+              "fail": 0.477,
+              "caution": 0.523,
+              "pass": 0.0
+            }
+          }
+        },
+        "folds": {
+          "1": {
+            "S_point": 0.7,
+            "p_certified": 0.303,
+            "share_gated": 1.0
+          },
+          "10": {
+            "S_point": 0.7,
+            "p_certified": 0.434,
+            "share_gated": 1.0
+          },
+          "11": {
+            "S_point": 0.7,
+            "p_certified": 0.271,
+            "share_gated": 1.0
+          },
+          "2": {
+            "S_point": 0.5,
+            "p_certified": 0.045,
+            "share_gated": 1.0
+          },
+          "3": {
+            "S_point": 0.7,
+            "p_certified": 0.273,
+            "share_gated": 1.0
+          },
+          "4": {
+            "S_point": 0.7,
+            "p_certified": 0.299,
+            "share_gated": 1.0
+          },
+          "5": {
+            "S_point": 0.7,
+            "p_certified": 0.204,
+            "share_gated": 1.0
+          },
+          "6": {
+            "S_point": 0.7,
+            "p_certified": 0.262,
+            "share_gated": 1.0
+          },
+          "7": {
+            "S_point": 0.7,
+            "p_certified": 0.398,
+            "share_gated": 1.0
+          }
+        },
+        "fold_mean_p_certified": 0.2766,
+        "fold_expected_certified": 2.49,
+        "fold_gate_shares_among_gated": {
+          "data_sufficiency": {
+            "fail": 0.0143,
+            "caution": 0.9572,
+            "pass": 0.0284
+          },
+          "risk_concentration": {
+            "fail": 0.0,
+            "caution": 0.0,
+            "pass": 1.0
+          },
+          "transfer_stability": {
+            "fail": 0.0107,
+            "caution": 0.9441,
+            "pass": 0.0452
+          },
+          "risk_gradient": {
+            "fail": 0.0,
+            "caution": 0.5701,
+            "pass": 0.4299
+          },
+          "prior_record_trace": {
+            "fail": 0.4238,
+            "caution": 0.576,
+            "pass": 0.0002
+          }
+        }
+      },
+      "B": {
+        "pooled": {
+          "p_certified": 0.389,
+          "share_gated": 1.0,
+          "S_distribution": {
+            "0.0": 0.005,
+            "0.4": 0.044,
+            "0.5": 0.254,
+            "0.6": 0.308,
+            "0.7": 0.188,
+            "0.8": 0.131,
+            "0.9": 0.07
+          },
+          "gate_shares_among_gated": {
+            "data_sufficiency": {
+              "fail": 0.098,
+              "caution": 0.681,
+              "pass": 0.221
+            },
+            "risk_concentration": {
+              "fail": 0.0,
+              "caution": 0.0,
+              "pass": 1.0
+            },
+            "transfer_stability": {
+              "fail": 0.015,
+              "caution": 0.725,
+              "pass": 0.26
+            },
+            "risk_gradient": {
+              "fail": 0.002,
+              "caution": 0.567,
+              "pass": 0.431
+            },
+            "prior_record_trace": {
+              "fail": 0.486,
+              "caution": 0.505,
+              "pass": 0.009
+            }
+          }
+        },
+        "folds": {
+          "1": {
+            "S_point": 0.7,
+            "p_certified": 0.367,
+            "share_gated": 0.999
+          },
+          "10": {
+            "S_point": 0.7,
+            "p_certified": 0.416,
+            "share_gated": 1.0
+          },
+          "11": {
+            "S_point": 0.7,
+            "p_certified": 0.238,
+            "share_gated": 0.993
+          },
+          "2": {
+            "S_point": 0.5,
+            "p_certified": 0.172,
+            "share_gated": 0.996
+          },
+          "3": {
+            "S_point": 0.7,
+            "p_certified": 0.375,
+            "share_gated": 0.999
+          },
+          "4": {
+            "S_point": 0.7,
+            "p_certified": 0.278,
+            "share_gated": 0.997
+          },
+          "5": {
+            "S_point": 0.7,
+            "p_certified": 0.386,
+            "share_gated": 1.0
+          },
+          "6": {
+            "S_point": 0.7,
+            "p_certified": 0.224,
+            "share_gated": 0.997
+          },
+          "7": {
+            "S_point": 0.7,
+            "p_certified": 0.387,
+            "share_gated": 1.0
+          }
+        },
+        "fold_mean_p_certified": 0.3159,
+        "fold_expected_certified": 2.84,
+        "fold_gate_shares_among_gated": {
+          "data_sufficiency": {
+            "fail": 0.1316,
+            "caution": 0.7056,
+            "pass": 0.1628
+          },
+          "risk_concentration": {
+            "fail": 0.0002,
+            "caution": 0.001,
+            "pass": 0.9988
+          },
+          "transfer_stability": {
+            "fail": 0.0442,
+            "caution": 0.7636,
+            "pass": 0.1922
+          },
+          "risk_gradient": {
+            "fail": 0.0105,
+            "caution": 0.654,
+            "pass": 0.3355
+          },
+          "prior_record_trace": {
+            "fail": 0.42,
+            "caution": 0.5733,
+            "pass": 0.0067
+          }
+        }
+      }
+    },
+    "C10": {
+      "system_desc": "Interior Construction",
+      "S_pooled": 1.0,
+      "certified_pooled": true,
+      "scores_pooled": {
+        "data_sufficiency": "pass",
+        "risk_concentration": "pass",
+        "transfer_stability": "pass",
+        "risk_gradient": "pass",
+        "prior_record_trace": "pass"
+      },
+      "margins_pooled": {
+        "n_campuses": {
+          "value": 8,
+          "nearest_threshold": 6,
+          "margin": 2.0
+        },
+        "n_pos": {
+          "value": 4578,
+          "nearest_threshold": 500,
+          "margin": 4078.0
+        },
+        "pooled_lift": {
+          "value": 6.18,
+          "nearest_threshold": 2.0,
+          "margin": 4.18
+        },
+        "frac_2x": {
+          "value": 1.0,
+          "nearest_threshold": 0.8,
+          "margin": 0.2
+        },
+        "top_band": {
+          "value": 2.89,
+          "nearest_threshold": 2.0,
+          "margin": 0.89
+        },
+        "rho": {
+          "value": 1.0,
+          "nearest_threshold": 0.9,
+          "margin": 0.1
+        },
+        "zero_prior_share": {
+          "value": 0.006,
+          "nearest_threshold": 0.1,
+          "margin": -0.094
+        },
+        "n_trace_events": {
+          "value": 1649,
+          "nearest_threshold": 30,
+          "margin": 1619.0
+        }
+      },
+      "folds_certified": 9,
+      "folds_gated": 9,
+      "fold_frequency": 1.0,
+      "W": {
+        "pooled": {
+          "p_certified": 1.0,
+          "share_gated": 1.0,
+          "S_distribution": {
+            "1.0": 1.0
+          },
+          "gate_shares_among_gated": {
+            "data_sufficiency": {
+              "fail": 0.0,
+              "caution": 0.0,
+              "pass": 1.0
+            },
+            "risk_concentration": {
+              "fail": 0.0,
+              "caution": 0.0,
+              "pass": 1.0
+            },
+            "transfer_stability": {
+              "fail": 0.0,
+              "caution": 0.0,
+              "pass": 1.0
+            },
+            "risk_gradient": {
+              "fail": 0.0,
+              "caution": 0.0,
+              "pass": 1.0
+            },
+            "prior_record_trace": {
+              "fail": 0.0,
+              "caution": 0.0,
+              "pass": 1.0
+            }
+          }
+        },
+        "folds": {
+          "1": {
+            "S_point": 1.0,
+            "p_certified": 1.0,
+            "share_gated": 1.0
+          },
+          "10": {
+            "S_point": 1.0,
+            "p_certified": 1.0,
+            "share_gated": 1.0
+          },
+          "11": {
+            "S_point": 1.0,
+            "p_certified": 1.0,
+            "share_gated": 1.0
+          },
+          "2": {
+            "S_point": 1.0,
+            "p_certified": 1.0,
+            "share_gated": 1.0
+          },
+          "3": {
+            "S_point": 1.0,
+            "p_certified": 1.0,
+            "share_gated": 1.0
+          },
+          "4": {
+            "S_point": 1.0,
+            "p_certified": 1.0,
+            "share_gated": 1.0
+          },
+          "5": {
+            "S_point": 1.0,
+            "p_certified": 1.0,
+            "share_gated": 1.0
+          },
+          "6": {
+            "S_point": 1.0,
+            "p_certified": 1.0,
+            "share_gated": 1.0
+          },
+          "7": {
+            "S_point": 1.0,
+            "p_certified": 1.0,
+            "share_gated": 1.0
+          }
+        },
+        "fold_mean_p_certified": 1.0,
+        "fold_expected_certified": 9.0,
+        "fold_gate_shares_among_gated": {
+          "data_sufficiency": {
+            "fail": 0.0,
+            "caution": 0.0,
+            "pass": 1.0
+          },
+          "risk_concentration": {
+            "fail": 0.0,
+            "caution": 0.0,
+            "pass": 1.0
+          },
+          "transfer_stability": {
+            "fail": 0.0,
+            "caution": 0.0,
+            "pass": 1.0
+          },
+          "risk_gradient": {
+            "fail": 0.0,
+            "caution": 0.0002,
+            "pass": 0.9998
+          },
+          "prior_record_trace": {
+            "fail": 0.0,
+            "caution": 0.0,
+            "pass": 1.0
+          }
+        }
+      },
+      "B": {
+        "pooled": {
+          "p_certified": 1.0,
+          "share_gated": 1.0,
+          "S_distribution": {
+            "0.8": 0.009,
+            "0.9": 0.001,
+            "1.0": 0.99
+          },
+          "gate_shares_among_gated": {
+            "data_sufficiency": {
+              "fail": 0.0,
+              "caution": 0.009,
+              "pass": 0.991
+            },
+            "risk_concentration": {
+              "fail": 0.0,
+              "caution": 0.0,
+              "pass": 1.0
+            },
+            "transfer_stability": {
+              "fail": 0.0,
+              "caution": 0.009,
+              "pass": 0.991
+            },
+            "risk_gradient": {
+              "fail": 0.0,
+              "caution": 0.001,
+              "pass": 0.999
+            },
+            "prior_record_trace": {
+              "fail": 0.0,
+              "caution": 0.0,
+              "pass": 1.0
+            }
+          }
+        },
+        "folds": {
+          "1": {
+            "S_point": 1.0,
+            "p_certified": 0.999,
+            "share_gated": 1.0
+          },
+          "10": {
+            "S_point": 1.0,
+            "p_certified": 1.0,
+            "share_gated": 1.0
+          },
+          "11": {
+            "S_point": 1.0,
+            "p_certified": 1.0,
+            "share_gated": 1.0
+          },
+          "2": {
+            "S_point": 1.0,
+            "p_certified": 1.0,
+            "share_gated": 1.0
+          },
+          "3": {
+            "S_point": 1.0,
+            "p_certified": 1.0,
+            "share_gated": 1.0
+          },
+          "4": {
+            "S_point": 1.0,
+            "p_certified": 1.0,
+            "share_gated": 1.0
+          },
+          "5": {
+            "S_point": 1.0,
+            "p_certified": 1.0,
+            "share_gated": 1.0
+          },
+          "6": {
+            "S_point": 1.0,
+            "p_certified": 1.0,
+            "share_gated": 1.0
+          },
+          "7": {
+            "S_point": 1.0,
+            "p_certified": 1.0,
+            "share_gated": 1.0
+          }
+        },
+        "fold_mean_p_certified": 0.9999,
+        "fold_expected_certified": 9.0,
+        "fold_gate_shares_among_gated": {
+          "data_sufficiency": {
+            "fail": 0.0001,
+            "caution": 0.0621,
+            "pass": 0.9378
+          },
+          "risk_concentration": {
+            "fail": 0.0,
+            "caution": 0.0,
+            "pass": 1.0
+          },
+          "transfer_stability": {
+            "fail": 0.0,
+            "caution": 0.0624,
+            "pass": 0.9376
+          },
+          "risk_gradient": {
+            "fail": 0.0,
+            "caution": 0.0131,
+            "pass": 0.9869
+          },
+          "prior_record_trace": {
+            "fail": 0.0,
+            "caution": 0.0,
+            "pass": 1.0
+          }
+        }
+      }
+    },
+    "C20": {
+      "system_desc": "Stairs",
+      "S_pooled": 0.4,
+      "certified_pooled": false,
+      "scores_pooled": {
+        "data_sufficiency": "caution",
+        "risk_concentration": "pass",
+        "transfer_stability": "caution",
+        "risk_gradient": "fail",
+        "prior_record_trace": "fail"
+      },
+      "margins_pooled": {
+        "n_campuses": {
+          "value": 5,
+          "nearest_threshold": 6,
+          "margin": -1.0
+        },
+        "n_pos": {
+          "value": 174,
+          "nearest_threshold": 100,
+          "margin": 74.0
+        },
+        "pooled_lift": {
+          "value": 2.87,
+          "nearest_threshold": 2.0,
+          "margin": 0.87
+        },
+        "frac_2x": {
+          "value": 0.6,
+          "nearest_threshold": 0.6,
+          "margin": 0.0
+        },
+        "top_band": {
+          "value": 1.45,
+          "nearest_threshold": 1.5,
+          "margin": -0.05
+        },
+        "rho": {
+          "value": 1.0,
+          "nearest_threshold": 0.9,
+          "margin": 0.1
+        },
+        "zero_prior_share": {
+          "value": 0.434,
+          "nearest_threshold": 0.25,
+          "margin": 0.184
+        },
+        "n_trace_events": {
+          "value": 53,
+          "nearest_threshold": 30,
+          "margin": 23.0
+        }
+      },
+      "folds_certified": 0,
+      "folds_gated": 9,
+      "fold_frequency": 0.0,
+      "W": {
+        "pooled": {
+          "p_certified": 0.0,
+          "share_gated": 1.0,
+          "S_distribution": {
+            "0.0": 0.301,
+            "0.3": 0.001,
+            "0.4": 0.384,
+            "0.5": 0.301,
+            "0.6": 0.013
+          },
+          "gate_shares_among_gated": {
+            "data_sufficiency": {
+              "fail": 0.003,
+              "caution": 0.997,
+              "pass": 0.0
+            },
+            "risk_concentration": {
+              "fail": 0.0,
+              "caution": 0.011,
+              "pass": 0.989
+            },
+            "transfer_stability": {
+              "fail": 0.372,
+              "caution": 0.612,
+              "pass": 0.016
+            },
+            "risk_gradient": {
+              "fail": 0.623,
+              "caution": 0.375,
+              "pass": 0.002
+            },
+            "prior_record_trace": {
+              "fail": 0.995,
+              "caution": 0.005,
+              "pass": 0.0
+            }
+          }
+        },
+        "folds": {
+          "1": {
+            "S_point": 0.5,
+            "p_certified": 0.001,
+            "share_gated": 1.0
+          },
+          "10": {
+            "S_point": 0.4,
+            "p_certified": 0.0,
+            "share_gated": 1.0
+          },
+          "11": {
+            "S_point": 0.0,
+            "p_certified": 0.0,
+            "share_gated": 1.0
+          },
+          "2": {
+            "S_point": 0.4,
+            "p_certified": 0.0,
+            "share_gated": 1.0
+          },
+          "3": {
+            "S_point": 0.5,
+            "p_certified": 0.033,
+            "share_gated": 1.0
+          },
+          "4": {
+            "S_point": 0.5,
+            "p_certified": 0.0,
+            "share_gated": 1.0
+          },
+          "5": {
+            "S_point": 0.4,
+            "p_certified": 0.0,
+            "share_gated": 1.0
+          },
+          "6": {
+            "S_point": 0.5,
+            "p_certified": 0.001,
+            "share_gated": 1.0
+          },
+          "7": {
+            "S_point": 0.5,
+            "p_certified": 0.0,
+            "share_gated": 1.0
+          }
+        },
+        "fold_mean_p_certified": 0.0039,
+        "fold_expected_certified": 0.04,
+        "fold_gate_shares_among_gated": {
+          "data_sufficiency": {
+            "fail": 0.0156,
+            "caution": 0.9844,
+            "pass": 0.0
+          },
+          "risk_concentration": {
+            "fail": 0.002,
+            "caution": 0.037,
+            "pass": 0.961
+          },
+          "transfer_stability": {
+            "fail": 0.3113,
+            "caution": 0.6869,
+            "pass": 0.0018
+          },
+          "risk_gradient": {
+            "fail": 0.3896,
+            "caution": 0.5918,
+            "pass": 0.0187
+          },
+          "prior_record_trace": {
+            "fail": 0.9257,
+            "caution": 0.0743,
+            "pass": 0.0
+          }
+        }
+      },
+      "B": {
+        "pooled": {
+          "p_certified": 0.012,
+          "share_gated": 1.0,
+          "S_distribution": {
+            "0.0": 0.34,
+            "0.3": 0.009,
+            "0.4": 0.256,
+            "0.5": 0.297,
+            "0.6": 0.086,
+            "0.7": 0.012
+          },
+          "gate_shares_among_gated": {
+            "data_sufficiency": {
+              "fail": 0.174,
+              "caution": 0.826,
+              "pass": 0.0
+            },
+            "risk_concentration": {
+              "fail": 0.004,
+              "caution": 0.046,
+              "pass": 0.95
+            },
+            "transfer_stability": {
+              "fail": 0.379,
+              "caution": 0.544,
+              "pass": 0.077
+            },
+            "risk_gradient": {
+              "fail": 0.566,
+              "caution": 0.413,
+              "pass": 0.021
+            },
+            "prior_record_trace": {
+              "fail": 0.743,
+              "caution": 0.257,
+              "pass": 0.0
+            }
+          }
+        },
+        "folds": {
+          "1": {
+            "S_point": 0.5,
+            "p_certified": 0.013,
+            "share_gated": 0.995
+          },
+          "10": {
+            "S_point": 0.4,
+            "p_certified": 0.008,
+            "share_gated": 0.994
+          },
+          "11": {
+            "S_point": 0.0,
+            "p_certified": 0.002,
+            "share_gated": 0.991
+          },
+          "2": {
+            "S_point": 0.4,
+            "p_certified": 0.009,
+            "share_gated": 1.0
+          },
+          "3": {
+            "S_point": 0.5,
+            "p_certified": 0.083,
+            "share_gated": 0.996
+          },
+          "4": {
+            "S_point": 0.5,
+            "p_certified": 0.014,
+            "share_gated": 0.994
+          },
+          "5": {
+            "S_point": 0.4,
+            "p_certified": 0.012,
+            "share_gated": 0.999
+          },
+          "6": {
+            "S_point": 0.5,
+            "p_certified": 0.003,
+            "share_gated": 0.993
+          },
+          "7": {
+            "S_point": 0.5,
+            "p_certified": 0.005,
+            "share_gated": 0.999
+          }
+        },
+        "fold_mean_p_certified": 0.0166,
+        "fold_expected_certified": 0.15,
+        "fold_gate_shares_among_gated": {
+          "data_sufficiency": {
+            "fail": 0.2681,
+            "caution": 0.7319,
+            "pass": 0.0
+          },
+          "risk_concentration": {
+            "fail": 0.0329,
+            "caution": 0.0664,
+            "pass": 0.9007
+          },
+          "transfer_stability": {
+            "fail": 0.3378,
+            "caution": 0.6095,
+            "pass": 0.0527
+          },
+          "risk_gradient": {
+            "fail": 0.4104,
+            "caution": 0.5556,
+            "pass": 0.0339
+          },
+          "prior_record_trace": {
+            "fail": 0.6582,
+            "caution": 0.3389,
+            "pass": 0.0029
+          }
+        }
+      }
+    },
+    "C30": {
+      "system_desc": "Interior Finishes",
+      "S_pooled": 1.0,
+      "certified_pooled": true,
+      "scores_pooled": {
+        "data_sufficiency": "pass",
+        "risk_concentration": "pass",
+        "transfer_stability": "pass",
+        "risk_gradient": "pass",
+        "prior_record_trace": "pass"
+      },
+      "margins_pooled": {
+        "n_campuses": {
+          "value": 8,
+          "nearest_threshold": 6,
+          "margin": 2.0
+        },
+        "n_pos": {
+          "value": 2549,
+          "nearest_threshold": 500,
+          "margin": 2049.0
+        },
+        "pooled_lift": {
+          "value": 5.6,
+          "nearest_threshold": 2.0,
+          "margin": 3.6
+        },
+        "frac_2x": {
+          "value": 1.0,
+          "nearest_threshold": 0.8,
+          "margin": 0.2
+        },
+        "top_band": {
+          "value": 2.47,
+          "nearest_threshold": 2.0,
+          "margin": 0.47
+        },
+        "rho": {
+          "value": 1.0,
+          "nearest_threshold": 0.9,
+          "margin": 0.1
+        },
+        "zero_prior_share": {
+          "value": 0.063,
+          "nearest_threshold": 0.1,
+          "margin": -0.037
+        },
+        "n_trace_events": {
+          "value": 820,
+          "nearest_threshold": 30,
+          "margin": 790.0
+        }
+      },
+      "folds_certified": 9,
+      "folds_gated": 9,
+      "fold_frequency": 1.0,
+      "W": {
+        "pooled": {
+          "p_certified": 1.0,
+          "share_gated": 1.0,
+          "S_distribution": {
+            "1.0": 1.0
+          },
+          "gate_shares_among_gated": {
+            "data_sufficiency": {
+              "fail": 0.0,
+              "caution": 0.0,
+              "pass": 1.0
+            },
+            "risk_concentration": {
+              "fail": 0.0,
+              "caution": 0.0,
+              "pass": 1.0
+            },
+            "transfer_stability": {
+              "fail": 0.0,
+              "caution": 0.0,
+              "pass": 1.0
+            },
+            "risk_gradient": {
+              "fail": 0.0,
+              "caution": 0.0,
+              "pass": 1.0
+            },
+            "prior_record_trace": {
+              "fail": 0.0,
+              "caution": 0.0,
+              "pass": 1.0
+            }
+          }
+        },
+        "folds": {
+          "1": {
+            "S_point": 1.0,
+            "p_certified": 1.0,
+            "share_gated": 1.0
+          },
+          "10": {
+            "S_point": 1.0,
+            "p_certified": 1.0,
+            "share_gated": 1.0
+          },
+          "11": {
+            "S_point": 1.0,
+            "p_certified": 1.0,
+            "share_gated": 1.0
+          },
+          "2": {
+            "S_point": 1.0,
+            "p_certified": 1.0,
+            "share_gated": 1.0
+          },
+          "3": {
+            "S_point": 1.0,
+            "p_certified": 1.0,
+            "share_gated": 1.0
+          },
+          "4": {
+            "S_point": 1.0,
+            "p_certified": 1.0,
+            "share_gated": 1.0
+          },
+          "5": {
+            "S_point": 1.0,
+            "p_certified": 1.0,
+            "share_gated": 1.0
+          },
+          "6": {
+            "S_point": 1.0,
+            "p_certified": 1.0,
+            "share_gated": 1.0
+          },
+          "7": {
+            "S_point": 1.0,
+            "p_certified": 1.0,
+            "share_gated": 1.0
+          }
+        },
+        "fold_mean_p_certified": 1.0,
+        "fold_expected_certified": 9.0,
+        "fold_gate_shares_among_gated": {
+          "data_sufficiency": {
+            "fail": 0.0,
+            "caution": 0.0,
+            "pass": 1.0
+          },
+          "risk_concentration": {
+            "fail": 0.0,
+            "caution": 0.0,
+            "pass": 1.0
+          },
+          "transfer_stability": {
+            "fail": 0.0,
+            "caution": 0.0018,
+            "pass": 0.9982
+          },
+          "risk_gradient": {
+            "fail": 0.0,
+            "caution": 0.0007,
+            "pass": 0.9993
+          },
+          "prior_record_trace": {
+            "fail": 0.0,
+            "caution": 0.0141,
+            "pass": 0.9859
+          }
+        }
+      },
+      "B": {
+        "pooled": {
+          "p_certified": 1.0,
+          "share_gated": 1.0,
+          "S_distribution": {
+            "0.8": 0.012,
+            "0.9": 0.196,
+            "1.0": 0.792
+          },
+          "gate_shares_among_gated": {
+            "data_sufficiency": {
+              "fail": 0.0,
+              "caution": 0.009,
+              "pass": 0.991
+            },
+            "risk_concentration": {
+              "fail": 0.0,
+              "caution": 0.0,
+              "pass": 1.0
+            },
+            "transfer_stability": {
+              "fail": 0.0,
+              "caution": 0.009,
+              "pass": 0.991
+            },
+            "risk_gradient": {
+              "fail": 0.0,
+              "caution": 0.007,
+              "pass": 0.993
+            },
+            "prior_record_trace": {
+              "fail": 0.002,
+              "caution": 0.191,
+              "pass": 0.807
+            }
+          }
+        },
+        "folds": {
+          "1": {
+            "S_point": 1.0,
+            "p_certified": 0.994,
+            "share_gated": 1.0
+          },
+          "10": {
+            "S_point": 1.0,
+            "p_certified": 0.996,
+            "share_gated": 1.0
+          },
+          "11": {
+            "S_point": 1.0,
+            "p_certified": 0.996,
+            "share_gated": 1.0
+          },
+          "2": {
+            "S_point": 1.0,
+            "p_certified": 0.993,
+            "share_gated": 1.0
+          },
+          "3": {
+            "S_point": 1.0,
+            "p_certified": 1.0,
+            "share_gated": 1.0
+          },
+          "4": {
+            "S_point": 1.0,
+            "p_certified": 0.999,
+            "share_gated": 1.0
+          },
+          "5": {
+            "S_point": 1.0,
+            "p_certified": 0.992,
+            "share_gated": 1.0
+          },
+          "6": {
+            "S_point": 1.0,
+            "p_certified": 0.996,
+            "share_gated": 1.0
+          },
+          "7": {
+            "S_point": 1.0,
+            "p_certified": 1.0,
+            "share_gated": 1.0
+          }
+        },
+        "fold_mean_p_certified": 0.9962,
+        "fold_expected_certified": 8.97,
+        "fold_gate_shares_among_gated": {
+          "data_sufficiency": {
+            "fail": 0.0001,
+            "caution": 0.0621,
+            "pass": 0.9378
+          },
+          "risk_concentration": {
+            "fail": 0.0,
+            "caution": 0.0,
+            "pass": 1.0
+          },
+          "transfer_stability": {
+            "fail": 0.0001,
+            "caution": 0.0667,
+            "pass": 0.9332
+          },
+          "risk_gradient": {
+            "fail": 0.0,
+            "caution": 0.0428,
+            "pass": 0.9572
+          },
+          "prior_record_trace": {
+            "fail": 0.0033,
+            "caution": 0.2102,
+            "pass": 0.7864
+          }
+        }
+      }
+    },
+    "D10": {
+      "system_desc": "Conveying",
+      "S_pooled": 0.6,
+      "certified_pooled": false,
+      "scores_pooled": {
+        "data_sufficiency": "caution",
+        "risk_concentration": "pass",
+        "transfer_stability": "caution",
+        "risk_gradient": "caution",
+        "prior_record_trace": "caution"
+      },
+      "margins_pooled": {
+        "n_campuses": {
+          "value": 7,
+          "nearest_threshold": 6,
+          "margin": 1.0
+        },
+        "n_pos": {
+          "value": 345,
+          "nearest_threshold": 500,
+          "margin": -155.0
+        },
+        "pooled_lift": {
+          "value": 5.39,
+          "nearest_threshold": 2.0,
+          "margin": 3.39
+        },
+        "frac_2x": {
+          "value": 0.714,
+          "nearest_threshold": 0.8,
+          "margin": -0.086
+        },
+        "top_band": {
+          "value": 1.9,
+          "nearest_threshold": 2.0,
+          "margin": -0.1
+        },
+        "rho": {
+          "value": 0.9,
+          "nearest_threshold": 0.9,
+          "margin": 0.0
+        },
+        "zero_prior_share": {
+          "value": 0.207,
+          "nearest_threshold": 0.25,
+          "margin": -0.043
+        },
+        "n_trace_events": {
+          "value": 111,
+          "nearest_threshold": 30,
+          "margin": 81.0
+        }
+      },
+      "folds_certified": 2,
+      "folds_gated": 9,
+      "fold_frequency": 0.2222,
+      "W": {
+        "pooled": {
+          "p_certified": 0.397,
+          "share_gated": 1.0,
+          "S_distribution": {
+            "0.0": 0.001,
+            "0.4": 0.017,
+            "0.5": 0.207,
+            "0.6": 0.378,
+            "0.7": 0.368,
+            "0.8": 0.029
+          },
+          "gate_shares_among_gated": {
+            "data_sufficiency": {
+              "fail": 0.0,
+              "caution": 1.0,
+              "pass": 0.0
+            },
+            "risk_concentration": {
+              "fail": 0.0,
+              "caution": 0.0,
+              "pass": 1.0
+            },
+            "transfer_stability": {
+              "fail": 0.15,
+              "caution": 0.413,
+              "pass": 0.437
+            },
+            "risk_gradient": {
+              "fail": 0.004,
+              "caution": 0.936,
+              "pass": 0.06
+            },
+            "prior_record_trace": {
+              "fail": 0.157,
+              "caution": 0.84,
+              "pass": 0.003
+            }
+          }
+        },
+        "folds": {
+          "1": {
+            "S_point": 0.6,
+            "p_certified": 0.174,
+            "share_gated": 1.0
+          },
+          "10": {
+            "S_point": 0.6,
+            "p_certified": 0.356,
+            "share_gated": 1.0
+          },
+          "11": {
+            "S_point": 0.5,
+            "p_certified": 0.014,
+            "share_gated": 1.0
+          },
+          "2": {
+            "S_point": 0.8,
+            "p_certified": 0.556,
+            "share_gated": 1.0
+          },
+          "3": {
+            "S_point": 0.6,
+            "p_certified": 0.235,
+            "share_gated": 1.0
+          },
+          "4": {
+            "S_point": 0.5,
+            "p_certified": 0.02,
+            "share_gated": 1.0
+          },
+          "5": {
+            "S_point": 0.5,
+            "p_certified": 0.001,
+            "share_gated": 1.0
+          },
+          "6": {
+            "S_point": 0.7,
+            "p_certified": 0.391,
+            "share_gated": 1.0
+          },
+          "7": {
+            "S_point": 0.6,
+            "p_certified": 0.322,
+            "share_gated": 1.0
+          }
+        },
+        "fold_mean_p_certified": 0.2299,
+        "fold_expected_certified": 2.07,
+        "fold_gate_shares_among_gated": {
+          "data_sufficiency": {
+            "fail": 0.0,
+            "caution": 1.0,
+            "pass": 0.0
+          },
+          "risk_concentration": {
+            "fail": 0.0,
+            "caution": 0.0,
+            "pass": 1.0
+          },
+          "transfer_stability": {
+            "fail": 0.2822,
+            "caution": 0.498,
+            "pass": 0.2198
+          },
+          "risk_gradient": {
+            "fail": 0.1118,
+            "caution": 0.7984,
+            "pass": 0.0898
+          },
+          "prior_record_trace": {
+            "fail": 0.1766,
+            "caution": 0.8173,
+            "pass": 0.0061
+          }
+        }
+      },
+      "B": {
+        "pooled": {
+          "p_certified": 0.346,
+          "share_gated": 1.0,
+          "S_distribution": {
+            "0.0": 0.055,
+            "0.4": 0.062,
+            "0.5": 0.27,
+            "0.6": 0.267,
+            "0.7": 0.252,
+            "0.8": 0.085,
+            "0.9": 0.009
+          },
+          "gate_shares_among_gated": {
+            "data_sufficiency": {
+              "fail": 0.003,
+              "caution": 0.913,
+              "pass": 0.084
+            },
+            "risk_concentration": {
+              "fail": 0.0,
+              "caution": 0.002,
+              "pass": 0.998
+            },
+            "transfer_stability": {
+              "fail": 0.184,
+              "caution": 0.491,
+              "pass": 0.325
+            },
+            "risk_gradient": {
+              "fail": 0.155,
+              "caution": 0.651,
+              "pass": 0.194
+            },
+            "prior_record_trace": {
+              "fail": 0.292,
+              "caution": 0.687,
+              "pass": 0.021
+            }
+          }
+        },
+        "folds": {
+          "1": {
+            "S_point": 0.6,
+            "p_certified": 0.197,
+            "share_gated": 0.999
+          },
+          "10": {
+            "S_point": 0.6,
+            "p_certified": 0.399,
+            "share_gated": 1.0
+          },
+          "11": {
+            "S_point": 0.5,
+            "p_certified": 0.063,
+            "share_gated": 1.0
+          },
+          "2": {
+            "S_point": 0.8,
+            "p_certified": 0.455,
+            "share_gated": 1.0
+          },
+          "3": {
+            "S_point": 0.6,
+            "p_certified": 0.206,
+            "share_gated": 1.0
+          },
+          "4": {
+            "S_point": 0.5,
+            "p_certified": 0.05,
+            "share_gated": 1.0
+          },
+          "5": {
+            "S_point": 0.5,
+            "p_certified": 0.044,
+            "share_gated": 1.0
+          },
+          "6": {
+            "S_point": 0.7,
+            "p_certified": 0.338,
+            "share_gated": 1.0
+          },
+          "7": {
+            "S_point": 0.6,
+            "p_certified": 0.343,
+            "share_gated": 1.0
+          }
+        },
+        "fold_mean_p_certified": 0.2328,
+        "fold_expected_certified": 2.1,
+        "fold_gate_shares_among_gated": {
+          "data_sufficiency": {
+            "fail": 0.0249,
+            "caution": 0.9179,
+            "pass": 0.0572
+          },
+          "risk_concentration": {
+            "fail": 0.0056,
+            "caution": 0.0107,
+            "pass": 0.9838
+          },
+          "transfer_stability": {
+            "fail": 0.351,
+            "caution": 0.4459,
+            "pass": 0.203
+          },
+          "risk_gradient": {
+            "fail": 0.2726,
+            "caution": 0.5454,
+            "pass": 0.182
+          },
+          "prior_record_trace": {
+            "fail": 0.2838,
+            "caution": 0.6817,
+            "pass": 0.0344
+          }
+        }
+      }
+    },
+    "D20": {
+      "system_desc": "Plumbing",
+      "S_pooled": 1.0,
+      "certified_pooled": true,
+      "scores_pooled": {
+        "data_sufficiency": "pass",
+        "risk_concentration": "pass",
+        "transfer_stability": "pass",
+        "risk_gradient": "pass",
+        "prior_record_trace": "pass"
+      },
+      "margins_pooled": {
+        "n_campuses": {
+          "value": 8,
+          "nearest_threshold": 6,
+          "margin": 2.0
+        },
+        "n_pos": {
+          "value": 6359,
+          "nearest_threshold": 500,
+          "margin": 5859.0
+        },
+        "pooled_lift": {
+          "value": 6.05,
+          "nearest_threshold": 2.0,
+          "margin": 4.05
+        },
+        "frac_2x": {
+          "value": 1.0,
+          "nearest_threshold": 0.8,
+          "margin": 0.2
+        },
+        "top_band": {
+          "value": 3.69,
+          "nearest_threshold": 2.0,
+          "margin": 1.69
+        },
+        "rho": {
+          "value": 1.0,
+          "nearest_threshold": 0.9,
+          "margin": 0.1
+        },
+        "zero_prior_share": {
+          "value": 0.008,
+          "nearest_threshold": 0.1,
+          "margin": -0.092
+        },
+        "n_trace_events": {
+          "value": 2269,
+          "nearest_threshold": 30,
+          "margin": 2239.0
+        }
+      },
+      "folds_certified": 9,
+      "folds_gated": 9,
+      "fold_frequency": 1.0,
+      "W": {
+        "pooled": {
+          "p_certified": 1.0,
+          "share_gated": 1.0,
+          "S_distribution": {
+            "1.0": 1.0
+          },
+          "gate_shares_among_gated": {
+            "data_sufficiency": {
+              "fail": 0.0,
+              "caution": 0.0,
+              "pass": 1.0
+            },
+            "risk_concentration": {
+              "fail": 0.0,
+              "caution": 0.0,
+              "pass": 1.0
+            },
+            "transfer_stability": {
+              "fail": 0.0,
+              "caution": 0.0,
+              "pass": 1.0
+            },
+            "risk_gradient": {
+              "fail": 0.0,
+              "caution": 0.0,
+              "pass": 1.0
+            },
+            "prior_record_trace": {
+              "fail": 0.0,
+              "caution": 0.0,
+              "pass": 1.0
+            }
+          }
+        },
+        "folds": {
+          "1": {
+            "S_point": 1.0,
+            "p_certified": 1.0,
+            "share_gated": 1.0
+          },
+          "10": {
+            "S_point": 1.0,
+            "p_certified": 1.0,
+            "share_gated": 1.0
+          },
+          "11": {
+            "S_point": 1.0,
+            "p_certified": 1.0,
+            "share_gated": 1.0
+          },
+          "2": {
+            "S_point": 1.0,
+            "p_certified": 1.0,
+            "share_gated": 1.0
+          },
+          "3": {
+            "S_point": 1.0,
+            "p_certified": 1.0,
+            "share_gated": 1.0
+          },
+          "4": {
+            "S_point": 1.0,
+            "p_certified": 1.0,
+            "share_gated": 1.0
+          },
+          "5": {
+            "S_point": 1.0,
+            "p_certified": 1.0,
+            "share_gated": 1.0
+          },
+          "6": {
+            "S_point": 1.0,
+            "p_certified": 1.0,
+            "share_gated": 1.0
+          },
+          "7": {
+            "S_point": 1.0,
+            "p_certified": 1.0,
+            "share_gated": 1.0
+          }
+        },
+        "fold_mean_p_certified": 1.0,
+        "fold_expected_certified": 9.0,
+        "fold_gate_shares_among_gated": {
+          "data_sufficiency": {
+            "fail": 0.0,
+            "caution": 0.0,
+            "pass": 1.0
+          },
+          "risk_concentration": {
+            "fail": 0.0,
+            "caution": 0.0,
+            "pass": 1.0
+          },
+          "transfer_stability": {
+            "fail": 0.0,
+            "caution": 0.0,
+            "pass": 1.0
+          },
+          "risk_gradient": {
+            "fail": 0.0,
+            "caution": 0.0008,
+            "pass": 0.9992
+          },
+          "prior_record_trace": {
+            "fail": 0.0,
+            "caution": 0.0,
+            "pass": 1.0
+          }
+        }
+      },
+      "B": {
+        "pooled": {
+          "p_certified": 1.0,
+          "share_gated": 1.0,
+          "S_distribution": {
+            "0.8": 0.004,
+            "0.9": 0.01,
+            "1.0": 0.986
+          },
+          "gate_shares_among_gated": {
+            "data_sufficiency": {
+              "fail": 0.0,
+              "caution": 0.004,
+              "pass": 0.996
+            },
+            "risk_concentration": {
+              "fail": 0.0,
+              "caution": 0.0,
+              "pass": 1.0
+            },
+            "transfer_stability": {
+              "fail": 0.0,
+              "caution": 0.014,
+              "pass": 0.986
+            },
+            "risk_gradient": {
+              "fail": 0.0,
+              "caution": 0.0,
+              "pass": 1.0
+            },
+            "prior_record_trace": {
+              "fail": 0.0,
+              "caution": 0.0,
+              "pass": 1.0
+            }
+          }
+        },
+        "folds": {
+          "1": {
+            "S_point": 1.0,
+            "p_certified": 1.0,
+            "share_gated": 1.0
+          },
+          "10": {
+            "S_point": 1.0,
+            "p_certified": 1.0,
+            "share_gated": 1.0
+          },
+          "11": {
+            "S_point": 1.0,
+            "p_certified": 1.0,
+            "share_gated": 1.0
+          },
+          "2": {
+            "S_point": 1.0,
+            "p_certified": 1.0,
+            "share_gated": 1.0
+          },
+          "3": {
+            "S_point": 1.0,
+            "p_certified": 1.0,
+            "share_gated": 1.0
+          },
+          "4": {
+            "S_point": 1.0,
+            "p_certified": 1.0,
+            "share_gated": 1.0
+          },
+          "5": {
+            "S_point": 1.0,
+            "p_certified": 0.998,
+            "share_gated": 1.0
+          },
+          "6": {
+            "S_point": 1.0,
+            "p_certified": 0.999,
+            "share_gated": 1.0
+          },
+          "7": {
+            "S_point": 1.0,
+            "p_certified": 1.0,
+            "share_gated": 1.0
+          }
+        },
+        "fold_mean_p_certified": 0.9997,
+        "fold_expected_certified": 9.0,
+        "fold_gate_shares_among_gated": {
+          "data_sufficiency": {
+            "fail": 0.0,
+            "caution": 0.0377,
+            "pass": 0.9623
+          },
+          "risk_concentration": {
+            "fail": 0.0,
+            "caution": 0.0,
+            "pass": 1.0
+          },
+          "transfer_stability": {
+            "fail": 0.0003,
+            "caution": 0.0441,
+            "pass": 0.9556
+          },
+          "risk_gradient": {
+            "fail": 0.0,
+            "caution": 0.0056,
+            "pass": 0.9944
+          },
+          "prior_record_trace": {
+            "fail": 0.0,
+            "caution": 0.0,
+            "pass": 1.0
+          }
+        }
+      }
+    },
+    "D30": {
+      "system_desc": "HVAC",
+      "S_pooled": 1.0,
+      "certified_pooled": true,
+      "scores_pooled": {
+        "data_sufficiency": "pass",
+        "risk_concentration": "pass",
+        "transfer_stability": "pass",
+        "risk_gradient": "pass",
+        "prior_record_trace": "pass"
+      },
+      "margins_pooled": {
+        "n_campuses": {
+          "value": 9,
+          "nearest_threshold": 6,
+          "margin": 3.0
+        },
+        "n_pos": {
+          "value": 6606,
+          "nearest_threshold": 500,
+          "margin": 6106.0
+        },
+        "pooled_lift": {
+          "value": 5.94,
+          "nearest_threshold": 2.0,
+          "margin": 3.94
+        },
+        "frac_2x": {
+          "value": 0.889,
+          "nearest_threshold": 0.8,
+          "margin": 0.089
+        },
+        "top_band": {
+          "value": 3.5,
+          "nearest_threshold": 2.0,
+          "margin": 1.5
+        },
+        "rho": {
+          "value": 1.0,
+          "nearest_threshold": 0.9,
+          "margin": 0.1
+        },
+        "zero_prior_share": {
+          "value": 0.002,
+          "nearest_threshold": 0.1,
+          "margin": -0.098
+        },
+        "n_trace_events": {
+          "value": 2278,
+          "nearest_threshold": 30,
+          "margin": 2248.0
+        }
+      },
+      "folds_certified": 9,
+      "folds_gated": 9,
+      "fold_frequency": 1.0,
+      "W": {
+        "pooled": {
+          "p_certified": 1.0,
+          "share_gated": 1.0,
+          "S_distribution": {
+            "1.0": 1.0
+          },
+          "gate_shares_among_gated": {
+            "data_sufficiency": {
+              "fail": 0.0,
+              "caution": 0.0,
+              "pass": 1.0
+            },
+            "risk_concentration": {
+              "fail": 0.0,
+              "caution": 0.0,
+              "pass": 1.0
+            },
+            "transfer_stability": {
+              "fail": 0.0,
+              "caution": 0.0,
+              "pass": 1.0
+            },
+            "risk_gradient": {
+              "fail": 0.0,
+              "caution": 0.0,
+              "pass": 1.0
+            },
+            "prior_record_trace": {
+              "fail": 0.0,
+              "caution": 0.0,
+              "pass": 1.0
+            }
+          }
+        },
+        "folds": {
+          "1": {
+            "S_point": 1.0,
+            "p_certified": 1.0,
+            "share_gated": 1.0
+          },
+          "10": {
+            "S_point": 1.0,
+            "p_certified": 1.0,
+            "share_gated": 1.0
+          },
+          "11": {
+            "S_point": 1.0,
+            "p_certified": 1.0,
+            "share_gated": 1.0
+          },
+          "2": {
+            "S_point": 1.0,
+            "p_certified": 1.0,
+            "share_gated": 1.0
+          },
+          "3": {
+            "S_point": 1.0,
+            "p_certified": 1.0,
+            "share_gated": 1.0
+          },
+          "4": {
+            "S_point": 1.0,
+            "p_certified": 1.0,
+            "share_gated": 1.0
+          },
+          "5": {
+            "S_point": 1.0,
+            "p_certified": 1.0,
+            "share_gated": 1.0
+          },
+          "6": {
+            "S_point": 1.0,
+            "p_certified": 1.0,
+            "share_gated": 1.0
+          },
+          "7": {
+            "S_point": 1.0,
+            "p_certified": 1.0,
+            "share_gated": 1.0
+          }
+        },
+        "fold_mean_p_certified": 1.0,
+        "fold_expected_certified": 9.0,
+        "fold_gate_shares_among_gated": {
+          "data_sufficiency": {
+            "fail": 0.0,
+            "caution": 0.0,
+            "pass": 1.0
+          },
+          "risk_concentration": {
+            "fail": 0.0,
+            "caution": 0.0,
+            "pass": 1.0
+          },
+          "transfer_stability": {
+            "fail": 0.0,
+            "caution": 0.0042,
+            "pass": 0.9958
+          },
+          "risk_gradient": {
+            "fail": 0.0,
+            "caution": 0.0,
+            "pass": 1.0
+          },
+          "prior_record_trace": {
+            "fail": 0.0,
+            "caution": 0.0,
+            "pass": 1.0
+          }
+        }
+      },
+      "B": {
+        "pooled": {
+          "p_certified": 0.998,
+          "share_gated": 1.0,
+          "S_distribution": {
+            "0.5": 0.002,
+            "0.8": 0.002,
+            "0.9": 0.138,
+            "1.0": 0.858
+          },
+          "gate_shares_among_gated": {
+            "data_sufficiency": {
+              "fail": 0.0,
+              "caution": 0.0,
+              "pass": 1.0
+            },
+            "risk_concentration": {
+              "fail": 0.0,
+              "caution": 0.0,
+              "pass": 1.0
+            },
+            "transfer_stability": {
+              "fail": 0.002,
+              "caution": 0.133,
+              "pass": 0.865
+            },
+            "risk_gradient": {
+              "fail": 0.0,
+              "caution": 0.01,
+              "pass": 0.99
+            },
+            "prior_record_trace": {
+              "fail": 0.0,
+              "caution": 0.0,
+              "pass": 1.0
+            }
+          }
+        },
+        "folds": {
+          "1": {
+            "S_point": 1.0,
+            "p_certified": 1.0,
+            "share_gated": 1.0
+          },
+          "10": {
+            "S_point": 1.0,
+            "p_certified": 0.999,
+            "share_gated": 1.0
+          },
+          "11": {
+            "S_point": 1.0,
+            "p_certified": 1.0,
+            "share_gated": 1.0
+          },
+          "2": {
+            "S_point": 1.0,
+            "p_certified": 1.0,
+            "share_gated": 1.0
+          },
+          "3": {
+            "S_point": 1.0,
+            "p_certified": 1.0,
+            "share_gated": 1.0
+          },
+          "4": {
+            "S_point": 1.0,
+            "p_certified": 1.0,
+            "share_gated": 1.0
+          },
+          "5": {
+            "S_point": 1.0,
+            "p_certified": 0.998,
+            "share_gated": 1.0
+          },
+          "6": {
+            "S_point": 1.0,
+            "p_certified": 0.999,
+            "share_gated": 1.0
+          },
+          "7": {
+            "S_point": 1.0,
+            "p_certified": 1.0,
+            "share_gated": 1.0
+          }
+        },
+        "fold_mean_p_certified": 0.9996,
+        "fold_expected_certified": 9.0,
+        "fold_gate_shares_among_gated": {
+          "data_sufficiency": {
+            "fail": 0.0,
+            "caution": 0.0,
+            "pass": 1.0
+          },
+          "risk_concentration": {
+            "fail": 0.0,
+            "caution": 0.0,
+            "pass": 1.0
+          },
+          "transfer_stability": {
+            "fail": 0.0004,
+            "caution": 0.0927,
+            "pass": 0.9069
+          },
+          "risk_gradient": {
+            "fail": 0.0,
+            "caution": 0.0099,
+            "pass": 0.9901
+          },
+          "prior_record_trace": {
+            "fail": 0.0,
+            "caution": 0.0,
+            "pass": 1.0
+          }
+        }
+      }
+    },
+    "D40": {
+      "system_desc": "Fire Protection",
+      "S_pooled": 1.0,
+      "certified_pooled": true,
+      "scores_pooled": {
+        "data_sufficiency": "pass",
+        "risk_concentration": "pass",
+        "transfer_stability": "pass",
+        "risk_gradient": "pass",
+        "prior_record_trace": "pass"
+      },
+      "margins_pooled": {
+        "n_campuses": {
+          "value": 9,
+          "nearest_threshold": 6,
+          "margin": 3.0
+        },
+        "n_pos": {
+          "value": 2029,
+          "nearest_threshold": 500,
+          "margin": 1529.0
+        },
+        "pooled_lift": {
+          "value": 5.55,
+          "nearest_threshold": 2.0,
+          "margin": 3.55
+        },
+        "frac_2x": {
+          "value": 0.889,
+          "nearest_threshold": 0.8,
+          "margin": 0.089
+        },
+        "top_band": {
+          "value": 2.37,
+          "nearest_threshold": 2.0,
+          "margin": 0.37
+        },
+        "rho": {
+          "value": 1.0,
+          "nearest_threshold": 0.9,
+          "margin": 0.1
+        },
+        "zero_prior_share": {
+          "value": 0.075,
+          "nearest_threshold": 0.1,
+          "margin": -0.025
+        },
+        "n_trace_events": {
+          "value": 625,
+          "nearest_threshold": 30,
+          "margin": 595.0
+        }
+      },
+      "folds_certified": 9,
+      "folds_gated": 9,
+      "fold_frequency": 1.0,
+      "W": {
+        "pooled": {
+          "p_certified": 1.0,
+          "share_gated": 1.0,
+          "S_distribution": {
+            "0.8": 0.002,
+            "0.9": 0.074,
+            "1.0": 0.924
+          },
+          "gate_shares_among_gated": {
+            "data_sufficiency": {
+              "fail": 0.0,
+              "caution": 0.0,
+              "pass": 1.0
+            },
+            "risk_concentration": {
+              "fail": 0.0,
+              "caution": 0.0,
+              "pass": 1.0
+            },
+            "transfer_stability": {
+              "fail": 0.0,
+              "caution": 0.059,
+              "pass": 0.941
+            },
+            "risk_gradient": {
+              "fail": 0.0,
+              "caution": 0.0,
+              "pass": 1.0
+            },
+            "prior_record_trace": {
+              "fail": 0.0,
+              "caution": 0.019,
+              "pass": 0.981
+            }
+          }
+        },
+        "folds": {
+          "1": {
+            "S_point": 1.0,
+            "p_certified": 1.0,
+            "share_gated": 1.0
+          },
+          "10": {
+            "S_point": 1.0,
+            "p_certified": 1.0,
+            "share_gated": 1.0
+          },
+          "11": {
+            "S_point": 1.0,
+            "p_certified": 1.0,
+            "share_gated": 1.0
+          },
+          "2": {
+            "S_point": 1.0,
+            "p_certified": 1.0,
+            "share_gated": 1.0
+          },
+          "3": {
+            "S_point": 1.0,
+            "p_certified": 1.0,
+            "share_gated": 1.0
+          },
+          "4": {
+            "S_point": 1.0,
+            "p_certified": 1.0,
+            "share_gated": 1.0
+          },
+          "5": {
+            "S_point": 1.0,
+            "p_certified": 1.0,
+            "share_gated": 1.0
+          },
+          "6": {
+            "S_point": 1.0,
+            "p_certified": 1.0,
+            "share_gated": 1.0
+          },
+          "7": {
+            "S_point": 1.0,
+            "p_certified": 1.0,
+            "share_gated": 1.0
+          }
+        },
+        "fold_mean_p_certified": 1.0,
+        "fold_expected_certified": 9.0,
+        "fold_gate_shares_among_gated": {
+          "data_sufficiency": {
+            "fail": 0.0,
+            "caution": 0.0,
+            "pass": 1.0
+          },
+          "risk_concentration": {
+            "fail": 0.0,
+            "caution": 0.0,
+            "pass": 1.0
+          },
+          "transfer_stability": {
+            "fail": 0.0,
+            "caution": 0.0774,
+            "pass": 0.9226
+          },
+          "risk_gradient": {
+            "fail": 0.0,
+            "caution": 0.0058,
+            "pass": 0.9942
+          },
+          "prior_record_trace": {
+            "fail": 0.0,
+            "caution": 0.1239,
+            "pass": 0.8761
+          }
+        }
+      },
+      "B": {
+        "pooled": {
+          "p_certified": 0.988,
+          "share_gated": 1.0,
+          "S_distribution": {
+            "0.5": 0.012,
+            "0.7": 0.005,
+            "0.8": 0.076,
+            "0.9": 0.345,
+            "1.0": 0.562
+          },
+          "gate_shares_among_gated": {
+            "data_sufficiency": {
+              "fail": 0.0,
+              "caution": 0.0,
+              "pass": 1.0
+            },
+            "risk_concentration": {
+              "fail": 0.0,
+              "caution": 0.0,
+              "pass": 1.0
+            },
+            "transfer_stability": {
+              "fail": 0.012,
+              "caution": 0.193,
+              "pass": 0.795
+            },
+            "risk_gradient": {
+              "fail": 0.0,
+              "caution": 0.047,
+              "pass": 0.953
+            },
+            "prior_record_trace": {
+              "fail": 0.004,
+              "caution": 0.269,
+              "pass": 0.727
+            }
+          }
+        },
+        "folds": {
+          "1": {
+            "S_point": 1.0,
+            "p_certified": 0.996,
+            "share_gated": 1.0
+          },
+          "10": {
+            "S_point": 1.0,
+            "p_certified": 0.986,
+            "share_gated": 1.0
+          },
+          "11": {
+            "S_point": 1.0,
+            "p_certified": 0.997,
+            "share_gated": 1.0
+          },
+          "2": {
+            "S_point": 1.0,
+            "p_certified": 1.0,
+            "share_gated": 1.0
+          },
+          "3": {
+            "S_point": 1.0,
+            "p_certified": 0.997,
+            "share_gated": 1.0
+          },
+          "4": {
+            "S_point": 1.0,
+            "p_certified": 0.999,
+            "share_gated": 1.0
+          },
+          "5": {
+            "S_point": 1.0,
+            "p_certified": 1.0,
+            "share_gated": 1.0
+          },
+          "6": {
+            "S_point": 1.0,
+            "p_certified": 0.997,
+            "share_gated": 1.0
+          },
+          "7": {
+            "S_point": 1.0,
+            "p_certified": 0.995,
+            "share_gated": 1.0
+          }
+        },
+        "fold_mean_p_certified": 0.9963,
+        "fold_expected_certified": 8.97,
+        "fold_gate_shares_among_gated": {
+          "data_sufficiency": {
+            "fail": 0.0,
+            "caution": 0.0012,
+            "pass": 0.9988
+          },
+          "risk_concentration": {
+            "fail": 0.0,
+            "caution": 0.0,
+            "pass": 1.0
+          },
+          "transfer_stability": {
+            "fail": 0.003,
+            "caution": 0.1284,
+            "pass": 0.8686
+          },
+          "risk_gradient": {
+            "fail": 0.0001,
+            "caution": 0.1238,
+            "pass": 0.8761
+          },
+          "prior_record_trace": {
+            "fail": 0.0098,
+            "caution": 0.2747,
+            "pass": 0.7156
+          }
+        }
+      }
+    },
+    "D50": {
+      "system_desc": "Electrical",
+      "S_pooled": 1.0,
+      "certified_pooled": true,
+      "scores_pooled": {
+        "data_sufficiency": "pass",
+        "risk_concentration": "pass",
+        "transfer_stability": "pass",
+        "risk_gradient": "pass",
+        "prior_record_trace": "pass"
+      },
+      "margins_pooled": {
+        "n_campuses": {
+          "value": 8,
+          "nearest_threshold": 6,
+          "margin": 2.0
+        },
+        "n_pos": {
+          "value": 5506,
+          "nearest_threshold": 500,
+          "margin": 5006.0
+        },
+        "pooled_lift": {
+          "value": 6.75,
+          "nearest_threshold": 2.0,
+          "margin": 4.75
+        },
+        "frac_2x": {
+          "value": 1.0,
+          "nearest_threshold": 0.8,
+          "margin": 0.2
+        },
+        "top_band": {
+          "value": 2.86,
+          "nearest_threshold": 2.0,
+          "margin": 0.86
+        },
+        "rho": {
+          "value": 1.0,
+          "nearest_threshold": 0.9,
+          "margin": 0.1
+        },
+        "zero_prior_share": {
+          "value": 0.01,
+          "nearest_threshold": 0.1,
+          "margin": -0.09
+        },
+        "n_trace_events": {
+          "value": 1839,
+          "nearest_threshold": 30,
+          "margin": 1809.0
+        }
+      },
+      "folds_certified": 9,
+      "folds_gated": 9,
+      "fold_frequency": 1.0,
+      "W": {
+        "pooled": {
+          "p_certified": 1.0,
+          "share_gated": 1.0,
+          "S_distribution": {
+            "0.9": 0.003,
+            "1.0": 0.997
+          },
+          "gate_shares_among_gated": {
+            "data_sufficiency": {
+              "fail": 0.0,
+              "caution": 0.0,
+              "pass": 1.0
+            },
+            "risk_concentration": {
+              "fail": 0.0,
+              "caution": 0.0,
+              "pass": 1.0
+            },
+            "transfer_stability": {
+              "fail": 0.0,
+              "caution": 0.0,
+              "pass": 1.0
+            },
+            "risk_gradient": {
+              "fail": 0.0,
+              "caution": 0.003,
+              "pass": 0.997
+            },
+            "prior_record_trace": {
+              "fail": 0.0,
+              "caution": 0.0,
+              "pass": 1.0
+            }
+          }
+        },
+        "folds": {
+          "1": {
+            "S_point": 1.0,
+            "p_certified": 1.0,
+            "share_gated": 1.0
+          },
+          "10": {
+            "S_point": 1.0,
+            "p_certified": 1.0,
+            "share_gated": 1.0
+          },
+          "11": {
+            "S_point": 1.0,
+            "p_certified": 1.0,
+            "share_gated": 1.0
+          },
+          "2": {
+            "S_point": 1.0,
+            "p_certified": 1.0,
+            "share_gated": 1.0
+          },
+          "3": {
+            "S_point": 1.0,
+            "p_certified": 1.0,
+            "share_gated": 1.0
+          },
+          "4": {
+            "S_point": 1.0,
+            "p_certified": 1.0,
+            "share_gated": 1.0
+          },
+          "5": {
+            "S_point": 1.0,
+            "p_certified": 1.0,
+            "share_gated": 1.0
+          },
+          "6": {
+            "S_point": 1.0,
+            "p_certified": 1.0,
+            "share_gated": 1.0
+          },
+          "7": {
+            "S_point": 1.0,
+            "p_certified": 1.0,
+            "share_gated": 1.0
+          }
+        },
+        "fold_mean_p_certified": 1.0,
+        "fold_expected_certified": 9.0,
+        "fold_gate_shares_among_gated": {
+          "data_sufficiency": {
+            "fail": 0.0,
+            "caution": 0.0,
+            "pass": 1.0
+          },
+          "risk_concentration": {
+            "fail": 0.0,
+            "caution": 0.0,
+            "pass": 1.0
+          },
+          "transfer_stability": {
+            "fail": 0.0,
+            "caution": 0.0018,
+            "pass": 0.9982
+          },
+          "risk_gradient": {
+            "fail": 0.0,
+            "caution": 0.0014,
+            "pass": 0.9986
+          },
+          "prior_record_trace": {
+            "fail": 0.0,
+            "caution": 0.0,
+            "pass": 1.0
+          }
+        }
+      },
+      "B": {
+        "pooled": {
+          "p_certified": 1.0,
+          "share_gated": 1.0,
+          "S_distribution": {
+            "0.8": 0.002,
+            "0.9": 0.031,
+            "1.0": 0.967
+          },
+          "gate_shares_among_gated": {
+            "data_sufficiency": {
+              "fail": 0.0,
+              "caution": 0.002,
+              "pass": 0.998
+            },
+            "risk_concentration": {
+              "fail": 0.0,
+              "caution": 0.0,
+              "pass": 1.0
+            },
+            "transfer_stability": {
+              "fail": 0.0,
+              "caution": 0.002,
+              "pass": 0.998
+            },
+            "risk_gradient": {
+              "fail": 0.0,
+              "caution": 0.031,
+              "pass": 0.969
+            },
+            "prior_record_trace": {
+              "fail": 0.0,
+              "caution": 0.0,
+              "pass": 1.0
+            }
+          }
+        },
+        "folds": {
+          "1": {
+            "S_point": 1.0,
+            "p_certified": 1.0,
+            "share_gated": 1.0
+          },
+          "10": {
+            "S_point": 1.0,
+            "p_certified": 1.0,
+            "share_gated": 1.0
+          },
+          "11": {
+            "S_point": 1.0,
+            "p_certified": 1.0,
+            "share_gated": 1.0
+          },
+          "2": {
+            "S_point": 1.0,
+            "p_certified": 1.0,
+            "share_gated": 1.0
+          },
+          "3": {
+            "S_point": 1.0,
+            "p_certified": 1.0,
+            "share_gated": 1.0
+          },
+          "4": {
+            "S_point": 1.0,
+            "p_certified": 1.0,
+            "share_gated": 1.0
+          },
+          "5": {
+            "S_point": 1.0,
+            "p_certified": 1.0,
+            "share_gated": 1.0
+          },
+          "6": {
+            "S_point": 1.0,
+            "p_certified": 1.0,
+            "share_gated": 1.0
+          },
+          "7": {
+            "S_point": 1.0,
+            "p_certified": 1.0,
+            "share_gated": 1.0
+          }
+        },
+        "fold_mean_p_certified": 1.0,
+        "fold_expected_certified": 9.0,
+        "fold_gate_shares_among_gated": {
+          "data_sufficiency": {
+            "fail": 0.0,
+            "caution": 0.0257,
+            "pass": 0.9743
+          },
+          "risk_concentration": {
+            "fail": 0.0,
+            "caution": 0.0,
+            "pass": 1.0
+          },
+          "transfer_stability": {
+            "fail": 0.0,
+            "caution": 0.0297,
+            "pass": 0.9703
+          },
+          "risk_gradient": {
+            "fail": 0.0,
+            "caution": 0.0114,
+            "pass": 0.9886
+          },
+          "prior_record_trace": {
+            "fail": 0.0,
+            "caution": 0.0,
+            "pass": 1.0
+          }
+        }
+      }
+    },
+    "E10": {
+      "system_desc": "Equipment",
+      "S_pooled": 1.0,
+      "certified_pooled": true,
+      "scores_pooled": {
+        "data_sufficiency": "pass",
+        "risk_concentration": "pass",
+        "transfer_stability": "pass",
+        "risk_gradient": "pass",
+        "prior_record_trace": "pass"
+      },
+      "margins_pooled": {
+        "n_campuses": {
+          "value": 8,
+          "nearest_threshold": 6,
+          "margin": 2.0
+        },
+        "n_pos": {
+          "value": 2704,
+          "nearest_threshold": 500,
+          "margin": 2204.0
+        },
+        "pooled_lift": {
+          "value": 5.81,
+          "nearest_threshold": 2.0,
+          "margin": 3.81
+        },
+        "frac_2x": {
+          "value": 1.0,
+          "nearest_threshold": 0.8,
+          "margin": 0.2
+        },
+        "top_band": {
+          "value": 3.7,
+          "nearest_threshold": 2.0,
+          "margin": 1.7
+        },
+        "rho": {
+          "value": 1.0,
+          "nearest_threshold": 0.9,
+          "margin": 0.1
+        },
+        "zero_prior_share": {
+          "value": 0.012,
+          "nearest_threshold": 0.1,
+          "margin": -0.088
+        },
+        "n_trace_events": {
+          "value": 919,
+          "nearest_threshold": 30,
+          "margin": 889.0
+        }
+      },
+      "folds_certified": 9,
+      "folds_gated": 9,
+      "fold_frequency": 1.0,
+      "W": {
+        "pooled": {
+          "p_certified": 1.0,
+          "share_gated": 1.0,
+          "S_distribution": {
+            "0.9": 0.032,
+            "1.0": 0.968
+          },
+          "gate_shares_among_gated": {
+            "data_sufficiency": {
+              "fail": 0.0,
+              "caution": 0.0,
+              "pass": 1.0
+            },
+            "risk_concentration": {
+              "fail": 0.0,
+              "caution": 0.0,
+              "pass": 1.0
+            },
+            "transfer_stability": {
+              "fail": 0.0,
+              "caution": 0.0,
+              "pass": 1.0
+            },
+            "risk_gradient": {
+              "fail": 0.0,
+              "caution": 0.032,
+              "pass": 0.968
+            },
+            "prior_record_trace": {
+              "fail": 0.0,
+              "caution": 0.0,
+              "pass": 1.0
+            }
+          }
+        },
+        "folds": {
+          "1": {
+            "S_point": 1.0,
+            "p_certified": 1.0,
+            "share_gated": 1.0
+          },
+          "10": {
+            "S_point": 1.0,
+            "p_certified": 1.0,
+            "share_gated": 1.0
+          },
+          "11": {
+            "S_point": 1.0,
+            "p_certified": 1.0,
+            "share_gated": 1.0
+          },
+          "2": {
+            "S_point": 1.0,
+            "p_certified": 1.0,
+            "share_gated": 1.0
+          },
+          "3": {
+            "S_point": 1.0,
+            "p_certified": 1.0,
+            "share_gated": 1.0
+          },
+          "4": {
+            "S_point": 1.0,
+            "p_certified": 1.0,
+            "share_gated": 1.0
+          },
+          "5": {
+            "S_point": 1.0,
+            "p_certified": 1.0,
+            "share_gated": 1.0
+          },
+          "6": {
+            "S_point": 1.0,
+            "p_certified": 1.0,
+            "share_gated": 1.0
+          },
+          "7": {
+            "S_point": 1.0,
+            "p_certified": 1.0,
+            "share_gated": 1.0
+          }
+        },
+        "fold_mean_p_certified": 1.0,
+        "fold_expected_certified": 9.0,
+        "fold_gate_shares_among_gated": {
+          "data_sufficiency": {
+            "fail": 0.0,
+            "caution": 0.0,
+            "pass": 1.0
+          },
+          "risk_concentration": {
+            "fail": 0.0,
+            "caution": 0.0,
+            "pass": 1.0
+          },
+          "transfer_stability": {
+            "fail": 0.0,
+            "caution": 0.0,
+            "pass": 1.0
+          },
+          "risk_gradient": {
+            "fail": 0.0,
+            "caution": 0.0127,
+            "pass": 0.9873
+          },
+          "prior_record_trace": {
+            "fail": 0.0,
+            "caution": 0.0,
+            "pass": 1.0
+          }
+        }
+      },
+      "B": {
+        "pooled": {
+          "p_certified": 1.0,
+          "share_gated": 1.0,
+          "S_distribution": {
+            "0.7": 0.002,
+            "0.8": 0.007,
+            "0.9": 0.118,
+            "1.0": 0.873
+          },
+          "gate_shares_among_gated": {
+            "data_sufficiency": {
+              "fail": 0.0,
+              "caution": 0.009,
+              "pass": 0.991
+            },
+            "risk_concentration": {
+              "fail": 0.0,
+              "caution": 0.0,
+              "pass": 1.0
+            },
+            "transfer_stability": {
+              "fail": 0.0,
+              "caution": 0.009,
+              "pass": 0.991
+            },
+            "risk_gradient": {
+              "fail": 0.0,
+              "caution": 0.12,
+              "pass": 0.88
+            },
+            "prior_record_trace": {
+              "fail": 0.0,
+              "caution": 0.0,
+              "pass": 1.0
+            }
+          }
+        },
+        "folds": {
+          "1": {
+            "S_point": 1.0,
+            "p_certified": 0.999,
+            "share_gated": 1.0
+          },
+          "10": {
+            "S_point": 1.0,
+            "p_certified": 1.0,
+            "share_gated": 1.0
+          },
+          "11": {
+            "S_point": 1.0,
+            "p_certified": 1.0,
+            "share_gated": 1.0
+          },
+          "2": {
+            "S_point": 1.0,
+            "p_certified": 1.0,
+            "share_gated": 1.0
+          },
+          "3": {
+            "S_point": 1.0,
+            "p_certified": 1.0,
+            "share_gated": 1.0
+          },
+          "4": {
+            "S_point": 1.0,
+            "p_certified": 1.0,
+            "share_gated": 1.0
+          },
+          "5": {
+            "S_point": 1.0,
+            "p_certified": 1.0,
+            "share_gated": 1.0
+          },
+          "6": {
+            "S_point": 1.0,
+            "p_certified": 1.0,
+            "share_gated": 1.0
+          },
+          "7": {
+            "S_point": 1.0,
+            "p_certified": 1.0,
+            "share_gated": 1.0
+          }
+        },
+        "fold_mean_p_certified": 0.9999,
+        "fold_expected_certified": 9.0,
+        "fold_gate_shares_among_gated": {
+          "data_sufficiency": {
+            "fail": 0.0001,
+            "caution": 0.0619,
+            "pass": 0.938
+          },
+          "risk_concentration": {
+            "fail": 0.0,
+            "caution": 0.0,
+            "pass": 1.0
+          },
+          "transfer_stability": {
+            "fail": 0.0,
+            "caution": 0.062,
+            "pass": 0.938
+          },
+          "risk_gradient": {
+            "fail": 0.0,
+            "caution": 0.0759,
+            "pass": 0.9241
+          },
+          "prior_record_trace": {
+            "fail": 0.0,
+            "caution": 0.0,
+            "pass": 1.0
+          }
+        }
+      }
+    },
+    "E20": {
+      "system_desc": "Furnishings",
+      "S_pooled": 1.0,
+      "certified_pooled": true,
+      "scores_pooled": {
+        "data_sufficiency": "pass",
+        "risk_concentration": "pass",
+        "transfer_stability": "pass",
+        "risk_gradient": "pass",
+        "prior_record_trace": "pass"
+      },
+      "margins_pooled": {
+        "n_campuses": {
+          "value": 7,
+          "nearest_threshold": 6,
+          "margin": 1.0
+        },
+        "n_pos": {
+          "value": 1336,
+          "nearest_threshold": 500,
+          "margin": 836.0
+        },
+        "pooled_lift": {
+          "value": 6.68,
+          "nearest_threshold": 2.0,
+          "margin": 4.68
+        },
+        "frac_2x": {
+          "value": 1.0,
+          "nearest_threshold": 0.8,
+          "margin": 0.2
+        },
+        "top_band": {
+          "value": 2.28,
+          "nearest_threshold": 2.0,
+          "margin": 0.28
+        },
+        "rho": {
+          "value": 1.0,
+          "nearest_threshold": 0.9,
+          "margin": 0.1
+        },
+        "zero_prior_share": {
+          "value": 0.082,
+          "nearest_threshold": 0.1,
+          "margin": -0.018
+        },
+        "n_trace_events": {
+          "value": 390,
+          "nearest_threshold": 30,
+          "margin": 360.0
+        }
+      },
+      "folds_certified": 9,
+      "folds_gated": 9,
+      "fold_frequency": 1.0,
+      "W": {
+        "pooled": {
+          "p_certified": 1.0,
+          "share_gated": 1.0,
+          "S_distribution": {
+            "0.8": 0.009,
+            "0.9": 0.157,
+            "1.0": 0.834
+          },
+          "gate_shares_among_gated": {
+            "data_sufficiency": {
+              "fail": 0.0,
+              "caution": 0.0,
+              "pass": 1.0
+            },
+            "risk_concentration": {
+              "fail": 0.0,
+              "caution": 0.0,
+              "pass": 1.0
+            },
+            "transfer_stability": {
+              "fail": 0.0,
+              "caution": 0.015,
+              "pass": 0.985
+            },
+            "risk_gradient": {
+              "fail": 0.0,
+              "caution": 0.042,
+              "pass": 0.958
+            },
+            "prior_record_trace": {
+              "fail": 0.0,
+              "caution": 0.118,
+              "pass": 0.882
+            }
+          }
+        },
+        "folds": {
+          "1": {
+            "S_point": 1.0,
+            "p_certified": 0.996,
+            "share_gated": 1.0
+          },
+          "10": {
+            "S_point": 0.9,
+            "p_certified": 0.967,
+            "share_gated": 1.0
+          },
+          "11": {
+            "S_point": 1.0,
+            "p_certified": 0.999,
+            "share_gated": 1.0
+          },
+          "2": {
+            "S_point": 1.0,
+            "p_certified": 1.0,
+            "share_gated": 1.0
+          },
+          "3": {
+            "S_point": 1.0,
+            "p_certified": 0.997,
+            "share_gated": 1.0
+          },
+          "4": {
+            "S_point": 1.0,
+            "p_certified": 0.995,
+            "share_gated": 1.0
+          },
+          "5": {
+            "S_point": 0.9,
+            "p_certified": 0.997,
+            "share_gated": 1.0
+          },
+          "6": {
+            "S_point": 0.9,
+            "p_certified": 0.994,
+            "share_gated": 1.0
+          },
+          "7": {
+            "S_point": 1.0,
+            "p_certified": 0.995,
+            "share_gated": 1.0
+          }
+        },
+        "fold_mean_p_certified": 0.9933,
+        "fold_expected_certified": 8.94,
+        "fold_gate_shares_among_gated": {
+          "data_sufficiency": {
+            "fail": 0.0,
+            "caution": 0.1492,
+            "pass": 0.8508
+          },
+          "risk_concentration": {
+            "fail": 0.0,
+            "caution": 0.0,
+            "pass": 1.0
+          },
+          "transfer_stability": {
+            "fail": 0.0034,
+            "caution": 0.2392,
+            "pass": 0.7573
+          },
+          "risk_gradient": {
+            "fail": 0.0,
+            "caution": 0.1833,
+            "pass": 0.8167
+          },
+          "prior_record_trace": {
+            "fail": 0.0002,
+            "caution": 0.1938,
+            "pass": 0.806
+          }
+        }
+      },
+      "B": {
+        "pooled": {
+          "p_certified": 0.978,
+          "share_gated": 1.0,
+          "S_distribution": {
+            "0.5": 0.002,
+            "0.6": 0.02,
+            "0.7": 0.094,
+            "0.8": 0.089,
+            "0.9": 0.353,
+            "1.0": 0.442
+          },
+          "gate_shares_among_gated": {
+            "data_sufficiency": {
+              "fail": 0.0,
+              "caution": 0.181,
+              "pass": 0.819
+            },
+            "risk_concentration": {
+              "fail": 0.0,
+              "caution": 0.001,
+              "pass": 0.999
+            },
+            "transfer_stability": {
+              "fail": 0.0,
+              "caution": 0.159,
+              "pass": 0.841
+            },
+            "risk_gradient": {
+              "fail": 0.001,
+              "caution": 0.171,
+              "pass": 0.828
+            },
+            "prior_record_trace": {
+              "fail": 0.01,
+              "caution": 0.369,
+              "pass": 0.621
+            }
+          }
+        },
+        "folds": {
+          "1": {
+            "S_point": 1.0,
+            "p_certified": 0.903,
+            "share_gated": 1.0
+          },
+          "10": {
+            "S_point": 0.9,
+            "p_certified": 0.753,
+            "share_gated": 1.0
+          },
+          "11": {
+            "S_point": 1.0,
+            "p_certified": 0.967,
+            "share_gated": 1.0
+          },
+          "2": {
+            "S_point": 1.0,
+            "p_certified": 0.975,
+            "share_gated": 1.0
+          },
+          "3": {
+            "S_point": 1.0,
+            "p_certified": 0.925,
+            "share_gated": 1.0
+          },
+          "4": {
+            "S_point": 1.0,
+            "p_certified": 0.917,
+            "share_gated": 1.0
+          },
+          "5": {
+            "S_point": 0.9,
+            "p_certified": 0.801,
+            "share_gated": 1.0
+          },
+          "6": {
+            "S_point": 0.9,
+            "p_certified": 0.938,
+            "share_gated": 1.0
+          },
+          "7": {
+            "S_point": 1.0,
+            "p_certified": 0.98,
+            "share_gated": 1.0
+          }
+        },
+        "fold_mean_p_certified": 0.9066,
+        "fold_expected_certified": 8.16,
+        "fold_gate_shares_among_gated": {
+          "data_sufficiency": {
+            "fail": 0.0063,
+            "caution": 0.3613,
+            "pass": 0.6323
+          },
+          "risk_concentration": {
+            "fail": 0.0004,
+            "caution": 0.0043,
+            "pass": 0.9952
+          },
+          "transfer_stability": {
+            "fail": 0.0306,
+            "caution": 0.3539,
+            "pass": 0.6156
+          },
+          "risk_gradient": {
+            "fail": 0.0013,
+            "caution": 0.2773,
+            "pass": 0.7213
+          },
+          "prior_record_trace": {
+            "fail": 0.0292,
+            "caution": 0.371,
+            "pass": 0.5998
+          }
+        }
+      }
+    },
+    "F10": {
+      "system_desc": "Special Construction",
+      "S_pooled": 0.7,
+      "certified_pooled": true,
+      "scores_pooled": {
+        "data_sufficiency": "caution",
+        "risk_concentration": "pass",
+        "transfer_stability": "caution",
+        "risk_gradient": "pass",
+        "prior_record_trace": "caution"
+      },
+      "margins_pooled": {
+        "n_campuses": {
+          "value": 3,
+          "nearest_threshold": 3,
+          "margin": 0.0
+        },
+        "n_pos": {
+          "value": 102,
+          "nearest_threshold": 100,
+          "margin": 2.0
+        },
+        "pooled_lift": {
+          "value": 5.39,
+          "nearest_threshold": 2.0,
+          "margin": 3.39
+        },
+        "frac_2x": {
+          "value": 1.0,
+          "nearest_threshold": 0.8,
+          "margin": 0.2
+        },
+        "top_band": {
+          "value": 2.45,
+          "nearest_threshold": 2.0,
+          "margin": 0.45
+        },
+        "rho": {
+          "value": 1.0,
+          "nearest_threshold": 0.9,
+          "margin": 0.1
+        },
+        "zero_prior_share": {
+          "value": 0.216,
+          "nearest_threshold": 0.25,
+          "margin": -0.034
+        },
+        "n_trace_events": {
+          "value": 37,
+          "nearest_threshold": 30,
+          "margin": 7.0
+        }
+      },
+      "folds_certified": 3,
+      "folds_gated": 9,
+      "fold_frequency": 0.3333,
+      "W": {
+        "pooled": {
+          "p_certified": 0.182,
+          "share_gated": 1.0,
+          "S_distribution": {
+            "0.0": 0.028,
+            "0.4": 0.074,
+            "0.5": 0.485,
+            "0.6": 0.231,
+            "0.7": 0.163,
+            "0.8": 0.019
+          },
+          "gate_shares_among_gated": {
+            "data_sufficiency": {
+              "fail": 0.51,
+              "caution": 0.49,
+              "pass": 0.0
+            },
+            "risk_concentration": {
+              "fail": 0.0,
+              "caution": 0.0,
+              "pass": 1.0
+            },
+            "transfer_stability": {
+              "fail": 0.018,
+              "caution": 0.982,
+              "pass": 0.0
+            },
+            "risk_gradient": {
+              "fail": 0.017,
+              "caution": 0.624,
+              "pass": 0.359
+            },
+            "prior_record_trace": {
+              "fail": 0.226,
+              "caution": 0.724,
+              "pass": 0.05
+            }
+          }
+        },
+        "folds": {
+          "1": {
+            "S_point": 0.7,
+            "p_certified": 0.202,
+            "share_gated": 1.0
+          },
+          "10": {
+            "S_point": 0.5,
+            "p_certified": 0.0,
+            "share_gated": 1.0
+          },
+          "11": {
+            "S_point": 0.0,
+            "p_certified": 0.0,
+            "share_gated": 0.995
+          },
+          "2": {
+            "S_point": 0.7,
+            "p_certified": 0.267,
+            "share_gated": 1.0
+          },
+          "3": {
+            "S_point": 0.6,
+            "p_certified": 0.126,
+            "share_gated": 1.0
+          },
+          "4": {
+            "S_point": 0.5,
+            "p_certified": 0.179,
+            "share_gated": 1.0
+          },
+          "5": {
+            "S_point": 0.6,
+            "p_certified": 0.157,
+            "share_gated": 1.0
+          },
+          "6": {
+            "S_point": 0.5,
+            "p_certified": 0.001,
+            "share_gated": 1.0
+          },
+          "7": {
+            "S_point": 0.7,
+            "p_certified": 0.17,
+            "share_gated": 1.0
+          }
+        },
+        "fold_mean_p_certified": 0.1224,
+        "fold_expected_certified": 1.1,
+        "fold_gate_shares_among_gated": {
+          "data_sufficiency": {
+            "fail": 0.6822,
+            "caution": 0.3178,
+            "pass": 0.0
+          },
+          "risk_concentration": {
+            "fail": 0.0004,
+            "caution": 0.0016,
+            "pass": 0.998
+          },
+          "transfer_stability": {
+            "fail": 0.162,
+            "caution": 0.838,
+            "pass": 0.0
+          },
+          "risk_gradient": {
+            "fail": 0.0664,
+            "caution": 0.6564,
+            "pass": 0.2773
+          },
+          "prior_record_trace": {
+            "fail": 0.1528,
+            "caution": 0.7862,
+            "pass": 0.061
+          }
+        }
+      },
+      "B": {
+        "pooled": {
+          "p_certified": 0.185,
+          "share_gated": 0.966,
+          "S_distribution": {
+            "0.0": 0.097,
+            "0.4": 0.06,
+            "0.5": 0.442,
+            "0.6": 0.182,
+            "0.7": 0.136,
+            "0.8": 0.046,
+            "0.9": 0.003,
+            "not_gated": 0.034
+          },
+          "gate_shares_among_gated": {
+            "data_sufficiency": {
+              "fail": 0.5393,
+              "caution": 0.4607,
+              "pass": 0.0
+            },
+            "risk_concentration": {
+              "fail": 0.0,
+              "caution": 0.0,
+              "pass": 1.0
+            },
+            "transfer_stability": {
+              "fail": 0.0238,
+              "caution": 0.9513,
+              "pass": 0.0248
+            },
+            "risk_gradient": {
+              "fail": 0.0952,
+              "caution": 0.6356,
+              "pass": 0.2692
+            },
+            "prior_record_trace": {
+              "fail": 0.2101,
+              "caution": 0.6501,
+              "pass": 0.1398
+            }
+          }
+        },
+        "folds": {
+          "1": {
+            "S_point": 0.7,
+            "p_certified": 0.197,
+            "share_gated": 0.966
+          },
+          "10": {
+            "S_point": 0.5,
+            "p_certified": 0.104,
+            "share_gated": 0.879
+          },
+          "11": {
+            "S_point": 0.0,
+            "p_certified": 0.014,
+            "share_gated": 0.828
+          },
+          "2": {
+            "S_point": 0.7,
+            "p_certified": 0.243,
+            "share_gated": 0.973
+          },
+          "3": {
+            "S_point": 0.6,
+            "p_certified": 0.118,
+            "share_gated": 0.954
+          },
+          "4": {
+            "S_point": 0.5,
+            "p_certified": 0.165,
+            "share_gated": 0.964
+          },
+          "5": {
+            "S_point": 0.6,
+            "p_certified": 0.154,
+            "share_gated": 0.97
+          },
+          "6": {
+            "S_point": 0.5,
+            "p_certified": 0.066,
+            "share_gated": 0.899
+          },
+          "7": {
+            "S_point": 0.7,
+            "p_certified": 0.2,
+            "share_gated": 0.965
+          }
+        },
+        "fold_mean_p_certified": 0.1401,
+        "fold_expected_certified": 1.26,
+        "fold_gate_shares_among_gated": {
+          "data_sufficiency": {
+            "fail": 0.6346,
+            "caution": 0.3654,
+            "pass": 0.0
+          },
+          "risk_concentration": {
+            "fail": 0.0105,
+            "caution": 0.0148,
+            "pass": 0.9748
+          },
+          "transfer_stability": {
+            "fail": 0.1656,
+            "caution": 0.8225,
+            "pass": 0.0119
+          },
+          "risk_gradient": {
+            "fail": 0.1243,
+            "caution": 0.6303,
+            "pass": 0.2454
+          },
+          "prior_record_trace": {
+            "fail": 0.1723,
+            "caution": 0.6973,
+            "pass": 0.1304
+          }
+        }
+      }
+    },
+    "F20": {
+      "system_desc": "Selective Building Demolition",
+      "S_pooled": 0.5,
+      "certified_pooled": false,
+      "scores_pooled": {
+        "data_sufficiency": "fail",
+        "risk_concentration": "pass",
+        "transfer_stability": "caution",
+        "risk_gradient": "caution",
+        "prior_record_trace": "caution"
+      },
+      "margins_pooled": {
+        "n_campuses": {
+          "value": 1,
+          "nearest_threshold": 3,
+          "margin": -2.0
+        },
+        "n_pos": {
+          "value": 72,
+          "nearest_threshold": 100,
+          "margin": -28.0
+        },
+        "pooled_lift": {
+          "value": 2.08,
+          "nearest_threshold": 2.0,
+          "margin": 0.08
+        },
+        "frac_2x": {
+          "value": 1.0,
+          "nearest_threshold": 0.8,
+          "margin": 0.2
+        },
+        "top_band": {
+          "value": 8.16,
+          "nearest_threshold": 2.0,
+          "margin": 6.16
+        },
+        "rho": {
+          "value": 0.9,
+          "nearest_threshold": 0.9,
+          "margin": 0.0
+        },
+        "zero_prior_share": null,
+        "n_trace_events": {
+          "value": 23,
+          "nearest_threshold": 30,
+          "margin": -7.0
+        }
+      },
+      "folds_certified": 0,
+      "folds_gated": 8,
+      "fold_frequency": 0.0,
+      "W": {
+        "pooled": {
+          "p_certified": 0.0,
+          "share_gated": 1.0,
+          "S_distribution": {
+            "0.0": 0.003,
+            "0.2": 0.002,
+            "0.3": 0.132,
+            "0.4": 0.265,
+            "0.5": 0.598
+          },
+          "gate_shares_among_gated": {
+            "data_sufficiency": {
+              "fail": 1.0,
+              "caution": 0.0,
+              "pass": 0.0
+            },
+            "risk_concentration": {
+              "fail": 0.194,
+              "caution": 0.265,
+              "pass": 0.541
+            },
+            "transfer_stability": {
+              "fail": 0.002,
+              "caution": 0.998,
+              "pass": 0.0
+            },
+            "risk_gradient": {
+              "fail": 0.003,
+              "caution": 0.641,
+              "pass": 0.356
+            },
+            "prior_record_trace": {
+              "fail": 0.056,
+              "caution": 0.94,
+              "pass": 0.004
+            }
+          }
+        },
+        "folds": {
+          "1": {
+            "S_point": 0.5,
+            "p_certified": 0.0,
+            "share_gated": 1.0
+          },
+          "10": {
+            "S_point": 0.5,
+            "p_certified": 0.0,
+            "share_gated": 1.0
+          },
+          "2": {
+            "S_point": 0.4,
+            "p_certified": 0.0,
+            "share_gated": 1.0
+          },
+          "3": {
+            "S_point": 0.5,
+            "p_certified": 0.0,
+            "share_gated": 1.0
+          },
+          "4": {
+            "S_point": 0.5,
+            "p_certified": 0.0,
+            "share_gated": 1.0
+          },
+          "5": {
+            "S_point": 0.5,
+            "p_certified": 0.0,
+            "share_gated": 1.0
+          },
+          "6": {
+            "S_point": 0.5,
+            "p_certified": 0.0,
+            "share_gated": 1.0
+          },
+          "7": {
+            "S_point": 0.5,
+            "p_certified": 0.0,
+            "share_gated": 1.0
+          }
+        },
+        "fold_mean_p_certified": 0.0,
+        "fold_expected_certified": 0.0,
+        "fold_gate_shares_among_gated": {
+          "data_sufficiency": {
+            "fail": 1.0,
+            "caution": 0.0,
+            "pass": 0.0
+          },
+          "risk_concentration": {
+            "fail": 0.199,
+            "caution": 0.2619,
+            "pass": 0.5391
+          },
+          "transfer_stability": {
+            "fail": 0.0024,
+            "caution": 0.9976,
+            "pass": 0.0
+          },
+          "risk_gradient": {
+            "fail": 0.0121,
+            "caution": 0.5095,
+            "pass": 0.4784
+          },
+          "prior_record_trace": {
+            "fail": 0.056,
+            "caution": 0.94,
+            "pass": 0.004
+          }
+        }
+      },
+      "B": {
+        "pooled": {
+          "p_certified": 0.003,
+          "share_gated": 0.653,
+          "S_distribution": {
+            "0.0": 0.025,
+            "0.2": 0.004,
+            "0.3": 0.069,
+            "0.4": 0.14,
+            "0.5": 0.375,
+            "0.6": 0.037,
+            "0.7": 0.003,
+            "not_gated": 0.347
+          },
+          "gate_shares_among_gated": {
+            "data_sufficiency": {
+              "fail": 0.9005,
+              "caution": 0.0995,
+              "pass": 0.0
+            },
+            "risk_concentration": {
+              "fail": 0.1164,
+              "caution": 0.2052,
+              "pass": 0.6784
+            },
+            "transfer_stability": {
+              "fail": 0.0,
+              "caution": 1.0,
+              "pass": 0.0
+            },
+            "risk_gradient": {
+              "fail": 0.0413,
+              "caution": 0.7458,
+              "pass": 0.2129
+            },
+            "prior_record_trace": {
+              "fail": 0.1501,
+              "caution": 0.8453,
+              "pass": 0.0046
+            }
+          }
+        },
+        "folds": {
+          "1": {
+            "S_point": 0.5,
+            "p_certified": 0.008,
+            "share_gated": 0.649
+          },
+          "10": {
+            "S_point": 0.5,
+            "p_certified": 0.001,
+            "share_gated": 0.674
+          },
+          "11": {
+            "S_point": null,
+            "p_certified": 0.0,
+            "share_gated": 0.03
+          },
+          "2": {
+            "S_point": 0.4,
+            "p_certified": 0.002,
+            "share_gated": 0.645
+          },
+          "3": {
+            "S_point": 0.5,
+            "p_certified": 0.008,
+            "share_gated": 0.668
+          },
+          "4": {
+            "S_point": 0.5,
+            "p_certified": 0.019,
+            "share_gated": 0.652
+          },
+          "5": {
+            "S_point": 0.5,
+            "p_certified": 0.025,
+            "share_gated": 0.672
+          },
+          "6": {
+            "S_point": 0.5,
+            "p_certified": 0.018,
+            "share_gated": 0.642
+          },
+          "7": {
+            "S_point": 0.5,
+            "p_certified": 0.008,
+            "share_gated": 0.667
+          }
+        },
+        "fold_mean_p_certified": 0.0111,
+        "fold_expected_certified": 0.09,
+        "fold_gate_shares_among_gated": {
+          "data_sufficiency": {
+            "fail": 0.8962,
+            "caution": 0.1038,
+            "pass": 0.0
+          },
+          "risk_concentration": {
+            "fail": 0.1466,
+            "caution": 0.1604,
+            "pass": 0.693
+          },
+          "transfer_stability": {
+            "fail": 0.0045,
+            "caution": 0.9955,
+            "pass": 0.0
+          },
+          "risk_gradient": {
+            "fail": 0.0338,
+            "caution": 0.6033,
+            "pass": 0.3629
+          },
+          "prior_record_trace": {
+            "fail": 0.1346,
+            "caution": 0.8598,
+            "pass": 0.0057
+          }
+        }
+      }
+    },
+    "G20": {
+      "system_desc": "Site Improvements",
+      "S_pooled": 0.7,
+      "certified_pooled": true,
+      "scores_pooled": {
+        "data_sufficiency": "caution",
+        "risk_concentration": "pass",
+        "transfer_stability": "caution",
+        "risk_gradient": "caution",
+        "prior_record_trace": "pass"
+      },
+      "margins_pooled": {
+        "n_campuses": {
+          "value": 3,
+          "nearest_threshold": 3,
+          "margin": 0.0
+        },
+        "n_pos": {
+          "value": 353,
+          "nearest_threshold": 500,
+          "margin": -147.0
+        },
+        "pooled_lift": {
+          "value": 5.95,
+          "nearest_threshold": 2.0,
+          "margin": 3.95
+        },
+        "frac_2x": {
+          "value": 1.0,
+          "nearest_threshold": 0.8,
+          "margin": 0.2
+        },
+        "top_band": {
+          "value": 2.48,
+          "nearest_threshold": 2.0,
+          "margin": 0.48
+        },
+        "rho": {
+          "value": 0.9,
+          "nearest_threshold": 0.9,
+          "margin": 0.0
+        },
+        "zero_prior_share": {
+          "value": 0.05,
+          "nearest_threshold": 0.1,
+          "margin": -0.05
+        },
+        "n_trace_events": {
+          "value": 100,
+          "nearest_threshold": 30,
+          "margin": 70.0
+        }
+      },
+      "folds_certified": 4,
+      "folds_gated": 9,
+      "fold_frequency": 0.4444,
+      "W": {
+        "pooled": {
+          "p_certified": 0.677,
+          "share_gated": 1.0,
+          "S_distribution": {
+            "0.0": 0.024,
+            "0.5": 0.27,
+            "0.6": 0.029,
+            "0.7": 0.521,
+            "0.8": 0.156
+          },
+          "gate_shares_among_gated": {
+            "data_sufficiency": {
+              "fail": 0.272,
+              "caution": 0.728,
+              "pass": 0.0
+            },
+            "risk_concentration": {
+              "fail": 0.0,
+              "caution": 0.0,
+              "pass": 1.0
+            },
+            "transfer_stability": {
+              "fail": 0.014,
+              "caution": 0.986,
+              "pass": 0.0
+            },
+            "risk_gradient": {
+              "fail": 0.035,
+              "caution": 0.742,
+              "pass": 0.223
+            },
+            "prior_record_trace": {
+              "fail": 0.0,
+              "caution": 0.049,
+              "pass": 0.951
+            }
+          }
+        },
+        "folds": {
+          "1": {
+            "S_point": 0.5,
+            "p_certified": 0.237,
+            "share_gated": 1.0
+          },
+          "10": {
+            "S_point": 0.5,
+            "p_certified": 0.403,
+            "share_gated": 1.0
+          },
+          "11": {
+            "S_point": 0.5,
+            "p_certified": 0.059,
+            "share_gated": 1.0
+          },
+          "2": {
+            "S_point": 0.5,
+            "p_certified": 0.327,
+            "share_gated": 1.0
+          },
+          "3": {
+            "S_point": 0.7,
+            "p_certified": 0.56,
+            "share_gated": 1.0
+          },
+          "4": {
+            "S_point": 0.5,
+            "p_certified": 0.069,
+            "share_gated": 1.0
+          },
+          "5": {
+            "S_point": 0.7,
+            "p_certified": 0.691,
+            "share_gated": 1.0
+          },
+          "6": {
+            "S_point": 0.7,
+            "p_certified": 0.592,
+            "share_gated": 1.0
+          },
+          "7": {
+            "S_point": 0.7,
+            "p_certified": 0.688,
+            "share_gated": 1.0
+          }
+        },
+        "fold_mean_p_certified": 0.4029,
+        "fold_expected_certified": 3.63,
+        "fold_gate_shares_among_gated": {
+          "data_sufficiency": {
+            "fail": 0.4997,
+            "caution": 0.5003,
+            "pass": 0.0
+          },
+          "risk_concentration": {
+            "fail": 0.0,
+            "caution": 0.0,
+            "pass": 1.0
+          },
+          "transfer_stability": {
+            "fail": 0.0423,
+            "caution": 0.9577,
+            "pass": 0.0
+          },
+          "risk_gradient": {
+            "fail": 0.0562,
+            "caution": 0.7707,
+            "pass": 0.1731
+          },
+          "prior_record_trace": {
+            "fail": 0.058,
+            "caution": 0.0961,
+            "pass": 0.8459
+          }
+        }
+      },
+      "B": {
+        "pooled": {
+          "p_certified": 0.471,
+          "share_gated": 0.991,
+          "S_distribution": {
+            "0.0": 0.042,
+            "0.5": 0.418,
+            "0.6": 0.06,
+            "0.7": 0.343,
+            "0.8": 0.105,
+            "0.9": 0.023,
+            "not_gated": 0.009
+          },
+          "gate_shares_among_gated": {
+            "data_sufficiency": {
+              "fail": 0.4268,
+              "caution": 0.5499,
+              "pass": 0.0232
+            },
+            "risk_concentration": {
+              "fail": 0.0,
+              "caution": 0.001,
+              "pass": 0.999
+            },
+            "transfer_stability": {
+              "fail": 0.0172,
+              "caution": 0.9495,
+              "pass": 0.0333
+            },
+            "risk_gradient": {
+              "fail": 0.0666,
+              "caution": 0.7013,
+              "pass": 0.2321
+            },
+            "prior_record_trace": {
+              "fail": 0.0,
+              "caution": 0.328,
+              "pass": 0.672
+            }
+          }
+        },
+        "folds": {
+          "1": {
+            "S_point": 0.5,
+            "p_certified": 0.324,
+            "share_gated": 0.944
+          },
+          "10": {
+            "S_point": 0.5,
+            "p_certified": 0.423,
+            "share_gated": 0.985
+          },
+          "11": {
+            "S_point": 0.5,
+            "p_certified": 0.162,
+            "share_gated": 0.947
+          },
+          "2": {
+            "S_point": 0.5,
+            "p_certified": 0.235,
+            "share_gated": 0.984
+          },
+          "3": {
+            "S_point": 0.7,
+            "p_certified": 0.438,
+            "share_gated": 0.993
+          },
+          "4": {
+            "S_point": 0.5,
+            "p_certified": 0.029,
+            "share_gated": 0.987
+          },
+          "5": {
+            "S_point": 0.7,
+            "p_certified": 0.461,
+            "share_gated": 0.998
+          },
+          "6": {
+            "S_point": 0.7,
+            "p_certified": 0.392,
+            "share_gated": 0.981
+          },
+          "7": {
+            "S_point": 0.7,
+            "p_certified": 0.514,
+            "share_gated": 0.996
+          }
+        },
+        "fold_mean_p_certified": 0.3309,
+        "fold_expected_certified": 2.98,
+        "fold_gate_shares_among_gated": {
+          "data_sufficiency": {
+            "fail": 0.5208,
+            "caution": 0.4658,
+            "pass": 0.0134
+          },
+          "risk_concentration": {
+            "fail": 0.0035,
+            "caution": 0.0076,
+            "pass": 0.9889
+          },
+          "transfer_stability": {
+            "fail": 0.0441,
+            "caution": 0.9383,
+            "pass": 0.0176
+          },
+          "risk_gradient": {
+            "fail": 0.126,
+            "caution": 0.6855,
+            "pass": 0.1884
+          },
+          "prior_record_trace": {
+            "fail": 0.0429,
+            "caution": 0.3606,
+            "pass": 0.5965
+          }
+        }
+      }
+    },
+    "G30": {
+      "system_desc": "Site Mechanical Utilities",
+      "S_pooled": 0.5,
+      "certified_pooled": false,
+      "scores_pooled": {
+        "data_sufficiency": "fail",
+        "risk_concentration": "pass",
+        "transfer_stability": "caution",
+        "risk_gradient": "caution",
+        "prior_record_trace": "caution"
+      },
+      "margins_pooled": {
+        "n_campuses": {
+          "value": 1,
+          "nearest_threshold": 3,
+          "margin": -2.0
+        },
+        "n_pos": {
+          "value": 29,
+          "nearest_threshold": 100,
+          "margin": -71.0
+        },
+        "pooled_lift": {
+          "value": 5.17,
+          "nearest_threshold": 2.0,
+          "margin": 3.17
+        },
+        "frac_2x": {
+          "value": 1.0,
+          "nearest_threshold": 0.8,
+          "margin": 0.2
+        },
+        "top_band": null,
+        "rho": null,
+        "zero_prior_share": null,
+        "n_trace_events": {
+          "value": 16,
+          "nearest_threshold": 30,
+          "margin": -14.0
+        }
+      },
+      "folds_certified": 0,
+      "folds_gated": 7,
+      "fold_frequency": 0.0,
+      "W": {
+        "pooled": {
+          "p_certified": 0.0,
+          "share_gated": 0.652,
+          "S_distribution": {
+            "0.0": 0.03,
+            "0.5": 0.622,
+            "not_gated": 0.348
+          },
+          "gate_shares_among_gated": {
+            "data_sufficiency": {
+              "fail": 1.0,
+              "caution": 0.0,
+              "pass": 0.0
+            },
+            "risk_concentration": {
+              "fail": 0.0046,
+              "caution": 0.0,
+              "pass": 0.9954
+            },
+            "transfer_stability": {
+              "fail": 0.0184,
+              "caution": 0.9816,
+              "pass": 0.0
+            },
+            "risk_gradient": {
+              "fail": 0.0322,
+              "caution": 0.9417,
+              "pass": 0.0261
+            },
+            "prior_record_trace": {
+              "fail": 0.0,
+              "caution": 0.9969,
+              "pass": 0.0031
+            }
+          }
+        },
+        "folds": {
+          "1": {
+            "S_point": 0.5,
+            "p_certified": 0.0,
+            "share_gated": 0.652
+          },
+          "10": {
+            "S_point": 0.5,
+            "p_certified": 0.0,
+            "share_gated": 0.652
+          },
+          "11": {
+            "S_point": null,
+            "p_certified": 0.0,
+            "share_gated": 0.219
+          },
+          "2": {
+            "S_point": 0.5,
+            "p_certified": 0.0,
+            "share_gated": 0.652
+          },
+          "3": {
+            "S_point": 0.5,
+            "p_certified": 0.0,
+            "share_gated": 0.652
+          },
+          "4": {
+            "S_point": 0.5,
+            "p_certified": 0.0,
+            "share_gated": 0.652
+          },
+          "6": {
+            "S_point": 0.5,
+            "p_certified": 0.0,
+            "share_gated": 0.652
+          },
+          "7": {
+            "S_point": 0.5,
+            "p_certified": 0.0,
+            "share_gated": 0.652
+          }
+        },
+        "fold_mean_p_certified": 0.0,
+        "fold_expected_certified": 0.0,
+        "fold_gate_shares_among_gated": {
+          "data_sufficiency": {
+            "fail": 1.0,
+            "caution": 0.0,
+            "pass": 0.0
+          },
+          "risk_concentration": {
+            "fail": 0.0048,
+            "caution": 0.0065,
+            "pass": 0.9887
+          },
+          "transfer_stability": {
+            "fail": 0.0638,
+            "caution": 0.9362,
+            "pass": 0.0
+          },
+          "risk_gradient": {
+            "fail": 0.0427,
+            "caution": 0.9019,
+            "pass": 0.0554
+          },
+          "prior_record_trace": {
+            "fail": 0.0,
+            "caution": 0.9969,
+            "pass": 0.0031
+          }
+        }
+      },
+      "B": {
+        "pooled": {
+          "p_certified": 0.006,
+          "share_gated": 0.516,
+          "S_distribution": {
+            "0.0": 0.052,
+            "0.4": 0.013,
+            "0.5": 0.432,
+            "0.6": 0.013,
+            "0.7": 0.006,
+            "not_gated": 0.484
+          },
+          "gate_shares_among_gated": {
+            "data_sufficiency": {
+              "fail": 0.9612,
+              "caution": 0.0388,
+              "pass": 0.0
+            },
+            "risk_concentration": {
+              "fail": 0.0116,
+              "caution": 0.0155,
+              "pass": 0.9729
+            },
+            "transfer_stability": {
+              "fail": 0.0659,
+              "caution": 0.9341,
+              "pass": 0.0
+            },
+            "risk_gradient": {
+              "fail": 0.0465,
+              "caution": 0.8159,
+              "pass": 0.1376
+            },
+            "prior_record_trace": {
+              "fail": 0.0329,
+              "caution": 0.9632,
+              "pass": 0.0039
+            }
+          }
+        },
+        "folds": {
+          "1": {
+            "S_point": 0.5,
+            "p_certified": 0.016,
+            "share_gated": 0.504
+          },
+          "10": {
+            "S_point": 0.5,
+            "p_certified": 0.022,
+            "share_gated": 0.56
+          },
+          "11": {
+            "S_point": null,
+            "p_certified": 0.0,
+            "share_gated": 0.286
+          },
+          "2": {
+            "S_point": 0.5,
+            "p_certified": 0.007,
+            "share_gated": 0.538
+          },
+          "3": {
+            "S_point": 0.5,
+            "p_certified": 0.012,
+            "share_gated": 0.537
+          },
+          "4": {
+            "S_point": 0.5,
+            "p_certified": 0.012,
+            "share_gated": 0.519
+          },
+          "6": {
+            "S_point": 0.5,
+            "p_certified": 0.023,
+            "share_gated": 0.509
+          },
+          "7": {
+            "S_point": 0.5,
+            "p_certified": 0.007,
+            "share_gated": 0.497
+          }
+        },
+        "fold_mean_p_certified": 0.0141,
+        "fold_expected_certified": 0.1,
+        "fold_gate_shares_among_gated": {
+          "data_sufficiency": {
+            "fail": 0.9524,
+            "caution": 0.0476,
+            "pass": 0.0
+          },
+          "risk_concentration": {
+            "fail": 0.0063,
+            "caution": 0.0078,
+            "pass": 0.9858
+          },
+          "transfer_stability": {
+            "fail": 0.0997,
+            "caution": 0.9003,
+            "pass": 0.0
+          },
+          "risk_gradient": {
+            "fail": 0.0342,
+            "caution": 0.7301,
+            "pass": 0.2357
+          },
+          "prior_record_trace": {
+            "fail": 0.0289,
+            "caution": 0.9661,
+            "pass": 0.0051
+          }
+        }
+      }
+    }
+  },
+  "other_strata_gated_in_some_replicates": {
+    "G40": {
+      "W": {
+        "p_certified": 0.0,
+        "share_gated": 0.001,
+        "S_distribution": {
+          "0.5": 0.001,
+          "not_gated": 0.999
+        },
+        "gate_shares_among_gated": {
+          "data_sufficiency": {
+            "fail": 1.0,
+            "caution": 0.0,
+            "pass": 0.0
+          },
+          "risk_concentration": {
+            "fail": 0.0,
+            "caution": 0.0,
+            "pass": 1.0
+          },
+          "transfer_stability": {
+            "fail": 0.0,
+            "caution": 1.0,
+            "pass": 0.0
+          },
+          "risk_gradient": {
+            "fail": 0.0,
+            "caution": 1.0,
+            "pass": 0.0
+          },
+          "prior_record_trace": {
+            "fail": 0.0,
+            "caution": 1.0,
+            "pass": 0.0
+          }
+        }
+      },
+      "B": {
+        "p_certified": 0.0,
+        "share_gated": 0.075,
+        "S_distribution": {
+          "0.0": 0.031,
+          "0.3": 0.003,
+          "0.4": 0.001,
+          "0.5": 0.04,
+          "not_gated": 0.925
+        },
+        "gate_shares_among_gated": {
+          "data_sufficiency": {
+            "fail": 1.0,
+            "caution": 0.0,
+            "pass": 0.0
+          },
+          "risk_concentration": {
+            "fail": 0.0667,
+            "caution": 0.0667,
+            "pass": 0.8667
+          },
+          "transfer_stability": {
+            "fail": 0.3067,
+            "caution": 0.6933,
+            "pass": 0.0
+          },
+          "risk_gradient": {
+            "fail": 0.1467,
+            "caution": 0.8533,
+            "pass": 0.0
+          },
+          "prior_record_trace": {
+            "fail": 0.0,
+            "caution": 1.0,
+            "pass": 0.0
+          }
+        }
+      }
+    },
+    "B10": {
+      "B": {
+        "p_certified": 0.0,
+        "share_gated": 0.002,
+        "S_distribution": {
+          "0.3": 0.002,
+          "not_gated": 0.998
+        },
+        "gate_shares_among_gated": {
+          "data_sufficiency": {
+            "fail": 1.0,
+            "caution": 0.0,
+            "pass": 0.0
+          },
+          "risk_concentration": {
+            "fail": 1.0,
+            "caution": 0.0,
+            "pass": 0.0
+          },
+          "transfer_stability": {
+            "fail": 0.0,
+            "caution": 1.0,
+            "pass": 0.0
+          },
+          "risk_gradient": {
+            "fail": 0.0,
+            "caution": 1.0,
+            "pass": 0.0
+          },
+          "prior_record_trace": {
+            "fail": 0.0,
+            "caution": 1.0,
+            "pass": 0.0
+          }
+        }
+      }
+    }
+  },
+  "fold_margins": [
+    {
+      "campus": "1",
+      "system": "B20",
+      "S": 0.9,
+      "n_campuses": 0.0,
+      "n_pos": 1259.0,
+      "pooled_lift": 2.97,
+      "frac_2x": 0.033,
+      "top_band": 0.89,
+      "rho": 0.1,
+      "zero_prior_share": 0.01,
+      "n_trace_events": 497.0
+    },
+    {
+      "campus": "1",
+      "system": "B30",
+      "S": 0.7,
+      "n_campuses": -1.0,
+      "n_pos": 529.0,
+      "pooled_lift": 2.74,
+      "frac_2x": 0.2,
+      "top_band": 0.51,
+      "rho": 0.1,
+      "zero_prior_share": -0.01,
+      "n_trace_events": 257.0
+    },
+    {
+      "campus": "1",
+      "system": "C10",
+      "S": 1.0,
+      "n_campuses": 1.0,
+      "n_pos": 3639.0,
+      "pooled_lift": 4.34,
+      "frac_2x": 0.2,
+      "top_band": 0.9,
+      "rho": 0.1,
+      "zero_prior_share": -0.094,
+      "n_trace_events": 1473.0
+    },
+    {
+      "campus": "1",
+      "system": "C20",
+      "S": 0.5,
+      "n_campuses": 1.0,
+      "n_pos": 42.0,
+      "pooled_lift": 0.82,
+      "frac_2x": 0.2,
+      "top_band": -0.19,
+      "rho": 0.1,
+      "zero_prior_share": 0.25,
+      "n_trace_events": 22.0
+    },
+    {
+      "campus": "1",
+      "system": "C30",
+      "S": 1.0,
+      "n_campuses": 1.0,
+      "n_pos": 1744.0,
+      "pooled_lift": 3.71,
+      "frac_2x": 0.2,
+      "top_band": 0.54,
+      "rho": 0.1,
+      "zero_prior_share": -0.028,
+      "n_trace_events": 693.0
+    },
+    {
+      "campus": "1",
+      "system": "D10",
+      "S": 0.6,
+      "n_campuses": 0.0,
+      "n_pos": -180.0,
+      "pooled_lift": 3.53,
+      "frac_2x": 0.067,
+      "top_band": 0.19,
+      "rho": 0.2,
+      "zero_prior_share": -0.05,
+      "n_trace_events": 70.0
+    },
+    {
+      "campus": "1",
+      "system": "D20",
+      "S": 1.0,
+      "n_campuses": 1.0,
+      "n_pos": 5480.0,
+      "pooled_lift": 4.02,
+      "frac_2x": 0.2,
+      "top_band": 1.75,
+      "rho": 0.1,
+      "zero_prior_share": -0.091,
+      "n_trace_events": 2058.0
+    },
+    {
+      "campus": "1",
+      "system": "D30",
+      "S": 1.0,
+      "n_campuses": 2.0,
+      "n_pos": 5726.0,
+      "pooled_lift": 3.98,
+      "frac_2x": 0.075,
+      "top_band": 1.46,
+      "rho": 0.1,
+      "zero_prior_share": -0.098,
+      "n_trace_events": 2079.0
+    },
+    {
+      "campus": "1",
+      "system": "D40",
+      "S": 1.0,
+      "n_campuses": 2.0,
+      "n_pos": 1414.0,
+      "pooled_lift": 3.64,
+      "frac_2x": 0.2,
+      "top_band": 0.25,
+      "rho": 0.1,
+      "zero_prior_share": -0.022,
+      "n_trace_events": 547.0
+    },
+    {
+      "campus": "1",
+      "system": "D50",
+      "S": 1.0,
+      "n_campuses": 1.0,
+      "n_pos": 4483.0,
+      "pooled_lift": 4.66,
+      "frac_2x": 0.2,
+      "top_band": 0.85,
+      "rho": 0.1,
+      "zero_prior_share": -0.088,
+      "n_trace_events": 1608.0
+    },
+    {
+      "campus": "1",
+      "system": "E10",
+      "S": 1.0,
+      "n_campuses": 1.0,
+      "n_pos": 2014.0,
+      "pooled_lift": 3.77,
+      "frac_2x": 0.2,
+      "top_band": 1.76,
+      "rho": 0.1,
+      "zero_prior_share": -0.089,
+      "n_trace_events": 841.0
+    },
+    {
+      "campus": "1",
+      "system": "E20",
+      "S": 1.0,
+      "n_campuses": 0.0,
+      "n_pos": 717.0,
+      "pooled_lift": 4.94,
+      "frac_2x": 0.2,
+      "top_band": 0.17,
+      "rho": 0.1,
+      "zero_prior_share": -0.022,
+      "n_trace_events": 316.0
+    },
+    {
+      "campus": "1",
+      "system": "F10",
+      "S": 0.7,
+      "n_campuses": 0.0,
+      "n_pos": 1.0,
+      "pooled_lift": 3.64,
+      "frac_2x": 0.2,
+      "top_band": 0.38,
+      "rho": 0.1,
+      "zero_prior_share": -0.056,
+      "n_trace_events": 6.0
+    },
+    {
+      "campus": "1",
+      "system": "F20",
+      "S": 0.5,
+      "n_campuses": -2.0,
+      "n_pos": -28.0,
+      "pooled_lift": 0.08,
+      "frac_2x": 0.2,
+      "top_band": 5.82,
+      "rho": 0.0,
+      "zero_prior_share": null,
+      "n_trace_events": -7.0
+    },
+    {
+      "campus": "1",
+      "system": "G20",
+      "S": 0.5,
+      "n_campuses": -1.0,
+      "n_pos": 180.0,
+      "pooled_lift": 3.75,
+      "frac_2x": 0.2,
+      "top_band": 1.15,
+      "rho": 0.2,
+      "zero_prior_share": -0.063,
+      "n_trace_events": 51.0
+    },
+    {
+      "campus": "1",
+      "system": "G30",
+      "S": 0.5,
+      "n_campuses": -2.0,
+      "n_pos": -71.0,
+      "pooled_lift": 4.21,
+      "frac_2x": 0.2,
+      "top_band": null,
+      "rho": null,
+      "zero_prior_share": null,
+      "n_trace_events": -14.0
+    },
+    {
+      "campus": "10",
+      "system": "B20",
+      "S": 0.9,
+      "n_campuses": 0.0,
+      "n_pos": 1050.0,
+      "pooled_lift": 3.15,
+      "frac_2x": 0.033,
+      "top_band": 0.69,
+      "rho": 0.1,
+      "zero_prior_share": 0.013,
+      "n_trace_events": 437.0
+    },
+    {
+      "campus": "10",
+      "system": "B30",
+      "S": 0.7,
+      "n_campuses": -1.0,
+      "n_pos": 520.0,
+      "pooled_lift": 2.54,
+      "frac_2x": 0.2,
+      "top_band": 0.45,
+      "rho": 0.1,
+      "zero_prior_share": -0.005,
+      "n_trace_events": 252.0
+    },
+    {
+      "campus": "10",
+      "system": "C10",
+      "S": 1.0,
+      "n_campuses": 1.0,
+      "n_pos": 3437.0,
+      "pooled_lift": 4.29,
+      "frac_2x": 0.2,
+      "top_band": 0.82,
+      "rho": 0.1,
+      "zero_prior_share": -0.094,
+      "n_trace_events": 1410.0
+    },
+    {
+      "campus": "10",
+      "system": "C20",
+      "S": 0.4,
+      "n_campuses": 1.0,
+      "n_pos": 49.0,
+      "pooled_lift": 0.88,
+      "frac_2x": 0.2,
+      "top_band": -0.08,
+      "rho": -0.1,
+      "zero_prior_share": 0.205,
+      "n_trace_events": 14.0
+    },
+    {
+      "campus": "10",
+      "system": "C30",
+      "S": 1.0,
+      "n_campuses": 1.0,
+      "n_pos": 1670.0,
+      "pooled_lift": 3.71,
+      "frac_2x": 0.2,
+      "top_band": 0.4,
+      "rho": 0.1,
+      "zero_prior_share": -0.028,
+      "n_trace_events": 651.0
+    },
+    {
+      "campus": "10",
+      "system": "D10",
+      "S": 0.6,
+      "n_campuses": 0.0,
+      "n_pos": -192.0,
+      "pooled_lift": 3.36,
+      "frac_2x": 0.067,
+      "top_band": -0.16,
+      "rho": 0.1,
+      "zero_prior_share": -0.062,
+      "n_trace_events": 71.0
+    },
+    {
+      "campus": "10",
+      "system": "D20",
+      "S": 1.0,
+      "n_campuses": 1.0,
+      "n_pos": 5020.0,
+      "pooled_lift": 4.02,
+      "frac_2x": 0.2,
+      "top_band": 1.58,
+      "rho": 0.1,
+      "zero_prior_share": -0.092,
+      "n_trace_events": 1915.0
+    },
+    {
+      "campus": "10",
+      "system": "D30",
+      "S": 1.0,
+      "n_campuses": 2.0,
+      "n_pos": 5261.0,
+      "pooled_lift": 3.86,
+      "frac_2x": 0.2,
+      "top_band": 1.52,
+      "rho": 0.1,
+      "zero_prior_share": -0.097,
+      "n_trace_events": 1937.0
+    },
+    {
+      "campus": "10",
+      "system": "D40",
+      "S": 1.0,
+      "n_campuses": 2.0,
+      "n_pos": 1028.0,
+      "pooled_lift": 3.9,
+      "frac_2x": 0.075,
+      "top_band": 0.84,
+      "rho": 0.1,
+      "zero_prior_share": 0.0,
+      "n_trace_events": 432.0
+    },
+    {
+      "campus": "10",
+      "system": "D50",
+      "S": 1.0,
+      "n_campuses": 1.0,
+      "n_pos": 4077.0,
+      "pooled_lift": 4.63,
+      "frac_2x": 0.2,
+      "top_band": 0.6,
+      "rho": 0.1,
+      "zero_prior_share": -0.087,
+      "n_trace_events": 1507.0
+    },
+    {
+      "campus": "10",
+      "system": "E10",
+      "S": 1.0,
+      "n_campuses": 1.0,
+      "n_pos": 1766.0,
+      "pooled_lift": 3.64,
+      "frac_2x": 0.2,
+      "top_band": 1.57,
+      "rho": 0.1,
+      "zero_prior_share": -0.087,
+      "n_trace_events": 741.0
+    },
+    {
+      "campus": "10",
+      "system": "E20",
+      "S": 0.9,
+      "n_campuses": 0.0,
+      "n_pos": 716.0,
+      "pooled_lift": 4.75,
+      "frac_2x": 0.067,
+      "top_band": 0.19,
+      "rho": 0.1,
+      "zero_prior_share": -0.021,
+      "n_trace_events": 312.0
+    },
+    {
+      "campus": "10",
+      "system": "F10",
+      "S": 0.5,
+      "n_campuses": -1.0,
+      "n_pos": -43.0,
+      "pooled_lift": 5.36,
+      "frac_2x": 0.2,
+      "top_band": 1.37,
+      "rho": 0.0,
+      "zero_prior_share": null,
+      "n_trace_events": -3.0
+    },
+    {
+      "campus": "10",
+      "system": "F20",
+      "S": 0.5,
+      "n_campuses": -2.0,
+      "n_pos": -28.0,
+      "pooled_lift": 0.36,
+      "frac_2x": 0.2,
+      "top_band": 6.64,
+      "rho": 0.1,
+      "zero_prior_share": null,
+      "n_trace_events": -7.0
+    },
+    {
+      "campus": "10",
+      "system": "G20",
+      "S": 0.5,
+      "n_campuses": -1.0,
+      "n_pos": -155.0,
+      "pooled_lift": 3.88,
+      "frac_2x": 0.2,
+      "top_band": 0.65,
+      "rho": 0.1,
+      "zero_prior_share": -0.049,
+      "n_trace_events": 69.0
+    },
+    {
+      "campus": "10",
+      "system": "G30",
+      "S": 0.5,
+      "n_campuses": -2.0,
+      "n_pos": -71.0,
+      "pooled_lift": 4.89,
+      "frac_2x": 0.2,
+      "top_band": null,
+      "rho": null,
+      "zero_prior_share": null,
+      "n_trace_events": -14.0
+    },
+    {
+      "campus": "11",
+      "system": "B20",
+      "S": 0.9,
+      "n_campuses": 0.0,
+      "n_pos": 909.0,
+      "pooled_lift": 3.06,
+      "frac_2x": 0.2,
+      "top_band": 0.79,
+      "rho": 0.1,
+      "zero_prior_share": 0.003,
+      "n_trace_events": 425.0
+    },
+    {
+      "campus": "11",
+      "system": "B30",
+      "S": 0.7,
+      "n_campuses": 0.0,
+      "n_pos": 444.0,
+      "pooled_lift": 2.17,
+      "frac_2x": 0.2,
+      "top_band": 0.02,
+      "rho": 0.1,
+      "zero_prior_share": -0.006,
+      "n_trace_events": 204.0
+    },
+    {
+      "campus": "11",
+      "system": "C10",
+      "S": 1.0,
+      "n_campuses": 1.0,
+      "n_pos": 3310.0,
+      "pooled_lift": 4.23,
+      "frac_2x": 0.2,
+      "top_band": 0.72,
+      "rho": 0.1,
+      "zero_prior_share": -0.093,
+      "n_trace_events": 1376.0
+    },
+    {
+      "campus": "11",
+      "system": "C20",
+      "S": 0.0,
+      "n_campuses": 1.0,
+      "n_pos": 56.0,
+      "pooled_lift": 0.24,
+      "frac_2x": -0.1,
+      "top_band": -0.09,
+      "rho": 0.1,
+      "zero_prior_share": 0.197,
+      "n_trace_events": 17.0
+    },
+    {
+      "campus": "11",
+      "system": "C30",
+      "S": 1.0,
+      "n_campuses": 1.0,
+      "n_pos": 1673.0,
+      "pooled_lift": 3.64,
+      "frac_2x": 0.2,
+      "top_band": 0.55,
+      "rho": 0.1,
+      "zero_prior_share": -0.029,
+      "n_trace_events": 675.0
+    },
+    {
+      "campus": "11",
+      "system": "D10",
+      "S": 0.5,
+      "n_campuses": 0.0,
+      "n_pos": 172.0,
+      "pooled_lift": 3.84,
+      "frac_2x": -0.1,
+      "top_band": 0.16,
+      "rho": 0.2,
+      "zero_prior_share": -0.026,
+      "n_trace_events": 55.0
+    },
+    {
+      "campus": "11",
+      "system": "D20",
+      "S": 1.0,
+      "n_campuses": 1.0,
+      "n_pos": 4831.0,
+      "pooled_lift": 3.92,
+      "frac_2x": 0.2,
+      "top_band": 1.58,
+      "rho": 0.1,
+      "zero_prior_share": -0.091,
+      "n_trace_events": 1884.0
+    },
+    {
+      "campus": "11",
+      "system": "D30",
+      "S": 1.0,
+      "n_campuses": 2.0,
+      "n_pos": 5077.0,
+      "pooled_lift": 3.98,
+      "frac_2x": 0.2,
+      "top_band": 1.49,
+      "rho": 0.1,
+      "zero_prior_share": -0.097,
+      "n_trace_events": 1901.0
+    },
+    {
+      "campus": "11",
+      "system": "D40",
+      "S": 1.0,
+      "n_campuses": 2.0,
+      "n_pos": 1243.0,
+      "pooled_lift": 3.5,
+      "frac_2x": 0.075,
+      "top_band": 0.37,
+      "rho": 0.1,
+      "zero_prior_share": -0.031,
+      "n_trace_events": 505.0
+    },
+    {
+      "campus": "11",
+      "system": "D50",
+      "S": 1.0,
+      "n_campuses": 1.0,
+      "n_pos": 4049.0,
+      "pooled_lift": 4.88,
+      "frac_2x": 0.2,
+      "top_band": 0.79,
+      "rho": 0.1,
+      "zero_prior_share": -0.089,
+      "n_trace_events": 1473.0
+    },
+    {
+      "campus": "11",
+      "system": "E10",
+      "S": 1.0,
+      "n_campuses": 1.0,
+      "n_pos": 1643.0,
+      "pooled_lift": 3.8,
+      "frac_2x": 0.2,
+      "top_band": 1.82,
+      "rho": 0.1,
+      "zero_prior_share": -0.085,
+      "n_trace_events": 687.0
+    },
+    {
+      "campus": "11",
+      "system": "E20",
+      "S": 1.0,
+      "n_campuses": 1.0,
+      "n_pos": 728.0,
+      "pooled_lift": 4.56,
+      "frac_2x": 0.2,
+      "top_band": 0.43,
+      "rho": 0.1,
+      "zero_prior_share": -0.023,
+      "n_trace_events": 332.0
+    },
+    {
+      "campus": "11",
+      "system": "F10",
+      "S": 0.0,
+      "n_campuses": -1.0,
+      "n_pos": -54.0,
+      "pooled_lift": 3.42,
+      "frac_2x": -0.1,
+      "top_band": -0.06,
+      "rho": 0.1,
+      "zero_prior_share": null,
+      "n_trace_events": -11.0
+    },
+    {
+      "campus": "11",
+      "system": "G20",
+      "S": 0.5,
+      "n_campuses": -2.0,
+      "n_pos": -163.0,
+      "pooled_lift": 3.66,
+      "frac_2x": 0.2,
+      "top_band": 0.15,
+      "rho": 0.0,
+      "zero_prior_share": -0.052,
+      "n_trace_events": 54.0
+    },
+    {
+      "campus": "2",
+      "system": "B20",
+      "S": 0.9,
+      "n_campuses": 1.0,
+      "n_pos": 1281.0,
+      "pooled_lift": 3.19,
+      "frac_2x": 0.057,
+      "top_band": 0.84,
+      "rho": 0.1,
+      "zero_prior_share": 0.005,
+      "n_trace_events": 541.0
+    },
+    {
+      "campus": "2",
+      "system": "B30",
+      "S": 0.5,
+      "n_campuses": 1.0,
+      "n_pos": 615.0,
+      "pooled_lift": 3.05,
+      "frac_2x": 0.2,
+      "top_band": 0.66,
+      "rho": 0.1,
+      "zero_prior_share": 0.001,
+      "n_trace_events": 277.0
+    },
+    {
+      "campus": "2",
+      "system": "C10",
+      "S": 1.0,
+      "n_campuses": 1.0,
+      "n_pos": 3897.0,
+      "pooled_lift": 4.25,
+      "frac_2x": 0.2,
+      "top_band": 0.95,
+      "rho": 0.1,
+      "zero_prior_share": -0.094,
+      "n_trace_events": 1545.0
+    },
+    {
+      "campus": "2",
+      "system": "C20",
+      "S": 0.4,
+      "n_campuses": -1.0,
+      "n_pos": 74.0,
+      "pooled_lift": 0.82,
+      "frac_2x": 0.0,
+      "top_band": -0.03,
+      "rho": 0.1,
+      "zero_prior_share": 0.184,
+      "n_trace_events": 23.0
+    },
+    {
+      "campus": "2",
+      "system": "C30",
+      "S": 1.0,
+      "n_campuses": 1.0,
+      "n_pos": 1998.0,
+      "pooled_lift": 3.63,
+      "frac_2x": 0.2,
+      "top_band": 0.51,
+      "rho": 0.1,
+      "zero_prior_share": -0.035,
+      "n_trace_events": 781.0
+    },
+    {
+      "campus": "2",
+      "system": "D10",
+      "S": 0.8,
+      "n_campuses": 0.0,
+      "n_pos": -192.0,
+      "pooled_lift": 2.84,
+      "frac_2x": 0.033,
+      "top_band": 0.66,
+      "rho": 0.1,
+      "zero_prior_share": -0.022,
+      "n_trace_events": 71.0
+    },
+    {
+      "campus": "2",
+      "system": "D20",
+      "S": 1.0,
+      "n_campuses": 1.0,
+      "n_pos": 5658.0,
+      "pooled_lift": 4.08,
+      "frac_2x": 0.2,
+      "top_band": 1.67,
+      "rho": 0.1,
+      "zero_prior_share": -0.094,
+      "n_trace_events": 2171.0
+    },
+    {
+      "campus": "2",
+      "system": "D30",
+      "S": 1.0,
+      "n_campuses": 2.0,
+      "n_pos": 5955.0,
+      "pooled_lift": 4.03,
+      "frac_2x": 0.075,
+      "top_band": 1.49,
+      "rho": 0.1,
+      "zero_prior_share": -0.098,
+      "n_trace_events": 2171.0
+    },
+    {
+      "campus": "2",
+      "system": "D40",
+      "S": 1.0,
+      "n_campuses": 2.0,
+      "n_pos": 1455.0,
+      "pooled_lift": 3.85,
+      "frac_2x": 0.2,
+      "top_band": 0.35,
+      "rho": 0.1,
+      "zero_prior_share": -0.025,
+      "n_trace_events": 593.0
+    },
+    {
+      "campus": "2",
+      "system": "D50",
+      "S": 1.0,
+      "n_campuses": 1.0,
+      "n_pos": 4798.0,
+      "pooled_lift": 4.89,
+      "frac_2x": 0.2,
+      "top_band": 0.89,
+      "rho": 0.1,
+      "zero_prior_share": -0.091,
+      "n_trace_events": 1772.0
+    },
+    {
+      "campus": "2",
+      "system": "E10",
+      "S": 1.0,
+      "n_campuses": 1.0,
+      "n_pos": 2088.0,
+      "pooled_lift": 3.85,
+      "frac_2x": 0.2,
+      "top_band": 1.7,
+      "rho": 0.1,
+      "zero_prior_share": -0.088,
+      "n_trace_events": 857.0
+    },
+    {
+      "campus": "2",
+      "system": "E20",
+      "S": 1.0,
+      "n_campuses": 0.0,
+      "n_pos": 849.0,
+      "pooled_lift": 4.79,
+      "frac_2x": 0.2,
+      "top_band": 0.25,
+      "rho": 0.1,
+      "zero_prior_share": -0.02,
+      "n_trace_events": 359.0
+    },
+    {
+      "campus": "2",
+      "system": "F10",
+      "S": 0.7,
+      "n_campuses": 0.0,
+      "n_pos": 2.0,
+      "pooled_lift": 3.19,
+      "frac_2x": 0.2,
+      "top_band": 0.53,
+      "rho": 0.1,
+      "zero_prior_share": -0.05,
+      "n_trace_events": 5.0
+    },
+    {
+      "campus": "2",
+      "system": "F20",
+      "S": 0.4,
+      "n_campuses": -2.0,
+      "n_pos": -28.0,
+      "pooled_lift": -0.06,
+      "frac_2x": 0.2,
+      "top_band": 5.18,
+      "rho": 0.0,
+      "zero_prior_share": null,
+      "n_trace_events": -7.0
+    },
+    {
+      "campus": "2",
+      "system": "G20",
+      "S": 0.5,
+      "n_campuses": -1.0,
+      "n_pos": -164.0,
+      "pooled_lift": 4.37,
+      "frac_2x": 0.2,
+      "top_band": 0.32,
+      "rho": 0.1,
+      "zero_prior_share": -0.056,
+      "n_trace_events": 61.0
+    },
+    {
+      "campus": "2",
+      "system": "G30",
+      "S": 0.5,
+      "n_campuses": -2.0,
+      "n_pos": -71.0,
+      "pooled_lift": 3.86,
+      "frac_2x": 0.2,
+      "top_band": null,
+      "rho": null,
+      "zero_prior_share": null,
+      "n_trace_events": -14.0
+    },
+    {
+      "campus": "3",
+      "system": "B20",
+      "S": 0.9,
+      "n_campuses": 0.0,
+      "n_pos": 1261.0,
+      "pooled_lift": 2.82,
+      "frac_2x": 0.033,
+      "top_band": 0.77,
+      "rho": 0.1,
+      "zero_prior_share": 0.01,
+      "n_trace_events": 535.0
+    },
+    {
+      "campus": "3",
+      "system": "B30",
+      "S": 0.7,
+      "n_campuses": -1.0,
+      "n_pos": 536.0,
+      "pooled_lift": 2.45,
+      "frac_2x": 0.2,
+      "top_band": 0.75,
+      "rho": 0.1,
+      "zero_prior_share": -0.006,
+      "n_trace_events": 273.0
+    },
+    {
+      "campus": "3",
+      "system": "C10",
+      "S": 1.0,
+      "n_campuses": 1.0,
+      "n_pos": 3511.0,
+      "pooled_lift": 4.02,
+      "frac_2x": 0.2,
+      "top_band": 0.85,
+      "rho": 0.1,
+      "zero_prior_share": -0.097,
+      "n_trace_events": 1418.0
+    },
+    {
+      "campus": "3",
+      "system": "C20",
+      "S": 0.5,
+      "n_campuses": 1.0,
+      "n_pos": 29.0,
+      "pooled_lift": 1.41,
+      "frac_2x": 0.2,
+      "top_band": -0.01,
+      "rho": 0.1,
+      "zero_prior_share": 0.031,
+      "n_trace_events": 2.0
+    },
+    {
+      "campus": "3",
+      "system": "C30",
+      "S": 1.0,
+      "n_campuses": 1.0,
+      "n_pos": 1896.0,
+      "pooled_lift": 3.53,
+      "frac_2x": 0.2,
+      "top_band": 0.62,
+      "rho": 0.1,
+      "zero_prior_share": -0.067,
+      "n_trace_events": 721.0
+    },
+    {
+      "campus": "3",
+      "system": "D10",
+      "S": 0.6,
+      "n_campuses": 0.0,
+      "n_pos": -167.0,
+      "pooled_lift": 2.77,
+      "frac_2x": 0.067,
+      "top_band": -0.17,
+      "rho": 0.1,
+      "zero_prior_share": -0.067,
+      "n_trace_events": 74.0
+    },
+    {
+      "campus": "3",
+      "system": "D20",
+      "S": 1.0,
+      "n_campuses": 1.0,
+      "n_pos": 5074.0,
+      "pooled_lift": 3.99,
+      "frac_2x": 0.2,
+      "top_band": 1.7,
+      "rho": 0.1,
+      "zero_prior_share": -0.095,
+      "n_trace_events": 1959.0
+    },
+    {
+      "campus": "3",
+      "system": "D30",
+      "S": 1.0,
+      "n_campuses": 2.0,
+      "n_pos": 5366.0,
+      "pooled_lift": 3.71,
+      "frac_2x": 0.2,
+      "top_band": 1.6,
+      "rho": 0.1,
+      "zero_prior_share": -0.098,
+      "n_trace_events": 1988.0
+    },
+    {
+      "campus": "3",
+      "system": "D40",
+      "S": 1.0,
+      "n_campuses": 2.0,
+      "n_pos": 1422.0,
+      "pooled_lift": 3.21,
+      "frac_2x": 0.075,
+      "top_band": 0.21,
+      "rho": 0.1,
+      "zero_prior_share": -0.062,
+      "n_trace_events": 544.0
+    },
+    {
+      "campus": "3",
+      "system": "D50",
+      "S": 1.0,
+      "n_campuses": 1.0,
+      "n_pos": 4311.0,
+      "pooled_lift": 4.39,
+      "frac_2x": 0.2,
+      "top_band": 0.81,
+      "rho": 0.1,
+      "zero_prior_share": -0.095,
+      "n_trace_events": 1561.0
+    },
+    {
+      "campus": "3",
+      "system": "E10",
+      "S": 1.0,
+      "n_campuses": 1.0,
+      "n_pos": 1908.0,
+      "pooled_lift": 3.74,
+      "frac_2x": 0.2,
+      "top_band": 1.72,
+      "rho": 0.1,
+      "zero_prior_share": -0.095,
+      "n_trace_events": 767.0
+    },
+    {
+      "campus": "3",
+      "system": "E20",
+      "S": 1.0,
+      "n_campuses": 0.0,
+      "n_pos": 767.0,
+      "pooled_lift": 4.44,
+      "frac_2x": 0.2,
+      "top_band": 0.11,
+      "rho": 0.1,
+      "zero_prior_share": -0.026,
+      "n_trace_events": 333.0
+    },
+    {
+      "campus": "3",
+      "system": "F10",
+      "S": 0.6,
+      "n_campuses": 0.0,
+      "n_pos": 1.0,
+      "pooled_lift": 3.15,
+      "frac_2x": 0.2,
+      "top_band": 0.52,
+      "rho": 0.0,
+      "zero_prior_share": -0.028,
+      "n_trace_events": 6.0
+    },
+    {
+      "campus": "3",
+      "system": "F20",
+      "S": 0.5,
+      "n_campuses": -2.0,
+      "n_pos": 79.0,
+      "pooled_lift": 0.12,
+      "frac_2x": 0.2,
+      "top_band": 2.94,
+      "rho": 0.1,
+      "zero_prior_share": null,
+      "n_trace_events": -7.0
+    },
+    {
+      "campus": "3",
+      "system": "G20",
+      "S": 0.7,
+      "n_campuses": 0.0,
+      "n_pos": -132.0,
+      "pooled_lift": 3.57,
+      "frac_2x": 0.2,
+      "top_band": 0.13,
+      "rho": 0.2,
+      "zero_prior_share": -0.051,
+      "n_trace_events": 73.0
+    },
+    {
+      "campus": "3",
+      "system": "G30",
+      "S": 0.5,
+      "n_campuses": -2.0,
+      "n_pos": -71.0,
+      "pooled_lift": 5.59,
+      "frac_2x": 0.2,
+      "top_band": null,
+      "rho": null,
+      "zero_prior_share": null,
+      "n_trace_events": -14.0
+    },
+    {
+      "campus": "4",
+      "system": "B20",
+      "S": 0.9,
+      "n_campuses": 0.0,
+      "n_pos": 1070.0,
+      "pooled_lift": 3.66,
+      "frac_2x": 0.033,
+      "top_band": 0.77,
+      "rho": 0.1,
+      "zero_prior_share": 0.014,
+      "n_trace_events": 481.0
+    },
+    {
+      "campus": "4",
+      "system": "B30",
+      "S": 0.7,
+      "n_campuses": 1.0,
+      "n_pos": 516.0,
+      "pooled_lift": 2.82,
+      "frac_2x": 0.2,
+      "top_band": 0.52,
+      "rho": 0.1,
+      "zero_prior_share": -0.007,
+      "n_trace_events": 254.0
+    },
+    {
+      "campus": "4",
+      "system": "C10",
+      "S": 1.0,
+      "n_campuses": 1.0,
+      "n_pos": 3698.0,
+      "pooled_lift": 3.9,
+      "frac_2x": 0.2,
+      "top_band": 1.29,
+      "rho": 0.1,
+      "zero_prior_share": -0.091,
+      "n_trace_events": 1470.0
+    },
+    {
+      "campus": "4",
+      "system": "C20",
+      "S": 0.5,
+      "n_campuses": -1.0,
+      "n_pos": 45.0,
+      "pooled_lift": 1.31,
+      "frac_2x": 0.0,
+      "top_band": 0.15,
+      "rho": 0.1,
+      "zero_prior_share": 0.197,
+      "n_trace_events": 17.0
+    },
+    {
+      "campus": "4",
+      "system": "C30",
+      "S": 1.0,
+      "n_campuses": 1.0,
+      "n_pos": 1756.0,
+      "pooled_lift": 3.63,
+      "frac_2x": 0.2,
+      "top_band": 0.5,
+      "rho": 0.1,
+      "zero_prior_share": -0.027,
+      "n_trace_events": 695.0
+    },
+    {
+      "campus": "4",
+      "system": "D10",
+      "S": 0.5,
+      "n_campuses": 0.0,
+      "n_pos": 180.0,
+      "pooled_lift": 3.11,
+      "frac_2x": -0.1,
+      "top_band": 0.08,
+      "rho": 0.0,
+      "zero_prior_share": -0.024,
+      "n_trace_events": 63.0
+    },
+    {
+      "campus": "4",
+      "system": "D20",
+      "S": 1.0,
+      "n_campuses": 1.0,
+      "n_pos": 5504.0,
+      "pooled_lift": 4.08,
+      "frac_2x": 0.2,
+      "top_band": 1.77,
+      "rho": 0.1,
+      "zero_prior_share": -0.091,
+      "n_trace_events": 2074.0
+    },
+    {
+      "campus": "4",
+      "system": "D30",
+      "S": 1.0,
+      "n_campuses": 2.0,
+      "n_pos": 5807.0,
+      "pooled_lift": 4.08,
+      "frac_2x": 0.075,
+      "top_band": 1.49,
+      "rho": 0.1,
+      "zero_prior_share": -0.098,
+      "n_trace_events": 2116.0
+    },
+    {
+      "campus": "4",
+      "system": "D40",
+      "S": 1.0,
+      "n_campuses": 2.0,
+      "n_pos": 1345.0,
+      "pooled_lift": 3.6,
+      "frac_2x": 0.2,
+      "top_band": 0.33,
+      "rho": 0.1,
+      "zero_prior_share": -0.017,
+      "n_trace_events": 534.0
+    },
+    {
+      "campus": "4",
+      "system": "D50",
+      "S": 1.0,
+      "n_campuses": 1.0,
+      "n_pos": 4539.0,
+      "pooled_lift": 4.68,
+      "frac_2x": 0.2,
+      "top_band": 0.89,
+      "rho": 0.1,
+      "zero_prior_share": -0.089,
+      "n_trace_events": 1639.0
+    },
+    {
+      "campus": "4",
+      "system": "E10",
+      "S": 1.0,
+      "n_campuses": 1.0,
+      "n_pos": 1914.0,
+      "pooled_lift": 4.12,
+      "frac_2x": 0.2,
+      "top_band": 1.83,
+      "rho": 0.1,
+      "zero_prior_share": -0.087,
+      "n_trace_events": 799.0
+    },
+    {
+      "campus": "4",
+      "system": "E20",
+      "S": 1.0,
+      "n_campuses": 0.0,
+      "n_pos": 663.0,
+      "pooled_lift": 5.19,
+      "frac_2x": 0.2,
+      "top_band": 0.18,
+      "rho": 0.1,
+      "zero_prior_share": -0.012,
+      "n_trace_events": 287.0
+    },
+    {
+      "campus": "4",
+      "system": "F10",
+      "S": 0.5,
+      "n_campuses": 0.0,
+      "n_pos": -1.0,
+      "pooled_lift": 3.35,
+      "frac_2x": 0.2,
+      "top_band": 0.52,
+      "rho": 0.1,
+      "zero_prior_share": -0.038,
+      "n_trace_events": 3.0
+    },
+    {
+      "campus": "4",
+      "system": "F20",
+      "S": 0.5,
+      "n_campuses": -2.0,
+      "n_pos": -28.0,
+      "pooled_lift": 0.08,
+      "frac_2x": 0.2,
+      "top_band": 5.5,
+      "rho": 0.1,
+      "zero_prior_share": null,
+      "n_trace_events": -7.0
+    },
+    {
+      "campus": "4",
+      "system": "G20",
+      "S": 0.5,
+      "n_campuses": -1.0,
+      "n_pos": 58.0,
+      "pooled_lift": 2.05,
+      "frac_2x": 0.2,
+      "top_band": 0.77,
+      "rho": 0.1,
+      "zero_prior_share": 0.039,
+      "n_trace_events": 8.0
+    },
+    {
+      "campus": "4",
+      "system": "G30",
+      "S": 0.5,
+      "n_campuses": -2.0,
+      "n_pos": -71.0,
+      "pooled_lift": 3.86,
+      "frac_2x": 0.2,
+      "top_band": null,
+      "rho": null,
+      "zero_prior_share": null,
+      "n_trace_events": -14.0
+    },
+    {
+      "campus": "5",
+      "system": "B20",
+      "S": 1.0,
+      "n_campuses": 0.0,
+      "n_pos": 730.0,
+      "pooled_lift": 3.22,
+      "frac_2x": 0.033,
+      "top_band": 0.05,
+      "rho": 0.1,
+      "zero_prior_share": -0.023,
+      "n_trace_events": 320.0
+    },
+    {
+      "campus": "5",
+      "system": "B30",
+      "S": 0.7,
+      "n_campuses": 0.0,
+      "n_pos": -117.0,
+      "pooled_lift": 3.35,
+      "frac_2x": 0.033,
+      "top_band": -0.11,
+      "rho": 0.1,
+      "zero_prior_share": -0.034,
+      "n_trace_events": 81.0
+    },
+    {
+      "campus": "5",
+      "system": "C10",
+      "S": 1.0,
+      "n_campuses": 1.0,
+      "n_pos": 2782.0,
+      "pooled_lift": 4.13,
+      "frac_2x": 0.2,
+      "top_band": 0.64,
+      "rho": 0.1,
+      "zero_prior_share": -0.093,
+      "n_trace_events": 1058.0
+    },
+    {
+      "campus": "5",
+      "system": "C20",
+      "S": 0.4,
+      "n_campuses": -1.0,
+      "n_pos": 72.0,
+      "pooled_lift": 0.79,
+      "frac_2x": 0.0,
+      "top_band": -0.08,
+      "rho": 0.1,
+      "zero_prior_share": 0.181,
+      "n_trace_events": 21.0
+    },
+    {
+      "campus": "5",
+      "system": "C30",
+      "S": 1.0,
+      "n_campuses": 1.0,
+      "n_pos": 1430.0,
+      "pooled_lift": 3.92,
+      "frac_2x": 0.2,
+      "top_band": 0.48,
+      "rho": 0.1,
+      "zero_prior_share": -0.041,
+      "n_trace_events": 544.0
+    },
+    {
+      "campus": "5",
+      "system": "D10",
+      "S": 0.5,
+      "n_campuses": 0.0,
+      "n_pos": 182.0,
+      "pooled_lift": 2.22,
+      "frac_2x": -0.1,
+      "top_band": 0.12,
+      "rho": 0.1,
+      "zero_prior_share": -0.057,
+      "n_trace_events": 58.0
+    },
+    {
+      "campus": "5",
+      "system": "D20",
+      "S": 1.0,
+      "n_campuses": 1.0,
+      "n_pos": 3739.0,
+      "pooled_lift": 4.12,
+      "frac_2x": 0.2,
+      "top_band": 1.3,
+      "rho": 0.1,
+      "zero_prior_share": -0.09,
+      "n_trace_events": 1381.0
+    },
+    {
+      "campus": "5",
+      "system": "D30",
+      "S": 1.0,
+      "n_campuses": 2.0,
+      "n_pos": 3462.0,
+      "pooled_lift": 4.07,
+      "frac_2x": 0.075,
+      "top_band": 0.98,
+      "rho": 0.1,
+      "zero_prior_share": -0.098,
+      "n_trace_events": 1300.0
+    },
+    {
+      "campus": "5",
+      "system": "D40",
+      "S": 1.0,
+      "n_campuses": 2.0,
+      "n_pos": 1140.0,
+      "pooled_lift": 2.86,
+      "frac_2x": 0.2,
+      "top_band": 0.39,
+      "rho": 0.1,
+      "zero_prior_share": -0.032,
+      "n_trace_events": 468.0
+    },
+    {
+      "campus": "5",
+      "system": "D50",
+      "S": 1.0,
+      "n_campuses": 1.0,
+      "n_pos": 3843.0,
+      "pooled_lift": 4.63,
+      "frac_2x": 0.2,
+      "top_band": 1.03,
+      "rho": 0.1,
+      "zero_prior_share": -0.091,
+      "n_trace_events": 1394.0
+    },
+    {
+      "campus": "5",
+      "system": "E10",
+      "S": 1.0,
+      "n_campuses": 1.0,
+      "n_pos": 1519.0,
+      "pooled_lift": 4.51,
+      "frac_2x": 0.2,
+      "top_band": 1.69,
+      "rho": 0.1,
+      "zero_prior_share": -0.083,
+      "n_trace_events": 629.0
+    },
+    {
+      "campus": "5",
+      "system": "E20",
+      "S": 0.9,
+      "n_campuses": 0.0,
+      "n_pos": 678.0,
+      "pooled_lift": 5.33,
+      "frac_2x": 0.033,
+      "top_band": 0.0,
+      "rho": 0.0,
+      "zero_prior_share": -0.056,
+      "n_trace_events": 267.0
+    },
+    {
+      "campus": "5",
+      "system": "F10",
+      "S": 0.6,
+      "n_campuses": 0.0,
+      "n_pos": 2.0,
+      "pooled_lift": 2.9,
+      "frac_2x": 0.067,
+      "top_band": -0.02,
+      "rho": 0.0,
+      "zero_prior_share": -0.034,
+      "n_trace_events": 7.0
+    },
+    {
+      "campus": "5",
+      "system": "F20",
+      "S": 0.5,
+      "n_campuses": -2.0,
+      "n_pos": -28.0,
+      "pooled_lift": -0.19,
+      "frac_2x": 0.2,
+      "top_band": 5.14,
+      "rho": 0.1,
+      "zero_prior_share": null,
+      "n_trace_events": -7.0
+    },
+    {
+      "campus": "5",
+      "system": "G20",
+      "S": 0.7,
+      "n_campuses": 0.0,
+      "n_pos": -147.0,
+      "pooled_lift": 3.81,
+      "frac_2x": 0.2,
+      "top_band": 1.39,
+      "rho": 0.2,
+      "zero_prior_share": -0.05,
+      "n_trace_events": 70.0
+    },
+    {
+      "campus": "6",
+      "system": "B20",
+      "S": 0.9,
+      "n_campuses": 0.0,
+      "n_pos": 860.0,
+      "pooled_lift": 2.11,
+      "frac_2x": 0.2,
+      "top_band": 0.83,
+      "rho": 0.1,
+      "zero_prior_share": 0.058,
+      "n_trace_events": 484.0
+    },
+    {
+      "campus": "6",
+      "system": "B30",
+      "S": 0.7,
+      "n_campuses": 1.0,
+      "n_pos": 473.0,
+      "pooled_lift": 2.83,
+      "frac_2x": 0.2,
+      "top_band": 0.47,
+      "rho": 0.1,
+      "zero_prior_share": -0.009,
+      "n_trace_events": 248.0
+    },
+    {
+      "campus": "6",
+      "system": "C10",
+      "S": 1.0,
+      "n_campuses": 1.0,
+      "n_pos": 3629.0,
+      "pooled_lift": 4.13,
+      "frac_2x": 0.2,
+      "top_band": 1.11,
+      "rho": 0.1,
+      "zero_prior_share": -0.093,
+      "n_trace_events": 1566.0
+    },
+    {
+      "campus": "6",
+      "system": "C20",
+      "S": 0.5,
+      "n_campuses": 1.0,
+      "n_pos": 59.0,
+      "pooled_lift": 1.21,
+      "frac_2x": 0.2,
+      "top_band": 0.25,
+      "rho": 0.0,
+      "zero_prior_share": 0.179,
+      "n_trace_events": 19.0
+    },
+    {
+      "campus": "6",
+      "system": "C30",
+      "S": 1.0,
+      "n_campuses": 1.0,
+      "n_pos": 1717.0,
+      "pooled_lift": 2.86,
+      "frac_2x": 0.2,
+      "top_band": 0.67,
+      "rho": 0.1,
+      "zero_prior_share": -0.018,
+      "n_trace_events": 774.0
+    },
+    {
+      "campus": "6",
+      "system": "D10",
+      "S": 0.7,
+      "n_campuses": 1.0,
+      "n_pos": -155.0,
+      "pooled_lift": 2.95,
+      "frac_2x": 0.057,
+      "top_band": -0.12,
+      "rho": 0.1,
+      "zero_prior_share": -0.043,
+      "n_trace_events": 81.0
+    },
+    {
+      "campus": "6",
+      "system": "D20",
+      "S": 1.0,
+      "n_campuses": 1.0,
+      "n_pos": 5393.0,
+      "pooled_lift": 4.03,
+      "frac_2x": 0.2,
+      "top_band": 1.87,
+      "rho": 0.1,
+      "zero_prior_share": -0.091,
+      "n_trace_events": 2148.0
+    },
+    {
+      "campus": "6",
+      "system": "D30",
+      "S": 1.0,
+      "n_campuses": 2.0,
+      "n_pos": 5722.0,
+      "pooled_lift": 3.91,
+      "frac_2x": 0.075,
+      "top_band": 1.66,
+      "rho": 0.1,
+      "zero_prior_share": -0.096,
+      "n_trace_events": 2197.0
+    },
+    {
+      "campus": "6",
+      "system": "D40",
+      "S": 1.0,
+      "n_campuses": 2.0,
+      "n_pos": 1182.0,
+      "pooled_lift": 3.34,
+      "frac_2x": 0.2,
+      "top_band": 0.28,
+      "rho": 0.1,
+      "zero_prior_share": -0.003,
+      "n_trace_events": 546.0
+    },
+    {
+      "campus": "6",
+      "system": "D50",
+      "S": 1.0,
+      "n_campuses": 2.0,
+      "n_pos": 4325.0,
+      "pooled_lift": 4.66,
+      "frac_2x": 0.2,
+      "top_band": 1.08,
+      "rho": 0.1,
+      "zero_prior_share": -0.088,
+      "n_trace_events": 1743.0
+    },
+    {
+      "campus": "6",
+      "system": "E10",
+      "S": 1.0,
+      "n_campuses": 1.0,
+      "n_pos": 1903.0,
+      "pooled_lift": 3.45,
+      "frac_2x": 0.2,
+      "top_band": 1.63,
+      "rho": 0.1,
+      "zero_prior_share": -0.081,
+      "n_trace_events": 849.0
+    },
+    {
+      "campus": "6",
+      "system": "E20",
+      "S": 0.9,
+      "n_campuses": 1.0,
+      "n_pos": 408.0,
+      "pooled_lift": 2.48,
+      "frac_2x": 0.2,
+      "top_band": 0.42,
+      "rho": 0.1,
+      "zero_prior_share": -0.072,
+      "n_trace_events": 290.0
+    },
+    {
+      "campus": "6",
+      "system": "F10",
+      "S": 0.5,
+      "n_campuses": -1.0,
+      "n_pos": 0.0,
+      "pooled_lift": 2.6,
+      "frac_2x": 0.2,
+      "top_band": 0.77,
+      "rho": 0.1,
+      "zero_prior_share": 0.008,
+      "n_trace_events": 1.0
+    },
+    {
+      "campus": "6",
+      "system": "F20",
+      "S": 0.5,
+      "n_campuses": -2.0,
+      "n_pos": -28.0,
+      "pooled_lift": 0.91,
+      "frac_2x": 0.2,
+      "top_band": 3.94,
+      "rho": 0.0,
+      "zero_prior_share": null,
+      "n_trace_events": -7.0
+    },
+    {
+      "campus": "6",
+      "system": "G20",
+      "S": 0.7,
+      "n_campuses": 0.0,
+      "n_pos": -135.0,
+      "pooled_lift": 4.35,
+      "frac_2x": 0.2,
+      "top_band": 0.67,
+      "rho": 0.0,
+      "zero_prior_share": -0.041,
+      "n_trace_events": 72.0
+    },
+    {
+      "campus": "6",
+      "system": "G30",
+      "S": 0.5,
+      "n_campuses": -2.0,
+      "n_pos": -71.0,
+      "pooled_lift": 5.24,
+      "frac_2x": 0.2,
+      "top_band": null,
+      "rho": null,
+      "zero_prior_share": null,
+      "n_trace_events": -14.0
+    },
+    {
+      "campus": "7",
+      "system": "B20",
+      "S": 0.9,
+      "n_campuses": 1.0,
+      "n_pos": 1289.0,
+      "pooled_lift": 3.01,
+      "frac_2x": 0.057,
+      "top_band": 0.73,
+      "rho": 0.1,
+      "zero_prior_share": 0.011,
+      "n_trace_events": 546.0
+    },
+    {
+      "campus": "7",
+      "system": "B30",
+      "S": 0.7,
+      "n_campuses": -1.0,
+      "n_pos": 539.0,
+      "pooled_lift": 2.83,
+      "frac_2x": 0.2,
+      "top_band": 0.35,
+      "rho": 0.1,
+      "zero_prior_share": -0.003,
+      "n_trace_events": 274.0
+    },
+    {
+      "campus": "7",
+      "system": "C10",
+      "S": 1.0,
+      "n_campuses": 2.0,
+      "n_pos": 4078.0,
+      "pooled_lift": 4.19,
+      "frac_2x": 0.2,
+      "top_band": 0.86,
+      "rho": 0.1,
+      "zero_prior_share": -0.094,
+      "n_trace_events": 1619.0
+    },
+    {
+      "campus": "7",
+      "system": "C20",
+      "S": 0.5,
+      "n_campuses": -1.0,
+      "n_pos": 74.0,
+      "pooled_lift": 0.87,
+      "frac_2x": 0.0,
+      "top_band": 0.12,
+      "rho": 0.1,
+      "zero_prior_share": 0.184,
+      "n_trace_events": 23.0
+    },
+    {
+      "campus": "7",
+      "system": "C30",
+      "S": 1.0,
+      "n_campuses": 2.0,
+      "n_pos": 2049.0,
+      "pooled_lift": 3.57,
+      "frac_2x": 0.2,
+      "top_band": 0.5,
+      "rho": 0.1,
+      "zero_prior_share": -0.037,
+      "n_trace_events": 790.0
+    },
+    {
+      "campus": "7",
+      "system": "D10",
+      "S": 0.6,
+      "n_campuses": 1.0,
+      "n_pos": -157.0,
+      "pooled_lift": 3.25,
+      "frac_2x": -0.086,
+      "top_band": -0.09,
+      "rho": 0.0,
+      "zero_prior_share": -0.043,
+      "n_trace_events": 81.0
+    },
+    {
+      "campus": "7",
+      "system": "D20",
+      "S": 1.0,
+      "n_campuses": 2.0,
+      "n_pos": 5842.0,
+      "pooled_lift": 4.05,
+      "frac_2x": 0.2,
+      "top_band": 1.66,
+      "rho": 0.1,
+      "zero_prior_share": -0.092,
+      "n_trace_events": 2211.0
+    },
+    {
+      "campus": "7",
+      "system": "D30",
+      "S": 1.0,
+      "n_campuses": 2.0,
+      "n_pos": 6070.0,
+      "pooled_lift": 4.02,
+      "frac_2x": 0.2,
+      "top_band": 1.49,
+      "rho": 0.1,
+      "zero_prior_share": -0.098,
+      "n_trace_events": 2230.0
+    },
+    {
+      "campus": "7",
+      "system": "D40",
+      "S": 1.0,
+      "n_campuses": 2.0,
+      "n_pos": 1513.0,
+      "pooled_lift": 3.61,
+      "frac_2x": 0.2,
+      "top_band": 0.37,
+      "rho": 0.1,
+      "zero_prior_share": -0.024,
+      "n_trace_events": 589.0
+    },
+    {
+      "campus": "7",
+      "system": "D50",
+      "S": 1.0,
+      "n_campuses": 2.0,
+      "n_pos": 4976.0,
+      "pooled_lift": 4.77,
+      "frac_2x": 0.2,
+      "top_band": 0.83,
+      "rho": 0.1,
+      "zero_prior_share": -0.09,
+      "n_trace_events": 1809.0
+    },
+    {
+      "campus": "7",
+      "system": "E10",
+      "S": 1.0,
+      "n_campuses": 2.0,
+      "n_pos": 2191.0,
+      "pooled_lift": 3.8,
+      "frac_2x": 0.2,
+      "top_band": 1.66,
+      "rho": 0.1,
+      "zero_prior_share": -0.088,
+      "n_trace_events": 888.0
+    },
+    {
+      "campus": "7",
+      "system": "E20",
+      "S": 1.0,
+      "n_campuses": 1.0,
+      "n_pos": 836.0,
+      "pooled_lift": 4.67,
+      "frac_2x": 0.2,
+      "top_band": 0.3,
+      "rho": 0.1,
+      "zero_prior_share": -0.018,
+      "n_trace_events": 360.0
+    },
+    {
+      "campus": "7",
+      "system": "F10",
+      "S": 0.7,
+      "n_campuses": 0.0,
+      "n_pos": 2.0,
+      "pooled_lift": 3.88,
+      "frac_2x": 0.067,
+      "top_band": 0.38,
+      "rho": 0.1,
+      "zero_prior_share": -0.034,
+      "n_trace_events": 7.0
+    },
+    {
+      "campus": "7",
+      "system": "F20",
+      "S": 0.5,
+      "n_campuses": -2.0,
+      "n_pos": -28.0,
+      "pooled_lift": -0.06,
+      "frac_2x": 0.2,
+      "top_band": 5.09,
+      "rho": 0.1,
+      "zero_prior_share": null,
+      "n_trace_events": -7.0
+    },
+    {
+      "campus": "7",
+      "system": "G20",
+      "S": 0.7,
+      "n_campuses": 0.0,
+      "n_pos": -147.0,
+      "pooled_lift": 3.86,
+      "frac_2x": 0.2,
+      "top_band": 0.56,
+      "rho": 0.0,
+      "zero_prior_share": -0.05,
+      "n_trace_events": 70.0
+    },
+    {
+      "campus": "7",
+      "system": "G30",
+      "S": 0.5,
+      "n_campuses": -2.0,
+      "n_pos": -71.0,
+      "pooled_lift": 3.86,
+      "frac_2x": 0.2,
+      "top_band": null,
+      "rho": null,
+      "zero_prior_share": null,
+      "n_trace_events": -14.0
+    }
+  ],
+  "runtime": {
+    "total_seconds": 1080.3,
+    "bootstrap_seconds": 1068.5,
+    "workers": 4,
+    "threads_per_worker": 2,
+    "seconds_per_replicate_per_worker": 2.14
+  }
+}

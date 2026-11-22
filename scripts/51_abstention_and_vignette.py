@@ -46,7 +46,7 @@ def main() -> None:
     outer = {}
     for j in campuses:
         dev = cert.dev_corpus(j, campuses, single, pairs, "double")
-        outer[j] = cert.gates_for(dev, trace[trace.campus != j], "R_quarter", True)
+        outer[j] = cert.gates_for(dev, cert.trace_for(j), "R_quarter", True)
 
     d = single.copy()
     d["S"] = [outer[u].get(s, {}).get("S", 0.0)

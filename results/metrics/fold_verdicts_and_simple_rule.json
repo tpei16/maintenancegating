@@ -1,0 +1,2951 @@
+{
+  "design": "The 141 stratum-fold certificates of the main pipeline (double nesting, risk percentile within campus and quarter, capped transfer gate), recomputed with the functions of 45_certification_corrected.py, read gate by gate; a simpler rule built from the data-sufficiency and prior-record-trace fail levels; and the top-decile lift of f^(-c) on each stratum in the campus c that the certificate S^(-c)_k did not use.",
+  "reference_check": {
+    "n_stratum_folds": 141,
+    "pooled_certified": "12/16",
+    "route_counts": {
+      "pma": 50968,
+      "verify": 705,
+      "continue": 385725,
+      "watch": 77577
+    },
+    "matches_cert_corrected_json": true
+  },
+  "provisional_strata": [
+    "B30",
+    "D10",
+    "F10",
+    "G20"
+  ],
+  "counts": {
+    "n_stratum_folds": 141,
+    "n_certified": 98,
+    "gate_score_counts": {
+      "data_sufficiency": {
+        "fail": 24,
+        "caution": 36,
+        "pass": 81
+      },
+      "risk_concentration": {
+        "fail": 0,
+        "caution": 3,
+        "pass": 138
+      },
+      "transfer_stability": {
+        "fail": 5,
+        "caution": 53,
+        "pass": 83
+      },
+      "risk_gradient": {
+        "fail": 4,
+        "caution": 37,
+        "pass": 100
+      },
+      "prior_record_trace": {
+        "fail": 12,
+        "caution": 49,
+        "pass": 80
+      }
+    },
+    "hard_fail_counts": {
+      "h=0": 110,
+      "h=1": 29,
+      "h>=2": 2
+    },
+    "n_certified_by_plain_mean": 99,
+    "n_verdicts_changed_by_hard_fail_rule": 1,
+    "verdicts_changed_by_hard_fail_rule": [
+      {
+        "campus": "10",
+        "system": "G20",
+        "mean_score": 0.7,
+        "S": 0.5,
+        "hard_gates_failed": [
+          "data_sufficiency"
+        ]
+      }
+    ]
+  },
+  "sample_size": {
+    "pooled_map": {
+      "S_vs_n_pos": {
+        "rho": 0.8865,
+        "p_value": 4.791e-06,
+        "n": 16
+      },
+      "S_vs_n_campuses": {
+        "rho": 0.8554,
+        "p_value": 2.396e-05,
+        "n": 16
+      }
+    },
+    "stratum_folds": {
+      "S_vs_n_pos": {
+        "rho": 0.8891,
+        "p_value": 5.089e-49,
+        "n": 141
+      },
+      "S_vs_n_campuses": {
+        "rho": 0.8634,
+        "p_value": 3.997e-43,
+        "n": 141
+      }
+    },
+    "note": "the 141 stratum-folds are not independent: each stratum contributes up to nine folds that share eight of nine campuses"
+  },
+  "simple_rule": {
+    "prespecified": {
+      "rule": {
+        "min_contexts": 3,
+        "min_events": 100,
+        "max_no_antecedent": 0.25
+      },
+      "definition": "certify when the stratum is evaluable (>=10 positives, >=100 rows) in at least min_contexts certifying contexts, has at least min_events positives, and has a no-antecedent share below max_no_antecedent; a share over fewer than 30 extreme events counts as not failing",
+      "pooled_agreement": {
+        "n": 16,
+        "n_agree": 15,
+        "agreement": 0.9375,
+        "kappa": 0.8182
+      },
+      "fold_agreement": {
+        "n": 141,
+        "n_agree": 132,
+        "agreement": 0.9362,
+        "kappa": 0.84
+      },
+      "n_pooled_certified": 13,
+      "n_fold_certified": 107,
+      "disagreements": {
+        "pooled": [
+          {
+            "system": "D10",
+            "certificate": false,
+            "rule": true,
+            "S": 0.6
+          }
+        ],
+        "folds": [
+          {
+            "campus": "1",
+            "system": "D10",
+            "certificate": false,
+            "rule": true,
+            "S": 0.6
+          },
+          {
+            "campus": "10",
+            "system": "D10",
+            "certificate": false,
+            "rule": true,
+            "S": 0.6
+          },
+          {
+            "campus": "11",
+            "system": "D10",
+            "certificate": false,
+            "rule": true,
+            "S": 0.5
+          },
+          {
+            "campus": "3",
+            "system": "D10",
+            "certificate": false,
+            "rule": true,
+            "S": 0.6
+          },
+          {
+            "campus": "3",
+            "system": "F10",
+            "certificate": false,
+            "rule": true,
+            "S": 0.6
+          },
+          {
+            "campus": "4",
+            "system": "D10",
+            "certificate": false,
+            "rule": true,
+            "S": 0.5
+          },
+          {
+            "campus": "5",
+            "system": "D10",
+            "certificate": false,
+            "rule": true,
+            "S": 0.5
+          },
+          {
+            "campus": "5",
+            "system": "F10",
+            "certificate": false,
+            "rule": true,
+            "S": 0.6
+          },
+          {
+            "campus": "7",
+            "system": "D10",
+            "certificate": false,
+            "rule": true,
+            "S": 0.6
+          }
+        ]
+      }
+    },
+    "post_hoc_grid": {
+      "label": "post hoc: levels searched on the same certificates they are compared with",
+      "n_rules": 189,
+      "selection": "highest agreement over the 141 stratum-folds; ties broken by pooled agreement, then fold kappa, then fewest contexts and events",
+      "best_rule": {
+        "min_contexts": 3,
+        "min_events": 300,
+        "max_no_antecedent": 0.25
+      },
+      "best_pooled_agreement": {
+        "n": 16,
+        "n_agree": 14,
+        "agreement": 0.875,
+        "kappa": 0.6667
+      },
+      "best_fold_agreement": {
+        "n": 141,
+        "n_agree": 134,
+        "agreement": 0.9504,
+        "kappa": 0.8821
+      },
+      "best_disagreements": {
+        "pooled": [
+          {
+            "system": "D10",
+            "certificate": false,
+            "rule": true,
+            "S": 0.6
+          },
+          {
+            "system": "F10",
+            "certificate": true,
+            "rule": false,
+            "S": 0.7
+          }
+        ],
+        "folds": [
+          {
+            "campus": "1",
+            "system": "D10",
+            "certificate": false,
+            "rule": true,
+            "S": 0.6
+          },
+          {
+            "campus": "1",
+            "system": "F10",
+            "certificate": true,
+            "rule": false,
+            "S": 0.7
+          },
+          {
+            "campus": "10",
+            "system": "D10",
+            "certificate": false,
+            "rule": true,
+            "S": 0.6
+          },
+          {
+            "campus": "2",
+            "system": "F10",
+            "certificate": true,
+            "rule": false,
+            "S": 0.7
+          },
+          {
+            "campus": "3",
+            "system": "D10",
+            "certificate": false,
+            "rule": true,
+            "S": 0.6
+          },
+          {
+            "campus": "7",
+            "system": "D10",
+            "certificate": false,
+            "rule": true,
+            "S": 0.6
+          },
+          {
+            "campus": "7",
+            "system": "F10",
+            "certificate": true,
+            "rule": false,
+            "S": 0.7
+          }
+        ]
+      },
+      "n_rules_tied_on_fold_agreement": 1,
+      "rules_tied_on_fold_agreement": [
+        {
+          "min_contexts": 3,
+          "min_events": 300,
+          "max_no_antecedent": 0.25,
+          "fold_agreement": 0.9504,
+          "fold_kappa": 0.8821,
+          "pooled_agreement": 0.875,
+          "pooled_kappa": 0.6667,
+          "n_fold_certified": 99,
+          "n_pooled_certified": 12
+        }
+      ],
+      "grid": [
+        {
+          "min_contexts": 1,
+          "min_events": 50,
+          "max_no_antecedent": 0.1,
+          "fold_agreement": 0.7518,
+          "fold_kappa": 0.4469,
+          "pooled_agreement": 0.75,
+          "pooled_kappa": 0.4286,
+          "n_fold_certified": 89,
+          "n_pooled_certified": 10
+        },
+        {
+          "min_contexts": 1,
+          "min_events": 50,
+          "max_no_antecedent": 0.25,
+          "fold_agreement": 0.8369,
+          "fold_kappa": 0.5473,
+          "pooled_agreement": 0.875,
+          "pooled_kappa": 0.6,
+          "n_fold_certified": 121,
+          "n_pooled_certified": 14
+        },
+        {
+          "min_contexts": 1,
+          "min_events": 50,
+          "max_no_antecedent": null,
+          "fold_agreement": 0.7518,
+          "fold_kappa": 0.2411,
+          "pooled_agreement": 0.8125,
+          "pooled_kappa": 0.3333,
+          "n_fold_certified": 133,
+          "n_pooled_certified": 15
+        },
+        {
+          "min_contexts": 1,
+          "min_events": 100,
+          "max_no_antecedent": 0.1,
+          "fold_agreement": 0.8085,
+          "fold_kappa": 0.5934,
+          "pooled_agreement": 0.8125,
+          "pooled_kappa": 0.6,
+          "n_fold_certified": 81,
+          "n_pooled_certified": 9
+        },
+        {
+          "min_contexts": 1,
+          "min_events": 100,
+          "max_no_antecedent": 0.25,
+          "fold_agreement": 0.9007,
+          "fold_kappa": 0.7422,
+          "pooled_agreement": 0.9375,
+          "pooled_kappa": 0.8182,
+          "n_fold_certified": 112,
+          "n_pooled_certified": 13
+        },
+        {
+          "min_contexts": 1,
+          "min_events": 100,
+          "max_no_antecedent": null,
+          "fold_agreement": 0.8156,
+          "fold_kappa": 0.4761,
+          "pooled_agreement": 0.875,
+          "pooled_kappa": 0.6,
+          "n_fold_certified": 124,
+          "n_pooled_certified": 14
+        },
+        {
+          "min_contexts": 1,
+          "min_events": 150,
+          "max_no_antecedent": 0.1,
+          "fold_agreement": 0.8085,
+          "fold_kappa": 0.5934,
+          "pooled_agreement": 0.8125,
+          "pooled_kappa": 0.6,
+          "n_fold_certified": 81,
+          "n_pooled_certified": 9
+        },
+        {
+          "min_contexts": 1,
+          "min_events": 150,
+          "max_no_antecedent": 0.25,
+          "fold_agreement": 0.8936,
+          "fold_kappa": 0.7334,
+          "pooled_agreement": 0.875,
+          "pooled_kappa": 0.6667,
+          "n_fold_certified": 107,
+          "n_pooled_certified": 12
+        },
+        {
+          "min_contexts": 1,
+          "min_events": 150,
+          "max_no_antecedent": null,
+          "fold_agreement": 0.844,
+          "fold_kappa": 0.589,
+          "pooled_agreement": 0.8125,
+          "pooled_kappa": 0.4545,
+          "n_fold_certified": 114,
+          "n_pooled_certified": 13
+        },
+        {
+          "min_contexts": 1,
+          "min_events": 200,
+          "max_no_antecedent": 0.1,
+          "fold_agreement": 0.8156,
+          "fold_kappa": 0.6107,
+          "pooled_agreement": 0.8125,
+          "pooled_kappa": 0.6,
+          "n_fold_certified": 80,
+          "n_pooled_certified": 9
+        },
+        {
+          "min_contexts": 1,
+          "min_events": 200,
+          "max_no_antecedent": 0.25,
+          "fold_agreement": 0.9007,
+          "fold_kappa": 0.7529,
+          "pooled_agreement": 0.875,
+          "pooled_kappa": 0.6667,
+          "n_fold_certified": 106,
+          "n_pooled_certified": 12
+        },
+        {
+          "min_contexts": 1,
+          "min_events": 200,
+          "max_no_antecedent": null,
+          "fold_agreement": 0.8936,
+          "fold_kappa": 0.7334,
+          "pooled_agreement": 0.875,
+          "pooled_kappa": 0.6667,
+          "n_fold_certified": 107,
+          "n_pooled_certified": 12
+        },
+        {
+          "min_contexts": 1,
+          "min_events": 300,
+          "max_no_antecedent": 0.1,
+          "fold_agreement": 0.8227,
+          "fold_kappa": 0.6279,
+          "pooled_agreement": 0.8125,
+          "pooled_kappa": 0.6,
+          "n_fold_certified": 79,
+          "n_pooled_certified": 9
+        },
+        {
+          "min_contexts": 1,
+          "min_events": 300,
+          "max_no_antecedent": 0.25,
+          "fold_agreement": 0.9291,
+          "fold_kappa": 0.8282,
+          "pooled_agreement": 0.875,
+          "pooled_kappa": 0.6667,
+          "n_fold_certified": 102,
+          "n_pooled_certified": 12
+        },
+        {
+          "min_contexts": 1,
+          "min_events": 300,
+          "max_no_antecedent": null,
+          "fold_agreement": 0.922,
+          "fold_kappa": 0.8098,
+          "pooled_agreement": 0.875,
+          "pooled_kappa": 0.6667,
+          "n_fold_certified": 103,
+          "n_pooled_certified": 12
+        },
+        {
+          "min_contexts": 1,
+          "min_events": 400,
+          "max_no_antecedent": 0.1,
+          "fold_agreement": 0.8156,
+          "fold_kappa": 0.6281,
+          "pooled_agreement": 0.75,
+          "pooled_kappa": 0.5,
+          "n_fold_certified": 72,
+          "n_pooled_certified": 8
+        },
+        {
+          "min_contexts": 1,
+          "min_events": 400,
+          "max_no_antecedent": 0.25,
+          "fold_agreement": 0.9291,
+          "fold_kappa": 0.8429,
+          "pooled_agreement": 0.875,
+          "pooled_kappa": 0.7143,
+          "n_fold_certified": 88,
+          "n_pooled_certified": 10
+        },
+        {
+          "min_contexts": 1,
+          "min_events": 400,
+          "max_no_antecedent": null,
+          "fold_agreement": 0.922,
+          "fold_kappa": 0.8262,
+          "pooled_agreement": 0.875,
+          "pooled_kappa": 0.7143,
+          "n_fold_certified": 89,
+          "n_pooled_certified": 10
+        },
+        {
+          "min_contexts": 1,
+          "min_events": 500,
+          "max_no_antecedent": 0.1,
+          "fold_agreement": 0.8156,
+          "fold_kappa": 0.6281,
+          "pooled_agreement": 0.75,
+          "pooled_kappa": 0.5,
+          "n_fold_certified": 72,
+          "n_pooled_certified": 8
+        },
+        {
+          "min_contexts": 1,
+          "min_events": 500,
+          "max_no_antecedent": 0.25,
+          "fold_agreement": 0.9291,
+          "fold_kappa": 0.8429,
+          "pooled_agreement": 0.875,
+          "pooled_kappa": 0.7143,
+          "n_fold_certified": 88,
+          "n_pooled_certified": 10
+        },
+        {
+          "min_contexts": 1,
+          "min_events": 500,
+          "max_no_antecedent": null,
+          "fold_agreement": 0.922,
+          "fold_kappa": 0.8262,
+          "pooled_agreement": 0.875,
+          "pooled_kappa": 0.7143,
+          "n_fold_certified": 89,
+          "n_pooled_certified": 10
+        },
+        {
+          "min_contexts": 1,
+          "min_events": 750,
+          "max_no_antecedent": 0.1,
+          "fold_agreement": 0.8156,
+          "fold_kappa": 0.6281,
+          "pooled_agreement": 0.75,
+          "pooled_kappa": 0.5,
+          "n_fold_certified": 72,
+          "n_pooled_certified": 8
+        },
+        {
+          "min_contexts": 1,
+          "min_events": 750,
+          "max_no_antecedent": 0.25,
+          "fold_agreement": 0.9291,
+          "fold_kappa": 0.8429,
+          "pooled_agreement": 0.875,
+          "pooled_kappa": 0.7143,
+          "n_fold_certified": 88,
+          "n_pooled_certified": 10
+        },
+        {
+          "min_contexts": 1,
+          "min_events": 750,
+          "max_no_antecedent": null,
+          "fold_agreement": 0.922,
+          "fold_kappa": 0.8262,
+          "pooled_agreement": 0.875,
+          "pooled_kappa": 0.7143,
+          "n_fold_certified": 89,
+          "n_pooled_certified": 10
+        },
+        {
+          "min_contexts": 1,
+          "min_events": 1000,
+          "max_no_antecedent": 0.1,
+          "fold_agreement": 0.8156,
+          "fold_kappa": 0.6281,
+          "pooled_agreement": 0.75,
+          "pooled_kappa": 0.5,
+          "n_fold_certified": 72,
+          "n_pooled_certified": 8
+        },
+        {
+          "min_contexts": 1,
+          "min_events": 1000,
+          "max_no_antecedent": 0.25,
+          "fold_agreement": 0.9078,
+          "fold_kappa": 0.7995,
+          "pooled_agreement": 0.875,
+          "pooled_kappa": 0.7143,
+          "n_fold_certified": 85,
+          "n_pooled_certified": 10
+        },
+        {
+          "min_contexts": 1,
+          "min_events": 1000,
+          "max_no_antecedent": null,
+          "fold_agreement": 0.9007,
+          "fold_kappa": 0.7828,
+          "pooled_agreement": 0.875,
+          "pooled_kappa": 0.7143,
+          "n_fold_certified": 86,
+          "n_pooled_certified": 10
+        },
+        {
+          "min_contexts": 2,
+          "min_events": 50,
+          "max_no_antecedent": 0.1,
+          "fold_agreement": 0.8156,
+          "fold_kappa": 0.6107,
+          "pooled_agreement": 0.8125,
+          "pooled_kappa": 0.6,
+          "n_fold_certified": 80,
+          "n_pooled_certified": 9
+        },
+        {
+          "min_contexts": 2,
+          "min_events": 50,
+          "max_no_antecedent": 0.25,
+          "fold_agreement": 0.9007,
+          "fold_kappa": 0.7422,
+          "pooled_agreement": 0.9375,
+          "pooled_kappa": 0.8182,
+          "n_fold_certified": 112,
+          "n_pooled_certified": 13
+        },
+        {
+          "min_contexts": 2,
+          "min_events": 50,
+          "max_no_antecedent": null,
+          "fold_agreement": 0.8156,
+          "fold_kappa": 0.4761,
+          "pooled_agreement": 0.875,
+          "pooled_kappa": 0.6,
+          "n_fold_certified": 124,
+          "n_pooled_certified": 14
+        },
+        {
+          "min_contexts": 2,
+          "min_events": 100,
+          "max_no_antecedent": 0.1,
+          "fold_agreement": 0.8227,
+          "fold_kappa": 0.6279,
+          "pooled_agreement": 0.8125,
+          "pooled_kappa": 0.6,
+          "n_fold_certified": 79,
+          "n_pooled_certified": 9
+        },
+        {
+          "min_contexts": 2,
+          "min_events": 100,
+          "max_no_antecedent": 0.25,
+          "fold_agreement": 0.9149,
+          "fold_kappa": 0.7822,
+          "pooled_agreement": 0.9375,
+          "pooled_kappa": 0.8182,
+          "n_fold_certified": 110,
+          "n_pooled_certified": 13
+        },
+        {
+          "min_contexts": 2,
+          "min_events": 100,
+          "max_no_antecedent": null,
+          "fold_agreement": 0.8298,
+          "fold_kappa": 0.5239,
+          "pooled_agreement": 0.875,
+          "pooled_kappa": 0.6,
+          "n_fold_certified": 122,
+          "n_pooled_certified": 14
+        },
+        {
+          "min_contexts": 2,
+          "min_events": 150,
+          "max_no_antecedent": 0.1,
+          "fold_agreement": 0.8227,
+          "fold_kappa": 0.6279,
+          "pooled_agreement": 0.8125,
+          "pooled_kappa": 0.6,
+          "n_fold_certified": 79,
+          "n_pooled_certified": 9
+        },
+        {
+          "min_contexts": 2,
+          "min_events": 150,
+          "max_no_antecedent": 0.25,
+          "fold_agreement": 0.9078,
+          "fold_kappa": 0.7721,
+          "pooled_agreement": 0.875,
+          "pooled_kappa": 0.6667,
+          "n_fold_certified": 105,
+          "n_pooled_certified": 12
+        },
+        {
+          "min_contexts": 2,
+          "min_events": 150,
+          "max_no_antecedent": null,
+          "fold_agreement": 0.8582,
+          "fold_kappa": 0.6318,
+          "pooled_agreement": 0.8125,
+          "pooled_kappa": 0.4545,
+          "n_fold_certified": 112,
+          "n_pooled_certified": 13
+        },
+        {
+          "min_contexts": 2,
+          "min_events": 200,
+          "max_no_antecedent": 0.1,
+          "fold_agreement": 0.8227,
+          "fold_kappa": 0.6279,
+          "pooled_agreement": 0.8125,
+          "pooled_kappa": 0.6,
+          "n_fold_certified": 79,
+          "n_pooled_certified": 9
+        },
+        {
+          "min_contexts": 2,
+          "min_events": 200,
+          "max_no_antecedent": 0.25,
+          "fold_agreement": 0.9078,
+          "fold_kappa": 0.7721,
+          "pooled_agreement": 0.875,
+          "pooled_kappa": 0.6667,
+          "n_fold_certified": 105,
+          "n_pooled_certified": 12
+        },
+        {
+          "min_contexts": 2,
+          "min_events": 200,
+          "max_no_antecedent": null,
+          "fold_agreement": 0.9007,
+          "fold_kappa": 0.7529,
+          "pooled_agreement": 0.875,
+          "pooled_kappa": 0.6667,
+          "n_fold_certified": 106,
+          "n_pooled_certified": 12
+        },
+        {
+          "min_contexts": 2,
+          "min_events": 300,
+          "max_no_antecedent": 0.1,
+          "fold_agreement": 0.8298,
+          "fold_kappa": 0.6448,
+          "pooled_agreement": 0.8125,
+          "pooled_kappa": 0.6,
+          "n_fold_certified": 78,
+          "n_pooled_certified": 9
+        },
+        {
+          "min_contexts": 2,
+          "min_events": 300,
+          "max_no_antecedent": 0.25,
+          "fold_agreement": 0.9362,
+          "fold_kappa": 0.8464,
+          "pooled_agreement": 0.875,
+          "pooled_kappa": 0.6667,
+          "n_fold_certified": 101,
+          "n_pooled_certified": 12
+        },
+        {
+          "min_contexts": 2,
+          "min_events": 300,
+          "max_no_antecedent": null,
+          "fold_agreement": 0.9291,
+          "fold_kappa": 0.8282,
+          "pooled_agreement": 0.875,
+          "pooled_kappa": 0.6667,
+          "n_fold_certified": 102,
+          "n_pooled_certified": 12
+        },
+        {
+          "min_contexts": 2,
+          "min_events": 400,
+          "max_no_antecedent": 0.1,
+          "fold_agreement": 0.8156,
+          "fold_kappa": 0.6281,
+          "pooled_agreement": 0.75,
+          "pooled_kappa": 0.5,
+          "n_fold_certified": 72,
+          "n_pooled_certified": 8
+        },
+        {
+          "min_contexts": 2,
+          "min_events": 400,
+          "max_no_antecedent": 0.25,
+          "fold_agreement": 0.9291,
+          "fold_kappa": 0.8429,
+          "pooled_agreement": 0.875,
+          "pooled_kappa": 0.7143,
+          "n_fold_certified": 88,
+          "n_pooled_certified": 10
+        },
+        {
+          "min_contexts": 2,
+          "min_events": 400,
+          "max_no_antecedent": null,
+          "fold_agreement": 0.922,
+          "fold_kappa": 0.8262,
+          "pooled_agreement": 0.875,
+          "pooled_kappa": 0.7143,
+          "n_fold_certified": 89,
+          "n_pooled_certified": 10
+        },
+        {
+          "min_contexts": 2,
+          "min_events": 500,
+          "max_no_antecedent": 0.1,
+          "fold_agreement": 0.8156,
+          "fold_kappa": 0.6281,
+          "pooled_agreement": 0.75,
+          "pooled_kappa": 0.5,
+          "n_fold_certified": 72,
+          "n_pooled_certified": 8
+        },
+        {
+          "min_contexts": 2,
+          "min_events": 500,
+          "max_no_antecedent": 0.25,
+          "fold_agreement": 0.9291,
+          "fold_kappa": 0.8429,
+          "pooled_agreement": 0.875,
+          "pooled_kappa": 0.7143,
+          "n_fold_certified": 88,
+          "n_pooled_certified": 10
+        },
+        {
+          "min_contexts": 2,
+          "min_events": 500,
+          "max_no_antecedent": null,
+          "fold_agreement": 0.922,
+          "fold_kappa": 0.8262,
+          "pooled_agreement": 0.875,
+          "pooled_kappa": 0.7143,
+          "n_fold_certified": 89,
+          "n_pooled_certified": 10
+        },
+        {
+          "min_contexts": 2,
+          "min_events": 750,
+          "max_no_antecedent": 0.1,
+          "fold_agreement": 0.8156,
+          "fold_kappa": 0.6281,
+          "pooled_agreement": 0.75,
+          "pooled_kappa": 0.5,
+          "n_fold_certified": 72,
+          "n_pooled_certified": 8
+        },
+        {
+          "min_contexts": 2,
+          "min_events": 750,
+          "max_no_antecedent": 0.25,
+          "fold_agreement": 0.9291,
+          "fold_kappa": 0.8429,
+          "pooled_agreement": 0.875,
+          "pooled_kappa": 0.7143,
+          "n_fold_certified": 88,
+          "n_pooled_certified": 10
+        },
+        {
+          "min_contexts": 2,
+          "min_events": 750,
+          "max_no_antecedent": null,
+          "fold_agreement": 0.922,
+          "fold_kappa": 0.8262,
+          "pooled_agreement": 0.875,
+          "pooled_kappa": 0.7143,
+          "n_fold_certified": 89,
+          "n_pooled_certified": 10
+        },
+        {
+          "min_contexts": 2,
+          "min_events": 1000,
+          "max_no_antecedent": 0.1,
+          "fold_agreement": 0.8156,
+          "fold_kappa": 0.6281,
+          "pooled_agreement": 0.75,
+          "pooled_kappa": 0.5,
+          "n_fold_certified": 72,
+          "n_pooled_certified": 8
+        },
+        {
+          "min_contexts": 2,
+          "min_events": 1000,
+          "max_no_antecedent": 0.25,
+          "fold_agreement": 0.9078,
+          "fold_kappa": 0.7995,
+          "pooled_agreement": 0.875,
+          "pooled_kappa": 0.7143,
+          "n_fold_certified": 85,
+          "n_pooled_certified": 10
+        },
+        {
+          "min_contexts": 2,
+          "min_events": 1000,
+          "max_no_antecedent": null,
+          "fold_agreement": 0.9007,
+          "fold_kappa": 0.7828,
+          "pooled_agreement": 0.875,
+          "pooled_kappa": 0.7143,
+          "n_fold_certified": 86,
+          "n_pooled_certified": 10
+        },
+        {
+          "min_contexts": 3,
+          "min_events": 50,
+          "max_no_antecedent": 0.1,
+          "fold_agreement": 0.844,
+          "fold_kappa": 0.6781,
+          "pooled_agreement": 0.8125,
+          "pooled_kappa": 0.6,
+          "n_fold_certified": 76,
+          "n_pooled_certified": 9
+        },
+        {
+          "min_contexts": 3,
+          "min_events": 50,
+          "max_no_antecedent": 0.25,
+          "fold_agreement": 0.9291,
+          "fold_kappa": 0.821,
+          "pooled_agreement": 0.9375,
+          "pooled_kappa": 0.8182,
+          "n_fold_certified": 108,
+          "n_pooled_certified": 13
+        },
+        {
+          "min_contexts": 3,
+          "min_events": 50,
+          "max_no_antecedent": null,
+          "fold_agreement": 0.8582,
+          "fold_kappa": 0.6152,
+          "pooled_agreement": 0.875,
+          "pooled_kappa": 0.6,
+          "n_fold_certified": 118,
+          "n_pooled_certified": 14
+        },
+        {
+          "min_contexts": 3,
+          "min_events": 100,
+          "max_no_antecedent": 0.1,
+          "fold_agreement": 0.844,
+          "fold_kappa": 0.6781,
+          "pooled_agreement": 0.8125,
+          "pooled_kappa": 0.6,
+          "n_fold_certified": 76,
+          "n_pooled_certified": 9
+        },
+        {
+          "min_contexts": 3,
+          "min_events": 100,
+          "max_no_antecedent": 0.25,
+          "fold_agreement": 0.9362,
+          "fold_kappa": 0.84,
+          "pooled_agreement": 0.9375,
+          "pooled_kappa": 0.8182,
+          "n_fold_certified": 107,
+          "n_pooled_certified": 13
+        },
+        {
+          "min_contexts": 3,
+          "min_events": 100,
+          "max_no_antecedent": null,
+          "fold_agreement": 0.8652,
+          "fold_kappa": 0.6371,
+          "pooled_agreement": 0.875,
+          "pooled_kappa": 0.6,
+          "n_fold_certified": 117,
+          "n_pooled_certified": 14
+        },
+        {
+          "min_contexts": 3,
+          "min_events": 150,
+          "max_no_antecedent": 0.1,
+          "fold_agreement": 0.844,
+          "fold_kappa": 0.6781,
+          "pooled_agreement": 0.8125,
+          "pooled_kappa": 0.6,
+          "n_fold_certified": 76,
+          "n_pooled_certified": 9
+        },
+        {
+          "min_contexts": 3,
+          "min_events": 150,
+          "max_no_antecedent": 0.25,
+          "fold_agreement": 0.9291,
+          "fold_kappa": 0.8282,
+          "pooled_agreement": 0.875,
+          "pooled_kappa": 0.6667,
+          "n_fold_certified": 102,
+          "n_pooled_certified": 12
+        },
+        {
+          "min_contexts": 3,
+          "min_events": 150,
+          "max_no_antecedent": null,
+          "fold_agreement": 0.8865,
+          "fold_kappa": 0.7136,
+          "pooled_agreement": 0.8125,
+          "pooled_kappa": 0.4545,
+          "n_fold_certified": 108,
+          "n_pooled_certified": 13
+        },
+        {
+          "min_contexts": 3,
+          "min_events": 200,
+          "max_no_antecedent": 0.1,
+          "fold_agreement": 0.844,
+          "fold_kappa": 0.6781,
+          "pooled_agreement": 0.8125,
+          "pooled_kappa": 0.6,
+          "n_fold_certified": 76,
+          "n_pooled_certified": 9
+        },
+        {
+          "min_contexts": 3,
+          "min_events": 200,
+          "max_no_antecedent": 0.25,
+          "fold_agreement": 0.9291,
+          "fold_kappa": 0.8282,
+          "pooled_agreement": 0.875,
+          "pooled_kappa": 0.6667,
+          "n_fold_certified": 102,
+          "n_pooled_certified": 12
+        },
+        {
+          "min_contexts": 3,
+          "min_events": 200,
+          "max_no_antecedent": null,
+          "fold_agreement": 0.922,
+          "fold_kappa": 0.8098,
+          "pooled_agreement": 0.875,
+          "pooled_kappa": 0.6667,
+          "n_fold_certified": 103,
+          "n_pooled_certified": 12
+        },
+        {
+          "min_contexts": 3,
+          "min_events": 300,
+          "max_no_antecedent": 0.1,
+          "fold_agreement": 0.844,
+          "fold_kappa": 0.6781,
+          "pooled_agreement": 0.8125,
+          "pooled_kappa": 0.6,
+          "n_fold_certified": 76,
+          "n_pooled_certified": 9
+        },
+        {
+          "min_contexts": 3,
+          "min_events": 300,
+          "max_no_antecedent": 0.25,
+          "fold_agreement": 0.9504,
+          "fold_kappa": 0.8821,
+          "pooled_agreement": 0.875,
+          "pooled_kappa": 0.6667,
+          "n_fold_certified": 99,
+          "n_pooled_certified": 12
+        },
+        {
+          "min_contexts": 3,
+          "min_events": 300,
+          "max_no_antecedent": null,
+          "fold_agreement": 0.9433,
+          "fold_kappa": 0.8644,
+          "pooled_agreement": 0.875,
+          "pooled_kappa": 0.6667,
+          "n_fold_certified": 100,
+          "n_pooled_certified": 12
+        },
+        {
+          "min_contexts": 3,
+          "min_events": 400,
+          "max_no_antecedent": 0.1,
+          "fold_agreement": 0.8156,
+          "fold_kappa": 0.6281,
+          "pooled_agreement": 0.75,
+          "pooled_kappa": 0.5,
+          "n_fold_certified": 72,
+          "n_pooled_certified": 8
+        },
+        {
+          "min_contexts": 3,
+          "min_events": 400,
+          "max_no_antecedent": 0.25,
+          "fold_agreement": 0.9291,
+          "fold_kappa": 0.8429,
+          "pooled_agreement": 0.875,
+          "pooled_kappa": 0.7143,
+          "n_fold_certified": 88,
+          "n_pooled_certified": 10
+        },
+        {
+          "min_contexts": 3,
+          "min_events": 400,
+          "max_no_antecedent": null,
+          "fold_agreement": 0.922,
+          "fold_kappa": 0.8262,
+          "pooled_agreement": 0.875,
+          "pooled_kappa": 0.7143,
+          "n_fold_certified": 89,
+          "n_pooled_certified": 10
+        },
+        {
+          "min_contexts": 3,
+          "min_events": 500,
+          "max_no_antecedent": 0.1,
+          "fold_agreement": 0.8156,
+          "fold_kappa": 0.6281,
+          "pooled_agreement": 0.75,
+          "pooled_kappa": 0.5,
+          "n_fold_certified": 72,
+          "n_pooled_certified": 8
+        },
+        {
+          "min_contexts": 3,
+          "min_events": 500,
+          "max_no_antecedent": 0.25,
+          "fold_agreement": 0.9291,
+          "fold_kappa": 0.8429,
+          "pooled_agreement": 0.875,
+          "pooled_kappa": 0.7143,
+          "n_fold_certified": 88,
+          "n_pooled_certified": 10
+        },
+        {
+          "min_contexts": 3,
+          "min_events": 500,
+          "max_no_antecedent": null,
+          "fold_agreement": 0.922,
+          "fold_kappa": 0.8262,
+          "pooled_agreement": 0.875,
+          "pooled_kappa": 0.7143,
+          "n_fold_certified": 89,
+          "n_pooled_certified": 10
+        },
+        {
+          "min_contexts": 3,
+          "min_events": 750,
+          "max_no_antecedent": 0.1,
+          "fold_agreement": 0.8156,
+          "fold_kappa": 0.6281,
+          "pooled_agreement": 0.75,
+          "pooled_kappa": 0.5,
+          "n_fold_certified": 72,
+          "n_pooled_certified": 8
+        },
+        {
+          "min_contexts": 3,
+          "min_events": 750,
+          "max_no_antecedent": 0.25,
+          "fold_agreement": 0.9291,
+          "fold_kappa": 0.8429,
+          "pooled_agreement": 0.875,
+          "pooled_kappa": 0.7143,
+          "n_fold_certified": 88,
+          "n_pooled_certified": 10
+        },
+        {
+          "min_contexts": 3,
+          "min_events": 750,
+          "max_no_antecedent": null,
+          "fold_agreement": 0.922,
+          "fold_kappa": 0.8262,
+          "pooled_agreement": 0.875,
+          "pooled_kappa": 0.7143,
+          "n_fold_certified": 89,
+          "n_pooled_certified": 10
+        },
+        {
+          "min_contexts": 3,
+          "min_events": 1000,
+          "max_no_antecedent": 0.1,
+          "fold_agreement": 0.8156,
+          "fold_kappa": 0.6281,
+          "pooled_agreement": 0.75,
+          "pooled_kappa": 0.5,
+          "n_fold_certified": 72,
+          "n_pooled_certified": 8
+        },
+        {
+          "min_contexts": 3,
+          "min_events": 1000,
+          "max_no_antecedent": 0.25,
+          "fold_agreement": 0.9078,
+          "fold_kappa": 0.7995,
+          "pooled_agreement": 0.875,
+          "pooled_kappa": 0.7143,
+          "n_fold_certified": 85,
+          "n_pooled_certified": 10
+        },
+        {
+          "min_contexts": 3,
+          "min_events": 1000,
+          "max_no_antecedent": null,
+          "fold_agreement": 0.9007,
+          "fold_kappa": 0.7828,
+          "pooled_agreement": 0.875,
+          "pooled_kappa": 0.7143,
+          "n_fold_certified": 86,
+          "n_pooled_certified": 10
+        },
+        {
+          "min_contexts": 4,
+          "min_events": 50,
+          "max_no_antecedent": 0.1,
+          "fold_agreement": 0.8156,
+          "fold_kappa": 0.6281,
+          "pooled_agreement": 0.75,
+          "pooled_kappa": 0.5,
+          "n_fold_certified": 72,
+          "n_pooled_certified": 8
+        },
+        {
+          "min_contexts": 4,
+          "min_events": 50,
+          "max_no_antecedent": 0.25,
+          "fold_agreement": 0.8936,
+          "fold_kappa": 0.7507,
+          "pooled_agreement": 0.8125,
+          "pooled_kappa": 0.5385,
+          "n_fold_certified": 97,
+          "n_pooled_certified": 11
+        },
+        {
+          "min_contexts": 4,
+          "min_events": 50,
+          "max_no_antecedent": null,
+          "fold_agreement": 0.8227,
+          "fold_kappa": 0.5557,
+          "pooled_agreement": 0.75,
+          "pooled_kappa": 0.3333,
+          "n_fold_certified": 107,
+          "n_pooled_certified": 12
+        },
+        {
+          "min_contexts": 4,
+          "min_events": 100,
+          "max_no_antecedent": 0.1,
+          "fold_agreement": 0.8156,
+          "fold_kappa": 0.6281,
+          "pooled_agreement": 0.75,
+          "pooled_kappa": 0.5,
+          "n_fold_certified": 72,
+          "n_pooled_certified": 8
+        },
+        {
+          "min_contexts": 4,
+          "min_events": 100,
+          "max_no_antecedent": 0.25,
+          "fold_agreement": 0.8936,
+          "fold_kappa": 0.7507,
+          "pooled_agreement": 0.8125,
+          "pooled_kappa": 0.5385,
+          "n_fold_certified": 97,
+          "n_pooled_certified": 11
+        },
+        {
+          "min_contexts": 4,
+          "min_events": 100,
+          "max_no_antecedent": null,
+          "fold_agreement": 0.8227,
+          "fold_kappa": 0.5557,
+          "pooled_agreement": 0.75,
+          "pooled_kappa": 0.3333,
+          "n_fold_certified": 107,
+          "n_pooled_certified": 12
+        },
+        {
+          "min_contexts": 4,
+          "min_events": 150,
+          "max_no_antecedent": 0.1,
+          "fold_agreement": 0.8156,
+          "fold_kappa": 0.6281,
+          "pooled_agreement": 0.75,
+          "pooled_kappa": 0.5,
+          "n_fold_certified": 72,
+          "n_pooled_certified": 8
+        },
+        {
+          "min_contexts": 4,
+          "min_events": 150,
+          "max_no_antecedent": 0.25,
+          "fold_agreement": 0.8936,
+          "fold_kappa": 0.7507,
+          "pooled_agreement": 0.8125,
+          "pooled_kappa": 0.5385,
+          "n_fold_certified": 97,
+          "n_pooled_certified": 11
+        },
+        {
+          "min_contexts": 4,
+          "min_events": 150,
+          "max_no_antecedent": null,
+          "fold_agreement": 0.8511,
+          "fold_kappa": 0.6368,
+          "pooled_agreement": 0.75,
+          "pooled_kappa": 0.3333,
+          "n_fold_certified": 103,
+          "n_pooled_certified": 12
+        },
+        {
+          "min_contexts": 4,
+          "min_events": 200,
+          "max_no_antecedent": 0.1,
+          "fold_agreement": 0.8156,
+          "fold_kappa": 0.6281,
+          "pooled_agreement": 0.75,
+          "pooled_kappa": 0.5,
+          "n_fold_certified": 72,
+          "n_pooled_certified": 8
+        },
+        {
+          "min_contexts": 4,
+          "min_events": 200,
+          "max_no_antecedent": 0.25,
+          "fold_agreement": 0.8936,
+          "fold_kappa": 0.7507,
+          "pooled_agreement": 0.8125,
+          "pooled_kappa": 0.5385,
+          "n_fold_certified": 97,
+          "n_pooled_certified": 11
+        },
+        {
+          "min_contexts": 4,
+          "min_events": 200,
+          "max_no_antecedent": null,
+          "fold_agreement": 0.8865,
+          "fold_kappa": 0.7323,
+          "pooled_agreement": 0.8125,
+          "pooled_kappa": 0.5385,
+          "n_fold_certified": 98,
+          "n_pooled_certified": 11
+        },
+        {
+          "min_contexts": 4,
+          "min_events": 300,
+          "max_no_antecedent": 0.1,
+          "fold_agreement": 0.8156,
+          "fold_kappa": 0.6281,
+          "pooled_agreement": 0.75,
+          "pooled_kappa": 0.5,
+          "n_fold_certified": 72,
+          "n_pooled_certified": 8
+        },
+        {
+          "min_contexts": 4,
+          "min_events": 300,
+          "max_no_antecedent": 0.25,
+          "fold_agreement": 0.9149,
+          "fold_kappa": 0.8043,
+          "pooled_agreement": 0.8125,
+          "pooled_kappa": 0.5385,
+          "n_fold_certified": 94,
+          "n_pooled_certified": 11
+        },
+        {
+          "min_contexts": 4,
+          "min_events": 300,
+          "max_no_antecedent": null,
+          "fold_agreement": 0.9078,
+          "fold_kappa": 0.7867,
+          "pooled_agreement": 0.8125,
+          "pooled_kappa": 0.5385,
+          "n_fold_certified": 95,
+          "n_pooled_certified": 11
+        },
+        {
+          "min_contexts": 4,
+          "min_events": 400,
+          "max_no_antecedent": 0.1,
+          "fold_agreement": 0.8156,
+          "fold_kappa": 0.6281,
+          "pooled_agreement": 0.75,
+          "pooled_kappa": 0.5,
+          "n_fold_certified": 72,
+          "n_pooled_certified": 8
+        },
+        {
+          "min_contexts": 4,
+          "min_events": 400,
+          "max_no_antecedent": 0.25,
+          "fold_agreement": 0.922,
+          "fold_kappa": 0.8283,
+          "pooled_agreement": 0.875,
+          "pooled_kappa": 0.7143,
+          "n_fold_certified": 87,
+          "n_pooled_certified": 10
+        },
+        {
+          "min_contexts": 4,
+          "min_events": 400,
+          "max_no_antecedent": null,
+          "fold_agreement": 0.9149,
+          "fold_kappa": 0.8115,
+          "pooled_agreement": 0.875,
+          "pooled_kappa": 0.7143,
+          "n_fold_certified": 88,
+          "n_pooled_certified": 10
+        },
+        {
+          "min_contexts": 4,
+          "min_events": 500,
+          "max_no_antecedent": 0.1,
+          "fold_agreement": 0.8156,
+          "fold_kappa": 0.6281,
+          "pooled_agreement": 0.75,
+          "pooled_kappa": 0.5,
+          "n_fold_certified": 72,
+          "n_pooled_certified": 8
+        },
+        {
+          "min_contexts": 4,
+          "min_events": 500,
+          "max_no_antecedent": 0.25,
+          "fold_agreement": 0.922,
+          "fold_kappa": 0.8283,
+          "pooled_agreement": 0.875,
+          "pooled_kappa": 0.7143,
+          "n_fold_certified": 87,
+          "n_pooled_certified": 10
+        },
+        {
+          "min_contexts": 4,
+          "min_events": 500,
+          "max_no_antecedent": null,
+          "fold_agreement": 0.9149,
+          "fold_kappa": 0.8115,
+          "pooled_agreement": 0.875,
+          "pooled_kappa": 0.7143,
+          "n_fold_certified": 88,
+          "n_pooled_certified": 10
+        },
+        {
+          "min_contexts": 4,
+          "min_events": 750,
+          "max_no_antecedent": 0.1,
+          "fold_agreement": 0.8156,
+          "fold_kappa": 0.6281,
+          "pooled_agreement": 0.75,
+          "pooled_kappa": 0.5,
+          "n_fold_certified": 72,
+          "n_pooled_certified": 8
+        },
+        {
+          "min_contexts": 4,
+          "min_events": 750,
+          "max_no_antecedent": 0.25,
+          "fold_agreement": 0.922,
+          "fold_kappa": 0.8283,
+          "pooled_agreement": 0.875,
+          "pooled_kappa": 0.7143,
+          "n_fold_certified": 87,
+          "n_pooled_certified": 10
+        },
+        {
+          "min_contexts": 4,
+          "min_events": 750,
+          "max_no_antecedent": null,
+          "fold_agreement": 0.9149,
+          "fold_kappa": 0.8115,
+          "pooled_agreement": 0.875,
+          "pooled_kappa": 0.7143,
+          "n_fold_certified": 88,
+          "n_pooled_certified": 10
+        },
+        {
+          "min_contexts": 4,
+          "min_events": 1000,
+          "max_no_antecedent": 0.1,
+          "fold_agreement": 0.8156,
+          "fold_kappa": 0.6281,
+          "pooled_agreement": 0.75,
+          "pooled_kappa": 0.5,
+          "n_fold_certified": 72,
+          "n_pooled_certified": 8
+        },
+        {
+          "min_contexts": 4,
+          "min_events": 1000,
+          "max_no_antecedent": 0.25,
+          "fold_agreement": 0.9078,
+          "fold_kappa": 0.7995,
+          "pooled_agreement": 0.875,
+          "pooled_kappa": 0.7143,
+          "n_fold_certified": 85,
+          "n_pooled_certified": 10
+        },
+        {
+          "min_contexts": 4,
+          "min_events": 1000,
+          "max_no_antecedent": null,
+          "fold_agreement": 0.9007,
+          "fold_kappa": 0.7828,
+          "pooled_agreement": 0.875,
+          "pooled_kappa": 0.7143,
+          "n_fold_certified": 86,
+          "n_pooled_certified": 10
+        },
+        {
+          "min_contexts": 5,
+          "min_events": 50,
+          "max_no_antecedent": 0.1,
+          "fold_agreement": 0.8156,
+          "fold_kappa": 0.6281,
+          "pooled_agreement": 0.75,
+          "pooled_kappa": 0.5,
+          "n_fold_certified": 72,
+          "n_pooled_certified": 8
+        },
+        {
+          "min_contexts": 5,
+          "min_events": 50,
+          "max_no_antecedent": 0.25,
+          "fold_agreement": 0.8794,
+          "fold_kappa": 0.7211,
+          "pooled_agreement": 0.8125,
+          "pooled_kappa": 0.5385,
+          "n_fold_certified": 95,
+          "n_pooled_certified": 11
+        },
+        {
+          "min_contexts": 5,
+          "min_events": 50,
+          "max_no_antecedent": null,
+          "fold_agreement": 0.8511,
+          "fold_kappa": 0.6464,
+          "pooled_agreement": 0.75,
+          "pooled_kappa": 0.3333,
+          "n_fold_certified": 99,
+          "n_pooled_certified": 12
+        },
+        {
+          "min_contexts": 5,
+          "min_events": 100,
+          "max_no_antecedent": 0.1,
+          "fold_agreement": 0.8156,
+          "fold_kappa": 0.6281,
+          "pooled_agreement": 0.75,
+          "pooled_kappa": 0.5,
+          "n_fold_certified": 72,
+          "n_pooled_certified": 8
+        },
+        {
+          "min_contexts": 5,
+          "min_events": 100,
+          "max_no_antecedent": 0.25,
+          "fold_agreement": 0.8794,
+          "fold_kappa": 0.7211,
+          "pooled_agreement": 0.8125,
+          "pooled_kappa": 0.5385,
+          "n_fold_certified": 95,
+          "n_pooled_certified": 11
+        },
+        {
+          "min_contexts": 5,
+          "min_events": 100,
+          "max_no_antecedent": null,
+          "fold_agreement": 0.8511,
+          "fold_kappa": 0.6464,
+          "pooled_agreement": 0.75,
+          "pooled_kappa": 0.3333,
+          "n_fold_certified": 99,
+          "n_pooled_certified": 12
+        },
+        {
+          "min_contexts": 5,
+          "min_events": 150,
+          "max_no_antecedent": 0.1,
+          "fold_agreement": 0.8156,
+          "fold_kappa": 0.6281,
+          "pooled_agreement": 0.75,
+          "pooled_kappa": 0.5,
+          "n_fold_certified": 72,
+          "n_pooled_certified": 8
+        },
+        {
+          "min_contexts": 5,
+          "min_events": 150,
+          "max_no_antecedent": 0.25,
+          "fold_agreement": 0.8794,
+          "fold_kappa": 0.7211,
+          "pooled_agreement": 0.8125,
+          "pooled_kappa": 0.5385,
+          "n_fold_certified": 95,
+          "n_pooled_certified": 11
+        },
+        {
+          "min_contexts": 5,
+          "min_events": 150,
+          "max_no_antecedent": null,
+          "fold_agreement": 0.8582,
+          "fold_kappa": 0.6654,
+          "pooled_agreement": 0.75,
+          "pooled_kappa": 0.3333,
+          "n_fold_certified": 98,
+          "n_pooled_certified": 12
+        },
+        {
+          "min_contexts": 5,
+          "min_events": 200,
+          "max_no_antecedent": 0.1,
+          "fold_agreement": 0.8156,
+          "fold_kappa": 0.6281,
+          "pooled_agreement": 0.75,
+          "pooled_kappa": 0.5,
+          "n_fold_certified": 72,
+          "n_pooled_certified": 8
+        },
+        {
+          "min_contexts": 5,
+          "min_events": 200,
+          "max_no_antecedent": 0.25,
+          "fold_agreement": 0.8794,
+          "fold_kappa": 0.7211,
+          "pooled_agreement": 0.8125,
+          "pooled_kappa": 0.5385,
+          "n_fold_certified": 95,
+          "n_pooled_certified": 11
+        },
+        {
+          "min_contexts": 5,
+          "min_events": 200,
+          "max_no_antecedent": null,
+          "fold_agreement": 0.8794,
+          "fold_kappa": 0.7211,
+          "pooled_agreement": 0.8125,
+          "pooled_kappa": 0.5385,
+          "n_fold_certified": 95,
+          "n_pooled_certified": 11
+        },
+        {
+          "min_contexts": 5,
+          "min_events": 300,
+          "max_no_antecedent": 0.1,
+          "fold_agreement": 0.8156,
+          "fold_kappa": 0.6281,
+          "pooled_agreement": 0.75,
+          "pooled_kappa": 0.5,
+          "n_fold_certified": 72,
+          "n_pooled_certified": 8
+        },
+        {
+          "min_contexts": 5,
+          "min_events": 300,
+          "max_no_antecedent": 0.25,
+          "fold_agreement": 0.9007,
+          "fold_kappa": 0.7746,
+          "pooled_agreement": 0.8125,
+          "pooled_kappa": 0.5385,
+          "n_fold_certified": 92,
+          "n_pooled_certified": 11
+        },
+        {
+          "min_contexts": 5,
+          "min_events": 300,
+          "max_no_antecedent": null,
+          "fold_agreement": 0.9007,
+          "fold_kappa": 0.7746,
+          "pooled_agreement": 0.8125,
+          "pooled_kappa": 0.5385,
+          "n_fold_certified": 92,
+          "n_pooled_certified": 11
+        },
+        {
+          "min_contexts": 5,
+          "min_events": 400,
+          "max_no_antecedent": 0.1,
+          "fold_agreement": 0.8156,
+          "fold_kappa": 0.6281,
+          "pooled_agreement": 0.75,
+          "pooled_kappa": 0.5,
+          "n_fold_certified": 72,
+          "n_pooled_certified": 8
+        },
+        {
+          "min_contexts": 5,
+          "min_events": 400,
+          "max_no_antecedent": 0.25,
+          "fold_agreement": 0.9078,
+          "fold_kappa": 0.7995,
+          "pooled_agreement": 0.875,
+          "pooled_kappa": 0.7143,
+          "n_fold_certified": 85,
+          "n_pooled_certified": 10
+        },
+        {
+          "min_contexts": 5,
+          "min_events": 400,
+          "max_no_antecedent": null,
+          "fold_agreement": 0.9078,
+          "fold_kappa": 0.7995,
+          "pooled_agreement": 0.875,
+          "pooled_kappa": 0.7143,
+          "n_fold_certified": 85,
+          "n_pooled_certified": 10
+        },
+        {
+          "min_contexts": 5,
+          "min_events": 500,
+          "max_no_antecedent": 0.1,
+          "fold_agreement": 0.8156,
+          "fold_kappa": 0.6281,
+          "pooled_agreement": 0.75,
+          "pooled_kappa": 0.5,
+          "n_fold_certified": 72,
+          "n_pooled_certified": 8
+        },
+        {
+          "min_contexts": 5,
+          "min_events": 500,
+          "max_no_antecedent": 0.25,
+          "fold_agreement": 0.9078,
+          "fold_kappa": 0.7995,
+          "pooled_agreement": 0.875,
+          "pooled_kappa": 0.7143,
+          "n_fold_certified": 85,
+          "n_pooled_certified": 10
+        },
+        {
+          "min_contexts": 5,
+          "min_events": 500,
+          "max_no_antecedent": null,
+          "fold_agreement": 0.9078,
+          "fold_kappa": 0.7995,
+          "pooled_agreement": 0.875,
+          "pooled_kappa": 0.7143,
+          "n_fold_certified": 85,
+          "n_pooled_certified": 10
+        },
+        {
+          "min_contexts": 5,
+          "min_events": 750,
+          "max_no_antecedent": 0.1,
+          "fold_agreement": 0.8156,
+          "fold_kappa": 0.6281,
+          "pooled_agreement": 0.75,
+          "pooled_kappa": 0.5,
+          "n_fold_certified": 72,
+          "n_pooled_certified": 8
+        },
+        {
+          "min_contexts": 5,
+          "min_events": 750,
+          "max_no_antecedent": 0.25,
+          "fold_agreement": 0.9078,
+          "fold_kappa": 0.7995,
+          "pooled_agreement": 0.875,
+          "pooled_kappa": 0.7143,
+          "n_fold_certified": 85,
+          "n_pooled_certified": 10
+        },
+        {
+          "min_contexts": 5,
+          "min_events": 750,
+          "max_no_antecedent": null,
+          "fold_agreement": 0.9078,
+          "fold_kappa": 0.7995,
+          "pooled_agreement": 0.875,
+          "pooled_kappa": 0.7143,
+          "n_fold_certified": 85,
+          "n_pooled_certified": 10
+        },
+        {
+          "min_contexts": 5,
+          "min_events": 1000,
+          "max_no_antecedent": 0.1,
+          "fold_agreement": 0.8156,
+          "fold_kappa": 0.6281,
+          "pooled_agreement": 0.75,
+          "pooled_kappa": 0.5,
+          "n_fold_certified": 72,
+          "n_pooled_certified": 8
+        },
+        {
+          "min_contexts": 5,
+          "min_events": 1000,
+          "max_no_antecedent": 0.25,
+          "fold_agreement": 0.9007,
+          "fold_kappa": 0.7854,
+          "pooled_agreement": 0.875,
+          "pooled_kappa": 0.7143,
+          "n_fold_certified": 84,
+          "n_pooled_certified": 10
+        },
+        {
+          "min_contexts": 5,
+          "min_events": 1000,
+          "max_no_antecedent": null,
+          "fold_agreement": 0.9007,
+          "fold_kappa": 0.7854,
+          "pooled_agreement": 0.875,
+          "pooled_kappa": 0.7143,
+          "n_fold_certified": 84,
+          "n_pooled_certified": 10
+        },
+        {
+          "min_contexts": 6,
+          "min_events": 50,
+          "max_no_antecedent": 0.1,
+          "fold_agreement": 0.8156,
+          "fold_kappa": 0.6281,
+          "pooled_agreement": 0.75,
+          "pooled_kappa": 0.5,
+          "n_fold_certified": 72,
+          "n_pooled_certified": 8
+        },
+        {
+          "min_contexts": 6,
+          "min_events": 50,
+          "max_no_antecedent": 0.25,
+          "fold_agreement": 0.8511,
+          "fold_kappa": 0.664,
+          "pooled_agreement": 0.75,
+          "pooled_kappa": 0.4286,
+          "n_fold_certified": 91,
+          "n_pooled_certified": 10
+        },
+        {
+          "min_contexts": 6,
+          "min_events": 50,
+          "max_no_antecedent": null,
+          "fold_agreement": 0.8511,
+          "fold_kappa": 0.664,
+          "pooled_agreement": 0.75,
+          "pooled_kappa": 0.4286,
+          "n_fold_certified": 91,
+          "n_pooled_certified": 10
+        },
+        {
+          "min_contexts": 6,
+          "min_events": 100,
+          "max_no_antecedent": 0.1,
+          "fold_agreement": 0.8156,
+          "fold_kappa": 0.6281,
+          "pooled_agreement": 0.75,
+          "pooled_kappa": 0.5,
+          "n_fold_certified": 72,
+          "n_pooled_certified": 8
+        },
+        {
+          "min_contexts": 6,
+          "min_events": 100,
+          "max_no_antecedent": 0.25,
+          "fold_agreement": 0.8511,
+          "fold_kappa": 0.664,
+          "pooled_agreement": 0.75,
+          "pooled_kappa": 0.4286,
+          "n_fold_certified": 91,
+          "n_pooled_certified": 10
+        },
+        {
+          "min_contexts": 6,
+          "min_events": 100,
+          "max_no_antecedent": null,
+          "fold_agreement": 0.8511,
+          "fold_kappa": 0.664,
+          "pooled_agreement": 0.75,
+          "pooled_kappa": 0.4286,
+          "n_fold_certified": 91,
+          "n_pooled_certified": 10
+        },
+        {
+          "min_contexts": 6,
+          "min_events": 150,
+          "max_no_antecedent": 0.1,
+          "fold_agreement": 0.8156,
+          "fold_kappa": 0.6281,
+          "pooled_agreement": 0.75,
+          "pooled_kappa": 0.5,
+          "n_fold_certified": 72,
+          "n_pooled_certified": 8
+        },
+        {
+          "min_contexts": 6,
+          "min_events": 150,
+          "max_no_antecedent": 0.25,
+          "fold_agreement": 0.8511,
+          "fold_kappa": 0.664,
+          "pooled_agreement": 0.75,
+          "pooled_kappa": 0.4286,
+          "n_fold_certified": 91,
+          "n_pooled_certified": 10
+        },
+        {
+          "min_contexts": 6,
+          "min_events": 150,
+          "max_no_antecedent": null,
+          "fold_agreement": 0.8511,
+          "fold_kappa": 0.664,
+          "pooled_agreement": 0.75,
+          "pooled_kappa": 0.4286,
+          "n_fold_certified": 91,
+          "n_pooled_certified": 10
+        },
+        {
+          "min_contexts": 6,
+          "min_events": 200,
+          "max_no_antecedent": 0.1,
+          "fold_agreement": 0.8156,
+          "fold_kappa": 0.6281,
+          "pooled_agreement": 0.75,
+          "pooled_kappa": 0.5,
+          "n_fold_certified": 72,
+          "n_pooled_certified": 8
+        },
+        {
+          "min_contexts": 6,
+          "min_events": 200,
+          "max_no_antecedent": 0.25,
+          "fold_agreement": 0.8511,
+          "fold_kappa": 0.664,
+          "pooled_agreement": 0.75,
+          "pooled_kappa": 0.4286,
+          "n_fold_certified": 91,
+          "n_pooled_certified": 10
+        },
+        {
+          "min_contexts": 6,
+          "min_events": 200,
+          "max_no_antecedent": null,
+          "fold_agreement": 0.8511,
+          "fold_kappa": 0.664,
+          "pooled_agreement": 0.75,
+          "pooled_kappa": 0.4286,
+          "n_fold_certified": 91,
+          "n_pooled_certified": 10
+        },
+        {
+          "min_contexts": 6,
+          "min_events": 300,
+          "max_no_antecedent": 0.1,
+          "fold_agreement": 0.8156,
+          "fold_kappa": 0.6281,
+          "pooled_agreement": 0.75,
+          "pooled_kappa": 0.5,
+          "n_fold_certified": 72,
+          "n_pooled_certified": 8
+        },
+        {
+          "min_contexts": 6,
+          "min_events": 300,
+          "max_no_antecedent": 0.25,
+          "fold_agreement": 0.8723,
+          "fold_kappa": 0.7173,
+          "pooled_agreement": 0.75,
+          "pooled_kappa": 0.4286,
+          "n_fold_certified": 88,
+          "n_pooled_certified": 10
+        },
+        {
+          "min_contexts": 6,
+          "min_events": 300,
+          "max_no_antecedent": null,
+          "fold_agreement": 0.8723,
+          "fold_kappa": 0.7173,
+          "pooled_agreement": 0.75,
+          "pooled_kappa": 0.4286,
+          "n_fold_certified": 88,
+          "n_pooled_certified": 10
+        },
+        {
+          "min_contexts": 6,
+          "min_events": 400,
+          "max_no_antecedent": 0.1,
+          "fold_agreement": 0.8156,
+          "fold_kappa": 0.6281,
+          "pooled_agreement": 0.75,
+          "pooled_kappa": 0.5,
+          "n_fold_certified": 72,
+          "n_pooled_certified": 8
+        },
+        {
+          "min_contexts": 6,
+          "min_events": 400,
+          "max_no_antecedent": 0.25,
+          "fold_agreement": 0.8794,
+          "fold_kappa": 0.744,
+          "pooled_agreement": 0.8125,
+          "pooled_kappa": 0.6,
+          "n_fold_certified": 81,
+          "n_pooled_certified": 9
+        },
+        {
+          "min_contexts": 6,
+          "min_events": 400,
+          "max_no_antecedent": null,
+          "fold_agreement": 0.8794,
+          "fold_kappa": 0.744,
+          "pooled_agreement": 0.8125,
+          "pooled_kappa": 0.6,
+          "n_fold_certified": 81,
+          "n_pooled_certified": 9
+        },
+        {
+          "min_contexts": 6,
+          "min_events": 500,
+          "max_no_antecedent": 0.1,
+          "fold_agreement": 0.8156,
+          "fold_kappa": 0.6281,
+          "pooled_agreement": 0.75,
+          "pooled_kappa": 0.5,
+          "n_fold_certified": 72,
+          "n_pooled_certified": 8
+        },
+        {
+          "min_contexts": 6,
+          "min_events": 500,
+          "max_no_antecedent": 0.25,
+          "fold_agreement": 0.8794,
+          "fold_kappa": 0.744,
+          "pooled_agreement": 0.8125,
+          "pooled_kappa": 0.6,
+          "n_fold_certified": 81,
+          "n_pooled_certified": 9
+        },
+        {
+          "min_contexts": 6,
+          "min_events": 500,
+          "max_no_antecedent": null,
+          "fold_agreement": 0.8794,
+          "fold_kappa": 0.744,
+          "pooled_agreement": 0.8125,
+          "pooled_kappa": 0.6,
+          "n_fold_certified": 81,
+          "n_pooled_certified": 9
+        },
+        {
+          "min_contexts": 6,
+          "min_events": 750,
+          "max_no_antecedent": 0.1,
+          "fold_agreement": 0.8156,
+          "fold_kappa": 0.6281,
+          "pooled_agreement": 0.75,
+          "pooled_kappa": 0.5,
+          "n_fold_certified": 72,
+          "n_pooled_certified": 8
+        },
+        {
+          "min_contexts": 6,
+          "min_events": 750,
+          "max_no_antecedent": 0.25,
+          "fold_agreement": 0.8794,
+          "fold_kappa": 0.744,
+          "pooled_agreement": 0.8125,
+          "pooled_kappa": 0.6,
+          "n_fold_certified": 81,
+          "n_pooled_certified": 9
+        },
+        {
+          "min_contexts": 6,
+          "min_events": 750,
+          "max_no_antecedent": null,
+          "fold_agreement": 0.8794,
+          "fold_kappa": 0.744,
+          "pooled_agreement": 0.8125,
+          "pooled_kappa": 0.6,
+          "n_fold_certified": 81,
+          "n_pooled_certified": 9
+        },
+        {
+          "min_contexts": 6,
+          "min_events": 1000,
+          "max_no_antecedent": 0.1,
+          "fold_agreement": 0.8156,
+          "fold_kappa": 0.6281,
+          "pooled_agreement": 0.75,
+          "pooled_kappa": 0.5,
+          "n_fold_certified": 72,
+          "n_pooled_certified": 8
+        },
+        {
+          "min_contexts": 6,
+          "min_events": 1000,
+          "max_no_antecedent": 0.25,
+          "fold_agreement": 0.8723,
+          "fold_kappa": 0.7305,
+          "pooled_agreement": 0.8125,
+          "pooled_kappa": 0.6,
+          "n_fold_certified": 80,
+          "n_pooled_certified": 9
+        },
+        {
+          "min_contexts": 6,
+          "min_events": 1000,
+          "max_no_antecedent": null,
+          "fold_agreement": 0.8723,
+          "fold_kappa": 0.7305,
+          "pooled_agreement": 0.8125,
+          "pooled_kappa": 0.6,
+          "n_fold_certified": 80,
+          "n_pooled_certified": 9
+        },
+        {
+          "min_contexts": 7,
+          "min_events": 50,
+          "max_no_antecedent": 0.1,
+          "fold_agreement": 0.766,
+          "fold_kappa": 0.5457,
+          "pooled_agreement": 0.75,
+          "pooled_kappa": 0.5,
+          "n_fold_certified": 65,
+          "n_pooled_certified": 8
+        },
+        {
+          "min_contexts": 7,
+          "min_events": 50,
+          "max_no_antecedent": 0.25,
+          "fold_agreement": 0.7872,
+          "fold_kappa": 0.5756,
+          "pooled_agreement": 0.75,
+          "pooled_kappa": 0.4286,
+          "n_fold_certified": 70,
+          "n_pooled_certified": 10
+        },
+        {
+          "min_contexts": 7,
+          "min_events": 50,
+          "max_no_antecedent": null,
+          "fold_agreement": 0.7872,
+          "fold_kappa": 0.5756,
+          "pooled_agreement": 0.75,
+          "pooled_kappa": 0.4286,
+          "n_fold_certified": 70,
+          "n_pooled_certified": 10
+        },
+        {
+          "min_contexts": 7,
+          "min_events": 100,
+          "max_no_antecedent": 0.1,
+          "fold_agreement": 0.766,
+          "fold_kappa": 0.5457,
+          "pooled_agreement": 0.75,
+          "pooled_kappa": 0.5,
+          "n_fold_certified": 65,
+          "n_pooled_certified": 8
+        },
+        {
+          "min_contexts": 7,
+          "min_events": 100,
+          "max_no_antecedent": 0.25,
+          "fold_agreement": 0.7872,
+          "fold_kappa": 0.5756,
+          "pooled_agreement": 0.75,
+          "pooled_kappa": 0.4286,
+          "n_fold_certified": 70,
+          "n_pooled_certified": 10
+        },
+        {
+          "min_contexts": 7,
+          "min_events": 100,
+          "max_no_antecedent": null,
+          "fold_agreement": 0.7872,
+          "fold_kappa": 0.5756,
+          "pooled_agreement": 0.75,
+          "pooled_kappa": 0.4286,
+          "n_fold_certified": 70,
+          "n_pooled_certified": 10
+        },
+        {
+          "min_contexts": 7,
+          "min_events": 150,
+          "max_no_antecedent": 0.1,
+          "fold_agreement": 0.766,
+          "fold_kappa": 0.5457,
+          "pooled_agreement": 0.75,
+          "pooled_kappa": 0.5,
+          "n_fold_certified": 65,
+          "n_pooled_certified": 8
+        },
+        {
+          "min_contexts": 7,
+          "min_events": 150,
+          "max_no_antecedent": 0.25,
+          "fold_agreement": 0.7872,
+          "fold_kappa": 0.5756,
+          "pooled_agreement": 0.75,
+          "pooled_kappa": 0.4286,
+          "n_fold_certified": 70,
+          "n_pooled_certified": 10
+        },
+        {
+          "min_contexts": 7,
+          "min_events": 150,
+          "max_no_antecedent": null,
+          "fold_agreement": 0.7872,
+          "fold_kappa": 0.5756,
+          "pooled_agreement": 0.75,
+          "pooled_kappa": 0.4286,
+          "n_fold_certified": 70,
+          "n_pooled_certified": 10
+        },
+        {
+          "min_contexts": 7,
+          "min_events": 200,
+          "max_no_antecedent": 0.1,
+          "fold_agreement": 0.766,
+          "fold_kappa": 0.5457,
+          "pooled_agreement": 0.75,
+          "pooled_kappa": 0.5,
+          "n_fold_certified": 65,
+          "n_pooled_certified": 8
+        },
+        {
+          "min_contexts": 7,
+          "min_events": 200,
+          "max_no_antecedent": 0.25,
+          "fold_agreement": 0.7872,
+          "fold_kappa": 0.5756,
+          "pooled_agreement": 0.75,
+          "pooled_kappa": 0.4286,
+          "n_fold_certified": 70,
+          "n_pooled_certified": 10
+        },
+        {
+          "min_contexts": 7,
+          "min_events": 200,
+          "max_no_antecedent": null,
+          "fold_agreement": 0.7872,
+          "fold_kappa": 0.5756,
+          "pooled_agreement": 0.75,
+          "pooled_kappa": 0.4286,
+          "n_fold_certified": 70,
+          "n_pooled_certified": 10
+        },
+        {
+          "min_contexts": 7,
+          "min_events": 300,
+          "max_no_antecedent": 0.1,
+          "fold_agreement": 0.766,
+          "fold_kappa": 0.5457,
+          "pooled_agreement": 0.75,
+          "pooled_kappa": 0.5,
+          "n_fold_certified": 65,
+          "n_pooled_certified": 8
+        },
+        {
+          "min_contexts": 7,
+          "min_events": 300,
+          "max_no_antecedent": 0.25,
+          "fold_agreement": 0.7872,
+          "fold_kappa": 0.5756,
+          "pooled_agreement": 0.75,
+          "pooled_kappa": 0.4286,
+          "n_fold_certified": 70,
+          "n_pooled_certified": 10
+        },
+        {
+          "min_contexts": 7,
+          "min_events": 300,
+          "max_no_antecedent": null,
+          "fold_agreement": 0.7872,
+          "fold_kappa": 0.5756,
+          "pooled_agreement": 0.75,
+          "pooled_kappa": 0.4286,
+          "n_fold_certified": 70,
+          "n_pooled_certified": 10
+        },
+        {
+          "min_contexts": 7,
+          "min_events": 400,
+          "max_no_antecedent": 0.1,
+          "fold_agreement": 0.766,
+          "fold_kappa": 0.5457,
+          "pooled_agreement": 0.75,
+          "pooled_kappa": 0.5,
+          "n_fold_certified": 65,
+          "n_pooled_certified": 8
+        },
+        {
+          "min_contexts": 7,
+          "min_events": 400,
+          "max_no_antecedent": 0.25,
+          "fold_agreement": 0.7872,
+          "fold_kappa": 0.5803,
+          "pooled_agreement": 0.8125,
+          "pooled_kappa": 0.6,
+          "n_fold_certified": 68,
+          "n_pooled_certified": 9
+        },
+        {
+          "min_contexts": 7,
+          "min_events": 400,
+          "max_no_antecedent": null,
+          "fold_agreement": 0.7872,
+          "fold_kappa": 0.5803,
+          "pooled_agreement": 0.8125,
+          "pooled_kappa": 0.6,
+          "n_fold_certified": 68,
+          "n_pooled_certified": 9
+        },
+        {
+          "min_contexts": 7,
+          "min_events": 500,
+          "max_no_antecedent": 0.1,
+          "fold_agreement": 0.766,
+          "fold_kappa": 0.5457,
+          "pooled_agreement": 0.75,
+          "pooled_kappa": 0.5,
+          "n_fold_certified": 65,
+          "n_pooled_certified": 8
+        },
+        {
+          "min_contexts": 7,
+          "min_events": 500,
+          "max_no_antecedent": 0.25,
+          "fold_agreement": 0.7872,
+          "fold_kappa": 0.5803,
+          "pooled_agreement": 0.8125,
+          "pooled_kappa": 0.6,
+          "n_fold_certified": 68,
+          "n_pooled_certified": 9
+        },
+        {
+          "min_contexts": 7,
+          "min_events": 500,
+          "max_no_antecedent": null,
+          "fold_agreement": 0.7872,
+          "fold_kappa": 0.5803,
+          "pooled_agreement": 0.8125,
+          "pooled_kappa": 0.6,
+          "n_fold_certified": 68,
+          "n_pooled_certified": 9
+        },
+        {
+          "min_contexts": 7,
+          "min_events": 750,
+          "max_no_antecedent": 0.1,
+          "fold_agreement": 0.766,
+          "fold_kappa": 0.5457,
+          "pooled_agreement": 0.75,
+          "pooled_kappa": 0.5,
+          "n_fold_certified": 65,
+          "n_pooled_certified": 8
+        },
+        {
+          "min_contexts": 7,
+          "min_events": 750,
+          "max_no_antecedent": 0.25,
+          "fold_agreement": 0.7872,
+          "fold_kappa": 0.5803,
+          "pooled_agreement": 0.8125,
+          "pooled_kappa": 0.6,
+          "n_fold_certified": 68,
+          "n_pooled_certified": 9
+        },
+        {
+          "min_contexts": 7,
+          "min_events": 750,
+          "max_no_antecedent": null,
+          "fold_agreement": 0.7872,
+          "fold_kappa": 0.5803,
+          "pooled_agreement": 0.8125,
+          "pooled_kappa": 0.6,
+          "n_fold_certified": 68,
+          "n_pooled_certified": 9
+        },
+        {
+          "min_contexts": 7,
+          "min_events": 1000,
+          "max_no_antecedent": 0.1,
+          "fold_agreement": 0.766,
+          "fold_kappa": 0.5457,
+          "pooled_agreement": 0.75,
+          "pooled_kappa": 0.5,
+          "n_fold_certified": 65,
+          "n_pooled_certified": 8
+        },
+        {
+          "min_contexts": 7,
+          "min_events": 1000,
+          "max_no_antecedent": 0.25,
+          "fold_agreement": 0.7801,
+          "fold_kappa": 0.5686,
+          "pooled_agreement": 0.8125,
+          "pooled_kappa": 0.6,
+          "n_fold_certified": 67,
+          "n_pooled_certified": 9
+        },
+        {
+          "min_contexts": 7,
+          "min_events": 1000,
+          "max_no_antecedent": null,
+          "fold_agreement": 0.7801,
+          "fold_kappa": 0.5686,
+          "pooled_agreement": 0.8125,
+          "pooled_kappa": 0.6,
+          "n_fold_certified": 67,
+          "n_pooled_certified": 9
+        }
+      ]
+    }
+  },
+  "heldout_performance": {
+    "definition": "top-decile lift of f^(-c) on the rows of stratum k in campus c; a pair is evaluable with >= 10 positives and >= 100 rows; holds = lift >= 2",
+    "n_stratum_folds": 141,
+    "n_evaluable": 95,
+    "not_evaluable": [
+      {
+        "campus": "1",
+        "system": "B30",
+        "rows": 1274,
+        "pos": 2,
+        "S": 0.7
+      },
+      {
+        "campus": "1",
+        "system": "F10",
+        "rows": 123,
+        "pos": 1,
+        "S": 0.7
+      },
+      {
+        "campus": "1",
+        "system": "F20",
+        "rows": 0,
+        "pos": 0,
+        "S": 0.5
+      },
+      {
+        "campus": "1",
+        "system": "G30",
+        "rows": 229,
+        "pos": 0,
+        "S": 0.5
+      },
+      {
+        "campus": "10",
+        "system": "B30",
+        "rows": 3412,
+        "pos": 7,
+        "S": 0.7
+      },
+      {
+        "campus": "10",
+        "system": "F20",
+        "rows": 58,
+        "pos": 0,
+        "S": 0.5
+      },
+      {
+        "campus": "10",
+        "system": "G20",
+        "rows": 417,
+        "pos": 4,
+        "S": 0.5
+      },
+      {
+        "campus": "10",
+        "system": "G30",
+        "rows": 24,
+        "pos": 0,
+        "S": 0.5
+      },
+      {
+        "campus": "11",
+        "system": "E20",
+        "rows": 4000,
+        "pos": 5,
+        "S": 1.0
+      },
+      {
+        "campus": "2",
+        "system": "B20",
+        "rows": 880,
+        "pos": 8,
+        "S": 0.9
+      },
+      {
+        "campus": "2",
+        "system": "C20",
+        "rows": 0,
+        "pos": 0,
+        "S": 0.4
+      },
+      {
+        "campus": "2",
+        "system": "F10",
+        "rows": 57,
+        "pos": 0,
+        "S": 0.7
+      },
+      {
+        "campus": "2",
+        "system": "F20",
+        "rows": 0,
+        "pos": 0,
+        "S": 0.4
+      },
+      {
+        "campus": "2",
+        "system": "G20",
+        "rows": 551,
+        "pos": 4,
+        "S": 0.5
+      },
+      {
+        "campus": "2",
+        "system": "G30",
+        "rows": 0,
+        "pos": 0,
+        "S": 0.5
+      },
+      {
+        "campus": "3",
+        "system": "B30",
+        "rows": 6221,
+        "pos": 3,
+        "S": 0.7
+      },
+      {
+        "campus": "3",
+        "system": "F10",
+        "rows": 661,
+        "pos": 1,
+        "S": 0.6
+      },
+      {
+        "campus": "3",
+        "system": "F20",
+        "rows": 1346,
+        "pos": 1,
+        "S": 0.5
+      },
+      {
+        "campus": "3",
+        "system": "G20",
+        "rows": 3872,
+        "pos": 4,
+        "S": 0.7
+      },
+      {
+        "campus": "3",
+        "system": "G30",
+        "rows": 579,
+        "pos": 0,
+        "S": 0.5
+      },
+      {
+        "campus": "4",
+        "system": "C20",
+        "rows": 1076,
+        "pos": 6,
+        "S": 0.5
+      },
+      {
+        "campus": "4",
+        "system": "F10",
+        "rows": 321,
+        "pos": 3,
+        "S": 0.5
+      },
+      {
+        "campus": "4",
+        "system": "F20",
+        "rows": 46,
+        "pos": 0,
+        "S": 0.5
+      },
+      {
+        "campus": "4",
+        "system": "G30",
+        "rows": 0,
+        "pos": 0,
+        "S": 0.5
+      },
+      {
+        "campus": "5",
+        "system": "C20",
+        "rows": 399,
+        "pos": 2,
+        "S": 0.4
+      },
+      {
+        "campus": "5",
+        "system": "F10",
+        "rows": 0,
+        "pos": 0,
+        "S": 0.6
+      },
+      {
+        "campus": "5",
+        "system": "F20",
+        "rows": 649,
+        "pos": 0,
+        "S": 0.5
+      },
+      {
+        "campus": "5",
+        "system": "G20",
+        "rows": 47,
+        "pos": 0,
+        "S": 0.7
+      },
+      {
+        "campus": "6",
+        "system": "D10",
+        "rows": 154,
+        "pos": 0,
+        "S": 0.7
+      },
+      {
+        "campus": "6",
+        "system": "F20",
+        "rows": 32,
+        "pos": 0,
+        "S": 0.5
+      },
+      {
+        "campus": "6",
+        "system": "G20",
+        "rows": 178,
+        "pos": 7,
+        "S": 0.7
+      },
+      {
+        "campus": "6",
+        "system": "G30",
+        "rows": 11,
+        "pos": 0,
+        "S": 0.5
+      },
+      {
+        "campus": "7",
+        "system": "B20",
+        "rows": 28,
+        "pos": 0,
+        "S": 0.9
+      },
+      {
+        "campus": "7",
+        "system": "B30",
+        "rows": 0,
+        "pos": 0,
+        "S": 0.7
+      },
+      {
+        "campus": "7",
+        "system": "C10",
+        "rows": 9,
+        "pos": 0,
+        "S": 1.0
+      },
+      {
+        "campus": "7",
+        "system": "C20",
+        "rows": 0,
+        "pos": 0,
+        "S": 0.5
+      },
+      {
+        "campus": "7",
+        "system": "C30",
+        "rows": 70,
+        "pos": 0,
+        "S": 1.0
+      },
+      {
+        "campus": "7",
+        "system": "D10",
+        "rows": 98,
+        "pos": 0,
+        "S": 0.6
+      },
+      {
+        "campus": "7",
+        "system": "D20",
+        "rows": 191,
+        "pos": 7,
+        "S": 1.0
+      },
+      {
+        "campus": "7",
+        "system": "D50",
+        "rows": 159,
+        "pos": 8,
+        "S": 1.0
+      },
+      {
+        "campus": "7",
+        "system": "E10",
+        "rows": 59,
+        "pos": 3,
+        "S": 1.0
+      },
+      {
+        "campus": "7",
+        "system": "E20",
+        "rows": 8,
+        "pos": 0,
+        "S": 1.0
+      },
+      {
+        "campus": "7",
+        "system": "F10",
+        "rows": 0,
+        "pos": 0,
+        "S": 0.7
+      },
+      {
+        "campus": "7",
+        "system": "F20",
+        "rows": 0,
+        "pos": 0,
+        "S": 0.5
+      },
+      {
+        "campus": "7",
+        "system": "G20",
+        "rows": 0,
+        "pos": 0,
+        "S": 0.7
+      },
+      {
+        "campus": "7",
+        "system": "G30",
+        "rows": 0,
+        "pos": 0,
+        "S": 0.5
+      }
+    ],
+    "by_decision_rule": {
+      "certificate": {
+        "certified": {
+          "n": 77,
+          "n_lift_ge_2": 74,
+          "share_lift_ge_2": 0.961,
+          "share_lift_ge_2_wilson95": [
+            0.8916,
+            0.9867
+          ],
+          "median_lift": 4.254
+        },
+        "withheld": {
+          "n": 18,
+          "n_lift_ge_2": 14,
+          "share_lift_ge_2": 0.7778,
+          "share_lift_ge_2_wilson95": [
+            0.5479,
+            0.91
+          ],
+          "median_lift": 3.701
+        }
+      },
+      "plain_mean_at_cut": {
+        "certified": {
+          "n": 77,
+          "n_lift_ge_2": 74,
+          "share_lift_ge_2": 0.961,
+          "share_lift_ge_2_wilson95": [
+            0.8916,
+            0.9867
+          ],
+          "median_lift": 4.254
+        },
+        "withheld": {
+          "n": 18,
+          "n_lift_ge_2": 14,
+          "share_lift_ge_2": 0.7778,
+          "share_lift_ge_2_wilson95": [
+            0.5479,
+            0.91
+          ],
+          "median_lift": 3.701
+        }
+      },
+      "simple_rule_prespecified": {
+        "certified": {
+          "n": 83,
+          "n_lift_ge_2": 78,
+          "share_lift_ge_2": 0.9398,
+          "share_lift_ge_2_wilson95": [
+            0.8666,
+            0.974
+          ],
+          "median_lift": 4.215
+        },
+        "withheld": {
+          "n": 12,
+          "n_lift_ge_2": 10,
+          "share_lift_ge_2": 0.8333,
+          "share_lift_ge_2_wilson95": [
+            0.552,
+            0.953
+          ],
+          "median_lift": 3.799
+        }
+      },
+      "simple_rule_best_post_hoc": {
+        "certified": {
+          "n": 80,
+          "n_lift_ge_2": 75,
+          "share_lift_ge_2": 0.9375,
+          "share_lift_ge_2_wilson95": [
+            0.8619,
+            0.973
+          ],
+          "median_lift": 4.208
+        },
+        "withheld": {
+          "n": 15,
+          "n_lift_ge_2": 13,
+          "share_lift_ge_2": 0.8667,
+          "share_lift_ge_2_wilson95": [
+            0.6212,
+            0.9626
+          ],
+          "median_lift": 3.829
+        }
+      },
+      "certify_all": {
+        "certified": {
+          "n": 95,
+          "n_lift_ge_2": 88,
+          "share_lift_ge_2": 0.9263,
+          "share_lift_ge_2_wilson95": [
+            0.8556,
+            0.9639
+          ],
+          "median_lift": 4.046
+        },
+        "withheld": {
+          "n": 0,
+          "n_lift_ge_2": 0,
+          "share_lift_ge_2": null,
+          "share_lift_ge_2_wilson95": null,
+          "median_lift": null
+        }
+      }
+    },
+    "spearman_S_vs_heldout_lift": {
+      "rho": 0.2628,
+      "p_value": 0.01008,
+      "n": 95
+    },
+    "transfer_or_gradient_fail": [
+      {
+        "campus": "10",
+        "system": "C20",
+        "S": 0.4,
+        "transfer_stability": "caution",
+        "risk_gradient": "fail",
+        "heldout_evaluable": true,
+        "heldout_lift": 1.996,
+        "heldout_rows": 1367,
+        "heldout_pos": 10
+      },
+      {
+        "campus": "11",
+        "system": "C20",
+        "S": 0.0,
+        "transfer_stability": "fail",
+        "risk_gradient": "fail",
+        "heldout_evaluable": true,
+        "heldout_lift": 3.117,
+        "heldout_rows": 1895,
+        "heldout_pos": 16
+      },
+      {
+        "campus": "11",
+        "system": "D10",
+        "S": 0.5,
+        "transfer_stability": "fail",
+        "risk_gradient": "caution",
+        "heldout_evaluable": true,
+        "heldout_lift": 4.511,
+        "heldout_rows": 2124,
+        "heldout_pos": 42
+      },
+      {
+        "campus": "11",
+        "system": "F10",
+        "S": 0.0,
+        "transfer_stability": "fail",
+        "risk_gradient": "caution",
+        "heldout_evaluable": true,
+        "heldout_lift": 5.482,
+        "heldout_rows": 4204,
+        "heldout_pos": 51
+      },
+      {
+        "campus": "2",
+        "system": "C20",
+        "S": 0.4,
+        "transfer_stability": "caution",
+        "risk_gradient": "fail",
+        "heldout_evaluable": false,
+        "heldout_lift": null,
+        "heldout_rows": 0,
+        "heldout_pos": 0
+      },
+      {
+        "campus": "4",
+        "system": "D10",
+        "S": 0.5,
+        "transfer_stability": "fail",
+        "risk_gradient": "caution",
+        "heldout_evaluable": true,
+        "heldout_lift": 3.536,
+        "heldout_rows": 1405,
+        "heldout_pos": 31
+      },
+      {
+        "campus": "5",
+        "system": "C20",
+        "S": 0.4,
+        "transfer_stability": "caution",
+        "risk_gradient": "fail",
+        "heldout_evaluable": false,
+        "heldout_lift": null,
+        "heldout_rows": 399,
+        "heldout_pos": 2
+      },
+      {
+        "campus": "5",
+        "system": "D10",
+        "S": 0.5,
+        "transfer_stability": "fail",
+        "risk_gradient": "caution",
+        "heldout_evaluable": true,
+        "heldout_lift": 7.573,
+        "heldout_rows": 6535,
+        "heldout_pos": 95
+      }
+    ]
+  },
+  "campus5_B20": {
+    "campus": "5",
+    "system": "B20",
+    "system_desc": "Exterior Enclosure",
+    "scores": {
+      "data_sufficiency": "pass",
+      "risk_concentration": "pass",
+      "transfer_stability": "pass",
+      "risk_gradient": "pass",
+      "prior_record_trace": "pass"
+    },
+    "hard_gates_failed": [],
+    "n_campuses": 6,
+    "n_pos": 1230,
+    "pooled_lift": 5.22,
+    "frac_2x": 0.833,
+    "top_band": 2.05,
+    "rho": 1.0,
+    "zero_prior_share": 0.077,
+    "mean_score": 1.0,
+    "S": 1.0,
+    "certified": true,
+    "heldout_lift": 4.823,
+    "heldout_rows": 19821,
+    "heldout_pos": 715,
+    "pooled_map_B20": {
+      "scores": {
+        "data_sufficiency": "pass",
+        "risk_concentration": "pass",
+        "transfer_stability": "pass",
+        "risk_gradient": "pass",
+        "prior_record_trace": "caution"
+      },
+      "S": 0.9,
+      "frac_2x": 0.857,
+      "n_campuses": 7
+    }
+  },
+  "runtime_seconds": 4.8
+}

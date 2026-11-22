@@ -1,10 +1,9 @@
 #!/usr/bin/env python
 """
-WP3/WP5 -- transformer arms on the aggregate representation, and the
-context-adaptive transport head (plan C1) with its negative control (plan S20.8).
+Transformer arms on the aggregate representation, and the
+context-adaptive transport head with its negative control.
 
-See notes/WP3_transformer_decisions.md for the pre-launch reasoning. The short
-version: WP1 measured that event ORDER carries no value on this corpus, so the
+The event-history analysis (51_wp1_chronology_value.py) found that event ORDER carries no value on this corpus, so the
 transformer is placed over the FEATURE set (an FT-Transformer: tokenize each M1
 feature, self-attention across the feature tokens, read a [CLS] token), not over
 a fabricated event order.
@@ -12,14 +11,14 @@ a fabricated event order.
 Arms
   T0   gradient-boosted trees (incumbent)
   T1   FT-Transformer over the M1 feature set, global
-  T2   T1 + context-adaptive FiLM transport on the feature tokens (plan C1)
+  T2   T1 + context-adaptive FiLM transport on the feature tokens
   T3   incumbent base score + transformer transport head, context supplied
   T3n  identical head, context replaced by the pooled global descriptor
        (same architecture, same parameter count; only the information varies)
   T3p  identical head, campus->descriptor map deranged (negative control)
 
-T3 - T3n isolates whether context adds anything at all; T3 - T3p is the control
-plan S20.8 requires and this pipeline has never had. All arms are scored on the
+T3 - T3n isolates whether context adds anything at all; T3 - T3p is the negative
+control for context-dependence. All arms are scored on the
 same held-out campus with the same top-decile lift from fmscreen.metrics, and
 the base scores the transport head consumes are always out-of-fold: for the
 training campuses they come from an inner leave-one-campus-out loop, so the head
@@ -299,7 +298,7 @@ def main():
     print(f"[wp3] {len(panel):,} anchors, {len(campuses)} campuses, arms={arms}, "
           f"threads={THREADS}, negfrac={a.negfrac}", flush=True)
 
-    # ---- epoch selection on source campuses only (plan S20.7) -------------
+    # ---- epoch selection on source campuses only (source campuses only) -------------
     if a.select_epochs:
         u, vc = campuses[0], campuses[1]
         f = build_fold(panel, univ, u)

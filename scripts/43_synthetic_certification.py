@@ -67,13 +67,13 @@ with a four-thread cap (the study's primary configuration otherwise unchanged), 
 the protocol is the study's leave-one-context-out design with the same
 within-held-out-context percentile rank R.
 
-NOTE 1 (honest, and visible in the output). In the non-transferable regime the
+NOTE 1 (visible in the output). In the non-transferable regime the
 antecedent gate returns caution or fail, because severity there is driven by a
 recorded attribute rather than by persistent activity, so the prior-record trace is
 thinner than in the sufficient regime. It is a soft gate and never decides that
 regime's verdict; the transfer gate is the only hard fail.
 
-NOTE 2 (a design choice a reviewer should see). In the non-transferable regime the
+NOTE 2 (a design choice that bears on the interpretation). In the non-transferable regime the
 four contexts that share the common driver are also the four higher-intensity ones.
 Without that coupling, pooled lift sits at about 2.0 rather than comfortably above
 it, because each leave-one-context-out fold produces its own score scale and the
@@ -150,7 +150,7 @@ def sufficiency_subset(scores, gates, hard):
 
     Identical rule: equal-weighted mean of the retained gate scores, then
     >=2 hard fails -> 0.0, >=1 hard fail -> capped at 0.50. Needed only for the
-    counterfactual that deletes a gate; asserted equal to the original on the full
+    counterfactual that deletes a gate; asserted equal to 37_cepi.sufficiency() on the full
     gate set for every combination this run produces.
     """
     S = float(np.mean([scores[g] for g in gates]))

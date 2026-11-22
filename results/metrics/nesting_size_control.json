@@ -1,0 +1,752 @@
+{
+  "design": "Each certifying campus d is read through f^(-d) (single), through f^(-{d,e}) with a third campus e outside {c, d} (matched: two campuses excluded, target in training), or through f^(-{c,d}) (double, the study's construction); everything else is the main pipeline of 45_certification_corrected.py, and the three are compared over the stratum-fold certificates and the route counts.",
+  "reference_check": {
+    "n_stratum_folds": 141,
+    "pooled_certified": "12/16",
+    "route_counts": {
+      "pma": 50968,
+      "verify": 705,
+      "continue": 385725,
+      "watch": 77577
+    },
+    "matches_cert_corrected_json": true
+  },
+  "self_check": "matched assembly with e = c reproduces the double-nested certificates exactly",
+  "training_rows": {
+    "definition": "panel rows of the campuses in the training set, mean over the 72 ordered (c, d)",
+    "total_panel_rows": 514975,
+    "single": 457755.6,
+    "matched_deterministic": 402975.1,
+    "double": 400536.1,
+    "matched_random": {
+      "mean": 400633.0341,
+      "p2.5": 388823.2104,
+      "p97.5": 410965.9528,
+      "min": 384404.5278,
+      "max": 420407.8056
+    }
+  },
+  "constructions": {
+    "single": {
+      "n_stratum_folds": 142,
+      "n_certified": 101,
+      "route_counts": {
+        "pma": 49724,
+        "verify": 1949,
+        "continue": 368595,
+        "watch": 94707
+      }
+    },
+    "matched_deterministic": {
+      "n_stratum_folds": 140,
+      "n_certified": 94,
+      "route_counts": {
+        "pma": 49118,
+        "verify": 2555,
+        "continue": 355796,
+        "watch": 107506
+      }
+    },
+    "double": {
+      "n_stratum_folds": 141,
+      "n_certified": 98,
+      "route_counts": {
+        "pma": 50968,
+        "verify": 705,
+        "continue": 385725,
+        "watch": 77577
+      }
+    }
+  },
+  "deterministic_matched": {
+    "partner_rule": "e = the campus outside {c, d} whose panel row count is closest to that of c; ties to the lower campus code",
+    "partner": {
+      "1->10": "4",
+      "1->11": "4",
+      "1->2": "4",
+      "1->3": "4",
+      "1->4": "6",
+      "1->5": "4",
+      "1->6": "4",
+      "1->7": "4",
+      "10->1": "11",
+      "10->11": "1",
+      "10->2": "11",
+      "10->3": "11",
+      "10->4": "11",
+      "10->5": "11",
+      "10->6": "11",
+      "10->7": "11",
+      "11->1": "3",
+      "11->10": "3",
+      "11->2": "3",
+      "11->3": "10",
+      "11->4": "3",
+      "11->5": "3",
+      "11->6": "3",
+      "11->7": "3",
+      "2->1": "6",
+      "2->10": "6",
+      "2->11": "6",
+      "2->3": "6",
+      "2->4": "6",
+      "2->5": "6",
+      "2->6": "4",
+      "2->7": "6",
+      "3->1": "11",
+      "3->10": "11",
+      "3->11": "10",
+      "3->2": "11",
+      "3->4": "11",
+      "3->5": "11",
+      "3->6": "11",
+      "3->7": "11",
+      "4->1": "6",
+      "4->10": "6",
+      "4->11": "6",
+      "4->2": "6",
+      "4->3": "6",
+      "4->5": "6",
+      "4->6": "1",
+      "4->7": "6",
+      "5->1": "3",
+      "5->10": "3",
+      "5->11": "3",
+      "5->2": "3",
+      "5->3": "11",
+      "5->4": "3",
+      "5->6": "3",
+      "5->7": "3",
+      "6->1": "4",
+      "6->10": "4",
+      "6->11": "4",
+      "6->2": "4",
+      "6->3": "4",
+      "6->4": "1",
+      "6->5": "4",
+      "6->7": "4",
+      "7->1": "2",
+      "7->10": "2",
+      "7->11": "2",
+      "7->2": "6",
+      "7->3": "2",
+      "7->4": "2",
+      "7->5": "2",
+      "7->6": "2"
+    },
+    "single_to_matched": {
+      "n_compared": 140,
+      "n_gated_only_in_from": 2,
+      "n_gated_only_in_to": 0,
+      "n_flags_differ": 13,
+      "n_certified_to_uncertified": 10,
+      "n_uncertified_to_certified": 3,
+      "mean_abs_delta_S": 0.03286,
+      "max_abs_delta_S": 0.5,
+      "strata_with_flags_differing": [
+        "B30",
+        "D10",
+        "F10",
+        "G20"
+      ],
+      "flips": [
+        {
+          "campus": "1",
+          "system": "B30",
+          "S_from": 0.7,
+          "S_to": 0.6
+        },
+        {
+          "campus": "10",
+          "system": "D10",
+          "S_from": 0.7,
+          "S_to": 0.6
+        },
+        {
+          "campus": "10",
+          "system": "G20",
+          "S_from": 0.7,
+          "S_to": 0.5
+        },
+        {
+          "campus": "11",
+          "system": "B30",
+          "S_from": 0.7,
+          "S_to": 0.6
+        },
+        {
+          "campus": "3",
+          "system": "D10",
+          "S_from": 0.7,
+          "S_to": 0.6
+        },
+        {
+          "campus": "3",
+          "system": "G20",
+          "S_from": 0.7,
+          "S_to": 0.5
+        },
+        {
+          "campus": "4",
+          "system": "D10",
+          "S_from": 0.6,
+          "S_to": 0.7
+        },
+        {
+          "campus": "4",
+          "system": "F10",
+          "S_from": 0.5,
+          "S_to": 0.7
+        },
+        {
+          "campus": "5",
+          "system": "F10",
+          "S_from": 0.7,
+          "S_to": 0.6
+        },
+        {
+          "campus": "6",
+          "system": "B30",
+          "S_from": 0.7,
+          "S_to": 0.6
+        },
+        {
+          "campus": "7",
+          "system": "B30",
+          "S_from": 0.7,
+          "S_to": 0.6
+        },
+        {
+          "campus": "7",
+          "system": "D10",
+          "S_from": 0.6,
+          "S_to": 0.8
+        },
+        {
+          "campus": "7",
+          "system": "G20",
+          "S_from": 0.7,
+          "S_to": 0.5
+        }
+      ],
+      "route_counts_from": {
+        "pma": 49724,
+        "verify": 1949,
+        "continue": 368595,
+        "watch": 94707
+      },
+      "route_counts_to": {
+        "pma": 49118,
+        "verify": 2555,
+        "continue": 355796,
+        "watch": 107506
+      },
+      "delta_route_counts": {
+        "pma": -606,
+        "verify": 606,
+        "continue": -12799,
+        "watch": 12799
+      }
+    },
+    "matched_to_double": {
+      "n_compared": 139,
+      "n_gated_only_in_from": 1,
+      "n_gated_only_in_to": 2,
+      "n_flags_differ": 12,
+      "n_certified_to_uncertified": 4,
+      "n_uncertified_to_certified": 8,
+      "mean_abs_delta_S": 0.03453,
+      "max_abs_delta_S": 0.5,
+      "strata_with_flags_differing": [
+        "B30",
+        "D10",
+        "F10",
+        "G20"
+      ],
+      "flips": [
+        {
+          "campus": "1",
+          "system": "B30",
+          "S_from": 0.6,
+          "S_to": 0.7
+        },
+        {
+          "campus": "11",
+          "system": "B30",
+          "S_from": 0.6,
+          "S_to": 0.7
+        },
+        {
+          "campus": "2",
+          "system": "G20",
+          "S_from": 0.8,
+          "S_to": 0.5
+        },
+        {
+          "campus": "3",
+          "system": "G20",
+          "S_from": 0.5,
+          "S_to": 0.7
+        },
+        {
+          "campus": "4",
+          "system": "D10",
+          "S_from": 0.7,
+          "S_to": 0.5
+        },
+        {
+          "campus": "4",
+          "system": "F10",
+          "S_from": 0.7,
+          "S_to": 0.5
+        },
+        {
+          "campus": "5",
+          "system": "B30",
+          "S_from": 0.6,
+          "S_to": 0.7
+        },
+        {
+          "campus": "6",
+          "system": "B30",
+          "S_from": 0.6,
+          "S_to": 0.7
+        },
+        {
+          "campus": "6",
+          "system": "D10",
+          "S_from": 0.5,
+          "S_to": 0.7
+        },
+        {
+          "campus": "7",
+          "system": "B30",
+          "S_from": 0.6,
+          "S_to": 0.7
+        },
+        {
+          "campus": "7",
+          "system": "D10",
+          "S_from": 0.8,
+          "S_to": 0.6
+        },
+        {
+          "campus": "7",
+          "system": "G20",
+          "S_from": 0.5,
+          "S_to": 0.7
+        }
+      ],
+      "route_counts_from": {
+        "pma": 49118,
+        "verify": 2555,
+        "continue": 355796,
+        "watch": 107506
+      },
+      "route_counts_to": {
+        "pma": 50968,
+        "verify": 705,
+        "continue": 385725,
+        "watch": 77577
+      },
+      "delta_route_counts": {
+        "pma": 1850,
+        "verify": -1850,
+        "continue": 29929,
+        "watch": -29929
+      }
+    },
+    "single_to_double": {
+      "n_compared": 141,
+      "n_gated_only_in_from": 1,
+      "n_gated_only_in_to": 0,
+      "n_flags_differ": 7,
+      "n_certified_to_uncertified": 5,
+      "n_uncertified_to_certified": 2,
+      "mean_abs_delta_S": 0.02411,
+      "max_abs_delta_S": 0.5,
+      "strata_with_flags_differing": [
+        "B30",
+        "D10",
+        "F10",
+        "G20"
+      ],
+      "flips": [
+        {
+          "campus": "10",
+          "system": "D10",
+          "S_from": 0.7,
+          "S_to": 0.6
+        },
+        {
+          "campus": "10",
+          "system": "G20",
+          "S_from": 0.7,
+          "S_to": 0.5
+        },
+        {
+          "campus": "2",
+          "system": "G20",
+          "S_from": 0.7,
+          "S_to": 0.5
+        },
+        {
+          "campus": "3",
+          "system": "D10",
+          "S_from": 0.7,
+          "S_to": 0.6
+        },
+        {
+          "campus": "5",
+          "system": "B30",
+          "S_from": 0.6,
+          "S_to": 0.7
+        },
+        {
+          "campus": "5",
+          "system": "F10",
+          "S_from": 0.7,
+          "S_to": 0.6
+        },
+        {
+          "campus": "6",
+          "system": "D10",
+          "S_from": 0.6,
+          "S_to": 0.7
+        }
+      ],
+      "route_counts_from": {
+        "pma": 49724,
+        "verify": 1949,
+        "continue": 368595,
+        "watch": 94707
+      },
+      "route_counts_to": {
+        "pma": 50968,
+        "verify": 705,
+        "continue": 385725,
+        "watch": 77577
+      },
+      "delta_route_counts": {
+        "pma": 1244,
+        "verify": -1244,
+        "continue": 17130,
+        "watch": -17130
+      }
+    }
+  },
+  "random_matched": {
+    "n_draws": 500,
+    "draw_rule": "e uniform over the seven campuses outside {c, d}, drawn afresh for each ordered (c, d)",
+    "single_to_matched": {
+      "n_compared": {
+        "mean": 141.012,
+        "p2.5": 139.0,
+        "p97.5": 142.0,
+        "min": 138.0,
+        "max": 142.0
+      },
+      "n_flags_differ": {
+        "mean": 9.804,
+        "p2.5": 5.0,
+        "p97.5": 15.0,
+        "min": 4.0,
+        "max": 19.0
+      },
+      "n_certified_to_uncertified": {
+        "mean": 8.174,
+        "p2.5": 4.0,
+        "p97.5": 13.0,
+        "min": 3.0,
+        "max": 16.0
+      },
+      "n_uncertified_to_certified": {
+        "mean": 1.63,
+        "p2.5": 0.0,
+        "p97.5": 4.0,
+        "min": 0.0,
+        "max": 5.0
+      },
+      "mean_abs_delta_S": {
+        "mean": 0.0303,
+        "p2.5": 0.0208,
+        "p97.5": 0.0415,
+        "min": 0.0176,
+        "max": 0.0468
+      },
+      "max_abs_delta_S": {
+        "mean": 0.5248,
+        "p2.5": 0.4,
+        "p97.5": 0.7,
+        "min": 0.4,
+        "max": 0.7
+      },
+      "delta_route_counts": {
+        "pma": {
+          "mean": -329.412,
+          "p2.5": -662.05,
+          "p97.5": -9.65,
+          "min": -754.0,
+          "max": 48.0
+        },
+        "verify": {
+          "mean": 329.412,
+          "p2.5": 9.65,
+          "p97.5": 662.05,
+          "min": -48.0,
+          "max": 754.0
+        },
+        "continue": {
+          "mean": -7788.658,
+          "p2.5": -17713.25,
+          "p97.5": 1642.9,
+          "min": -24444.0,
+          "max": 5272.0
+        },
+        "watch": {
+          "mean": 7788.658,
+          "p2.5": -1642.9,
+          "p97.5": 17713.25,
+          "min": -5272.0,
+          "max": 24444.0
+        }
+      },
+      "strata_with_flags_differing": {
+        "B30": {
+          "share_of_draws_with_a_flag_differing": 0.954,
+          "mean_flags_differing_per_draw": 2.428
+        },
+        "D10": {
+          "share_of_draws_with_a_flag_differing": 0.944,
+          "mean_flags_differing_per_draw": 2.25
+        },
+        "E20": {
+          "share_of_draws_with_a_flag_differing": 0.018,
+          "mean_flags_differing_per_draw": 0.018
+        },
+        "F10": {
+          "share_of_draws_with_a_flag_differing": 0.974,
+          "mean_flags_differing_per_draw": 2.768
+        },
+        "G20": {
+          "share_of_draws_with_a_flag_differing": 0.948,
+          "mean_flags_differing_per_draw": 2.34
+        }
+      },
+      "share_of_draws_with_no_flag_differing": 0.0
+    },
+    "matched_to_double": {
+      "n_compared": {
+        "mean": 140.012,
+        "p2.5": 138.0,
+        "p97.5": 141.0,
+        "min": 137.0,
+        "max": 141.0
+      },
+      "n_flags_differ": {
+        "mean": 12.74,
+        "p2.5": 8.0,
+        "p97.5": 17.0,
+        "min": 5.0,
+        "max": 20.0
+      },
+      "n_certified_to_uncertified": {
+        "mean": 4.598,
+        "p2.5": 2.0,
+        "p97.5": 7.0,
+        "min": 0.0,
+        "max": 10.0
+      },
+      "n_uncertified_to_certified": {
+        "mean": 8.142,
+        "p2.5": 5.0,
+        "p97.5": 12.0,
+        "min": 3.0,
+        "max": 15.0
+      },
+      "mean_abs_delta_S": {
+        "mean": 0.0348,
+        "p2.5": 0.025,
+        "p97.5": 0.0455,
+        "min": 0.0213,
+        "max": 0.0536
+      },
+      "max_abs_delta_S": {
+        "mean": 0.5098,
+        "p2.5": 0.4,
+        "p97.5": 0.7,
+        "min": 0.2,
+        "max": 0.8
+      },
+      "delta_route_counts": {
+        "pma": {
+          "mean": 1573.412,
+          "p2.5": 1253.65,
+          "p97.5": 1906.05,
+          "min": 1196.0,
+          "max": 1998.0
+        },
+        "verify": {
+          "mean": -1573.412,
+          "p2.5": -1906.05,
+          "p97.5": -1253.65,
+          "min": -1998.0,
+          "max": -1196.0
+        },
+        "continue": {
+          "mean": 24918.658,
+          "p2.5": 15487.1,
+          "p97.5": 34843.25,
+          "min": 11858.0,
+          "max": 41574.0
+        },
+        "watch": {
+          "mean": -24918.658,
+          "p2.5": -34843.25,
+          "p97.5": -15487.1,
+          "min": -41574.0,
+          "max": -11858.0
+        }
+      },
+      "strata_with_flags_differing": {
+        "B30": {
+          "share_of_draws_with_a_flag_differing": 1.0,
+          "mean_flags_differing_per_draw": 3.428
+        },
+        "D10": {
+          "share_of_draws_with_a_flag_differing": 0.994,
+          "mean_flags_differing_per_draw": 3.35
+        },
+        "E20": {
+          "share_of_draws_with_a_flag_differing": 0.018,
+          "mean_flags_differing_per_draw": 0.018
+        },
+        "F10": {
+          "share_of_draws_with_a_flag_differing": 0.976,
+          "mean_flags_differing_per_draw": 2.804
+        },
+        "G20": {
+          "share_of_draws_with_a_flag_differing": 0.984,
+          "mean_flags_differing_per_draw": 3.14
+        }
+      },
+      "share_of_draws_with_no_flag_differing": 0.0
+    },
+    "single_to_double": {
+      "n_compared": 141,
+      "n_gated_only_in_from": 1,
+      "n_gated_only_in_to": 0,
+      "n_flags_differ": 7,
+      "n_certified_to_uncertified": 5,
+      "n_uncertified_to_certified": 2,
+      "mean_abs_delta_S": 0.02411,
+      "max_abs_delta_S": 0.5,
+      "strata_with_flags_differing": [
+        "B30",
+        "D10",
+        "F10",
+        "G20"
+      ],
+      "flips": [
+        {
+          "campus": "10",
+          "system": "D10",
+          "S_from": 0.7,
+          "S_to": 0.6
+        },
+        {
+          "campus": "10",
+          "system": "G20",
+          "S_from": 0.7,
+          "S_to": 0.5
+        },
+        {
+          "campus": "2",
+          "system": "G20",
+          "S_from": 0.7,
+          "S_to": 0.5
+        },
+        {
+          "campus": "3",
+          "system": "D10",
+          "S_from": 0.7,
+          "S_to": 0.6
+        },
+        {
+          "campus": "5",
+          "system": "B30",
+          "S_from": 0.6,
+          "S_to": 0.7
+        },
+        {
+          "campus": "5",
+          "system": "F10",
+          "S_from": 0.7,
+          "S_to": 0.6
+        },
+        {
+          "campus": "6",
+          "system": "D10",
+          "S_from": 0.6,
+          "S_to": 0.7
+        }
+      ],
+      "route_counts_from": {
+        "pma": 49724,
+        "verify": 1949,
+        "continue": 368595,
+        "watch": 94707
+      },
+      "route_counts_to": {
+        "pma": 50968,
+        "verify": 705,
+        "continue": 385725,
+        "watch": 77577
+      },
+      "delta_route_counts": {
+        "pma": 1244,
+        "verify": -1244,
+        "continue": 17130,
+        "watch": -17130
+      }
+    },
+    "n_certified_matched": {
+      "mean": 94.456,
+      "p2.5": 89.0,
+      "p97.5": 99.0,
+      "min": 87.0,
+      "max": 101.0
+    },
+    "route_counts_matched": {
+      "pma": {
+        "mean": 49394.588,
+        "p2.5": 49061.95,
+        "p97.5": 49714.35,
+        "min": 48970.0,
+        "max": 49772.0
+      },
+      "verify": {
+        "mean": 2278.412,
+        "p2.5": 1958.65,
+        "p97.5": 2611.05,
+        "min": 1901.0,
+        "max": 2703.0
+      },
+      "continue": {
+        "mean": 360806.342,
+        "p2.5": 350881.75,
+        "p97.5": 370237.9,
+        "min": 344151.0,
+        "max": 373867.0
+      },
+      "watch": {
+        "mean": 102495.658,
+        "p2.5": 93064.1,
+        "p97.5": 112420.25,
+        "min": 89435.0,
+        "max": 119151.0
+      }
+    }
+  },
+  "runtime_seconds": 633.0
+}

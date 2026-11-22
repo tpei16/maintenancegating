@@ -141,7 +141,7 @@ def main() -> None:
                 dev = cert._add_ranks(single[single.university != j])
             else:
                 dev = cert.dev_corpus(j, campuses, single, prs, "double")
-            outer[j] = cert.gates_for(dev, trace[trace.campus != j],
+            outer[j] = cert.gates_for(dev, cert.trace_for(j),
                                       "R_quarter", True)
         pooled = cert.gates_for(single, trace, "R_quarter", True)
         results[name] = {"pooled": {s: v["S"] for s, v in pooled.items()},

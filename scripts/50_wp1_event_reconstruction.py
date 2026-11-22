@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 """
-WP1 (plan sec 20.1, items 1-5 and 10; sec 38 WP1) -- event-history feasibility audit.
+Event-history feasibility audit.
 
 Answers, from the raw work-order file and nothing else:
 
@@ -13,9 +13,9 @@ Answers, from the raw work-order file and nothing else:
                                  event identity?
  10. context shift            -- how different are the nine campuses as contexts?
 
-The gate this feeds is sec 20.1: TRAIL development proceeds only when event
-chronology, event identity, or context adaptation carries measurable value.
-This script establishes whether the *inputs* to that question exist. Whether
+The audit decides whether a model over event sequences is worth building: it
+is justified only when event chronology, event identity, or context adaptation
+carries measurable value. This script establishes whether the *inputs* to that question exist. Whether
 chronology carries predictive value is measured separately, in 51.
 
 Everything is restricted to the nine panel universities and the panel's own
@@ -101,8 +101,8 @@ def main():
         "share_gap_ge_1day": float((df["gap_days"] >= 1).mean()),
         "median_gap_days": float(df["gap_days"].median()),
         "note": ("events sharing an exact instant within a cell have no "
-                 "recoverable order; the plan requires an order-invariant "
-                 "representation for them (sec 10.4)"),
+                 "recoverable order; an order-invariant "
+                 "representation is needed for them"),
     }
 
     # ---- 4. sequence lengths ------------------------------------------------

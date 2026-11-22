@@ -37,8 +37,8 @@
     ],
     "share_labor_certified": 97.66,
     "share_labor_uncertified": 1.31,
-    "n_all_nine_folds": 8,
-    "share_labor_all_nine_folds": 92.81,
+    "n_all_nine_folds": 9,
+    "share_labor_all_nine_folds": 94.81,
     "folds_certified": {
       "HVAC": "9/9",
       "Plumbing": "9/9",
@@ -48,12 +48,12 @@
       "Equipment": "9/9",
       "Fire Protection": "9/9",
       "Furnishings": "9/9",
-      "Exterior Enclosure": "8/9",
+      "Exterior Enclosure": "9/9",
       "Roofing": "8/9",
       "Site Improvements": "4/9",
-      "Conveying": "4/9",
+      "Conveying": "2/9",
       "Stairs": "0/9",
-      "Special Construction": "2/9",
+      "Special Construction": "3/9",
       "Site Mechanical Utilities": "0/7",
       "Selective Building Demolition": "0/8"
     }
@@ -76,30 +76,29 @@
   "routing_corrected": {
     "n_units_routed": 514975,
     "counts": {
-      "pma": 49801,
-      "verify": 1872,
-      "continue": 366410,
-      "watch": 96892
+      "pma": 50968,
+      "verify": 705,
+      "continue": 385725,
+      "watch": 77577
     },
     "shares_pct": {
-      "pma": 9.7,
-      "verify": 0.4,
-      "continue": 71.2,
-      "watch": 18.8
+      "pma": 9.9,
+      "verify": 0.1,
+      "continue": 74.9,
+      "watch": 15.1
     },
     "n_high_risk": 51673,
-    "pct_high_risk_cleared": 96.4,
-    "pct_high_risk_diverted": 3.6,
+    "pct_high_risk_cleared": 98.6,
+    "pct_high_risk_diverted": 1.4,
     "units_in_gated_strata": 486070,
     "units_in_ungated_strata": 28905,
     "pct_units_ungated": 5.61,
     "queue_by_system": {
-      "B20": 957,
-      "B30": 268,
       "C20": 254,
-      "D10": 218,
+      "D10": 239,
       "F10": 75,
       "G20": 50,
+      "B30": 37,
       "F20": 25,
       "G30": 18,
       "G40": 6,
@@ -109,28 +108,26 @@
   "routing_single_nested": {
     "n_units_routed": 514975,
     "counts": {
-      "pma": 48910,
-      "verify": 2592,
-      "continue": 360386,
-      "watch": 103087
+      "pma": 50916,
+      "verify": 586,
+      "continue": 392831,
+      "watch": 70642
     },
     "shares_pct": {
-      "pma": 9.5,
-      "verify": 0.5,
-      "continue": 70.0,
-      "watch": 20.0
+      "pma": 9.9,
+      "verify": 0.1,
+      "continue": 76.3,
+      "watch": 13.7
     },
     "n_high_risk": 51502,
-    "pct_high_risk_cleared": 95.0,
-    "pct_high_risk_diverted": 5.0,
+    "pct_high_risk_cleared": 98.9,
+    "pct_high_risk_diverted": 1.1,
     "units_in_gated_strata": 489290,
     "units_in_ungated_strata": 25685,
     "pct_units_ungated": 4.99,
     "queue_by_system": {
-      "B30": 1213,
-      "B20": 964,
+      "D10": 236,
       "C20": 217,
-      "D10": 65,
       "G20": 54,
       "F10": 40,
       "G30": 16,
@@ -140,81 +137,80 @@
     }
   },
   "verification_queue": {
-    "total_tasks": 1872,
+    "total_tasks": 705,
     "stable_core_tasks": 297,
     "stable_core_by_system": {
       "Stairs": 254,
       "Selective Building Demolition": 25,
       "Site Mechanical Utilities": 18
     },
-    "fold_dependent_tasks": 1575,
+    "fold_dependent_tasks": 408,
     "fold_dependent_by_system": {
-      "Exterior Enclosure": 957,
-      "Roofing": 268,
-      "Conveying": 218,
+      "Conveying": 239,
       "Special Construction": 75,
       "Site Improvements": 50,
+      "Roofing": 37,
       "G40": 6,
       "A10": 1
     },
-    "pct_fold_dependent": 84.1
+    "pct_fold_dependent": 57.9
   },
   "corrections": {
     "leakage_only__single_nested_vs_nesting_only": {
-      "n_flips": 12,
-      "max_abs_delta_S": 0.7,
-      "mean_abs_delta_S": 0.03972,
+      "n_flips": 5,
+      "max_abs_delta_S": 0.6,
+      "mean_abs_delta_S": 0.03759,
       "n_pairs": 141,
       "delta_routes": {
-        "pma": 1257,
-        "verify": -1257,
-        "continue": 17623,
-        "watch": -17623
+        "pma": -8,
+        "verify": 8,
+        "continue": -3094,
+        "watch": 3094
       },
-      "cleared_from": 0.9497,
-      "cleared_to": 0.9741
+      "cleared_from": 0.9886,
+      "cleared_to": 0.9885
     },
     "ranking_only__single_nested_vs_ranking_only": {
-      "n_flips": 4,
+      "n_flips": 0,
       "max_abs_delta_S": 0.1,
-      "mean_abs_delta_S": 0.00493,
+      "mean_abs_delta_S": 0.00423,
       "n_pairs": 142,
       "delta_routes": {
-        "pma": 1206,
-        "verify": -1035,
-        "continue": 12809,
-        "watch": -12980
+        "pma": 231,
+        "verify": -60,
+        "continue": -231,
+        "watch": 60
       },
-      "cleared_from": 0.9497,
-      "cleared_to": 0.9699
+      "cleared_from": 0.9886,
+      "cleared_to": 0.9898
     },
     "transfer_gate__single_nested_vs_transfer_only": {
-      "n_flips": 1,
+      "n_flips": 2,
       "max_abs_delta_S": 0.1,
       "mean_abs_delta_S": 0.01408,
       "n_pairs": 142,
       "delta_routes": {
-        "pma": -242,
-        "verify": 242,
-        "continue": -3849,
-        "watch": 3849
+        "pma": -1259,
+        "verify": 1259,
+        "continue": -23508,
+        "watch": 23508
       },
-      "cleared_from": 0.9497,
-      "cleared_to": 0.945
+      "cleared_from": 0.9886,
+      "cleared_to": 0.9642
     },
     "all_three__single_nested_vs_corrected": {
-      "n_flips": 14,
-      "max_abs_delta_S": 0.6,
-      "mean_abs_delta_S": 0.04752,
+      "n_flips": 8,
+      "max_abs_delta_S": 0.5,
+      "mean_abs_delta_S": 0.03901,
       "n_pairs": 141,
       "delta_routes": {
-        "pma": 891,
-        "verify": -720,
-        "continue": 6024,
-        "watch": -6195
+        "pma": 52,
+        "verify": 119,
+        "continue": -7106,
+        "watch": 6935
       },
-      "cleared_from": 0.9497,
-      "cleared_to": 0.9638
+      "cleared_from": 0.9886,
+      "cleared_to": 0.9864
     },
     "flip_systems": [
       "Conveying",

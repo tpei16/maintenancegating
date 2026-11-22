@@ -1,12 +1,12 @@
 {
   "leakage_only__single_nested_vs_nesting_only": {
     "n_stratum_fold_pairs": 141,
-    "max_abs_delta_S": 0.7,
-    "mean_abs_delta_S": 0.03972,
-    "n_certification_flips": 12,
+    "max_abs_delta_S": 0.6,
+    "mean_abs_delta_S": 0.03759,
+    "n_certification_flips": 5,
     "flips": [
       {
-        "campus": "1",
+        "campus": "10",
         "system": "D10",
         "S_from": 0.7,
         "S_to": 0.6,
@@ -22,49 +22,9 @@
         "certified_to": false
       },
       {
-        "campus": "11",
-        "system": "D10",
-        "S_from": 0.7,
-        "S_to": 0.5,
-        "certified_from": true,
-        "certified_to": false
-      },
-      {
-        "campus": "2",
-        "system": "D10",
-        "S_from": 0.6,
-        "S_to": 0.7,
-        "certified_from": false,
-        "certified_to": true
-      },
-      {
         "campus": "2",
         "system": "G20",
         "S_from": 0.9,
-        "S_to": 0.5,
-        "certified_from": true,
-        "certified_to": false
-      },
-      {
-        "campus": "3",
-        "system": "C20",
-        "S_from": 0.0,
-        "S_to": 0.7,
-        "certified_from": false,
-        "certified_to": true
-      },
-      {
-        "campus": "5",
-        "system": "B30",
-        "S_from": 0.6,
-        "S_to": 0.7,
-        "certified_from": false,
-        "certified_to": true
-      },
-      {
-        "campus": "5",
-        "system": "D10",
-        "S_from": 0.7,
         "S_to": 0.5,
         "certified_from": true,
         "certified_to": false
@@ -84,113 +44,72 @@
         "S_to": 0.8,
         "certified_from": false,
         "certified_to": true
-      },
-      {
-        "campus": "7",
-        "system": "D10",
-        "S_from": 0.6,
-        "S_to": 0.7,
-        "certified_from": false,
-        "certified_to": true
-      },
-      {
-        "campus": "7",
-        "system": "F10",
-        "S_from": 0.8,
-        "S_to": 0.6,
-        "certified_from": true,
-        "certified_to": false
       }
     ],
     "route_counts_from": {
-      "pma": 48910,
-      "verify": 2592,
-      "continue": 360386,
-      "watch": 103087
+      "pma": 50916,
+      "verify": 586,
+      "continue": 392831,
+      "watch": 70642
     },
     "route_counts_to": {
-      "pma": 50167,
-      "verify": 1335,
-      "continue": 378009,
-      "watch": 85464
+      "pma": 50908,
+      "verify": 594,
+      "continue": 389737,
+      "watch": 73736
     },
     "delta_route_counts": {
-      "pma": 1257,
-      "verify": -1257,
-      "continue": 17623,
-      "watch": -17623
+      "pma": -8,
+      "verify": 8,
+      "continue": -3094,
+      "watch": 3094
     },
-    "share_high_risk_cleared_from": 0.9497,
-    "share_high_risk_cleared_to": 0.9741
+    "share_high_risk_cleared_from": 0.9886,
+    "share_high_risk_cleared_to": 0.9885
   },
   "ranking_only__single_nested_vs_ranking_only": {
     "n_stratum_fold_pairs": 142,
     "max_abs_delta_S": 0.1,
-    "mean_abs_delta_S": 0.00493,
-    "n_certification_flips": 4,
-    "flips": [
-      {
-        "campus": "1",
-        "system": "D10",
-        "S_from": 0.7,
-        "S_to": 0.6,
-        "certified_from": true,
-        "certified_to": false
-      },
-      {
-        "campus": "11",
-        "system": "D10",
-        "S_from": 0.7,
-        "S_to": 0.6,
-        "certified_from": true,
-        "certified_to": false
-      },
-      {
-        "campus": "5",
-        "system": "B30",
-        "S_from": 0.6,
-        "S_to": 0.7,
-        "certified_from": false,
-        "certified_to": true
-      },
-      {
-        "campus": "5",
-        "system": "D10",
-        "S_from": 0.7,
-        "S_to": 0.6,
-        "certified_from": true,
-        "certified_to": false
-      }
-    ],
+    "mean_abs_delta_S": 0.00423,
+    "n_certification_flips": 0,
+    "flips": [],
     "route_counts_from": {
-      "pma": 48910,
-      "verify": 2592,
-      "continue": 360386,
-      "watch": 103087
+      "pma": 50916,
+      "verify": 586,
+      "continue": 392831,
+      "watch": 70642
     },
     "route_counts_to": {
-      "pma": 50116,
-      "verify": 1557,
-      "continue": 373195,
-      "watch": 90107
+      "pma": 51147,
+      "verify": 526,
+      "continue": 392600,
+      "watch": 70702
     },
     "delta_route_counts": {
-      "pma": 1206,
-      "verify": -1035,
-      "continue": 12809,
-      "watch": -12980
+      "pma": 231,
+      "verify": -60,
+      "continue": -231,
+      "watch": 60
     },
-    "share_high_risk_cleared_from": 0.9497,
-    "share_high_risk_cleared_to": 0.9699
+    "share_high_risk_cleared_from": 0.9886,
+    "share_high_risk_cleared_to": 0.9898
   },
   "transfer_gate__single_nested_vs_transfer_only": {
     "n_stratum_fold_pairs": 142,
     "max_abs_delta_S": 0.1,
     "mean_abs_delta_S": 0.01408,
-    "n_certification_flips": 1,
+    "n_certification_flips": 2,
     "flips": [
       {
-        "campus": "11",
+        "campus": "2",
+        "system": "B30",
+        "S_from": 0.7,
+        "S_to": 0.6,
+        "certified_from": true,
+        "certified_to": false
+      },
+      {
+        "campus": "5",
         "system": "B30",
         "S_from": 0.7,
         "S_to": 0.6,
@@ -199,34 +118,34 @@
       }
     ],
     "route_counts_from": {
-      "pma": 48910,
-      "verify": 2592,
-      "continue": 360386,
-      "watch": 103087
+      "pma": 50916,
+      "verify": 586,
+      "continue": 392831,
+      "watch": 70642
     },
     "route_counts_to": {
-      "pma": 48668,
-      "verify": 2834,
-      "continue": 356537,
-      "watch": 106936
+      "pma": 49657,
+      "verify": 1845,
+      "continue": 369323,
+      "watch": 94150
     },
     "delta_route_counts": {
-      "pma": -242,
-      "verify": 242,
-      "continue": -3849,
-      "watch": 3849
+      "pma": -1259,
+      "verify": 1259,
+      "continue": -23508,
+      "watch": 23508
     },
-    "share_high_risk_cleared_from": 0.9497,
-    "share_high_risk_cleared_to": 0.945
+    "share_high_risk_cleared_from": 0.9886,
+    "share_high_risk_cleared_to": 0.9642
   },
   "all_three__single_nested_vs_corrected": {
     "n_stratum_fold_pairs": 141,
-    "max_abs_delta_S": 0.6,
-    "mean_abs_delta_S": 0.04752,
-    "n_certification_flips": 14,
+    "max_abs_delta_S": 0.5,
+    "mean_abs_delta_S": 0.03901,
+    "n_certification_flips": 8,
     "flips": [
       {
-        "campus": "1",
+        "campus": "10",
         "system": "D10",
         "S_from": 0.7,
         "S_to": 0.6,
@@ -242,28 +161,12 @@
         "certified_to": false
       },
       {
-        "campus": "11",
+        "campus": "2",
         "system": "B30",
-        "S_from": 0.7,
-        "S_to": 0.6,
-        "certified_from": true,
-        "certified_to": false
-      },
-      {
-        "campus": "11",
-        "system": "D10",
         "S_from": 0.7,
         "S_to": 0.5,
         "certified_from": true,
         "certified_to": false
-      },
-      {
-        "campus": "2",
-        "system": "D10",
-        "S_from": 0.6,
-        "S_to": 0.7,
-        "certified_from": false,
-        "certified_to": true
       },
       {
         "campus": "2",
@@ -291,25 +194,9 @@
       },
       {
         "campus": "5",
-        "system": "B30",
-        "S_from": 0.6,
-        "S_to": 0.7,
-        "certified_from": false,
-        "certified_to": true
-      },
-      {
-        "campus": "5",
-        "system": "D10",
-        "S_from": 0.7,
-        "S_to": 0.5,
-        "certified_from": true,
-        "certified_to": false
-      },
-      {
-        "campus": "5",
         "system": "F10",
         "S_from": 0.8,
-        "S_to": 0.5,
+        "S_to": 0.6,
         "certified_from": true,
         "certified_to": false
       },
@@ -320,43 +207,27 @@
         "S_to": 0.7,
         "certified_from": false,
         "certified_to": true
-      },
-      {
-        "campus": "7",
-        "system": "D10",
-        "S_from": 0.6,
-        "S_to": 0.7,
-        "certified_from": false,
-        "certified_to": true
-      },
-      {
-        "campus": "7",
-        "system": "F10",
-        "S_from": 0.8,
-        "S_to": 0.6,
-        "certified_from": true,
-        "certified_to": false
       }
     ],
     "route_counts_from": {
-      "pma": 48910,
-      "verify": 2592,
-      "continue": 360386,
-      "watch": 103087
+      "pma": 50916,
+      "verify": 586,
+      "continue": 392831,
+      "watch": 70642
     },
     "route_counts_to": {
-      "pma": 49801,
-      "verify": 1872,
-      "continue": 366410,
-      "watch": 96892
+      "pma": 50968,
+      "verify": 705,
+      "continue": 385725,
+      "watch": 77577
     },
     "delta_route_counts": {
-      "pma": 891,
-      "verify": -720,
-      "continue": 6024,
-      "watch": -6195
+      "pma": 52,
+      "verify": 119,
+      "continue": -7106,
+      "watch": 6935
     },
-    "share_high_risk_cleared_from": 0.9497,
-    "share_high_risk_cleared_to": 0.9638
+    "share_high_risk_cleared_from": 0.9886,
+    "share_high_risk_cleared_to": 0.9864
   }
 }

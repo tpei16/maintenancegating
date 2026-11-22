@@ -2,18 +2,17 @@
 """
 49_gate_design_sensitivity.py -- design sensitivity of the certificate itself.
 No new model fits: everything reads the
-corrected double-nested predictions.
+double-nested predictions.
 
-  18  which three gates are hard?  The published choice is data sufficiency,
+  18  which three gates are hard?  The study's choice is data sufficiency,
       transfer stability and risk-gradient reliability.  Every other subset of
       the five is scored, so the choice is justified by comparison rather than
       asserted.
   24  joint sweep of the two cuts rho (risk) and sigma (certification), which
-      govern different resources and were previously swept separately.
-  25  the "empty region" argument for sigma = 2/3 holds for the pooled score
-      distribution; deployment uses the nested map, where outer-fold
-      certificates do reach 0.7.  Count the stratum-fold pairs sitting exactly
-      there and move the cut to 0.75.
+      govern different resources and are therefore swept jointly.
+  25  certification scores are multiples of 0.1, so the cut sigma = 2/3
+      certifies at 0.7 and above.  Count the stratum-fold pairs sitting
+      exactly at 0.7 and move the cut to 0.75.
   26  uncertainty on the individual gate functionals, not only on the screening
       metrics: a campus-cluster bootstrap of pooled lift, the two-fold share and
       the no-antecedent share per stratum.
@@ -57,7 +56,7 @@ def main() -> None:
     outer_scores = {}
     for j in campuses:
         dev = cert.dev_corpus(j, campuses, single, pairs, "double")
-        outer_scores[j] = cert.gates_for(dev, trace[trace.campus != j], "R_quarter", True)
+        outer_scores[j] = cert.gates_for(dev, cert.trace_for(j), "R_quarter", True)
     pooled = cert.gates_for(single, trace, "R_quarter", True)
     out = {}
 
@@ -79,7 +78,7 @@ def main() -> None:
         catches_flat_gradient = sufficiency_with(probe3, hs) < S_CUT
         rows.append({
             "hard_set": sorted(hs), "size": len(hs), "n_certified": int(n_cert),
-            "is_published_choice": set(hs) == PUBLISHED_HARD,
+            "is_study_choice": set(hs) == PUBLISHED_HARD,
             "catches_transfer_failure": bool(catches_transfer_failure),
             "catches_no_data": bool(catches_no_data),
             "catches_flat_gradient": bool(catches_flat_gradient),
@@ -95,7 +94,7 @@ def main() -> None:
                                     if r["size"] == min(x["size"] for x in minimal)],
         "certified_count_by_size": {str(k): sorted({r["n_certified"] for r in rows if r["size"] == k})
                                     for k in range(6)},
-        "published_row": next(r for r in rows if r["is_published_choice"]),
+        "study_row": next(r for r in rows if r["is_study_choice"]),
         "all_rows": rows,
     }
 
@@ -135,9 +134,9 @@ def main() -> None:
         "routes_at_sigma_0.67": {k: g67[k] for k in ("pma", "verify")},
         "routes_at_sigma_0.75": {k: g75[k] for k in ("pma", "verify")},
         "verify_queue_change": g75["verify"] - g67["verify"],
-        "note": ("the pooled distribution has an empty region in (0.60, 0.80]; "
-                 "the nested map does not, so the cut is consequential in "
-                 "deployment even though it is not in the pooled map"),
+        "note": ("certification scores are multiples of 0.1, so a cut at 2/3 "
+                 "certifies at 0.7 and above; the pairs at exactly 0.7 are the "
+                 "ones a cut of 0.75 would move to condition verification"),
     }
 
     # ---------------- 26: uncertainty on the gate functionals ----------------
@@ -183,7 +182,7 @@ def main() -> None:
           f"three uninterpretable failures")
     print(f"  smallest such set has size {hs['smallest_catching_all_three']}: "
           f"{hs['sets_catching_all_three']}")
-    print(f"  published choice certifies {hs['published_row']['n_certified']}/16")
+    print(f"  study choice certifies {hs['study_row']['n_certified']}/16")
     print("\n=== 25. SIGMA UNDER THE NESTED MAP ===")
     sg = out["sigma_under_nested_map"]
     print(f"  {sg['n_at_exactly_0.70']} of {sg['n_stratum_fold_pairs']} stratum-fold pairs "

@@ -1,26 +1,29 @@
 #!/usr/bin/env python
 """
 45_certification_corrected.py -- certification without target-context leakage,
-with the risk percentile taken at decision time and the transfer gate repaired.
+with the risk percentile taken at decision time and a transfer gate capped by
+context count.
 
 Certification here differs from a single-nested implementation
 (scripts/40_outer_s.py) in three ways. Each is switched independently, so that
 its contribution is measured rather than assumed:
 
-  (1) NESTING.  Published Stage 2 certified target c from the held-out
-      predictions of the other campuses, but those come from f^(-d), trained on
-      C\\{d} which contains c.  Corrected: read campus d through f^(-{c,d}), so
-      no quantity entering S^(-c) has seen c.
+  (1) NESTING.  The single-nested construction certifies target c from the
+      held-out predictions of the other campuses, but those come from f^(-d),
+      trained on C\\{d} which contains c.  Double nesting reads campus d through
+      f^(-{c,d}), so no quantity entering S^(-c) has seen c.
 
-  (2) RANKING.  Published R ranked scores within campus over the whole window,
-      so a decision in 2017 used the 2017-2019 distribution.  Corrected: rank
-      within (campus, quarter), which is what is available on the day.
+  (2) RANKING.  The pooled ranking ranks scores within campus over the whole
+      window, so a decision in 2017 would use the 2017-2019 distribution.  The
+      decision-time ranking ranks within (campus, quarter), which is what is
+      available on the day.
 
-  (3) TRANSFER GATE.  The share of contexts clearing two-fold was computed over
-      however many contexts existed; with one context it returned 1.0 and scored
-      pass.  Corrected: cap the gate at caution whenever the evaluable-context
-      count falls below the data-sufficiency pass level, because a share over
-      fewer contexts than that is not an estimate of transfer.
+  (3) TRANSFER GATE.  Without a cap, the share of contexts clearing two-fold is
+      computed over however many contexts exist; with one context it returns
+      1.0 and scores pass.  The capped gate stays at caution whenever the
+      evaluable-context count falls below the data-sufficiency pass level,
+      because a share over fewer contexts than that is not an estimate of
+      transfer.
 
 Gate definitions, eligibility filters and the aggregation rule are otherwise
 copied from 40_outer_s.py unchanged.
@@ -48,10 +51,23 @@ HARD = ["data_sufficiency", "transfer_stability", "risk_gradient"]
 CELL = [C.COL_UNIV, C.COL_BUILDING, C.COL_SYSTEM]
 R_CUT, S_CUT = 0.90, 0.67
 MIN_CTX_FOR_TRANSFER = 6      # the data-sufficiency pass level
+# Base rate used by the risk-gradient gate: "campus" (each campus's own rate, the
+# study's definition) or "pooled" (one rate over all certifying campuses, kept
+# for the sensitivity analysis of 65_risk_gradient_by_campus.py).
+GRADIENT_BASE = "campus"
+# The risk-gradient gate passes when the observed-to-expected ratio rises over
+# every band. With five bands the Spearman coefficient of ratio against band is
+# then 1, and a single reversal of two adjacent bands gives 0.9, so the pass
+# level is set between the two values. 0.85 admits one adjacent reversal (the
+# sensitivity analysis of 65_risk_gradient_by_campus.py).
+GRADIENT_RHO_PASS = 0.95
+# The caution band requires a coefficient above one half. With five bands the
+# attainable values step by 0.1, so the level is set between 0.5 and 0.6.
+GRADIENT_RHO_CAUTION = 0.55
 
 
 # --------------------------------------------------------------------------
-# aggregation (unchanged from the published rule)
+# aggregation (as in 40_outer_s.py)
 # --------------------------------------------------------------------------
 def sufficiency(sc: dict) -> float:
     S = float(np.mean([sc[g] for g in GATES]))
@@ -67,11 +83,11 @@ def sufficiency(sc: dict) -> float:
 # prediction loading
 # --------------------------------------------------------------------------
 def load_single() -> pd.DataFrame:
-    """f^(-c) scoring c.  Supplies R, exactly as the published screen does."""
+    """f^(-c) scoring c.  Supplies R, exactly as the single-nested screen does."""
     files = sorted((C.DATA_PROCESSED / "pred_single").glob("*.parquet"))
     assert len(files) == 9, f"expected 9 single fits, found {len(files)}"
     d = pd.concat([pd.read_parquet(f) for f in files], ignore_index=True)
-    # (2) decision-time ranking, and the published pooled ranking for contrast
+    # (2) decision-time ranking, and the pooled ranking for contrast
     d["R_quarter"] = d.groupby(["university", "period_q"])["score"].rank(pct=True,
                                                                         method="average")
     d["R_pooled"] = d.groupby("university")["score"].rank(pct=True, method="average")
@@ -102,9 +118,9 @@ def _add_ranks(d: pd.DataFrame) -> pd.DataFrame:
 def dev_corpus(target: str, campuses: list[str], single: pd.DataFrame,
                pairs: dict, nesting: str) -> pd.DataFrame:
     """Predictions on every certifying context, under the chosen nesting."""
-    if nesting == "single":          # published, leaky
+    if nesting == "single":          # single nesting: the target campus is in the training set of f^(-d)
         return _add_ranks(single[single.university != target])
-    frames = []                      # corrected: campus d read through f^(-{c,d})
+    frames = []                      # double nesting: campus d read through f^(-{c,d})
     for d in campuses:
         if d == target:
             continue
@@ -116,13 +132,18 @@ def dev_corpus(target: str, campuses: list[str], single: pd.DataFrame,
 # --------------------------------------------------------------------------
 # gates
 # --------------------------------------------------------------------------
-def prior_trace_table() -> pd.DataFrame:
+def prior_trace_table(exclude: str | None = None) -> pd.DataFrame:
     """Per-campus, per-system p90 events and their zero-prior share.
-    Computed from recorded histories, not from any model, so it carries no
-    dependence on which campuses were used for training."""
+    Computed from recorded histories, not from any model.  The system-specific
+    p90 labor threshold that defines an extreme event is itself fitted on
+    outcomes, so for the certificate governing campus `exclude` it is fitted on
+    the other campuses only and the table holds their rows only.  With
+    exclude=None every campus is used, which is the pooled descriptive map."""
     p = pd.read_parquet(C.DATA_PROCESSED / "panel_quarter.parquet")
+    if exclude is not None:
+        p = p[p[C.COL_UNIV].astype(str) != str(exclude)].copy()
     thr90 = p[p["upm_labour"] > 0].groupby(C.COL_SYSTEM, observed=True)["upm_labour"].quantile(0.90)
-    p["p90"] = (p["upm_labour"] > p[C.COL_SYSTEM].map(thr90).fillna(np.inf)).astype(int)
+    p["p90"] = (p["upm_labour"] > p[C.COL_SYSTEM].map(thr90).astype(float).fillna(np.inf)).astype(int)
     p = p.sort_values(CELL + ["period_q"]).reset_index(drop=True)
     g = p.groupby(CELL, observed=True)["upm_count"]
     p["prior_total"] = g.shift(1).rolling(2, min_periods=2).sum() + \
@@ -135,6 +156,17 @@ def prior_trace_table() -> pd.DataFrame:
     t.columns = ["campus", "system", "n_events", "n_zero"]
     t["campus"] = t["campus"].astype(str)
     return t
+
+
+_TRACE_CACHE: dict = {}
+
+
+def trace_for(target: str | None) -> pd.DataFrame:
+    """Prior-record-trace table for the certificate governing `target`: its
+    rows and its extreme-event threshold both exclude that campus."""
+    if target not in _TRACE_CACHE:
+        _TRACE_CACHE[target] = prior_trace_table(exclude=target)
+    return _TRACE_CACHE[target]
 
 
 def gates_for(dev: pd.DataFrame, trace_dev: pd.DataFrame,
@@ -166,10 +198,19 @@ def gates_for(dev: pd.DataFrame, trace_dev: pd.DataFrame,
             g4, grad = CAUTION, {}
         else:
             q = pd.qcut(d[rcol], 5, labels=False, duplicates="drop")
-            obs = d.groupby(q)["y"].mean(); base = d["y"].mean()
-            top = float(obs.iloc[-1] / base) if base > 0 else np.nan
+            if GRADIENT_BASE == "campus":
+                # observed over expected high-burden quarters per band, the
+                # expectation taken from each campus's own base rate, so that
+                # a difference in base rate between campuses is not read as a
+                # flat or a steep gradient
+                base = d.groupby("university", observed=True)["y"].transform("mean")
+                obs = d.groupby(q)["y"].sum() / base.groupby(q).sum()
+                top = float(obs.iloc[-1])
+            else:
+                obs = d.groupby(q)["y"].mean(); base = d["y"].mean()
+                top = float(obs.iloc[-1] / base) if base > 0 else np.nan
             rho, _ = spearmanr(obs.index.values, obs.values)
-            g4 = PASS if (top >= 2.0 and rho >= 0.9) else (CAUTION if (top >= 1.5 and rho >= 0.5) else FAIL)
+            g4 = PASS if (top >= 2.0 and rho >= GRADIENT_RHO_PASS) else (CAUTION if (top >= 1.5 and rho >= GRADIENT_RHO_CAUTION) else FAIL)
             grad = {"top_band": round(top, 2), "rho": round(float(rho), 2)}
 
         tr = trace_dev[trace_dev.system == sysc]
@@ -226,19 +267,18 @@ def route(single: pd.DataFrame, outer: dict, campuses: list[str], rcol: str) -> 
 
 # --------------------------------------------------------------------------
 def build(nesting: str, rcol: str, fix_transfer: bool,
-          single: pd.DataFrame, pairs: dict, trace: pd.DataFrame,
-          campuses: list[str]) -> dict:
+          single: pd.DataFrame, pairs: dict, campuses: list[str]) -> dict:
     outer = {}
     for j in campuses:
         dev = dev_corpus(j, campuses, single, pairs, nesting)
-        outer[j] = gates_for(dev, trace[trace.campus != j], rcol, fix_transfer)
-    pooled = gates_for(single, trace, rcol, fix_transfer)
+        outer[j] = gates_for(dev, trace_for(j), rcol, fix_transfer)
+    pooled = gates_for(single, trace_for(None), rcol, fix_transfer)
     r = route(single, outer, campuses, rcol)
     return {"pooled": pooled, "outer": outer, "routing": r}
 
 
 def main() -> None:
-    single, pairs, trace = load_single(), load_pairs(), prior_trace_table()
+    single, pairs = load_single(), load_pairs()
     campuses = sorted(single.university.unique())
 
     arms = {
@@ -248,13 +288,13 @@ def main() -> None:
         "nesting_only":  dict(nesting="double", rcol="R_pooled",  fix_transfer=False),
         "ranking_only":  dict(nesting="single", rcol="R_quarter", fix_transfer=False),
         "transfer_only": dict(nesting="single", rcol="R_pooled",  fix_transfer=True),
-        # all three: the corrected pipeline the paper will report
+        # all three together: the construction the paper reports
         "corrected":  dict(nesting="double", rcol="R_quarter", fix_transfer=True),
     }
     res = {}
     for name, kw in arms.items():
         print(f"[cert] building arm: {name} ({kw})", flush=True)
-        res[name] = build(single=single, pairs=pairs, trace=trace,
+        res[name] = build(single=single, pairs=pairs,
                           campuses=campuses, **kw)
 
     # ---------------- the measured leakage / ranking / gate deltas -------------
@@ -295,7 +335,7 @@ def main() -> None:
     }
     json.dump(deltas, open(C.METRICS / "leakage_delta.json", "w"), indent=2, default=str)
 
-    # ---------------- publishable tables for the corrected arm ---------------
+    # ---------------- tables for the arm with all three switches on ---------------
     cor = res["corrected"]
     burden = pd.read_csv(C.TABLES / "burden_by_system.csv")
     share = dict(zip(burden.SystemCode, burden.share_of_total_upm_labour))
@@ -337,7 +377,7 @@ def main() -> None:
 
     # ---------------- console summary ----------------
     pd.set_option("display.width", 240, "display.max_columns", 40)
-    print("\n=== CORRECTED gate evidence ===")
+    print("\n=== gate evidence (double nesting, decision-time ranking, capped transfer gate) ===")
     print(ev[["system_desc", "burden_share", "campuses_evaluable", "n_pos",
               "pooled_lift_top10", "frac_campuses_2x", "zero_prior_share",
               "S_pooled", "folds_certified", "folds_gated"]].to_string(index=False))

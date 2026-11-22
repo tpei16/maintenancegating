@@ -1,7 +1,7 @@
 """
-39_queue.py -- gate-then-rank post-processing for the v7 framework.
+39_queue.py -- gate-then-rank post-processing of the certificate.
 
-Implements the locked decision logic:
+Implements the decision logic:
   risk gate first (R >= 0.90 -> HIGH RISK), then the evidence gate for high-risk
   units (S >= 0.67 -> OPEN MAINTENANCE DECISION TASK, else VERIFY CONDITION FIRST); CEPI = R(1-S)
   is used ONLY to rank the verification queue. No independent CEPI threshold.

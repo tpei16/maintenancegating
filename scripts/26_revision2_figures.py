@@ -25,6 +25,29 @@ def save(fig, name):
     print("[fig]", name, flush=True)
 
 
+FEATURE_DISPLAY = {
+    "Prior-year UPM labor": "Prior-year reactive labor",
+    "Cumulative UPM labor": "Cumulative reactive labor",
+    "UPM count, last quarter": "Reactive work orders, last quarter",
+    "UPM count, last 2 quarters": "Reactive work orders, last 2 quarters",
+    "UPM count, last 4 quarters": "Reactive work orders, last 4 quarters",
+    "Quarters since last UPM": "Quarters since last reactive work order",
+    "Cell age (quarters)": "Quarters since first work order",
+    "Cumulative PPM labor": "Cumulative preventive labor",
+    "Prior-year PPM labor": "Prior-year preventive labor",
+    "Prior-year UPM cost": "Prior-year reactive cost",
+    "Cumulative UPM count": "Cumulative reactive work orders",
+    "Cumulative PPM count": "Cumulative preventive work orders",
+    "PPM count, last quarter": "Preventive work orders, last quarter",
+    "PPM count, last 2 quarters": "Preventive work orders, last 2 quarters",
+    "PPM count, last 4 quarters": "Preventive work orders, last 4 quarters",
+    "Quarters since last PPM": "Quarters since last preventive work order",
+    "PPM:UPM ratio": "Preventive-to-reactive ratio",
+    "UPM-frequency trend": "Reactive-frequency trend",
+    "PPM-activity trend": "Preventive-activity trend",
+}
+
+
 def fig_feature_importance():
     imp = pd.read_csv(C.TABLES / "feature_importance.csv").head(15).iloc[::-1]
     cmap = {"record_history": NAVY, "premium": GREEN, "taxonomy": AMBER, "weather_season": LGREY}
@@ -32,7 +55,12 @@ def fig_feature_importance():
     fig, ax = plt.subplots(figsize=(6.3, 4.8))
     bars = ax.barh(np.arange(len(imp)), imp["mean_abs_shap"], color=colors,
                    edgecolor="white", lw=0.5)
-    ax.set_yticks(np.arange(len(imp))); ax.set_yticklabels(imp["label"])
+    # Display names in the paper's terms (UPM = reactive, PPM = preventive work
+    # orders). The stored labels of 23_feature_importance.py are left as they are.
+    display = imp["label"].map(lambda s: FEATURE_DISPLAY.get(s, s))
+    assert not display.str.contains(r"UPM|PPM|\bCell\b", regex=True).any(), \
+        f"retired term in feature labels: {list(display)}"
+    ax.set_yticks(np.arange(len(imp))); ax.set_yticklabels(display)
     ax.set_xlabel("Mean absolute Shapley attribution  (impact on high-burden score)")
     ax.set_xlim(0, imp["mean_abs_shap"].max() * 1.05)
     # value labels at the end of each (horizontal) bar; annotate explicitly so
@@ -63,7 +91,7 @@ def fig_coesc_robustness():
     pooled = d["full_panel_cellpair_rr"]["rr"]
     strata = pd.DataFrame(d["strata"])
     fig, axes = plt.subplots(2, 2, figsize=(6.3, 5.8))
-    YLAB = "Cell-pair risk ratio"
+    YLAB = "System-pair risk ratio"
     YMAX = 7.2          # shared range for the bar panels (a, c, d)
     REF = "#9aa3ab"     # neutral grey for the RR = 1 reference line
 
@@ -120,7 +148,7 @@ def fig_coesc_robustness():
     # (d) size & activity strata (two stratifications)
     ax = axes[1, 1]
     sub = strata[strata.dimension.isin(["n_systems", "upm_volume"])].reset_index(drop=True)
-    labs2 = ["Systems\n3–8", "Systems\n≥9", "UPM vol.\nmid", "UPM vol.\nhigh"]
+    labs2 = ["Systems\n3–8", "Systems\n≥9", "Volume\nmid", "Volume\nhigh"]
     # leave a gap between the two groupings
     x = np.array([0.0, 1.0, 2.4, 3.4])
     err = [sub["rr"] - sub["ci_lo"], sub["ci_hi"] - sub["rr"]]
@@ -136,7 +164,7 @@ def fig_coesc_robustness():
     grp_y = -0.30   # axes fraction, below the two-line tick labels
     ax.text(0.215, grp_y, "by # systems", transform=ax.transAxes,
             ha="center", va="top", fontsize=8.5, style="italic", color=INK)
-    ax.text(0.755, grp_y, "by UPM volume", transform=ax.transAxes,
+    ax.text(0.755, grp_y, "by reactive volume", transform=ax.transAxes,
             ha="center", va="top", fontsize=8.5, style="italic", color=INK)
     ax.set_title("(d)")
     ax.grid(axis="x", visible=False); figstyle.despine(ax)

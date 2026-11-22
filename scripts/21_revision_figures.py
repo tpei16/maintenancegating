@@ -38,7 +38,7 @@ def fig_lorenz():
     a1.plot([0, 100], [0, 100], ls="--", color=SLATE, lw=1.2, label="equality")
     a1.fill_between(d["pop_frac"] * 100, d["labour_frac"] * 100, d["pop_frac"] * 100,
                     color=NAVY, alpha=0.45, zorder=2)
-    a1.set_xlabel("Cumulative share of building-system cells (%)")
+    a1.set_xlabel("Cumulative share of building systems\nof individual buildings (%)")
     a1.set_ylabel("Cumulative share of reactive labor (%)")
     a1.set_xlim(0, 100); a1.set_ylim(0, 100)
     # anchor annotation to the actual curve point near x=90
@@ -46,7 +46,7 @@ def fig_lorenz():
     x90 = d.loc[idx90, "pop_frac"] * 100
     y90 = d.loc[idx90, "labour_frac"] * 100
     a1.scatter([x90], [y90], s=28, color=NAVY_D, zorder=4)
-    a1.annotate(f"top decile of cells\n= {bs['cell_top10_share']:.0%} of labor",
+    a1.annotate(f"top decile\n= {bs['cell_top10_share']:.0%} of labor",
                 xy=(x90, y90), xytext=(32, 56), fontsize=9,
                 arrowprops=dict(arrowstyle="->", color=INK, lw=1.2))
     a1.legend(frameon=False, loc="upper left")

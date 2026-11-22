@@ -1,7 +1,7 @@
 """
 37_cepi.py -- Condition-Evidence Priority Index (CEPI).
 
-Turns the existing leakage-controlled screening pipeline into an evidence-gated
+Turns the leakage-controlled screening pipeline into an evidence-gated
 prioritisation layer, WITHOUT introducing any new modelling or fabricated numbers.
 
   R    = future unplanned-maintenance burden risk, per building-system-quarter unit.
@@ -111,20 +111,28 @@ THR = dict(data_npos=500, lift_pass=2.0, lift_caution=1.5, transfer_pass=0.8,
 
 
 def calibration_gate(units_sys, top_pass=2.0, top_caution=1.5):
-    """Monotone observed-burden bands + top-band lift, from out-of-fold R."""
+    """Observed-to-expected ratio per band of out-of-fold R and its monotonicity."""
     d = units_sys.dropna(subset=["R"])
     if len(d) < 200 or d.y.sum() < 30:
         return CAUTION, {"note": "sparse", "n": int(len(d)), "n_pos": int(d.y.sum())}
     q = pd.qcut(d["R"], 5, labels=False, duplicates="drop")
-    obs = d.groupby(q)["y"].mean()
-    base = d.y.mean()
-    top_lift = obs.iloc[-1] / base if base > 0 else np.nan
+    # observed over expected positives per band, the expectation taken from each
+    # context's own base rate, so that a difference in base rate between
+    # contexts is not read as a flat or a steep gradient
+    if "held_out_university" in d.columns:
+        base = d.groupby("held_out_university", observed=True)["y"].transform("mean")
+    else:                         # a single context: one base rate
+        base = pd.Series(d["y"].mean(), index=d.index)
+    obs = d.groupby(q)["y"].sum() / base.groupby(q).sum()
+    top_lift = obs.iloc[-1]
     rho, _ = spearmanr(obs.index.values, obs.values)
     info = {"top_band_lift": round(float(top_lift), 3), "band_spearman": round(float(rho), 3),
             "n_bands": int(len(obs))}
-    if top_lift >= top_pass and rho >= 0.9:
+    # pass requires the ratio to rise over every band: with five bands rho is then 1,
+    # and one reversal of two adjacent bands gives 0.9
+    if top_lift >= top_pass and rho >= 0.95:
         return PASS, info
-    if top_lift >= top_caution and rho >= 0.5:
+    if top_lift >= top_caution and rho >= 0.55:   # above one half; attainable values step by 0.1
         return CAUTION, info
     return FAIL, info
 
@@ -299,7 +307,7 @@ def main():
             "S_by_system": {s: round(v, 3) for s, v in Sh.items()}}
 
     # ------- within-gate threshold sensitivity (Appendix D): perturb each gate's
-    # level around the primary spec; report the set of insufficient systems.
+    # level around the primary setting; report the set of insufficient systems.
     CORE_INSUFF = {"D10", "G30", "C20", "F20"}  # conveying, site-mech, stairs, demolition
     perturb = {
         "risk_concentration lift 1.8": {"lift_pass": 1.8},

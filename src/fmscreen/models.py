@@ -14,6 +14,9 @@ import pandas as pd
 
 # per-worker thread budget (set by parallel drivers to avoid oversubscription)
 _THREADS = int(os.environ.get("FMSCREEN_THREADS", "0")) or -1
+# compute device for the boosted screen; "cuda" is the default the released
+# results were produced with, and FMSCREEN_DEVICE=cpu runs the same model on CPU
+_DEVICE = os.environ.get("FMSCREEN_DEVICE", "cuda")
 from sklearn.compose import ColumnTransformer
 from sklearn.pipeline import Pipeline
 from sklearn.preprocessing import StandardScaler, OneHotEncoder, FunctionTransformer
@@ -71,7 +74,7 @@ class BalancedXGB(xgb.XGBClassifier):
 def make_gbdt(num_cols, cat_cols, seed: int = C.RANDOM_SEED) -> BalancedXGB:
     """Gradient-boosted trees on GPU (XGBoost/CUDA), native categorical support."""
     return BalancedXGB(
-        device="cuda",
+        device=_DEVICE,
         tree_method="hist",
         enable_categorical=True,
         n_estimators=500,

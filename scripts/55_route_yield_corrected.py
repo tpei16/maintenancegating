@@ -1,16 +1,17 @@
 #!/usr/bin/env python
 """
 55_route_yield_corrected.py -- retrospective outcome rate on each route of the
-CORRECTED nested replay.
+double-nested replay.
 
 42_route_yield.py computes the same three rates on the single-nested
-construction of 40_outer_s.py, which is the construction the paper reports as
-leaky.  Its route counts (pma 48910, verify 2571) were superseded by
-45_certification_corrected.py (pma 49801, verify 1872), but its outcome rates
-were not recomputed, so the manuscript quoted counts from one run and rates from
-another.  This script closes that gap.
+construction of 40_outer_s.py, in which the target campus enters the
+certificate of the other campuses.  The route counts of that construction
+(pma 48910, verify 2571) differ from those of 45_certification_corrected.py
+(pma 49801, verify 1872).  This script computes the outcome rates on the
+routes of the double-nested replay, so that counts and rates come from the same
+run.
 
-Nothing is refitted.  The corrected per-campus certificates are read from
+Nothing is refitted.  The per-campus certificates are read from
 cert_corrected.json, the risk percentile is the decision-time one (R_quarter),
 and every scored unit is routed by exactly the rule in 45's route(): a stratum
 with no held-out gate evidence fails data sufficiency by default and routes as
@@ -41,7 +42,7 @@ def main() -> None:
     single = cc.load_single()                     # supplies y, R_quarter, R_pooled
     cert = json.load(open(C.METRICS / "cert_corrected.json"))
 
-    out = {"design": "corrected double-nested replay (45_certification_corrected.py, "
+    out = {"design": "double-nested replay (45_certification_corrected.py, "
                      "arm 'corrected'); outcome = next-quarter UPM labour above the "
                      "system-specific p75 threshold"}
 
@@ -96,10 +97,10 @@ def main() -> None:
     print(json.dumps(out, indent=2))
 
     c = out["corrected"]
-    assert c["pma_n"] == 49801, f"pma {c['pma_n']} != Table 8's 49801"
-    assert c["verify_n"] == 1872, f"verify {c['verify_n']} != Table 8's 1872"
-    print("\n[ok] route counts reproduce Table 8 exactly")
-
+    want = cert["corrected"]["routing"]["route_counts"]
+    assert c["pma_n"] == want["pma"], f"pma {c['pma_n']} != routed {want['pma']}"
+    assert c["verify_n"] == want["verify"], f"verify {c['verify_n']} != routed {want['verify']}"
+    print("\n[ok] route counts reproduce the routing table exactly")
 
 if __name__ == "__main__":
     main()

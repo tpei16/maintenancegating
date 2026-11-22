@@ -824,7 +824,7 @@
     },
     "reading": "the boosted model partially recovers a sign-flipped driver through a symmetric function of it, so the idiosyncratic contexts land near 1.5x rather than at chance and the transfer gate sits on its caution/fail boundary"
   },
-  "runtime_seconds": 709.2,
+  "runtime_seconds": 854.4,
   "environment": {
     "python": "3.13.13",
     "numpy": "2.4.6",

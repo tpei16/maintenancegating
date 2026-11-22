@@ -1,0 +1,142 @@
+campus,system,system_desc,data_sufficiency,risk_concentration,transfer_stability,risk_gradient,prior_record_trace,n_campuses,n_pos,pooled_lift,frac_2x,top_band,rho,zero_prior_share,mean_score,h_hard_fail,S,certified,certified_by_mean,simple_rule_prespecified,simple_rule_best_post_hoc,heldout_rows,heldout_pos,heldout_evaluable,heldout_lift
+1,B20,Exterior Enclosure,1.0,1.0,1.0,1.0,0.5,6,1759,4.97,0.833,2.89,1.0,0.11,0.9,0,0.9,True,True,True,True,1932,15,True,3.32
+1,B30,Roofing,0.5,1.0,0.5,1.0,0.5,5,1029,4.74,1.0,2.51,1.0,0.24,0.7,0,0.7,True,True,True,True,1274,2,False,
+1,C10,Interior Construction,1.0,1.0,1.0,1.0,1.0,7,4139,6.34,1.0,2.9,1.0,0.006,1.0,0,1.0,True,True,True,True,2572,548,True,3.693
+1,C20,Stairs,0.5,1.0,0.5,0.5,0.0,4,142,2.82,1.0,1.81,1.0,0.5,0.5,0,0.5,False,False,False,False,1534,49,True,1.83
+1,C30,Interior Finishes,1.0,1.0,1.0,1.0,1.0,7,2244,5.71,1.0,2.54,1.0,0.072,1.0,0,1.0,True,True,True,True,2347,349,True,3.978
+1,D10,Conveying,0.5,1.0,0.5,0.5,0.5,6,320,5.53,0.667,1.69,0.7,0.2,0.6,0,0.6,False,False,True,True,1049,33,True,3.633
+1,D20,Plumbing,1.0,1.0,1.0,1.0,1.0,7,5980,6.02,1.0,3.75,1.0,0.009,1.0,0,1.0,True,True,True,True,2817,676,True,4.034
+1,D30,HVAC,1.0,1.0,1.0,1.0,1.0,8,6226,5.98,0.875,3.46,1.0,0.002,1.0,0,1.0,True,True,True,True,2758,497,True,4.705
+1,D40,Fire Protection,1.0,1.0,1.0,1.0,1.0,8,1914,5.64,1.0,2.25,1.0,0.078,1.0,0,1.0,True,True,True,True,2833,178,True,5.212
+1,D50,Electrical,1.0,1.0,1.0,1.0,1.0,7,4983,6.66,1.0,2.85,1.0,0.012,1.0,0,1.0,True,True,True,True,2851,805,True,3.529
+1,E10,Equipment,1.0,1.0,1.0,1.0,1.0,7,2514,5.77,1.0,3.76,1.0,0.011,1.0,0,1.0,True,True,True,True,1800,113,True,5.752
+1,E20,Furnishings,1.0,1.0,1.0,1.0,1.0,6,1217,6.94,1.0,2.17,1.0,0.078,1.0,0,1.0,True,True,True,True,1686,71,True,4.215
+1,F10,Special Construction,0.5,1.0,0.5,1.0,0.5,3,101,5.64,1.0,2.38,1.0,0.194,0.7,0,0.7,True,True,True,False,123,1,False,
+1,F20,Selective Building Demolition,0.0,1.0,0.5,0.5,0.5,1,72,2.08,1.0,7.82,0.9,,0.5,1,0.5,False,False,False,False,0,0,False,
+1,G20,Site Improvements,0.0,1.0,0.5,0.5,1.0,2,280,5.75,1.0,3.15,0.7,0.037,0.6,1,0.5,False,False,False,False,1292,11,True,7.228
+1,G30,Site Mechanical Utilities,0.0,1.0,0.5,0.5,0.5,1,29,6.21,1.0,,,,0.5,1,0.5,False,False,False,False,229,0,False,
+10,B20,Exterior Enclosure,1.0,1.0,1.0,1.0,0.5,6,1550,5.15,0.833,2.69,1.0,0.113,0.9,0,0.9,True,True,True,True,4730,216,True,3.565
+10,B30,Roofing,0.5,1.0,0.5,1.0,0.5,5,1020,4.54,1.0,2.45,1.0,0.245,0.7,0,0.7,True,True,True,True,3412,7,False,
+10,C10,Interior Construction,1.0,1.0,1.0,1.0,1.0,7,3937,6.29,1.0,2.82,1.0,0.006,1.0,0,1.0,True,True,True,True,4945,756,True,4.784
+10,C20,Stairs,0.5,1.0,0.5,0.0,0.0,4,149,2.88,1.0,1.42,0.8,0.455,0.4,1,0.4,False,False,False,False,1367,10,True,1.996
+10,C30,Interior Finishes,1.0,1.0,1.0,1.0,1.0,7,2170,5.71,1.0,2.4,1.0,0.072,1.0,0,1.0,True,True,True,True,4070,215,True,4.419
+10,D10,Conveying,0.5,1.0,0.5,0.5,0.5,6,308,5.36,0.667,1.84,1.0,0.188,0.6,0,0.6,False,False,True,True,2288,28,True,1.07
+10,D20,Plumbing,1.0,1.0,1.0,1.0,1.0,7,5520,6.02,1.0,3.58,1.0,0.008,1.0,0,1.0,True,True,True,True,6646,734,True,5.828
+10,D30,HVAC,1.0,1.0,1.0,1.0,1.0,8,5761,5.86,1.0,3.52,1.0,0.003,1.0,0,1.0,True,True,True,True,7558,544,True,6.156
+10,D40,Fire Protection,1.0,1.0,1.0,1.0,1.0,8,1528,5.9,0.875,2.84,1.0,0.1,1.0,0,1.0,True,True,True,True,5263,614,True,3.302
+10,D50,Electrical,1.0,1.0,1.0,1.0,1.0,7,4577,6.63,1.0,2.6,1.0,0.013,1.0,0,1.0,True,True,True,True,7225,1216,True,5.375
+10,E10,Equipment,1.0,1.0,1.0,1.0,1.0,7,2266,5.64,1.0,3.57,1.0,0.013,1.0,0,1.0,True,True,True,True,4031,328,True,6.905
+10,E20,Furnishings,1.0,1.0,0.5,1.0,1.0,6,1216,6.75,0.667,2.19,1.0,0.079,0.9,0,0.9,True,True,True,True,2268,50,True,5.395
+10,F10,Special Construction,0.0,1.0,0.5,0.5,0.5,2,57,7.36,1.0,3.37,0.9,,0.5,1,0.5,False,False,False,False,1563,26,True,3.829
+10,F20,Selective Building Demolition,0.0,1.0,0.5,1.0,0.5,1,72,2.36,1.0,8.64,1.0,,0.6,1,0.5,False,False,False,False,58,0,False,
+10,G20,Site Improvements,0.0,1.0,0.5,1.0,1.0,2,345,5.88,1.0,2.65,1.0,0.051,0.7,1,0.5,False,True,False,False,417,4,False,
+10,G30,Site Mechanical Utilities,0.0,1.0,0.5,0.5,0.5,1,29,6.89,1.0,,,,0.5,1,0.5,False,False,False,False,24,0,False,
+11,B20,Exterior Enclosure,1.0,1.0,1.0,1.0,0.5,6,1409,5.06,1.0,2.79,1.0,0.103,0.9,0,0.9,True,True,True,True,4747,89,True,4.379
+11,B30,Roofing,0.5,1.0,0.5,1.0,0.5,3,944,4.17,1.0,2.02,1.0,0.244,0.7,0,0.7,True,True,True,True,4091,86,True,4.873
+11,C10,Interior Construction,1.0,1.0,1.0,1.0,1.0,7,3810,6.23,1.0,2.72,1.0,0.007,1.0,0,1.0,True,True,True,True,6540,282,True,7.943
+11,C20,Stairs,0.5,1.0,0.0,0.0,0.0,4,156,2.24,0.5,1.41,1.0,0.447,0.3,2,0.0,False,False,False,False,1895,16,True,3.117
+11,C30,Interior Finishes,1.0,1.0,1.0,1.0,1.0,7,2173,5.64,1.0,2.55,1.0,0.071,1.0,0,1.0,True,True,True,True,4920,152,True,7.697
+11,D10,Conveying,0.5,1.0,0.0,0.5,0.5,6,272,5.84,0.5,1.66,0.7,0.224,0.5,1,0.5,False,False,True,False,2124,42,True,4.511
+11,D20,Plumbing,1.0,1.0,1.0,1.0,1.0,7,5331,5.92,1.0,3.58,1.0,0.009,1.0,0,1.0,True,True,True,True,8674,574,True,7.817
+11,D30,HVAC,1.0,1.0,1.0,1.0,1.0,8,5577,5.98,1.0,3.49,1.0,0.003,1.0,0,1.0,True,True,True,True,7656,253,True,7.901
+11,D40,Fire Protection,1.0,1.0,1.0,1.0,1.0,8,1743,5.5,0.875,2.37,1.0,0.069,1.0,0,1.0,True,True,True,True,5413,114,True,5.694
+11,D50,Electrical,1.0,1.0,1.0,1.0,1.0,7,4549,6.88,1.0,2.79,1.0,0.011,1.0,0,1.0,True,True,True,True,8732,258,True,7.784
+11,E10,Equipment,1.0,1.0,1.0,1.0,1.0,7,2143,5.8,1.0,3.82,1.0,0.015,1.0,0,1.0,True,True,True,True,5689,406,True,7.363
+11,E20,Furnishings,1.0,1.0,1.0,1.0,1.0,7,1228,6.56,1.0,2.43,1.0,0.077,1.0,0,1.0,True,True,True,True,4000,5,False,
+11,F10,Special Construction,0.0,1.0,0.0,0.5,0.5,2,46,5.42,0.5,1.94,1.0,,0.4,2,0.0,False,False,False,False,4204,51,True,5.482
+11,G20,Site Improvements,0.0,1.0,0.5,0.5,1.0,1,337,5.66,1.0,2.15,0.9,0.048,0.6,1,0.5,False,False,False,False,6639,74,True,3.918
+2,B20,Exterior Enclosure,1.0,1.0,1.0,1.0,0.5,7,1781,5.19,0.857,2.84,1.0,0.105,0.9,0,0.9,True,True,True,True,880,8,False,
+2,B30,Roofing,0.5,1.0,0.5,0.5,0.0,4,1115,5.05,1.0,2.66,0.6,0.251,0.5,0,0.5,False,False,False,False,1044,70,True,4.261
+2,C10,Interior Construction,1.0,1.0,1.0,1.0,1.0,7,4397,6.25,1.0,2.95,1.0,0.006,1.0,0,1.0,True,True,True,True,1444,160,True,4.046
+2,C20,Stairs,0.5,1.0,0.5,0.0,0.0,5,174,2.82,0.8,1.47,1.0,0.434,0.4,1,0.4,False,False,False,False,0,0,False,
+2,C30,Interior Finishes,1.0,1.0,1.0,1.0,1.0,7,2498,5.63,1.0,2.51,1.0,0.065,1.0,0,1.0,True,True,True,True,1439,72,True,4.58
+2,D10,Conveying,0.5,1.0,1.0,1.0,0.5,6,308,4.84,0.833,2.66,1.0,0.228,0.8,0,0.8,True,True,True,True,615,104,True,2.098
+2,D20,Plumbing,1.0,1.0,1.0,1.0,1.0,7,6158,6.08,1.0,3.67,1.0,0.006,1.0,0,1.0,True,True,True,True,2394,386,True,4.393
+2,D30,HVAC,1.0,1.0,1.0,1.0,1.0,8,6455,6.03,0.875,3.49,1.0,0.002,1.0,0,1.0,True,True,True,True,1942,403,True,3.954
+2,D40,Fire Protection,1.0,1.0,1.0,1.0,1.0,8,1955,5.85,1.0,2.35,1.0,0.075,1.0,0,1.0,True,True,True,True,866,83,True,1.679
+2,D50,Electrical,1.0,1.0,1.0,1.0,1.0,7,5298,6.89,1.0,2.89,1.0,0.009,1.0,0,1.0,True,True,True,True,1773,271,True,3.565
+2,E10,Equipment,1.0,1.0,1.0,1.0,1.0,7,2588,5.85,1.0,3.7,1.0,0.012,1.0,0,1.0,True,True,True,True,1392,127,True,5.089
+2,E20,Furnishings,1.0,1.0,1.0,1.0,1.0,6,1349,6.79,1.0,2.25,1.0,0.08,1.0,0,1.0,True,True,True,True,439,14,True,3.563
+2,F10,Special Construction,0.5,1.0,0.5,1.0,0.5,3,102,5.19,1.0,2.53,1.0,0.2,0.7,0,0.7,True,True,True,False,57,0,False,
+2,F20,Selective Building Demolition,0.0,0.5,0.5,0.5,0.5,1,72,1.94,1.0,7.18,0.9,,0.4,1,0.4,False,False,False,False,0,0,False,
+2,G20,Site Improvements,0.0,1.0,0.5,0.5,1.0,2,336,6.37,1.0,2.32,0.6,0.044,0.6,1,0.5,False,False,False,False,551,4,False,
+2,G30,Site Mechanical Utilities,0.0,1.0,0.5,0.5,0.5,1,29,5.86,1.0,,,,0.5,1,0.5,False,False,False,False,0,0,False,
+3,B20,Exterior Enclosure,1.0,1.0,1.0,1.0,0.5,6,1761,4.82,0.833,2.77,1.0,0.11,0.9,0,0.9,True,True,True,True,4131,13,True,3.07
+3,B30,Roofing,0.5,1.0,0.5,1.0,0.5,5,1036,4.45,1.0,2.75,1.0,0.244,0.7,0,0.7,True,True,True,True,6221,3,False,
+3,C10,Interior Construction,1.0,1.0,1.0,1.0,1.0,7,4011,6.02,1.0,2.85,1.0,0.003,1.0,0,1.0,True,True,True,True,9835,381,True,6.139
+3,C20,Stairs,0.5,1.0,0.5,0.5,0.0,4,129,3.41,1.0,1.99,1.0,0.281,0.5,0,0.5,False,False,False,False,4966,73,True,2.053
+3,C30,Interior Finishes,1.0,1.0,1.0,1.0,1.0,7,2396,5.53,1.0,2.62,1.0,0.033,1.0,0,1.0,True,True,True,True,7521,170,True,4.406
+3,D10,Conveying,0.5,1.0,0.5,0.5,0.5,6,333,4.77,0.667,1.83,0.6,0.183,0.6,0,0.6,False,False,True,True,2247,12,True,1.664
+3,D20,Plumbing,1.0,1.0,1.0,1.0,1.0,7,5574,5.99,1.0,3.7,1.0,0.005,1.0,0,1.0,True,True,True,True,10466,373,True,6.057
+3,D30,HVAC,1.0,1.0,1.0,1.0,1.0,8,5866,5.71,1.0,3.6,1.0,0.002,1.0,0,1.0,True,True,True,True,11075,337,True,6.763
+3,D40,Fire Protection,1.0,1.0,1.0,1.0,1.0,8,1922,5.21,0.875,2.21,1.0,0.038,1.0,0,1.0,True,True,True,True,8187,176,True,3.067
+3,D50,Electrical,1.0,1.0,1.0,1.0,1.0,7,4811,6.39,1.0,2.81,1.0,0.005,1.0,0,1.0,True,True,True,True,14368,466,True,6.759
+3,E10,Equipment,1.0,1.0,1.0,1.0,1.0,7,2408,5.74,1.0,3.72,1.0,0.005,1.0,0,1.0,True,True,True,True,8237,275,True,6.798
+3,E20,Furnishings,1.0,1.0,1.0,1.0,1.0,6,1267,6.44,1.0,2.11,1.0,0.074,1.0,0,1.0,True,True,True,True,6609,47,True,3.404
+3,F10,Special Construction,0.5,1.0,0.5,0.5,0.5,3,101,5.15,1.0,2.52,0.9,0.222,0.6,0,0.6,False,False,True,False,661,1,False,
+3,F20,Selective Building Demolition,0.0,1.0,0.5,1.0,0.5,1,179,2.12,1.0,4.94,1.0,,0.6,1,0.5,False,False,False,False,1346,1,False,
+3,G20,Site Improvements,0.5,1.0,0.5,0.5,1.0,3,368,5.57,1.0,2.13,0.7,0.049,0.7,0,0.7,True,True,True,True,3872,4,False,
+3,G30,Site Mechanical Utilities,0.0,1.0,0.5,0.5,0.5,1,29,7.59,1.0,,,,0.5,1,0.5,False,False,False,False,579,0,False,
+4,B20,Exterior Enclosure,1.0,1.0,1.0,1.0,0.5,6,1570,5.66,0.833,2.77,1.0,0.114,0.9,0,0.9,True,True,True,True,1793,70,True,2.277
+4,B30,Roofing,0.5,1.0,0.5,1.0,0.5,4,1016,4.82,1.0,2.52,1.0,0.243,0.7,0,0.7,True,True,True,True,1763,11,True,2.716
+4,C10,Interior Construction,1.0,1.0,1.0,1.0,1.0,7,4198,5.9,1.0,3.29,1.0,0.009,1.0,0,1.0,True,True,True,True,2109,881,True,2.383
+4,C20,Stairs,0.5,1.0,0.5,0.5,0.0,5,145,3.31,0.8,1.65,1.0,0.447,0.5,0,0.5,False,False,False,False,1076,6,False,
+4,C30,Interior Finishes,1.0,1.0,1.0,1.0,1.0,7,2256,5.63,1.0,2.5,1.0,0.073,1.0,0,1.0,True,True,True,True,1858,338,True,3.369
+4,D10,Conveying,0.5,1.0,0.0,0.5,0.5,6,280,5.11,0.5,1.58,0.9,0.226,0.5,1,0.5,False,False,True,False,1405,31,True,3.536
+4,D20,Plumbing,1.0,1.0,1.0,1.0,1.0,7,6004,6.08,1.0,3.77,1.0,0.009,1.0,0,1.0,True,True,True,True,2287,614,True,3.465
+4,D30,HVAC,1.0,1.0,1.0,1.0,1.0,8,6307,6.08,0.875,3.49,1.0,0.002,1.0,0,1.0,True,True,True,True,2278,358,True,4.744
+4,D40,Fire Protection,1.0,1.0,1.0,1.0,1.0,8,1845,5.6,1.0,2.33,1.0,0.083,1.0,0,1.0,True,True,True,True,2205,190,True,4.254
+4,D50,Electrical,1.0,1.0,1.0,1.0,1.0,7,5039,6.68,1.0,2.89,1.0,0.011,1.0,0,1.0,True,True,True,True,2550,774,True,3.165
+4,E10,Equipment,1.0,1.0,1.0,1.0,1.0,7,2414,6.12,1.0,3.83,1.0,0.013,1.0,0,1.0,True,True,True,True,1902,183,True,4.571
+4,E20,Furnishings,1.0,1.0,1.0,1.0,1.0,6,1163,7.19,1.0,2.18,1.0,0.088,1.0,0,1.0,True,True,True,True,1732,152,True,3.995
+4,F10,Special Construction,0.0,1.0,0.5,1.0,0.5,3,99,5.35,1.0,2.52,1.0,0.212,0.6,1,0.5,False,False,False,False,321,3,False,
+4,F20,Selective Building Demolition,0.0,1.0,0.5,1.0,0.5,1,72,2.08,1.0,7.5,1.0,,0.6,1,0.5,False,False,False,False,46,0,False,
+4,G20,Site Improvements,0.0,1.0,0.5,1.0,0.0,2,158,4.05,1.0,2.77,1.0,0.289,0.5,1,0.5,False,False,False,False,1987,249,True,3.769
+4,G30,Site Mechanical Utilities,0.0,1.0,0.5,0.5,0.5,1,29,5.86,1.0,,,,0.5,1,0.5,False,False,False,False,0,0,False,
+5,B20,Exterior Enclosure,1.0,1.0,1.0,1.0,1.0,6,1230,5.22,0.833,2.05,1.0,0.077,1.0,0,1.0,True,True,True,True,19821,715,True,4.823
+5,B30,Roofing,0.5,1.0,1.0,0.5,0.5,6,383,5.35,0.833,1.89,1.0,0.216,0.7,0,0.7,True,True,True,True,23723,844,True,4.323
+5,C10,Interior Construction,1.0,1.0,1.0,1.0,1.0,7,3282,6.13,1.0,2.64,1.0,0.007,1.0,0,1.0,True,True,True,True,14771,637,True,5.993
+5,C20,Stairs,0.5,1.0,0.5,0.0,0.0,5,172,2.79,0.6,1.42,1.0,0.431,0.4,1,0.4,False,False,False,False,399,2,False,
+5,C30,Interior Finishes,1.0,1.0,1.0,1.0,1.0,7,1930,5.92,1.0,2.48,1.0,0.059,1.0,0,1.0,True,True,True,True,10647,468,True,3.055
+5,D10,Conveying,0.5,1.0,0.0,0.5,0.5,6,282,4.22,0.5,1.62,1.0,0.193,0.5,1,0.5,False,False,True,False,6535,95,True,7.573
+5,D20,Plumbing,1.0,1.0,1.0,1.0,1.0,7,4239,6.12,1.0,3.3,1.0,0.01,1.0,0,1.0,True,True,True,True,22013,1977,True,6.032
+5,D30,HVAC,1.0,1.0,1.0,1.0,1.0,8,3962,6.07,0.875,2.98,1.0,0.002,1.0,0,1.0,True,True,True,True,22251,3076,True,5.391
+5,D40,Fire Protection,1.0,1.0,1.0,1.0,1.0,8,1640,4.86,1.0,2.39,1.0,0.068,1.0,0,1.0,True,True,True,True,11482,85,True,3.997
+5,D50,Electrical,1.0,1.0,1.0,1.0,1.0,7,4343,6.63,1.0,3.03,1.0,0.009,1.0,0,1.0,True,True,True,True,13867,466,True,5.213
+5,E10,Equipment,1.0,1.0,1.0,1.0,1.0,7,2019,6.51,1.0,3.69,1.0,0.017,1.0,0,1.0,True,True,True,True,7398,776,True,4.264
+5,E20,Furnishings,1.0,1.0,1.0,0.5,1.0,6,1178,7.33,0.833,2.0,0.9,0.044,0.9,0,0.9,True,True,True,True,7986,227,True,2.73
+5,F10,Special Construction,0.5,1.0,0.5,0.5,0.5,3,102,4.9,0.667,1.98,0.9,0.216,0.6,0,0.6,False,False,True,False,0,0,False,
+5,F20,Selective Building Demolition,0.0,0.5,0.5,1.0,0.5,1,72,1.81,1.0,7.14,1.0,,0.5,1,0.5,False,False,False,False,649,0,False,
+5,G20,Site Improvements,0.5,1.0,0.5,0.5,1.0,3,353,5.81,1.0,3.39,0.7,0.05,0.7,0,0.7,True,True,True,True,47,0,False,
+6,B20,Exterior Enclosure,1.0,1.0,1.0,1.0,0.5,6,1360,4.11,1.0,2.83,1.0,0.158,0.9,0,0.9,True,True,True,True,2379,663,True,1.9
+6,B30,Roofing,0.5,1.0,0.5,1.0,0.5,4,973,4.83,1.0,2.47,1.0,0.241,0.7,0,0.7,True,True,True,True,1040,16,True,4.375
+6,C10,Interior Construction,1.0,1.0,1.0,1.0,1.0,7,4129,6.13,1.0,3.11,1.0,0.007,1.0,0,1.0,True,True,True,True,2511,933,True,2.456
+6,C20,Stairs,0.5,1.0,0.5,0.5,0.0,4,159,3.21,1.0,1.75,0.9,0.429,0.5,0,0.5,False,False,False,False,592,18,True,3.289
+6,C30,Interior Finishes,1.0,1.0,1.0,1.0,1.0,7,2217,4.86,1.0,2.67,1.0,0.082,1.0,0,1.0,True,True,True,True,2168,785,True,2.265
+6,D10,Conveying,0.5,1.0,1.0,0.5,0.5,7,345,4.95,0.857,1.88,1.0,0.207,0.7,0,0.7,True,True,True,True,154,0,False,
+6,D20,Plumbing,1.0,1.0,1.0,1.0,1.0,7,5893,6.03,1.0,3.87,1.0,0.009,1.0,0,1.0,True,True,True,True,2883,1018,True,2.695
+6,D30,HVAC,1.0,1.0,1.0,1.0,1.0,8,6222,5.91,0.875,3.66,1.0,0.004,1.0,0,1.0,True,True,True,True,2862,1102,True,2.47
+6,D40,Fire Protection,1.0,1.0,1.0,1.0,1.0,8,1682,5.34,1.0,2.28,1.0,0.097,1.0,0,1.0,True,True,True,True,2409,573,True,2.878
+6,D50,Electrical,1.0,1.0,1.0,1.0,1.0,8,4825,6.66,1.0,3.08,1.0,0.012,1.0,0,1.0,True,True,True,True,2892,1242,True,2.248
+6,E10,Equipment,1.0,1.0,1.0,1.0,1.0,7,2403,5.45,1.0,3.63,1.0,0.019,1.0,0,1.0,True,True,True,True,2211,493,True,4.202
+6,E20,Furnishings,1.0,1.0,1.0,1.0,0.5,7,908,4.48,1.0,2.42,1.0,0.178,0.9,0,0.9,True,True,True,True,2221,770,True,2.522
+6,F10,Special Construction,0.0,1.0,0.5,1.0,0.0,2,100,4.6,1.0,2.77,1.0,0.258,0.5,1,0.5,False,False,False,False,149,20,True,4.967
+6,F20,Selective Building Demolition,0.0,1.0,0.5,0.5,0.5,1,72,2.91,1.0,5.94,0.9,,0.5,1,0.5,False,False,False,False,32,0,False,
+6,G20,Site Improvements,0.5,1.0,0.5,0.5,1.0,3,365,6.35,1.0,2.67,0.9,0.059,0.7,0,0.7,True,True,True,True,178,7,False,
+6,G30,Site Mechanical Utilities,0.0,1.0,0.5,0.5,0.5,1,29,7.24,1.0,,,,0.5,1,0.5,False,False,False,False,11,0,False,
+7,B20,Exterior Enclosure,1.0,1.0,1.0,1.0,0.5,7,1789,5.01,0.857,2.73,1.0,0.111,0.9,0,0.9,True,True,True,True,28,0,False,
+7,B30,Roofing,0.5,1.0,0.5,1.0,0.5,5,1039,4.83,1.0,2.35,1.0,0.247,0.7,0,0.7,True,True,True,True,0,0,False,
+7,C10,Interior Construction,1.0,1.0,1.0,1.0,1.0,8,4578,6.19,1.0,2.86,1.0,0.006,1.0,0,1.0,True,True,True,True,9,0,False,
+7,C20,Stairs,0.5,1.0,0.5,0.5,0.0,5,174,2.87,0.8,1.62,1.0,0.434,0.5,0,0.5,False,False,False,False,0,0,False,
+7,C30,Interior Finishes,1.0,1.0,1.0,1.0,1.0,8,2549,5.57,1.0,2.5,1.0,0.063,1.0,0,1.0,True,True,True,True,70,0,False,
+7,D10,Conveying,0.5,1.0,0.5,0.5,0.5,7,343,5.25,0.714,1.91,0.9,0.207,0.6,0,0.6,False,False,True,True,98,0,False,
+7,D20,Plumbing,1.0,1.0,1.0,1.0,1.0,8,6342,6.05,1.0,3.66,1.0,0.008,1.0,0,1.0,True,True,True,True,191,7,False,
+7,D30,HVAC,1.0,1.0,1.0,1.0,1.0,8,6570,6.02,1.0,3.49,1.0,0.002,1.0,0,1.0,True,True,True,True,215,36,True,1.629
+7,D40,Fire Protection,1.0,1.0,1.0,1.0,1.0,8,2013,5.61,1.0,2.37,1.0,0.076,1.0,0,1.0,True,True,True,True,197,16,True,3.694
+7,D50,Electrical,1.0,1.0,1.0,1.0,1.0,8,5476,6.77,1.0,2.83,1.0,0.01,1.0,0,1.0,True,True,True,True,159,8,False,
+7,E10,Equipment,1.0,1.0,1.0,1.0,1.0,8,2691,5.8,1.0,3.66,1.0,0.012,1.0,0,1.0,True,True,True,True,59,3,False,
+7,E20,Furnishings,1.0,1.0,1.0,1.0,1.0,7,1336,6.67,1.0,2.3,1.0,0.082,1.0,0,1.0,True,True,True,True,8,0,False,
+7,F10,Special Construction,0.5,1.0,0.5,1.0,0.5,3,102,5.88,0.667,2.38,1.0,0.216,0.7,0,0.7,True,True,True,False,0,0,False,
+7,F20,Selective Building Demolition,0.0,0.5,0.5,1.0,0.5,1,72,1.94,1.0,7.09,1.0,,0.5,1,0.5,False,False,False,False,0,0,False,
+7,G20,Site Improvements,0.5,1.0,0.5,0.5,1.0,3,353,5.86,1.0,2.56,0.9,0.05,0.7,0,0.7,True,True,True,True,0,0,False,
+7,G30,Site Mechanical Utilities,0.0,1.0,0.5,0.5,0.5,1,29,5.86,1.0,,,,0.5,1,0.5,False,False,False,False,0,0,False,

@@ -8,60 +8,60 @@
   "reproduction_check": [
     {
       "campus": "1",
-      "published": 6.133963262037931,
+      "stored": 6.133963262037931,
       "refit": 6.134,
       "delta": 0.0
     },
     {
       "campus": "10",
-      "published": 6.427204046330856,
+      "stored": 6.427204046330856,
       "refit": 6.427,
       "delta": -0.0002
     },
     {
       "campus": "11",
-      "published": 7.541447634452082,
+      "stored": 7.541447634452082,
       "refit": 7.541,
       "delta": -0.0004
     },
     {
       "campus": "2",
-      "published": 4.841058038395098,
+      "stored": 4.841058038395098,
       "refit": 4.841,
       "delta": -0.0001
     },
     {
       "campus": "3",
-      "published": 6.481162278966537,
+      "stored": 6.481162278966537,
       "refit": 6.481,
       "delta": -0.0002
     },
     {
       "campus": "4",
-      "published": 5.473481861426934,
+      "stored": 5.473481861426934,
       "refit": 5.473,
       "delta": -0.0005
     },
     {
       "campus": "5",
-      "published": 6.222996206233429,
+      "stored": 6.222996206233429,
       "refit": 6.223,
       "delta": 0.0
     },
     {
       "campus": "6",
-      "published": 3.004764930895792,
+      "stored": 3.004764930895792,
       "refit": 3.005,
       "delta": 0.0002
     },
     {
       "campus": "7",
-      "published": 3.992660550458716,
+      "stored": 3.992660550458716,
       "refit": 3.993,
       "delta": 0.0003
     }
   ],
-  "max_abs_lift_delta_vs_published": 0.0005,
+  "max_abs_lift_delta_vs_stored": 0.0005,
   "singles": [
     {
       "held_out": "1",

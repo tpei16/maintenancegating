@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 """
-WP1 (plan sec 20.1 items 6-9; sec 20.8 order/gap permutations) -- does chronology pay?
+Does chronology pay?  Order and gap permutations of the event histories.
 
 The feasibility gate. Everything is held identical to the incumbent aggregate
 screen except the representation:
@@ -17,8 +17,7 @@ A1 vs A2 isolates order; A1 vs A3 isolates elapsed time; A1 vs A4 isolates
 chronology as a whole; A4 vs A0 checks the encoder is not simply weaker than
 the tree.
 
-Gate rule, fixed before the run (see notes/WP1_feasibility_gate_decisions.md):
-chronology counts as adding value only if A1 beats A4 by a paired per-campus
+Gate rule: chronology counts as adding value only if A1 beats A4 by a paired per-campus
 median of at least +0.25 top-decile lift with a bootstrap interval excluding
 zero.
 
@@ -196,7 +195,7 @@ def _score(net, rows, idx, valid, feats, shuffle, rng):
 def train_arm(arm, tr_rows, te_rows, y, idx, valid, feats, sizes, epochs, seed,
               val_rows=None, verbose=False):
     """Train one arm. If val_rows is given, report lift on it after every epoch
-    so the epoch count can be chosen from source campuses only (plan sec 20.7);
+    so the epoch count can be chosen from source campuses only (source-campus validation);
     the held-out campus is never consulted for model selection."""
     torch.manual_seed(seed); rng = np.random.default_rng(seed)
     net = EventGRU(sizes, bag=(arm == "A4"), use_gap=(arm not in ("A3", "A4")))
@@ -245,7 +244,7 @@ def main():
 
     idx, valid, feats, sizes = build_event_index(panel)
 
-    # ---- epoch selection on source campuses only (plan sec 20.7) ------------
+    # ---- epoch selection on source campuses only (source-campus validation) ------------
     if a.select_epochs:
         u = campuses[0]
         te = np.flatnonzero(univ == u); tr = np.flatnonzero(univ != u)
@@ -298,7 +297,7 @@ def main():
                 npar = -1
                 lifts = [MET.lift_at_topk(yte, sc, TOPK)]
             else:
-                # plan sec 23.4 / sec 24: repeat the neural arms across seeds so
+                # repeat the neural arms across seeds so
                 # seed variation can be separated from campus variation
                 lifts, npar = [], -1
                 for s in range(a.seeds):

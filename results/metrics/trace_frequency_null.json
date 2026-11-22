@@ -1,0 +1,1293 @@
+{
+  "design": "Per stratum with at least 30 extreme events on the pooled panel, the no-antecedent share of extreme events (script 45's prior-record-trace quantity) beside frequency-matched references: the same no-reactive-work share among reactive cell-quarters with four quarters of history, and among all cell-quarters with history, both weighted to the campus mix of the events; intervals resample buildings within campuses.",
+  "definitions": {
+    "extreme_event": "cell-quarter with reactive labour above the system's 90th percentile of positive reactive labour (pooled panel), with four quarters of cell history",
+    "no_antecedent": "no reactive work order on the cell in the preceding four quarters",
+    "no_antecedent_counting_pm": "no reactive and no preventive work order in the preceding four quarters",
+    "reference_active": "share with no reactive work order in the preceding four quarters among cell-quarters of the stratum with at least one reactive work order and four quarters of history (extreme events included), per campus, weighted by the campus shares of the extreme events",
+    "reference_active_excluding_events": "reference_active with the extreme events left out",
+    "reference_all": "the same share over all cell-quarters with four quarters of history",
+    "record_start_campus": "events dropped when period_q < first panel quarter of the campus + q; the 4-quarter version removes nothing because events already need four quarters of cell history",
+    "record_start_cell": "events dropped when period_q < the cell's first quarter + q",
+    "verdict": "pass < 0.10, caution < 0.25, fail otherwise; caution below 30 events",
+    "bootstrap": "1000 replicates; buildings resampled with replacement within each campus; campus weights recomputed per replicate; percentile 95% intervals",
+    "mean_reactive_wo_per_cell_quarter": "mean upm_count over every cell-quarter of the stratum"
+  },
+  "campus_first_quarter": {
+    "1": 8051,
+    "10": 8012,
+    "11": 8060,
+    "2": 8066,
+    "3": 8025,
+    "4": 8052,
+    "5": 8010,
+    "6": 8068,
+    "7": 8062
+  },
+  "n_strata": 14,
+  "pooled_map_strata_below_30_events": {
+    "F20": 23,
+    "G30": 16
+  },
+  "spearman_share_vs_frequency": {
+    "all_strata": {
+      "rho": -0.908,
+      "p": 7.301703996852342e-06,
+      "n": 14
+    },
+    "pooled_map_strata": {
+      "rho": -0.908,
+      "p": 7.301703996852342e-06,
+      "n": 14
+    }
+  },
+  "verdict_changes_pooled_map": {
+    "counting_pm": [
+      {
+        "system": "B20",
+        "observed": "caution",
+        "variant": "pass"
+      },
+      {
+        "system": "B30",
+        "observed": "caution",
+        "variant": "pass"
+      },
+      {
+        "system": "D10",
+        "observed": "caution",
+        "variant": "pass"
+      }
+    ],
+    "drop_campus_first_4q": [],
+    "drop_campus_first_8q": [
+      {
+        "system": "B30",
+        "observed": "caution",
+        "variant": "fail"
+      },
+      {
+        "system": "E20",
+        "observed": "pass",
+        "variant": "caution"
+      },
+      {
+        "system": "F10",
+        "observed": "caution",
+        "variant": "fail"
+      }
+    ],
+    "drop_campus_first_12q": [
+      {
+        "system": "D10",
+        "observed": "caution",
+        "variant": "fail"
+      },
+      {
+        "system": "E20",
+        "observed": "pass",
+        "variant": "caution"
+      }
+    ]
+  },
+  "strata": {
+    "B20": {
+      "n_events": 576,
+      "n_zero": 64,
+      "share": 0.1111,
+      "share_ci": [
+        0.0831,
+        0.1455
+      ],
+      "verdict": "caution",
+      "share_counting_pm": 0.0434,
+      "verdict_counting_pm": "pass",
+      "reference_active": 0.1708,
+      "reference_active_ci": [
+        0.1518,
+        0.19
+      ],
+      "ratio_active": 0.65,
+      "ratio_active_ci": [
+        0.5025,
+        0.8393
+      ],
+      "reference_active_excluding_events": 0.1794,
+      "reference_all": 0.4592,
+      "reference_all_ci": [
+        0.4061,
+        0.4993
+      ],
+      "ratio_all": 0.242,
+      "ratio_all_ci": [
+        0.1767,
+        0.3324
+      ],
+      "n_active_history_rows": 5977,
+      "n_history_rows": 33937,
+      "record_start_campus": {
+        "4": {
+          "n_events": 576,
+          "share": 0.1111,
+          "verdict": "caution"
+        },
+        "8": {
+          "n_events": 477,
+          "share": 0.1321,
+          "verdict": "caution"
+        },
+        "12": {
+          "n_events": 350,
+          "share": 0.1543,
+          "verdict": "caution"
+        }
+      },
+      "record_start_cell": {
+        "4": {
+          "n_events": 576,
+          "share": 0.1111,
+          "verdict": "caution"
+        },
+        "8": {
+          "n_events": 437,
+          "share": 0.1327,
+          "verdict": "caution"
+        },
+        "12": {
+          "n_events": 286,
+          "share": 0.1608,
+          "verdict": "caution"
+        }
+      },
+      "mean_reactive_wo_per_cell_quarter": 0.3579,
+      "n_cell_quarters": 40441,
+      "n_buildings": 1649,
+      "campus_mix_of_events": {
+        "1": 0.0122,
+        "10": 0.0938,
+        "11": 0.033,
+        "2": 0.0087,
+        "3": 0.0087,
+        "4": 0.0399,
+        "5": 0.4635,
+        "6": 0.3403
+      },
+      "system_desc": "Exterior Enclosure",
+      "in_pooled_map": true,
+      "pooled_S": 0.9,
+      "pooled_certified": true
+    },
+    "B30": {
+      "n_events": 304,
+      "n_zero": 75,
+      "share": 0.2467,
+      "share_ci": [
+        0.1903,
+        0.3156
+      ],
+      "verdict": "caution",
+      "share_counting_pm": 0.0461,
+      "verdict_counting_pm": "pass",
+      "reference_active": 0.3175,
+      "reference_active_ci": [
+        0.2838,
+        0.3529
+      ],
+      "ratio_active": 0.777,
+      "ratio_active_ci": [
+        0.629,
+        0.9391
+      ],
+      "reference_active_excluding_events": 0.3303,
+      "reference_all": 0.7251,
+      "reference_all_ci": [
+        0.6977,
+        0.7484
+      ],
+      "ratio_all": 0.34,
+      "ratio_all_ci": [
+        0.2603,
+        0.436
+      ],
+      "n_active_history_rows": 3187,
+      "n_history_rows": 36310,
+      "record_start_campus": {
+        "4": {
+          "n_events": 304,
+          "share": 0.2467,
+          "verdict": "caution"
+        },
+        "8": {
+          "n_events": 294,
+          "share": 0.2517,
+          "verdict": "fail"
+        },
+        "12": {
+          "n_events": 258,
+          "share": 0.2364,
+          "verdict": "caution"
+        }
+      },
+      "record_start_cell": {
+        "4": {
+          "n_events": 304,
+          "share": 0.2467,
+          "verdict": "caution"
+        },
+        "8": {
+          "n_events": 250,
+          "share": 0.248,
+          "verdict": "caution"
+        },
+        "12": {
+          "n_events": 225,
+          "share": 0.24,
+          "verdict": "caution"
+        }
+      },
+      "mean_reactive_wo_per_cell_quarter": 0.1575,
+      "n_cell_quarters": 42568,
+      "n_buildings": 1595,
+      "campus_mix_of_events": {
+        "10": 0.0066,
+        "11": 0.0625,
+        "2": 0.1086,
+        "3": 0.0099,
+        "4": 0.0132,
+        "5": 0.7697,
+        "6": 0.0296
+      },
+      "system_desc": "Roofing",
+      "in_pooled_map": true,
+      "pooled_S": 0.7,
+      "pooled_certified": true
+    },
+    "C10": {
+      "n_events": 1649,
+      "n_zero": 10,
+      "share": 0.0061,
+      "share_ci": [
+        0.0023,
+        0.0103
+      ],
+      "verdict": "pass",
+      "share_counting_pm": 0.0049,
+      "verdict_counting_pm": "pass",
+      "reference_active": 0.0367,
+      "reference_active_ci": [
+        0.0315,
+        0.0425
+      ],
+      "ratio_active": 0.165,
+      "ratio_active_ci": [
+        0.0632,
+        0.2886
+      ],
+      "reference_active_excluding_events": 0.0417,
+      "reference_all": 0.1758,
+      "reference_all_ci": [
+        0.1526,
+        0.1985
+      ],
+      "ratio_all": 0.034,
+      "ratio_all_ci": [
+        0.013,
+        0.0597
+      ],
+      "n_active_history_rows": 17091,
+      "n_history_rows": 37252,
+      "record_start_campus": {
+        "4": {
+          "n_events": 1649,
+          "share": 0.0061,
+          "verdict": "pass"
+        },
+        "8": {
+          "n_events": 1461,
+          "share": 0.0062,
+          "verdict": "pass"
+        },
+        "12": {
+          "n_events": 1176,
+          "share": 0.006,
+          "verdict": "pass"
+        }
+      },
+      "record_start_cell": {
+        "4": {
+          "n_events": 1649,
+          "share": 0.0061,
+          "verdict": "pass"
+        },
+        "8": {
+          "n_events": 1217,
+          "share": 0.0058,
+          "verdict": "pass"
+        },
+        "12": {
+          "n_events": 793,
+          "share": 0.0063,
+          "verdict": "pass"
+        }
+      },
+      "mean_reactive_wo_per_cell_quarter": 2.2435,
+      "n_cell_quarters": 44736,
+      "n_buildings": 1911,
+      "campus_mix_of_events": {
+        "1": 0.114,
+        "10": 0.151,
+        "11": 0.04,
+        "2": 0.0212,
+        "3": 0.0813,
+        "4": 0.3129,
+        "5": 0.0746,
+        "6": 0.205
+      },
+      "system_desc": "Interior Construction",
+      "in_pooled_map": true,
+      "pooled_S": 1.0,
+      "pooled_certified": true
+    },
+    "C20": {
+      "n_events": 53,
+      "n_zero": 23,
+      "share": 0.434,
+      "share_ci": [
+        0.2857,
+        0.58
+      ],
+      "verdict": "fail",
+      "share_counting_pm": 0.3396,
+      "verdict_counting_pm": "fail",
+      "reference_active": 0.5212,
+      "reference_active_ci": [
+        0.451,
+        0.5898
+      ],
+      "ratio_active": 0.833,
+      "ratio_active_ci": [
+        0.5788,
+        1.0612
+      ],
+      "reference_active_excluding_events": 0.5377,
+      "reference_all": 0.7429,
+      "reference_all_ci": [
+        0.6804,
+        0.7956
+      ],
+      "ratio_all": 0.584,
+      "ratio_all_ci": [
+        0.3944,
+        0.7837
+      ],
+      "n_active_history_rows": 609,
+      "n_history_rows": 9425,
+      "record_start_campus": {
+        "4": {
+          "n_events": 53,
+          "share": 0.434,
+          "verdict": "fail"
+        },
+        "8": {
+          "n_events": 48,
+          "share": 0.4583,
+          "verdict": "fail"
+        },
+        "12": {
+          "n_events": 44,
+          "share": 0.4545,
+          "verdict": "fail"
+        }
+      },
+      "record_start_cell": {
+        "4": {
+          "n_events": 53,
+          "share": 0.434,
+          "verdict": "fail"
+        },
+        "8": {
+          "n_events": 43,
+          "share": 0.4651,
+          "verdict": "fail"
+        },
+        "12": {
+          "n_events": 31,
+          "share": 0.4839,
+          "verdict": "fail"
+        }
+      },
+      "mean_reactive_wo_per_cell_quarter": 0.1177,
+      "n_cell_quarters": 11829,
+      "n_buildings": 619,
+      "campus_mix_of_events": {
+        "1": 0.2075,
+        "10": 0.0566,
+        "3": 0.5472,
+        "4": 0.0189,
+        "6": 0.1698
+      },
+      "system_desc": "Stairs",
+      "in_pooled_map": true,
+      "pooled_S": 0.4,
+      "pooled_certified": false
+    },
+    "C30": {
+      "n_events": 820,
+      "n_zero": 52,
+      "share": 0.0634,
+      "share_ci": [
+        0.0461,
+        0.0837
+      ],
+      "verdict": "pass",
+      "share_counting_pm": 0.0378,
+      "verdict_counting_pm": "pass",
+      "reference_active": 0.0863,
+      "reference_active_ci": [
+        0.0749,
+        0.097
+      ],
+      "ratio_active": 0.735,
+      "ratio_active_ci": [
+        0.5675,
+        0.9328
+      ],
+      "reference_active_excluding_events": 0.089,
+      "reference_all": 0.2606,
+      "reference_all_ci": [
+        0.2301,
+        0.289
+      ],
+      "ratio_all": 0.243,
+      "ratio_all_ci": [
+        0.1831,
+        0.3162
+      ],
+      "n_active_history_rows": 9271,
+      "n_history_rows": 29103,
+      "record_start_campus": {
+        "4": {
+          "n_events": 820,
+          "share": 0.0634,
+          "verdict": "pass"
+        },
+        "8": {
+          "n_events": 652,
+          "share": 0.0752,
+          "verdict": "pass"
+        },
+        "12": {
+          "n_events": 491,
+          "share": 0.0896,
+          "verdict": "pass"
+        }
+      },
+      "record_start_cell": {
+        "4": {
+          "n_events": 820,
+          "share": 0.0634,
+          "verdict": "pass"
+        },
+        "8": {
+          "n_events": 562,
+          "share": 0.0819,
+          "verdict": "pass"
+        },
+        "12": {
+          "n_events": 358,
+          "share": 0.1089,
+          "verdict": "caution"
+        }
+      },
+      "mean_reactive_wo_per_cell_quarter": 1.1233,
+      "n_cell_quarters": 35040,
+      "n_buildings": 1507,
+      "campus_mix_of_events": {
+        "1": 0.1366,
+        "10": 0.0549,
+        "11": 0.0268,
+        "2": 0.0293,
+        "3": 0.0988,
+        "4": 0.1317,
+        "5": 0.172,
+        "6": 0.35
+      },
+      "system_desc": "Interior Finishes",
+      "in_pooled_map": true,
+      "pooled_S": 1.0,
+      "pooled_certified": true
+    },
+    "D10": {
+      "n_events": 111,
+      "n_zero": 23,
+      "share": 0.2072,
+      "share_ci": [
+        0.1304,
+        0.2869
+      ],
+      "verdict": "caution",
+      "share_counting_pm": 0.0541,
+      "verdict_counting_pm": "pass",
+      "reference_active": 0.2348,
+      "reference_active_ci": [
+        0.1816,
+        0.2914
+      ],
+      "ratio_active": 0.883,
+      "ratio_active_ci": [
+        0.6108,
+        1.188
+      ],
+      "reference_active_excluding_events": 0.2332,
+      "reference_all": 0.4345,
+      "reference_all_ci": [
+        0.3526,
+        0.5178
+      ],
+      "ratio_all": 0.477,
+      "ratio_all_ci": [
+        0.3171,
+        0.6569
+      ],
+      "n_active_history_rows": 1951,
+      "n_history_rows": 13904,
+      "record_start_campus": {
+        "4": {
+          "n_events": 111,
+          "share": 0.2072,
+          "verdict": "caution"
+        },
+        "8": {
+          "n_events": 82,
+          "share": 0.2073,
+          "verdict": "caution"
+        },
+        "12": {
+          "n_events": 50,
+          "share": 0.28,
+          "verdict": "fail"
+        }
+      },
+      "record_start_cell": {
+        "4": {
+          "n_events": 111,
+          "share": 0.2072,
+          "verdict": "caution"
+        },
+        "8": {
+          "n_events": 50,
+          "share": 0.28,
+          "verdict": "fail"
+        },
+        "12": {
+          "n_events": 32,
+          "share": 0.3438,
+          "verdict": "fail"
+        }
+      },
+      "mean_reactive_wo_per_cell_quarter": 0.5135,
+      "n_cell_quarters": 16515,
+      "n_buildings": 661,
+      "campus_mix_of_events": {
+        "1": 0.0991,
+        "10": 0.045,
+        "11": 0.0631,
+        "2": 0.4414,
+        "3": 0.0631,
+        "4": 0.0811,
+        "5": 0.2072
+      },
+      "system_desc": "Conveying",
+      "in_pooled_map": true,
+      "pooled_S": 0.6,
+      "pooled_certified": false
+    },
+    "D20": {
+      "n_events": 2269,
+      "n_zero": 18,
+      "share": 0.0079,
+      "share_ci": [
+        0.0044,
+        0.0122
+      ],
+      "verdict": "pass",
+      "share_counting_pm": 0.0004,
+      "verdict_counting_pm": "pass",
+      "reference_active": 0.0447,
+      "reference_active_ci": [
+        0.0401,
+        0.0497
+      ],
+      "ratio_active": 0.178,
+      "ratio_active_ci": [
+        0.0999,
+        0.2676
+      ],
+      "reference_active_excluding_events": 0.0496,
+      "reference_all": 0.276,
+      "reference_all_ci": [
+        0.2537,
+        0.2974
+      ],
+      "ratio_all": 0.029,
+      "ratio_all_ci": [
+        0.0159,
+        0.0437
+      ],
+      "n_active_history_rows": 22656,
+      "n_history_rows": 48947,
+      "record_start_campus": {
+        "4": {
+          "n_events": 2269,
+          "share": 0.0079,
+          "verdict": "pass"
+        },
+        "8": {
+          "n_events": 2037,
+          "share": 0.0083,
+          "verdict": "pass"
+        },
+        "12": {
+          "n_events": 1641,
+          "share": 0.0079,
+          "verdict": "pass"
+        }
+      },
+      "record_start_cell": {
+        "4": {
+          "n_events": 2269,
+          "share": 0.0079,
+          "verdict": "pass"
+        },
+        "8": {
+          "n_events": 1788,
+          "share": 0.0062,
+          "verdict": "pass"
+        },
+        "12": {
+          "n_events": 1335,
+          "share": 0.0075,
+          "verdict": "pass"
+        }
+      },
+      "mean_reactive_wo_per_cell_quarter": 3.7441,
+      "n_cell_quarters": 58371,
+      "n_buildings": 2405,
+      "campus_mix_of_events": {
+        "1": 0.13,
+        "10": 0.0873,
+        "11": 0.0789,
+        "2": 0.0846,
+        "3": 0.0639,
+        "4": 0.0952,
+        "5": 0.3001,
+        "6": 0.16
+      },
+      "system_desc": "Plumbing",
+      "in_pooled_map": true,
+      "pooled_S": 1.0,
+      "pooled_certified": true
+    },
+    "D30": {
+      "n_events": 2278,
+      "n_zero": 5,
+      "share": 0.0022,
+      "share_ci": [
+        0.0005,
+        0.0045
+      ],
+      "verdict": "pass",
+      "share_counting_pm": 0.0004,
+      "verdict_counting_pm": "pass",
+      "reference_active": 0.043,
+      "reference_active_ci": [
+        0.038,
+        0.0478
+      ],
+      "ratio_active": 0.051,
+      "ratio_active_ci": [
+        0.0106,
+        0.1021
+      ],
+      "reference_active_excluding_events": 0.0504,
+      "reference_all": 0.3162,
+      "reference_all_ci": [
+        0.2882,
+        0.3403
+      ],
+      "ratio_all": 0.007,
+      "ratio_all_ci": [
+        0.0014,
+        0.0144
+      ],
+      "n_active_history_rows": 22551,
+      "n_history_rows": 49545,
+      "record_start_campus": {
+        "4": {
+          "n_events": 2278,
+          "share": 0.0022,
+          "verdict": "pass"
+        },
+        "8": {
+          "n_events": 2016,
+          "share": 0.0025,
+          "verdict": "pass"
+        },
+        "12": {
+          "n_events": 1634,
+          "share": 0.0018,
+          "verdict": "pass"
+        }
+      },
+      "record_start_cell": {
+        "4": {
+          "n_events": 2278,
+          "share": 0.0022,
+          "verdict": "pass"
+        },
+        "8": {
+          "n_events": 1847,
+          "share": 0.0016,
+          "verdict": "pass"
+        },
+        "12": {
+          "n_events": 1422,
+          "share": 0.0014,
+          "verdict": "pass"
+        }
+      },
+      "mean_reactive_wo_per_cell_quarter": 4.0226,
+      "n_cell_quarters": 58595,
+      "n_buildings": 2306,
+      "campus_mix_of_events": {
+        "1": 0.0874,
+        "10": 0.0764,
+        "11": 0.0215,
+        "2": 0.1054,
+        "3": 0.0492,
+        "4": 0.0421,
+        "5": 0.4491,
+        "6": 0.1677,
+        "7": 0.0013
+      },
+      "system_desc": "HVAC",
+      "in_pooled_map": true,
+      "pooled_S": 1.0,
+      "pooled_certified": true
+    },
+    "D40": {
+      "n_events": 625,
+      "n_zero": 47,
+      "share": 0.0752,
+      "share_ci": [
+        0.0535,
+        0.0977
+      ],
+      "verdict": "pass",
+      "share_counting_pm": 0.008,
+      "verdict_counting_pm": "pass",
+      "reference_active": 0.1418,
+      "reference_active_ci": [
+        0.1224,
+        0.16
+      ],
+      "ratio_active": 0.53,
+      "ratio_active_ci": [
+        0.4057,
+        0.6698
+      ],
+      "reference_active_excluding_events": 0.1511,
+      "reference_all": 0.3677,
+      "reference_all_ci": [
+        0.3345,
+        0.3996
+      ],
+      "ratio_all": 0.205,
+      "ratio_all_ci": [
+        0.1509,
+        0.2637
+      ],
+      "n_active_history_rows": 7085,
+      "n_history_rows": 31930,
+      "record_start_campus": {
+        "4": {
+          "n_events": 625,
+          "share": 0.0752,
+          "verdict": "pass"
+        },
+        "8": {
+          "n_events": 541,
+          "share": 0.0776,
+          "verdict": "pass"
+        },
+        "12": {
+          "n_events": 434,
+          "share": 0.0806,
+          "verdict": "pass"
+        }
+      },
+      "record_start_cell": {
+        "4": {
+          "n_events": 625,
+          "share": 0.0752,
+          "verdict": "pass"
+        },
+        "8": {
+          "n_events": 433,
+          "share": 0.0785,
+          "verdict": "pass"
+        },
+        "12": {
+          "n_events": 275,
+          "share": 0.0982,
+          "verdict": "pass"
+        }
+      },
+      "mean_reactive_wo_per_cell_quarter": 0.5769,
+      "n_cell_quarters": 38855,
+      "n_buildings": 1765,
+      "campus_mix_of_events": {
+        "1": 0.112,
+        "10": 0.3232,
+        "11": 0.024,
+        "2": 0.04,
+        "3": 0.1152,
+        "4": 0.0976,
+        "5": 0.032,
+        "6": 0.2464,
+        "7": 0.0096
+      },
+      "system_desc": "Fire Protection",
+      "in_pooled_map": true,
+      "pooled_S": 1.0,
+      "pooled_certified": true
+    },
+    "D50": {
+      "n_events": 1839,
+      "n_zero": 19,
+      "share": 0.0103,
+      "share_ci": [
+        0.0059,
+        0.0154
+      ],
+      "verdict": "pass",
+      "share_counting_pm": 0.0027,
+      "verdict_counting_pm": "pass",
+      "reference_active": 0.0407,
+      "reference_active_ci": [
+        0.0357,
+        0.0461
+      ],
+      "ratio_active": 0.254,
+      "ratio_active_ci": [
+        0.15,
+        0.3809
+      ],
+      "reference_active_excluding_events": 0.0457,
+      "reference_all": 0.2086,
+      "reference_all_ci": [
+        0.1856,
+        0.2293
+      ],
+      "ratio_all": 0.05,
+      "ratio_all_ci": [
+        0.0287,
+        0.0752
+      ],
+      "n_active_history_rows": 19921,
+      "n_history_rows": 45087,
+      "record_start_campus": {
+        "4": {
+          "n_events": 1839,
+          "share": 0.0103,
+          "verdict": "pass"
+        },
+        "8": {
+          "n_events": 1628,
+          "share": 0.0117,
+          "verdict": "pass"
+        },
+        "12": {
+          "n_events": 1284,
+          "share": 0.0101,
+          "verdict": "pass"
+        }
+      },
+      "record_start_cell": {
+        "4": {
+          "n_events": 1839,
+          "share": 0.0103,
+          "verdict": "pass"
+        },
+        "8": {
+          "n_events": 1330,
+          "share": 0.0105,
+          "verdict": "pass"
+        },
+        "12": {
+          "n_events": 840,
+          "share": 0.0143,
+          "verdict": "pass"
+        }
+      },
+      "mean_reactive_wo_per_cell_quarter": 3.0418,
+      "n_cell_quarters": 54417,
+      "n_buildings": 2387,
+      "campus_mix_of_events": {
+        "1": 0.1958,
+        "10": 0.236,
+        "11": 0.0152,
+        "2": 0.0522,
+        "3": 0.0837,
+        "4": 0.1615,
+        "5": 0.0566,
+        "6": 0.199
+      },
+      "system_desc": "Electrical",
+      "in_pooled_map": true,
+      "pooled_S": 1.0,
+      "pooled_certified": true
+    },
+    "E10": {
+      "n_events": 919,
+      "n_zero": 11,
+      "share": 0.012,
+      "share_ci": [
+        0.0056,
+        0.02
+      ],
+      "verdict": "pass",
+      "share_counting_pm": 0.0044,
+      "verdict_counting_pm": "pass",
+      "reference_active": 0.0786,
+      "reference_active_ci": [
+        0.0676,
+        0.0888
+      ],
+      "ratio_active": 0.152,
+      "ratio_active_ci": [
+        0.0714,
+        0.2503
+      ],
+      "reference_active_excluding_events": 0.0883,
+      "reference_all": 0.3573,
+      "reference_all_ci": [
+        0.3242,
+        0.3846
+      ],
+      "ratio_all": 0.034,
+      "ratio_all_ci": [
+        0.0156,
+        0.0567
+      ],
+      "n_active_history_rows": 9502,
+      "n_history_rows": 26818,
+      "record_start_campus": {
+        "4": {
+          "n_events": 919,
+          "share": 0.012,
+          "verdict": "pass"
+        },
+        "8": {
+          "n_events": 775,
+          "share": 0.0103,
+          "verdict": "pass"
+        },
+        "12": {
+          "n_events": 618,
+          "share": 0.0113,
+          "verdict": "pass"
+        }
+      },
+      "record_start_cell": {
+        "4": {
+          "n_events": 919,
+          "share": 0.012,
+          "verdict": "pass"
+        },
+        "8": {
+          "n_events": 693,
+          "share": 0.0087,
+          "verdict": "pass"
+        },
+        "12": {
+          "n_events": 487,
+          "share": 0.0123,
+          "verdict": "pass"
+        }
+      },
+      "mean_reactive_wo_per_cell_quarter": 1.4685,
+      "n_cell_quarters": 32719,
+      "n_buildings": 1513,
+      "campus_mix_of_events": {
+        "1": 0.0337,
+        "10": 0.1469,
+        "11": 0.1153,
+        "2": 0.0707,
+        "3": 0.1164,
+        "4": 0.0435,
+        "5": 0.2579,
+        "6": 0.2155
+      },
+      "system_desc": "Equipment",
+      "in_pooled_map": true,
+      "pooled_S": 1.0,
+      "pooled_certified": true
+    },
+    "E20": {
+      "n_events": 390,
+      "n_zero": 32,
+      "share": 0.0821,
+      "share_ci": [
+        0.0529,
+        0.1092
+      ],
+      "verdict": "pass",
+      "share_counting_pm": 0.0359,
+      "verdict_counting_pm": "pass",
+      "reference_active": 0.127,
+      "reference_active_ci": [
+        0.1041,
+        0.1523
+      ],
+      "ratio_active": 0.646,
+      "ratio_active_ci": [
+        0.4561,
+        0.8439
+      ],
+      "reference_active_excluding_events": 0.1314,
+      "reference_all": 0.3085,
+      "reference_all_ci": [
+        0.2577,
+        0.3578
+      ],
+      "ratio_all": 0.266,
+      "ratio_all_ci": [
+        0.1804,
+        0.3528
+      ],
+      "n_active_history_rows": 4157,
+      "n_history_rows": 22354,
+      "record_start_campus": {
+        "4": {
+          "n_events": 390,
+          "share": 0.0821,
+          "verdict": "pass"
+        },
+        "8": {
+          "n_events": 284,
+          "share": 0.1056,
+          "verdict": "caution"
+        },
+        "12": {
+          "n_events": 180,
+          "share": 0.1556,
+          "verdict": "caution"
+        }
+      },
+      "record_start_cell": {
+        "4": {
+          "n_events": 390,
+          "share": 0.0821,
+          "verdict": "pass"
+        },
+        "8": {
+          "n_events": 249,
+          "share": 0.1124,
+          "verdict": "caution"
+        },
+        "12": {
+          "n_events": 131,
+          "share": 0.1832,
+          "verdict": "caution"
+        }
+      },
+      "mean_reactive_wo_per_cell_quarter": 0.7326,
+      "n_cell_quarters": 26949,
+      "n_buildings": 1178,
+      "campus_mix_of_events": {
+        "1": 0.0462,
+        "10": 0.041,
+        "2": 0.0077,
+        "3": 0.041,
+        "4": 0.1103,
+        "5": 0.2282,
+        "6": 0.5256
+      },
+      "system_desc": "Furnishings",
+      "in_pooled_map": true,
+      "pooled_S": 1.0,
+      "pooled_certified": true
+    },
+    "F10": {
+      "n_events": 37,
+      "n_zero": 8,
+      "share": 0.2162,
+      "share_ci": [
+        0.0769,
+        0.3824
+      ],
+      "verdict": "caution",
+      "share_counting_pm": 0.1892,
+      "verdict_counting_pm": "caution",
+      "reference_active": 0.3343,
+      "reference_active_ci": [
+        0.2468,
+        0.4135
+      ],
+      "ratio_active": 0.647,
+      "ratio_active_ci": [
+        0.2618,
+        1.1388
+      ],
+      "reference_active_excluding_events": 0.3433,
+      "reference_all": 0.6879,
+      "reference_all_ci": [
+        0.5635,
+        0.7609
+      ],
+      "ratio_all": 0.314,
+      "ratio_all_ci": [
+        0.1134,
+        0.5725
+      ],
+      "n_active_history_rows": 354,
+      "n_history_rows": 5375,
+      "record_start_campus": {
+        "4": {
+          "n_events": 37,
+          "share": 0.2162,
+          "verdict": "caution"
+        },
+        "8": {
+          "n_events": 30,
+          "share": 0.2667,
+          "verdict": "fail"
+        },
+        "12": {
+          "n_events": 23,
+          "share": 0.3478,
+          "verdict": "caution"
+        }
+      },
+      "record_start_cell": {
+        "4": {
+          "n_events": 37,
+          "share": 0.2162,
+          "verdict": "caution"
+        },
+        "8": {
+          "n_events": 21,
+          "share": 0.2381,
+          "verdict": "caution"
+        },
+        "12": {
+          "n_events": 8,
+          "share": 0.125,
+          "verdict": "caution"
+        }
+      },
+      "mean_reactive_wo_per_cell_quarter": 0.1457,
+      "n_cell_quarters": 7078,
+      "n_buildings": 435,
+      "campus_mix_of_events": {
+        "1": 0.027,
+        "10": 0.2703,
+        "11": 0.4324,
+        "3": 0.027,
+        "4": 0.0811,
+        "6": 0.1622
+      },
+      "system_desc": "Special Construction",
+      "in_pooled_map": true,
+      "pooled_S": 0.7,
+      "pooled_certified": true
+    },
+    "G20": {
+      "n_events": 100,
+      "n_zero": 5,
+      "share": 0.05,
+      "share_ci": [
+        0.0097,
+        0.1099
+      ],
+      "verdict": "pass",
+      "share_counting_pm": 0.04,
+      "verdict_counting_pm": "pass",
+      "reference_active": 0.138,
+      "reference_active_ci": [
+        0.0866,
+        0.198
+      ],
+      "ratio_active": 0.362,
+      "ratio_active_ci": [
+        0.0827,
+        0.8239
+      ],
+      "reference_active_excluding_events": 0.1468,
+      "reference_all": 0.2972,
+      "reference_all_ci": [
+        0.2179,
+        0.3903
+      ],
+      "ratio_all": 0.168,
+      "ratio_all_ci": [
+        0.0341,
+        0.363
+      ],
+      "n_active_history_rows": 1238,
+      "n_history_rows": 11526,
+      "record_start_campus": {
+        "4": {
+          "n_events": 100,
+          "share": 0.05,
+          "verdict": "pass"
+        },
+        "8": {
+          "n_events": 99,
+          "share": 0.0505,
+          "verdict": "pass"
+        },
+        "12": {
+          "n_events": 88,
+          "share": 0.0568,
+          "verdict": "pass"
+        }
+      },
+      "record_start_cell": {
+        "4": {
+          "n_events": 100,
+          "share": 0.05,
+          "verdict": "pass"
+        },
+        "8": {
+          "n_events": 79,
+          "share": 0.0633,
+          "verdict": "pass"
+        },
+        "12": {
+          "n_events": 50,
+          "share": 0.08,
+          "verdict": "pass"
+        }
+      },
+      "mean_reactive_wo_per_cell_quarter": 0.2662,
+      "n_cell_quarters": 14983,
+      "n_buildings": 914,
+      "campus_mix_of_events": {
+        "1": 0.03,
+        "10": 0.01,
+        "11": 0.09,
+        "2": 0.02,
+        "3": 0.01,
+        "4": 0.82,
+        "6": 0.02
+      },
+      "system_desc": "Site Improvements",
+      "in_pooled_map": true,
+      "pooled_S": 0.7,
+      "pooled_certified": true
+    }
+  },
+  "runtime_seconds": 5.9
+}

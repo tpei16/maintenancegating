@@ -1,0 +1,721 @@
+{
+  "design": "The pooled and stratum-fold certificates of 45_certification_corrected.py recomputed under three risk scores (boosted screen, logistic regression, prior-year reactive work-order count) exactly as 48_learner_invariance.py computes them; Cohen's kappa of the certified flag for each pair of scores, with a bootstrap interval that resamples strata, and agreement of the three-level gate scores.",
+  "reference_check": {
+    "cert_corrected": {
+      "n_stratum_folds": 141,
+      "pooled_certified": "12/16",
+      "route_counts": {
+        "pma": 50968,
+        "verify": 705,
+        "continue": 385725,
+        "watch": 77577
+      },
+      "matches_cert_corrected_json": true
+    },
+    "learner_invariance": {
+      "matches_learner_invariance_json": true,
+      "certified_counts": {
+        "gbdt": 12,
+        "logreg": 12,
+        "rule": 10
+      },
+      "pooled_verdict_agreement_vs_gbdt": {
+        "logreg": 1.0,
+        "rule": 0.875
+      },
+      "outer_verdict_agreement_vs_gbdt": {
+        "logreg": 0.943,
+        "rule": 0.894
+      }
+    }
+  },
+  "scores": {
+    "gbdt": "deployed boosted screen",
+    "logreg": "l2-regularised logistic regression",
+    "rule": "rule_upm_count_prevyear (prior-year reactive work-order count, unfitted)"
+  },
+  "provisional_strata": [
+    "B30",
+    "D10",
+    "F10",
+    "G20"
+  ],
+  "n_boot": 1000,
+  "cluster": "stratum (building system)",
+  "certified_counts_pooled": {
+    "gbdt": 12,
+    "logreg": 12,
+    "rule": 10
+  },
+  "certified_counts_folds": {
+    "gbdt": 98,
+    "logreg": 98,
+    "rule": 89
+  },
+  "n_stratum_folds": {
+    "gbdt": 141,
+    "logreg": 141,
+    "rule": 142
+  },
+  "comparisons": {
+    "logreg_vs_gbdt": {
+      "pooled": {
+        "n": 16,
+        "n_agree": 16,
+        "agreement": 1.0,
+        "kappa": 1.0,
+        "n_certified": [
+          12,
+          12
+        ],
+        "disagreements": []
+      },
+      "folds": {
+        "n": 141,
+        "n_agree": 133,
+        "agreement": 0.9433,
+        "kappa": 0.8662,
+        "n_certified": [
+          98,
+          98
+        ],
+        "disagreements": [
+          [
+            "10",
+            "B30"
+          ],
+          [
+            "10",
+            "D10"
+          ],
+          [
+            "3",
+            "F10"
+          ],
+          [
+            "4",
+            "B30"
+          ],
+          [
+            "5",
+            "B30"
+          ],
+          [
+            "5",
+            "D10"
+          ],
+          [
+            "5",
+            "F10"
+          ],
+          [
+            "6",
+            "D10"
+          ]
+        ],
+        "kappa_cluster_bootstrap": {
+          "n_boot": 1000,
+          "n_undefined": 0,
+          "n_clusters": 16,
+          "ci95": [
+            0.7243,
+            1.0
+          ],
+          "note": "undefined replicates (every drawn fold certified, or none, under both scores) are dropped"
+        }
+      },
+      "stratum_folds_gated_only_in": {
+        "logreg": [],
+        "gbdt": []
+      },
+      "provisional_strata": {
+        "pooled": {
+          "n": 4,
+          "n_agree": 4,
+          "agreement": 1.0,
+          "kappa": 1.0,
+          "n_certified": [
+            3,
+            3
+          ],
+          "disagreements": []
+        },
+        "folds": {
+          "n": 36,
+          "n_agree": 28,
+          "agreement": 0.7778,
+          "kappa": 0.5542,
+          "n_certified": [
+            17,
+            17
+          ],
+          "disagreements": [
+            [
+              "10",
+              "B30"
+            ],
+            [
+              "10",
+              "D10"
+            ],
+            [
+              "3",
+              "F10"
+            ],
+            [
+              "4",
+              "B30"
+            ],
+            [
+              "5",
+              "B30"
+            ],
+            [
+              "5",
+              "D10"
+            ],
+            [
+              "5",
+              "F10"
+            ],
+            [
+              "6",
+              "D10"
+            ]
+          ],
+          "kappa_cluster_bootstrap": {
+            "n_boot": 1000,
+            "n_undefined": 0,
+            "n_clusters": 4,
+            "ci95": [
+              0.3125,
+              0.8344
+            ],
+            "note": "undefined replicates (every drawn fold certified, or none, under both scores) are dropped"
+          }
+        }
+      },
+      "score_reading_gates": {
+        "risk_concentration": {
+          "n": 141,
+          "agreement": 0.9645,
+          "weighted_kappa_linear": -0.0173,
+          "n_differ": 5
+        },
+        "transfer_stability": {
+          "n": 141,
+          "agreement": 0.9007,
+          "weighted_kappa_linear": 0.807,
+          "n_differ": 14
+        },
+        "risk_gradient": {
+          "n": 141,
+          "agreement": 0.8369,
+          "weighted_kappa_linear": 0.5718,
+          "n_differ": 23
+        }
+      },
+      "gates_not_reading_the_score": {
+        "data_sufficiency": {
+          "identical_over_stratum_folds": true,
+          "n_stratum_folds_differ": 0,
+          "stratum_folds_differ": [],
+          "identical_on_pooled_map": true,
+          "pooled_strata_differ": []
+        },
+        "prior_record_trace": {
+          "identical_over_stratum_folds": true,
+          "n_stratum_folds_differ": 0,
+          "stratum_folds_differ": [],
+          "identical_on_pooled_map": true,
+          "pooled_strata_differ": []
+        }
+      }
+    },
+    "rule_vs_gbdt": {
+      "pooled": {
+        "n": 16,
+        "n_agree": 14,
+        "agreement": 0.875,
+        "kappa": 0.7143,
+        "n_certified": [
+          10,
+          12
+        ],
+        "disagreements": [
+          "B30",
+          "F10"
+        ]
+      },
+      "folds": {
+        "n": 141,
+        "n_agree": 126,
+        "agreement": 0.8936,
+        "kappa": 0.763,
+        "n_certified": [
+          89,
+          98
+        ],
+        "disagreements": [
+          [
+            "1",
+            "B30"
+          ],
+          [
+            "1",
+            "F10"
+          ],
+          [
+            "10",
+            "B30"
+          ],
+          [
+            "10",
+            "D10"
+          ],
+          [
+            "10",
+            "G20"
+          ],
+          [
+            "11",
+            "B30"
+          ],
+          [
+            "2",
+            "F10"
+          ],
+          [
+            "2",
+            "G20"
+          ],
+          [
+            "3",
+            "B30"
+          ],
+          [
+            "4",
+            "B30"
+          ],
+          [
+            "5",
+            "B30"
+          ],
+          [
+            "6",
+            "B30"
+          ],
+          [
+            "6",
+            "D10"
+          ],
+          [
+            "7",
+            "B30"
+          ],
+          [
+            "7",
+            "F10"
+          ]
+        ],
+        "kappa_cluster_bootstrap": {
+          "n_boot": 1000,
+          "n_undefined": 0,
+          "n_clusters": 16,
+          "ci95": [
+            0.481,
+            0.9564
+          ],
+          "note": "undefined replicates (every drawn fold certified, or none, under both scores) are dropped"
+        }
+      },
+      "stratum_folds_gated_only_in": {
+        "rule": [
+          [
+            "11",
+            "G30"
+          ]
+        ],
+        "gbdt": []
+      },
+      "provisional_strata": {
+        "pooled": {
+          "n": 4,
+          "n_agree": 2,
+          "agreement": 0.5,
+          "kappa": 0.2,
+          "n_certified": [
+            1,
+            3
+          ],
+          "disagreements": [
+            "B30",
+            "F10"
+          ]
+        },
+        "folds": {
+          "n": 36,
+          "n_agree": 21,
+          "agreement": 0.5833,
+          "kappa": 0.1401,
+          "n_certified": [
+            8,
+            17
+          ],
+          "disagreements": [
+            [
+              "1",
+              "B30"
+            ],
+            [
+              "1",
+              "F10"
+            ],
+            [
+              "10",
+              "B30"
+            ],
+            [
+              "10",
+              "D10"
+            ],
+            [
+              "10",
+              "G20"
+            ],
+            [
+              "11",
+              "B30"
+            ],
+            [
+              "2",
+              "F10"
+            ],
+            [
+              "2",
+              "G20"
+            ],
+            [
+              "3",
+              "B30"
+            ],
+            [
+              "4",
+              "B30"
+            ],
+            [
+              "5",
+              "B30"
+            ],
+            [
+              "6",
+              "B30"
+            ],
+            [
+              "6",
+              "D10"
+            ],
+            [
+              "7",
+              "B30"
+            ],
+            [
+              "7",
+              "F10"
+            ]
+          ],
+          "kappa_cluster_bootstrap": {
+            "n_boot": 1000,
+            "n_undefined": 0,
+            "n_clusters": 4,
+            "ci95": [
+              -0.0354,
+              0.5385
+            ],
+            "note": "undefined replicates (every drawn fold certified, or none, under both scores) are dropped"
+          }
+        }
+      },
+      "score_reading_gates": {
+        "risk_concentration": {
+          "n": 141,
+          "agreement": 0.9787,
+          "weighted_kappa_linear": 0.0,
+          "n_differ": 3
+        },
+        "transfer_stability": {
+          "n": 141,
+          "agreement": 0.9362,
+          "weighted_kappa_linear": 0.8772,
+          "n_differ": 9
+        },
+        "risk_gradient": {
+          "n": 141,
+          "agreement": 0.7092,
+          "weighted_kappa_linear": 0.464,
+          "n_differ": 41
+        }
+      },
+      "gates_not_reading_the_score": {
+        "data_sufficiency": {
+          "identical_over_stratum_folds": false,
+          "n_stratum_folds_differ": 2,
+          "stratum_folds_differ": [
+            [
+              "10",
+              "G20"
+            ],
+            [
+              "2",
+              "G20"
+            ]
+          ],
+          "identical_on_pooled_map": true,
+          "pooled_strata_differ": []
+        },
+        "prior_record_trace": {
+          "identical_over_stratum_folds": true,
+          "n_stratum_folds_differ": 0,
+          "stratum_folds_differ": [],
+          "identical_on_pooled_map": true,
+          "pooled_strata_differ": []
+        }
+      }
+    },
+    "rule_vs_logreg": {
+      "pooled": {
+        "n": 16,
+        "n_agree": 14,
+        "agreement": 0.875,
+        "kappa": 0.7143,
+        "n_certified": [
+          10,
+          12
+        ],
+        "disagreements": [
+          "B30",
+          "F10"
+        ]
+      },
+      "folds": {
+        "n": 141,
+        "n_agree": 128,
+        "agreement": 0.9078,
+        "kappa": 0.7946,
+        "n_certified": [
+          89,
+          98
+        ],
+        "disagreements": [
+          [
+            "1",
+            "B30"
+          ],
+          [
+            "1",
+            "F10"
+          ],
+          [
+            "10",
+            "G20"
+          ],
+          [
+            "11",
+            "B30"
+          ],
+          [
+            "2",
+            "F10"
+          ],
+          [
+            "2",
+            "G20"
+          ],
+          [
+            "3",
+            "B30"
+          ],
+          [
+            "3",
+            "F10"
+          ],
+          [
+            "5",
+            "D10"
+          ],
+          [
+            "5",
+            "F10"
+          ],
+          [
+            "6",
+            "B30"
+          ],
+          [
+            "7",
+            "B30"
+          ],
+          [
+            "7",
+            "F10"
+          ]
+        ],
+        "kappa_cluster_bootstrap": {
+          "n_boot": 1000,
+          "n_undefined": 0,
+          "n_clusters": 16,
+          "ci95": [
+            0.5918,
+            0.9678
+          ],
+          "note": "undefined replicates (every drawn fold certified, or none, under both scores) are dropped"
+        }
+      },
+      "stratum_folds_gated_only_in": {
+        "rule": [
+          [
+            "11",
+            "G30"
+          ]
+        ],
+        "logreg": []
+      },
+      "provisional_strata": {
+        "pooled": {
+          "n": 4,
+          "n_agree": 2,
+          "agreement": 0.5,
+          "kappa": 0.2,
+          "n_certified": [
+            1,
+            3
+          ],
+          "disagreements": [
+            "B30",
+            "F10"
+          ]
+        },
+        "folds": {
+          "n": 36,
+          "n_agree": 23,
+          "agreement": 0.6389,
+          "kappa": 0.2548,
+          "n_certified": [
+            8,
+            17
+          ],
+          "disagreements": [
+            [
+              "1",
+              "B30"
+            ],
+            [
+              "1",
+              "F10"
+            ],
+            [
+              "10",
+              "G20"
+            ],
+            [
+              "11",
+              "B30"
+            ],
+            [
+              "2",
+              "F10"
+            ],
+            [
+              "2",
+              "G20"
+            ],
+            [
+              "3",
+              "B30"
+            ],
+            [
+              "3",
+              "F10"
+            ],
+            [
+              "5",
+              "D10"
+            ],
+            [
+              "5",
+              "F10"
+            ],
+            [
+              "6",
+              "B30"
+            ],
+            [
+              "7",
+              "B30"
+            ],
+            [
+              "7",
+              "F10"
+            ]
+          ],
+          "kappa_cluster_bootstrap": {
+            "n_boot": 1000,
+            "n_undefined": 0,
+            "n_clusters": 4,
+            "ci95": [
+              0.0,
+              0.6582
+            ],
+            "note": "undefined replicates (every drawn fold certified, or none, under both scores) are dropped"
+          }
+        }
+      },
+      "score_reading_gates": {
+        "risk_concentration": {
+          "n": 141,
+          "agreement": 0.9858,
+          "weighted_kappa_linear": 0.0,
+          "n_differ": 2
+        },
+        "transfer_stability": {
+          "n": 141,
+          "agreement": 0.9291,
+          "weighted_kappa_linear": 0.863,
+          "n_differ": 10
+        },
+        "risk_gradient": {
+          "n": 141,
+          "agreement": 0.6879,
+          "weighted_kappa_linear": 0.3961,
+          "n_differ": 44
+        }
+      },
+      "gates_not_reading_the_score": {
+        "data_sufficiency": {
+          "identical_over_stratum_folds": false,
+          "n_stratum_folds_differ": 2,
+          "stratum_folds_differ": [
+            [
+              "10",
+              "G20"
+            ],
+            [
+              "2",
+              "G20"
+            ]
+          ],
+          "identical_on_pooled_map": true,
+          "pooled_strata_differ": []
+        },
+        "prior_record_trace": {
+          "identical_over_stratum_folds": true,
+          "n_stratum_folds_differ": 0,
+          "stratum_folds_differ": [],
+          "identical_on_pooled_map": true,
+          "pooled_strata_differ": []
+        }
+      }
+    }
+  },
+  "runtime_seconds": 8.6
+}

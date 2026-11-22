@@ -1,0 +1,448 @@
+{
+  "design": "The verification queue of the main pipeline (high-risk units of uncertified stratum-folds) ordered within each campus-quarter by the evidence gap R(1-S), by R, by R times the stratum's mean next-quarter labour per high-burden quarter on the other campuses, and at random; reported as the share of next-quarter high-burden outcomes and labour hours in the first 25, 50 and 75% of each campus-quarter queue, pooled, with fractional positions.",
+  "definitions": {
+    "queue": "R_quarter >= 0.90 and fold certificate S < 0.67 (missing certificate = 0)",
+    "positions": "unit at rank r of n covers [r/n, (r+1)/n); weight in the first f is the covered share below f; tied keys share positions; random order gives expected weight f to every unit",
+    "consequence_weight": "mean upm_labour_next over the other campuses' rows of the stratum labelled high burden with the fold-j thresholds; the all-strata mean where the stratum has none",
+    "random": "mean of 200 uniform shuffles, with the 2.5-97.5 percentile range",
+    "ceiling_realized_labour": "ordering by the realized next-quarter labour; not a decision rule, the most any ordering could place early",
+    "conveying_within_full_queue": "positions from the full queue, outcome sums over conveying units only",
+    "conveying_queue_alone": "conveying units only, ordered among themselves; S and the weight are constant within a campus, so gap, risk and consequence give one order"
+  },
+  "queue": {
+    "n_units": 705,
+    "n_campus_quarters": 171,
+    "units_per_campus_quarter": {
+      "median": 2.0,
+      "mean": 4.12,
+      "max": 26,
+      "n_single_unit_queues": 72
+    },
+    "share_units_in_single_unit_queues": 0.1021,
+    "n_high_burden": 73,
+    "high_burden_rate": 0.1035,
+    "labour_hours_next_quarter": 2992.8,
+    "composition": {
+      "C20": 254,
+      "D10": 239,
+      "F10": 75,
+      "G20": 50,
+      "B30": 37,
+      "F20": 25,
+      "G30": 18,
+      "G40": 6,
+      "A10": 1
+    },
+    "S_values": {
+      "0.0": 61,
+      "0.4": 17,
+      "0.5": 487,
+      "0.6": 140
+    },
+    "units_in_ungated_strata": 24,
+    "by_campus": {
+      "1": 2,
+      "10": 58,
+      "11": 117,
+      "2": 40,
+      "3": 387,
+      "4": 14,
+      "5": 87
+    },
+    "consequence_weight_hours": {
+      "1|D10": 59.52,
+      "1|G20": 77.11,
+      "10|D10": 60.2,
+      "10|F10": 12.74,
+      "11|C20": 24.95,
+      "11|D10": 76.9,
+      "11|F10": 20.09,
+      "11|G20": 79.78,
+      "11|G30": 59.59,
+      "2|B30": 30.07,
+      "2|G20": 68.2,
+      "3|A10": 64.63,
+      "3|C20": 16.19,
+      "3|D10": 57.18,
+      "3|F10": 13.91,
+      "3|F20": 37.9,
+      "3|G30": 36.89,
+      "3|G40": 3.0,
+      "4|D10": 73.8,
+      "4|G20": 17.57,
+      "5|C20": 22.3,
+      "5|D10": 70.92,
+      "5|G30": 11.0
+    },
+    "consequence_weight_fallback_to_all_strata_mean": [
+      {
+        "campus": "3",
+        "system": "A10"
+      }
+    ],
+    "conveying": {
+      "n_units": 239,
+      "n_campus_quarters": 73,
+      "n_high_burden": 22,
+      "labour_hours_next_quarter": 300.8,
+      "n_single_unit_queues": 27
+    }
+  },
+  "orderings": {
+    "gap": {
+      "share_high_burden": {
+        "0.25": 0.3219,
+        "0.5": 0.5411,
+        "0.75": 0.7432
+      },
+      "share_labour_hours": {
+        "0.25": 0.3118,
+        "0.5": 0.5216,
+        "0.75": 0.7761
+      },
+      "composition_first_25pct": {
+        "A10": 0.0057,
+        "B30": 0.0525,
+        "C20": 0.4865,
+        "D10": 0.1319,
+        "F10": 0.1376,
+        "F20": 0.0468,
+        "G20": 0.0582,
+        "G30": 0.0539,
+        "G40": 0.027
+      }
+    },
+    "risk": {
+      "share_high_burden": {
+        "0.25": 0.3151,
+        "0.5": 0.5068,
+        "0.75": 0.7637
+      },
+      "share_labour_hours": {
+        "0.25": 0.2981,
+        "0.5": 0.5102,
+        "0.75": 0.7835
+      },
+      "composition_first_25pct": {
+        "A10": 0.0057,
+        "B30": 0.0525,
+        "C20": 0.278,
+        "D10": 0.3957,
+        "F10": 0.1149,
+        "F20": 0.0284,
+        "G20": 0.0794,
+        "G30": 0.0298,
+        "G40": 0.0156
+      }
+    },
+    "consequence": {
+      "share_high_burden": {
+        "0.25": 0.2637,
+        "0.5": 0.5,
+        "0.75": 0.7397
+      },
+      "share_labour_hours": {
+        "0.25": 0.2534,
+        "0.5": 0.5163,
+        "0.75": 0.7828
+      },
+      "composition_first_25pct": {
+        "A10": 0.0057,
+        "B30": 0.0468,
+        "C20": 0.122,
+        "D10": 0.5262,
+        "F10": 0.0567,
+        "F20": 0.0738,
+        "G20": 0.1461,
+        "G30": 0.0227,
+        "G40": 0.0
+      }
+    },
+    "random": {
+      "share_high_burden": {
+        "0.25": 0.2447,
+        "0.5": 0.4943,
+        "0.75": 0.7494
+      },
+      "share_labour_hours": {
+        "0.25": 0.2485,
+        "0.5": 0.4962,
+        "0.75": 0.7506
+      },
+      "share_high_burden_range_2.5_97.5": {
+        "0.25": [
+          0.17799657534246574,
+          0.3357020547945206
+        ],
+        "0.5": [
+          0.424486301369863,
+          0.5821917808219178
+        ],
+        "0.75": [
+          0.6712328767123288,
+          0.815068493150685
+        ]
+      },
+      "share_labour_hours_range_2.5_97.5": {
+        "0.25": [
+          0.1997344295571111,
+          0.31341620445394863
+        ],
+        "0.5": [
+          0.4255485156289156,
+          0.5717948610855874
+        ],
+        "0.75": [
+          0.6949994779223817,
+          0.8033856315886196
+        ]
+      },
+      "composition_first_25pct": {
+        "A10": 0.0015,
+        "B30": 0.0524,
+        "C20": 0.3604,
+        "D10": 0.3373,
+        "F10": 0.1071,
+        "F20": 0.0365,
+        "G20": 0.0708,
+        "G30": 0.0257,
+        "G40": 0.0084
+      }
+    },
+    "ceiling_realized_labour": {
+      "share_high_burden": {
+        "0.25": 0.5959,
+        "0.5": 0.8356,
+        "0.75": 0.9384
+      },
+      "share_labour_hours": {
+        "0.25": 0.4683,
+        "0.5": 0.7113,
+        "0.75": 0.8661
+      },
+      "composition_first_25pct": {
+        "A10": 0.0014,
+        "B30": 0.0553,
+        "C20": 0.3753,
+        "D10": 0.3088,
+        "F10": 0.1117,
+        "F20": 0.0272,
+        "G20": 0.0844,
+        "G30": 0.0273,
+        "G40": 0.0085
+      }
+    }
+  },
+  "conveying_within_full_queue": {
+    "gap": {
+      "share_high_burden": {
+        "0.25": 0.2045,
+        "0.5": 0.3864,
+        "0.75": 0.5909
+      },
+      "share_labour_hours": {
+        "0.25": 0.1617,
+        "0.5": 0.3084,
+        "0.75": 0.5914
+      },
+      "composition_first_25pct": {
+        "D10": 1.0
+      }
+    },
+    "risk": {
+      "share_high_burden": {
+        "0.25": 0.2045,
+        "0.5": 0.3864,
+        "0.75": 0.625
+      },
+      "share_labour_hours": {
+        "0.25": 0.1633,
+        "0.5": 0.3117,
+        "0.75": 0.6515
+      },
+      "composition_first_25pct": {
+        "D10": 1.0
+      }
+    },
+    "consequence": {
+      "share_high_burden": {
+        "0.25": 0.2386,
+        "0.5": 0.5227,
+        "0.75": 0.6932
+      },
+      "share_labour_hours": {
+        "0.25": 0.2427,
+        "0.5": 0.5258,
+        "0.75": 0.7537
+      },
+      "composition_first_25pct": {
+        "D10": 1.0
+      }
+    },
+    "random": {
+      "share_high_burden": {
+        "0.25": 0.2472,
+        "0.5": 0.4973,
+        "0.75": 0.7444
+      },
+      "share_labour_hours": {
+        "0.25": 0.2492,
+        "0.5": 0.4992,
+        "0.75": 0.7444
+      },
+      "share_high_burden_range_2.5_97.5": {
+        "0.25": [
+          0.11335227272727273,
+          0.38636363636363635
+        ],
+        "0.5": [
+          0.3176136363636364,
+          0.6590909090909091
+        ],
+        "0.75": [
+          0.6017045454545454,
+          0.875284090909091
+        ]
+      },
+      "share_labour_hours_range_2.5_97.5": {
+        "0.25": [
+          0.12239713216957605,
+          0.38550498753117207
+        ],
+        "0.5": [
+          0.3240336658354115,
+          0.6568682460515379
+        ],
+        "0.75": [
+          0.622282834580216,
+          0.8498181629260183
+        ]
+      },
+      "composition_first_25pct": {
+        "D10": 1.0
+      }
+    },
+    "ceiling_realized_labour": {
+      "share_high_burden": {
+        "0.25": 0.5568,
+        "0.5": 0.8864,
+        "0.75": 0.9659
+      },
+      "share_labour_hours": {
+        "0.25": 0.5048,
+        "0.5": 0.825,
+        "0.75": 0.9447
+      },
+      "composition_first_25pct": {
+        "D10": 1.0
+      }
+    }
+  },
+  "conveying_queue_alone": {
+    "gap": {
+      "share_high_burden": {
+        "0.25": 0.25,
+        "0.5": 0.4545,
+        "0.75": 0.6591
+      },
+      "share_labour_hours": {
+        "0.25": 0.2286,
+        "0.5": 0.4264,
+        "0.75": 0.7047
+      },
+      "composition_first_25pct": {
+        "D10": 1.0
+      }
+    },
+    "risk": {
+      "share_high_burden": {
+        "0.25": 0.25,
+        "0.5": 0.4545,
+        "0.75": 0.6591
+      },
+      "share_labour_hours": {
+        "0.25": 0.2286,
+        "0.5": 0.4264,
+        "0.75": 0.7047
+      },
+      "composition_first_25pct": {
+        "D10": 1.0
+      }
+    },
+    "consequence": {
+      "share_high_burden": {
+        "0.25": 0.25,
+        "0.5": 0.4545,
+        "0.75": 0.6591
+      },
+      "share_labour_hours": {
+        "0.25": 0.2286,
+        "0.5": 0.4264,
+        "0.75": 0.7047
+      },
+      "composition_first_25pct": {
+        "D10": 1.0
+      }
+    },
+    "random": {
+      "share_high_burden": {
+        "0.25": 0.2492,
+        "0.5": 0.4976,
+        "0.75": 0.7468
+      },
+      "share_labour_hours": {
+        "0.25": 0.2478,
+        "0.5": 0.4983,
+        "0.75": 0.7476
+      },
+      "share_high_burden_range_2.5_97.5": {
+        "0.25": [
+          0.11363636363636363,
+          0.38636363636363635
+        ],
+        "0.5": [
+          0.3409090909090909,
+          0.659659090909091
+        ],
+        "0.75": [
+          0.6136363636363636,
+          0.8636363636363636
+        ]
+      },
+      "share_labour_hours_range_2.5_97.5": {
+        "0.25": [
+          0.15959060681629259,
+          0.3436616791354946
+        ],
+        "0.5": [
+          0.38844555278470494,
+          0.6103075644222776
+        ],
+        "0.75": [
+          0.6654561512884456,
+          0.8322059434746467
+        ]
+      },
+      "composition_first_25pct": {
+        "D10": 1.0
+      }
+    },
+    "ceiling_realized_labour": {
+      "share_high_burden": {
+        "0.25": 0.6364,
+        "0.5": 0.9091,
+        "0.75": 0.9545
+      },
+      "share_labour_hours": {
+        "0.25": 0.5349,
+        "0.5": 0.7756,
+        "0.75": 0.91
+      },
+      "composition_first_25pct": {
+        "D10": 1.0
+      }
+    }
+  },
+  "conveying_alone_orderings_identical": true,
+  "runtime_seconds": 6.3
+}

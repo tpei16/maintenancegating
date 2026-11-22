@@ -28,7 +28,7 @@ def fig_building_ablation():
     d = json.load(open(C.METRICS / "building_ablation.json"))
     ml = d["median_lift"]
     rule = ml["M1"] - d["delta_M1_minus_rule"]["median"]   # best-rule median
-    labels = ["Best simple\nrule", "M0\n(counts)", "M1\n(+cell burden)", "M1b\n(+building)"]
+    labels = ["Best simple\nrule", "M0\n(counts)", "M1\n(+reactive burden)", "M1b\n(+building)"]
     vals = [rule, ml["M0"], ml["M1"], ml["M1b"]]
     cols = [LGREY, "#bcd2e8", NAVY, GREEN]
     fig, ax = plt.subplots(figsize=(6.3, 4.0))
@@ -36,7 +36,7 @@ def fig_building_ablation():
     bars = ax.bar(x, vals, color=cols, edgecolor="white", lw=0.6, width=0.64)
     figstyle.barlabels(ax, bars, fmt="{:.2f}", pad=2)
     ax.axhline(2.0, ls="--", color=CORAL_D, lw=1.2)
-    ax.text(0.5, 2.09, "2$\\times$ bar", color=CORAL_D, fontsize=8, va="bottom", ha="center")
+    ax.text(0.5, 2.09, "two-fold level", color=INK, fontsize=8, va="bottom", ha="center")
     ax.set_xticks(x); ax.set_xticklabels(labels)
     ax.set_ylabel("Median LOUO top-10% lift")
     ax.set_ylim(0, max(vals) * 1.18)
@@ -46,9 +46,9 @@ def fig_building_ablation():
     # bars mixes two estimators in one panel and does not reconcile with the main text.
     d1 = d["delta_M1_minus_M0"]["median"]; ci1 = d["delta_M1_minus_M0"]["ci95"]
     d2 = d["delta_M1b_minus_M1"]["median"]; ci2 = d["delta_M1b_minus_M1"]["ci95"]
-    ax.annotate(f"cell-burden gain +{d1:.2f}\n(95% CI {ci1[0]:.2f}, {ci1[1]:.2f})",
+    ax.annotate(f"reactive-burden gain +{d1:.2f}\n(95% CI {ci1[0]:.2f}, {ci1[1]:.2f})",
                 xy=(2, ml["M1"]), xytext=(1.5, max(vals) * 1.10), ha="center",
-                fontsize=8.2, color=NAVY_D)
+                fontsize=8.2, color=INK)
     ax.annotate(f"building gain +{d2:.2f}\n(95% CI {ci2[0]:.2f}, {ci2[1]:.2f}: ~0)",
                 xy=(3, ml["M1b"]), xytext=(3.0, max(vals) * 1.10), ha="center",
                 fontsize=8.2, color=INK)
@@ -78,7 +78,7 @@ def fig_missed_p90():
     ov = d["overall_capture_rate_at_top10"] * 100
     ax.axhline(ov, ls="--", color=NAVY_D, lw=1.3, label=f"overall capture {ov:.0f}%")
     ax.set_xticks(x); ax.set_xticklabels(labs)
-    ax.set_ylabel("Captured by top-decile screen (%)")
+    ax.set_ylabel("Captured in the top decile\nof the screening model (%)")
     ax.set_ylim(0, 100)
     ax.legend(loc="upper right")
     ax.grid(axis="x", visible=False); figstyle.despine(ax)

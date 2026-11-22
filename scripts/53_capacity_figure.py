@@ -46,7 +46,7 @@ def main():
     # (label, per-campus dict, block index). Block 0 reference, 1 representation,
     # 2 architecture and adaptation.
     # (label, per-campus dict, block, is_control)
-    rows = [("Incumbent: boosted trees on the quarterly panel", w1["A0"], 0, False)]
+    rows = [("Screening model: boosted trees on the quarterly panel", w1["A0"], 0, False)]
     rows += [
         ("Event-sequence encoder on the raw work-order stream", w1["A1"], 1, False),
         ("event order shuffled (control)", w1["A2"], 1, True),
@@ -61,8 +61,8 @@ def main():
                         pc["T1"], 2, False))
         if "T3" in pc:
             add += [
-                ("Context-adaptive transport on the incumbent score", pc["T3"], 2, False),
-                ("context descriptor withheld (control)", pc["T3n"], 2, True),
+                ("Campus adaptation head on the screening model's score", pc["T3"], 2, False),
+                ("campus descriptor withheld (control)", pc["T3n"], 2, True),
                 ("campus descriptors deranged (control)", pc["T3p"], 2, True),
             ]
         rows += add
@@ -98,7 +98,7 @@ def main():
                               ec="none", alpha=1.0))
 
     ax.axvline(ref, ls="--", color=CORAL_D, lw=1.4, zorder=1)
-    ax.annotate("incumbent median", (ref - 0.06, -0.42), fontsize=8.2,
+    ax.annotate("screening model median", (ref - 0.06, -0.42), fontsize=8.2,
                 color=CORAL_D, ha="right", va="bottom")
 
     ax.set_yticks(ys)

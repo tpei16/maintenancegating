@@ -1,0 +1,198 @@
+{
+  "design": "risk-gradient gate with the expectation of each band taken from each certifying campus's own base rate (the study's definition) against one pooled base rate; all other gates and the aggregation unchanged",
+  "campus_base": {
+    "n_campus_system_pairs": 141,
+    "n_certified": 98,
+    "risk_gradient_fails": 4,
+    "pooled_map_certified": 12,
+    "route_counts": {
+      "pma": 50968,
+      "verify": 705,
+      "continue": 385725,
+      "watch": 77577
+    },
+    "queue_by_system": {
+      "C20": 254,
+      "D10": 239,
+      "F10": 75,
+      "G20": 50,
+      "B30": 37,
+      "F20": 25,
+      "G30": 18,
+      "G40": 6,
+      "A10": 1
+    },
+    "heldout_check": {
+      "certified": {
+        "n": 77,
+        "n_lift_ge_2": 74,
+        "share": 0.961
+      },
+      "withheld": {
+        "n": 18,
+        "n_lift_ge_2": 14,
+        "share": 0.7778
+      }
+    }
+  },
+  "pooled_base": {
+    "n_campus_system_pairs": 141,
+    "n_certified": 98,
+    "risk_gradient_fails": 14,
+    "pooled_map_certified": 12,
+    "route_counts": {
+      "pma": 50032,
+      "verify": 1641,
+      "continue": 369226,
+      "watch": 94076
+    },
+    "queue_by_system": {
+      "B20": 957,
+      "C20": 254,
+      "D10": 218,
+      "F10": 75,
+      "G20": 50,
+      "B30": 37,
+      "F20": 25,
+      "G30": 18,
+      "G40": 6,
+      "A10": 1
+    },
+    "heldout_check": {
+      "certified": {
+        "n": 77,
+        "n_lift_ge_2": 73,
+        "share": 0.9481
+      },
+      "withheld": {
+        "n": 18,
+        "n_lift_ge_2": 15,
+        "share": 0.8333
+      }
+    }
+  },
+  "n_risk_gradient_scores_differing": 21,
+  "verdicts_differing": [
+    {
+      "campus": "10",
+      "system": "D10",
+      "S_campus_base": 0.6,
+      "S_pooled_base": 0.7,
+      "top_band_campus_base": 1.84,
+      "top_band_pooled_base": 3.0
+    },
+    {
+      "campus": "5",
+      "system": "B20",
+      "S_campus_base": 1.0,
+      "S_pooled_base": 0.5,
+      "top_band_campus_base": 2.05,
+      "top_band_pooled_base": 1.08
+    },
+    {
+      "campus": "7",
+      "system": "D10",
+      "S_campus_base": 0.6,
+      "S_pooled_base": 0.7,
+      "top_band_campus_base": 1.91,
+      "top_band_pooled_base": 2.89
+    },
+    {
+      "campus": "7",
+      "system": "F10",
+      "S_campus_base": 0.7,
+      "S_pooled_base": 0.6,
+      "top_band_campus_base": 2.38,
+      "top_band_pooled_base": 2.11
+    }
+  ],
+  "pooled_map_differing": [
+    {
+      "system": "F20",
+      "S_campus_base": 0.5,
+      "S_pooled_base": 0.0
+    }
+  ],
+  "campus5_B20": {
+    "campus_base": {
+      "scores": {
+        "data_sufficiency": 1.0,
+        "risk_concentration": 1.0,
+        "transfer_stability": 1.0,
+        "risk_gradient": 1.0,
+        "prior_record_trace": 1.0
+      },
+      "S": 1.0,
+      "top_band": 2.05,
+      "rho": 1.0
+    },
+    "pooled_base": {
+      "scores": {
+        "data_sufficiency": 1.0,
+        "risk_concentration": 1.0,
+        "transfer_stability": 1.0,
+        "risk_gradient": 0.0,
+        "prior_record_trace": 1.0
+      },
+      "S": 0.5,
+      "top_band": 1.08,
+      "rho": 0.7
+    }
+  },
+  "one_adjacent_reversal_admitted": {
+    "design": "pass level of the rank correlation lowered so that one reversal of two adjacent bands still passes; the study's definition requires the ratio to rise over every band",
+    "summary": {
+      "n_campus_system_pairs": 141,
+      "n_certified": 99,
+      "risk_gradient_fails": 4,
+      "pooled_map_certified": 12,
+      "route_counts": {
+        "pma": 50970,
+        "verify": 703,
+        "continue": 386384,
+        "watch": 76918
+      },
+      "queue_by_system": {
+        "C20": 254,
+        "D10": 239,
+        "F10": 73,
+        "G20": 50,
+        "B30": 37,
+        "F20": 25,
+        "G30": 18,
+        "G40": 6,
+        "A10": 1
+      },
+      "heldout_check": {
+        "certified": {
+          "n": 77,
+          "n_lift_ge_2": 74,
+          "share": 0.961
+        },
+        "withheld": {
+          "n": 18,
+          "n_lift_ge_2": 14,
+          "share": 0.7778
+        }
+      }
+    },
+    "n_risk_gradient_scores_differing": 8,
+    "verdicts_differing": [
+      {
+        "campus": "3",
+        "system": "F10",
+        "S_monotone": 0.6,
+        "S_one_reversal": 0.7,
+        "top_band": 2.52,
+        "rho": 0.9
+      }
+    ],
+    "pooled_map_differing": [
+      {
+        "system": "G20",
+        "S_monotone": 0.7,
+        "S_one_reversal": 0.8
+      }
+    ]
+  }
+}

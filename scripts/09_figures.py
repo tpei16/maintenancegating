@@ -59,16 +59,17 @@ def fig_louo_per_campus():
     yerr = np.vstack([sub["lift_top10"] - sub["lift_top10_ci_lo"],
                       sub["lift_top10_ci_hi"] - sub["lift_top10"]])
     ax.bar(x, sub["lift_top10"], yerr=yerr, capsize=3, color=NAVY,
-           ecolor=SLATE, label="Gradient-boosted screen")
+           ecolor=SLATE, label="Screening model")
     ax.scatter(x, sub["best_rule_lift_top10"], color=CORAL_D, zorder=5,
                marker="D", s=40, edgecolor="white", linewidth=0.6,
                label="Best simple rule")
     ax.axhline(2.0, ls="--", color=SLATE, lw=1.2, label="Two-fold bar")
-    ax.set_xticks(x); ax.set_xticklabels("U" + sub["u"])
+    # campuses are numbered as in the manuscript tables (no "U" prefix)
+    ax.set_xticks(x); ax.set_xticklabels(sub["u"])
     ax.set_xlabel("Held-out campus"); ax.set_ylabel("Top-decile precision lift")
     # Legend ordering: main series first, then rule, then reference bar.
     h, lab = ax.get_legend_handles_labels()
-    order = ["Gradient-boosted screen", "Best simple rule", "Two-fold bar"]
+    order = ["Screening model", "Best simple rule", "Two-fold bar"]
     idx = [lab.index(o) for o in order if o in lab]
     ax.legend([h[i] for i in idx], [lab[i] for i in idx],
               frameon=False, loc="upper right", ncol=1)

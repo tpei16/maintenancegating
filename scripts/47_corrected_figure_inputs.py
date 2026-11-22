@@ -1,16 +1,14 @@
 #!/usr/bin/env python
 """
 47_corrected_figure_inputs.py -- rewrite the two CSVs the certification figures
-read, from the corrected pipeline.
+read, from the double-nested pipeline.
 
-Two changes beyond the corrected gate scores:
+Besides the gate scores, the two files carry:
 
-  * burden_share now carries each stratum's share of ALL reactive labor, taken
-    from burden_by_system.csv.  The column previously written here was
-    renormalised over the gated strata, so it summed to 0.9997 by construction,
-    and that sum was then reported in the text as evidence that the gated strata
-    carry essentially all reactive labor.  The statistic was circular.  Over all
-    21 strata the 16 gated ones carry 98.97%.
+  * burden_share, each stratum's share of ALL reactive labor, taken from
+    burden_by_system.csv.  It is not renormalised over the gated strata, whose
+    shares would sum to 1 by construction.  Over all 21 strata the 16 gated
+    ones carry 98.97%.
 
   * the paper-side gate names are written alongside the code-side ones, so a
     reader starting from the repository can map them without the supplement.

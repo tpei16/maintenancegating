@@ -2,7 +2,7 @@
   "rule_used": "rule_upm_count_prevyear",
   "certified_counts": {
     "gbdt": 12,
-    "logreg": 11,
+    "logreg": 12,
     "rule": 10
   },
   "n_gated": {
@@ -13,16 +13,12 @@
   "agreement_vs_gbdt": {
     "logreg": {
       "n_strata_compared": 16,
-      "pooled_verdict_agreement": 0.812,
-      "pooled_disagreements": [
-        "B30",
-        "D10",
-        "F10"
-      ],
-      "mean_abs_delta_S": 0.062,
-      "max_abs_delta_S": 0.5,
+      "pooled_verdict_agreement": 1.0,
+      "pooled_disagreements": [],
+      "mean_abs_delta_S": 0.025,
+      "max_abs_delta_S": 0.2,
       "n_stratum_fold_pairs": 141,
-      "outer_verdict_agreement": 0.915
+      "outer_verdict_agreement": 0.943
     },
     "rule": {
       "n_strata_compared": 16,
@@ -31,10 +27,10 @@
         "B30",
         "F10"
       ],
-      "mean_abs_delta_S": 0.044,
-      "max_abs_delta_S": 0.2,
+      "mean_abs_delta_S": 0.025,
+      "max_abs_delta_S": 0.1,
       "n_stratum_fold_pairs": 141,
-      "outer_verdict_agreement": 0.887
+      "outer_verdict_agreement": 0.894
     }
   },
   "pooled_S": {
@@ -52,17 +48,35 @@
       "E10": 1.0,
       "E20": 1.0,
       "F10": 0.7,
-      "F20": 0.0,
+      "F20": 0.5,
       "G20": 0.7,
       "G30": 0.5
     },
     "logreg": {
       "B20": 0.8,
+      "B30": 0.7,
+      "C10": 1.0,
+      "C20": 0.6,
+      "C30": 1.0,
+      "D10": 0.6,
+      "D20": 1.0,
+      "D30": 1.0,
+      "D40": 1.0,
+      "D50": 1.0,
+      "E10": 1.0,
+      "E20": 1.0,
+      "F10": 0.7,
+      "F20": 0.5,
+      "G20": 0.8,
+      "G30": 0.5
+    },
+    "rule": {
+      "B20": 0.8,
       "B30": 0.6,
       "C10": 1.0,
       "C20": 0.5,
       "C30": 1.0,
-      "D10": 0.7,
+      "D10": 0.6,
       "D20": 1.0,
       "D30": 1.0,
       "D40": 1.0,
@@ -71,24 +85,6 @@
       "E20": 1.0,
       "F10": 0.6,
       "F20": 0.5,
-      "G20": 0.7,
-      "G30": 0.5
-    },
-    "rule": {
-      "B20": 0.8,
-      "B30": 0.5,
-      "C10": 1.0,
-      "C20": 0.5,
-      "C30": 1.0,
-      "D10": 0.6,
-      "D20": 1.0,
-      "D30": 1.0,
-      "D40": 0.9,
-      "D50": 0.9,
-      "E10": 1.0,
-      "E20": 1.0,
-      "F10": 0.6,
-      "F20": 0.0,
       "G20": 0.7,
       "G30": 0.5
     }

@@ -53,8 +53,8 @@ def main():
     fig, axes = plt.subplots(1, 2, figsize=(6.3, 2.9))
     x = np.arange(4); w = 0.26
     for ax, col, title in [
-        (axes[0], "upm_order_share", "Share of the Service's UPM Work Orders"),
-        (axes[1], "high_burden_share", "Share of the Service's High-Burden Cell-Quarters"),
+        (axes[0], "upm_order_share", "Share of Each Building System's\nReactive Work Orders"),
+        (axes[1], "high_burden_share", "Share of Each Building System's\nHigh-Burden Quarters"),
     ]:
         for i, svc in enumerate(SERVICES):
             d = out[out["service"] == svc].sort_values("calendar_quarter")
@@ -62,14 +62,14 @@ def main():
                    color=COLS[svc], edgecolor="white", lw=0.8, label=svc)
         ax.axhline(25, color=INK, lw=0.9, ls=(0, (4, 2)))
         # sits above the tallest Q3/Q4 bar in both panels, clear of every bar
-        ax.text(3.42, 26.6, "uniform (25%)", ha="right", fontsize=7.5, color=INK)
+        ax.text(3.42, 26.6, "uniform (25%)", ha="right", fontsize=8, color=INK)
         ax.set_xticks(x); ax.set_xticklabels(["Q1", "Q2", "Q3", "Q4"])
         ax.set_ylim(0, 36)
         ax.set_ylabel("share of annual total (%)")
         # the title was computed but never applied, so the two panels were
         # indistinguishable on the page
         ax.set_title(title, fontsize=9)
-    axes[0].legend(frameon=False, fontsize=8.5, loc="upper left")
+    axes[0].legend(frameon=True, edgecolor=INK, fancybox=False, framealpha=1.0, fontsize=8, loc="upper center", ncol=3, columnspacing=1.0, handlelength=1.2).get_frame().set_linewidth(0.5)
     fig.tight_layout()
     fig.savefig(C.FIGURES / "fig_seasonality.png", dpi=300)
     fig.savefig(C.FIGURES / "fig_seasonality.pdf")

@@ -1,8 +1,8 @@
 #!/usr/bin/env python
 """
-40_outer_s.py -- nested outer-campus derivation of the sufficiency score S (WP1),
-with the revised antecedent gate (WP2: no-antecedent share only) and the renamed
-risk-gradient gate (WP3).
+40_outer_s.py -- nested outer-campus derivation of the sufficiency score S,
+with a prior-record trace gate that reads the no-antecedent share only and a
+risk-gradient reliability gate.
 
 Design:
   For each outer campus j: every gate quantity is recomputed using ONLY the other
@@ -13,9 +13,9 @@ Design:
   per-campus evaluable: n>=100 & n_pos>=10) and 18_trajectory.py (p90 events with
   >=4 prior quarters; zero-prior = no work orders in the prior 4 quarters).
 
-Revised gate 5 (prior-record trace): pass if no-antecedent share < 0.10,
+Gate 5 (prior-record trace): pass if no-antecedent share < 0.10,
   caution 0.10-0.25, fail >= 0.25; <30 events -> caution.
-Gate 4 renamed risk-gradient reliability (same spec: monotone score-band outcome
+Gate 4, risk-gradient reliability (monotone score-band outcome
   rates, top-band enrichment).
 
 Outputs:
@@ -111,7 +111,7 @@ def gates_for(dev, trace_dev):
             rho, _ = spearmanr(obs.index.values, obs.values)
             g4 = PASS if (top >= 2.0 and rho >= 0.9) else (CAUTION if (top >= 1.5 and rho >= 0.5) else FAIL)
             grad = {"top_band": round(top, 2), "rho": round(float(rho), 2)}
-        # prior-record trace gate (revised)
+        # prior-record trace gate
         tr = trace_dev[trace_dev.system == sysc]
         ne, nz = int(tr.n_events.sum()), int(tr.n_zero.sum())
         if ne < 30:
@@ -135,7 +135,7 @@ def main():
     name = dict(pd.read_csv(C.TABLES / "burden_by_system.csv")[["SystemCode", "SystemDescription"]].values)
     name = {k: str(v).strip() for k, v in name.items()}
 
-    # ---------- pooled gates (deployment map; revised gate spec) ----------
+    # ---------- pooled gates (deployment map) ----------
     pooled = gates_for(prim, trace)
 
     # ---------- outer-fold derivation ----------
@@ -211,7 +211,7 @@ def main():
                }, open(C.METRICS / "outer_routes.json", "w"), indent=2)
 
     pd.set_option("display.width", 220, "display.max_columns", 40)
-    print("=== POOLED S (revised gates) vs OUTER-FOLD ===")
+    print("=== POOLED S vs OUTER-FOLD ===")
     print(tab.to_string(index=False))
     print("\n=== OUTER-FOLD ROUTES ===", routes, " n=", n_routed)
     print("\nverification queue by system:", dict(queue))

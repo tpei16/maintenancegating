@@ -2,9 +2,9 @@
 """
 44_double_holdout_fits.py -- model fits for leakage-free certification.
 
-A single-nested Stage 2 certifies target campus c from the held-out
+A single-nested construction certifies target campus c from the held-out
 predictions of the other campuses, but those predictions come from f^(-d), which
-is trained on C\\{d} and therefore on c. Certification for c was a function of
+is trained on C\\{d} and therefore on c. Under that construction, certification for c is a function of
 outcomes observed in c.
 
 This script produces the fits that remove the dependence:
@@ -14,7 +14,7 @@ This script produces the fits that remove the dependence:
     serves both orderings of the pair, so 36 fits cover all 72 ordered pairs.
   * 9 single fits f^(-c)      scoring c, which is what the risk screen already
     uses.  Refitted here only so that every prediction carries period_q, which
-    the published prediction files do not, and which ranking within (c,t)
+    the stored prediction files do not, and which ranking within (c,t)
     requires.
 
 45 fits in total.  One config only: severity_labour|p75|M1|gbdt, the deployed
@@ -120,7 +120,7 @@ def main() -> None:
     paired = Parallel(n_jobs=N_JOBS, verbose=5)(delayed(_run_pair)(a, b) for a, b in pairs)
     wall = time.time() - t0
 
-    # ---- reproduction check: the single fits must reproduce the published lifts ----
+    # ---- reproduction check: the single fits must reproduce the lifts stored in louo_folds.csv ----
     pub = pd.read_csv(C.METRICS / "louo_folds.csv")
     pub = pub[(pub.regime == "louo") & (pub.target_kind == TARGET) & (pub.pctl == PCTL)
               & (pub.layer == LAYER) & (pub.model == MODEL)]
@@ -129,7 +129,7 @@ def main() -> None:
     check = []
     for s in singles:
         got, want = s["lift_top10"], pubmap.get(s["held_out"])
-        check.append({"campus": s["held_out"], "published": want, "refit": got,
+        check.append({"campus": s["held_out"], "stored": want, "refit": got,
                       "delta": None if want is None else round(got - want, 4)})
     deltas = [abs(c["delta"]) for c in check if c["delta"] is not None]
     max_delta = max(deltas) if deltas else float("nan")
@@ -139,19 +139,19 @@ def main() -> None:
         "n_pair_fits": len(paired), "n_single_fits": len(singles),
         "wall_seconds": round(wall, 1), "n_jobs": N_JOBS, "threads": _THREADS,
         "reproduction_check": check,
-        "max_abs_lift_delta_vs_published": None if not deltas else round(max_delta, 4),
+        "max_abs_lift_delta_vs_stored": None if not deltas else round(max_delta, 4),
         "singles": singles, "pairs": paired,
     }
     json.dump(prov, open(C.METRICS / "double_holdout_fits.json", "w"), indent=2)
 
     print(f"\n[fits] done in {wall/60:.1f} min")
-    print("[fits] reproduction of published per-campus lifts:")
+    print("[fits] reproduction of stored per-campus lifts:")
     for c in check:
-        print(f"    campus {c['campus']:>2}  published {c['published']}  "
+        print(f"    campus {c['campus']:>2}  stored {c['stored']}  "
               f"refit {c['refit']}  delta {c['delta']}")
     print(f"[fits] max |delta| = {max_delta}")
     if deltas and max_delta > 0.01:
-        print("[fits] WARNING: refit does not reproduce the published screen; "
+        print("[fits] WARNING: refit does not reproduce the stored screen; "
               "the harness differs and the certification numbers are not comparable.")
 
 
