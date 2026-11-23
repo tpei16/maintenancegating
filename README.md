@@ -62,6 +62,7 @@ The analyses that examine the evidence gating are:
 | `43`, `63` | synthetic benchmark with known ground truth, with the shared-attribute construction and the two comparison rules |
 | `66` | permuted-score test: gates recomputed on the real records after the scores of a building system are permuted on a share of the peer campuses |
 | `67` | partially pooled rule: threshold on the predictive probability of two-fold lift from a random-effects model across peer campuses |
+| `73` | graded loss of transfer: partial permutation and reversal of the scores, with the transfer-only, pooled-lift, partially pooled and count-based rules scored on the same draws |
 | `57` | single nesting, size-matched control and double nesting |
 | `58` | bootstrap probability of a positive verdict |
 | `48`, `59` | evidence gating under two other risk scores and its agreement with the boosted model |
@@ -71,6 +72,7 @@ The analyses that examine the evidence gating are:
 | `62` | order of the verification queue |
 | `69` | flags of the routing rule by building system, pooling by percentile, and resolution of ties |
 | `70` | intervals under clustering by campus and building system |
+| `74` | sensitivity of the main contrasts to the removal of one campus or building system, where each threshold is fitted, and variants of the prior-record-trace gate |
 | `71` | outcome-free comparability of a campus with its peers, labor-recording audit, and record flow |
 | `72` | verdicts under other outcome definitions (work-order count, campus-specific labor threshold, occurrence) |
 | `65` | risk-gradient gate with campus-specific and with pooled base rates |

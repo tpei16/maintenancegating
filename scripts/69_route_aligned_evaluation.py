@@ -49,8 +49,9 @@ the score within the campus and quarter over all building systems, is at least
     the non-high-burden ones first and with the high-burden ones first.  S is
     non-decreasing in every lift, so a verdict equal at both extremes cannot
     change under any resolution of the ties.  The same is done for the prior-
-    year count rule as the risk score (script 48's rule_frame, maps built as
-    in script 59), whose discrete scores tie widely.
+    year count rule as the risk score (script 48's rule_arm: the units and
+    high-burden labels of the screening model's maps, in the same order, with
+    the count as the score), whose discrete scores tie widely.
 
 INVARIANT (the runner aborts on a mismatch).  With raw scores and ties taken
 in stored order the recomputation equals the stored pooled map
@@ -204,11 +205,12 @@ def gbdt_frames(single: pd.DataFrame, pairs: dict, campuses: list[str]):
     return devs, single
 
 
-def rule_frames(campuses: list[str]):
-    rf, rule_name = li.rule_frame()
-    rf = cc._add_ranks(rf)
-    devs = {j: cc._add_ranks(rf[rf.university != j]) for j in campuses}
-    return devs, rf, rule_name
+def rule_frames(single: pd.DataFrame, pairs: dict, campuses: list[str]):
+    """The count-rule maps: the screening model's maps with the count as the
+    risk score (labels asserted equal in rule_arm of script 48)."""
+    rs, rp, rule_name = li.rule_arm(single, pairs)
+    devs = {j: cc.dev_corpus(j, campuses, rs, rp, "double") for j in campuses}
+    return devs, rs, rule_name
 
 
 def gate_maps(devs: dict, pooled_frame: pd.DataFrame, campuses: list[str],
@@ -787,7 +789,7 @@ def main() -> None:
     assert np.allclose(tie_res["stored"][0], [outer[j][s]["S"] for j, s in keys])
     tie_sum = summarize_ties(tie_res, keys, pkeys, ties, pties)
 
-    rdevs, rpooled, rule_name = rule_frames(campuses)
+    rdevs, rpooled, rule_name = rule_frames(single, pairs, campuses)
     r_outer, r_pooled = gate_maps(rdevs, rpooled, campuses)
     rule_ref = check_rule_reference(r_outer, r_pooled, rule_name)
     print(f"[69] count-rule maps reproduced: {rule_ref}", flush=True)
@@ -878,7 +880,8 @@ def main() -> None:
                                     "(high); S is non-decreasing in every lift, so a verdict equal at both "
                                     "extremes is the same under any resolution of the ties"),
             "count_rule": f"{rule_name}: prior-year reactive work-order count as the risk score, maps "
-                          "built as in scripts 48 and 59",
+                          "built as in scripts 48 and 59 on the units and high-burden labels of the "
+                          "screening model's maps",
         },
         "reference_check": ref,
         "count_rule_reference_check": rule_ref,

@@ -1,5 +1,6 @@
 {
   "rule_used": "rule_upm_count_prevyear",
+  "rule_labels": "units and high-burden labels of the boosted screen's maps: on the held-out map of target c, peer d labeled with the threshold fitted on C\\{c,d}; on the pooled map, campus d with the threshold fitted on C\\{d}; label vectors asserted equal on all ten maps",
   "certified_counts": {
     "gbdt": 12,
     "logreg": 12,
@@ -30,7 +31,7 @@
       "mean_abs_delta_S": 0.025,
       "max_abs_delta_S": 0.1,
       "n_stratum_fold_pairs": 141,
-      "outer_verdict_agreement": 0.894
+      "outer_verdict_agreement": 0.915
     }
   },
   "pooled_S": {
@@ -127,22 +128,22 @@
       "G30": 6.55
     },
     "rule": {
-      "B20": 4.74,
-      "B30": 4.68,
-      "C10": 5.73,
-      "C20": 3.45,
-      "C30": 5.07,
-      "D10": 4.22,
-      "D20": 5.96,
-      "D30": 6.02,
-      "D40": 5.15,
-      "D50": 6.07,
-      "E10": 5.69,
-      "E20": 6.41,
-      "F10": 5.54,
-      "F20": 5.27,
-      "G20": 6.15,
-      "G30": 4.48
+      "B20": 4.62,
+      "B30": 4.1,
+      "C10": 5.72,
+      "C20": 3.22,
+      "C30": 5.09,
+      "D10": 4.11,
+      "D20": 6.0,
+      "D30": 5.96,
+      "D40": 5.09,
+      "D50": 6.15,
+      "E10": 5.63,
+      "E20": 6.48,
+      "F10": 5.59,
+      "F20": 5.83,
+      "G20": 6.12,
+      "G30": 4.14
     }
   }
 }

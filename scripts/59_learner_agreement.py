@@ -24,8 +24,10 @@ boosted, rule against boosted, rule against logistic):
     (data sufficiency as coded, prior-record trace) differ between scores.
 
 Nothing is fitted.  The logistic predictions are the fits that script 48 wrote
-to data/processed/pred_single_logreg/ and pred_pair_logreg/; the rule frame is
-script 48's rule_frame().  The certificates are recomputed with the functions
+to data/processed/pred_single_logreg/ and pred_pair_logreg/; the count-rule arm
+is script 48's rule_arm(), the units and high-burden labels of the boosted
+screen's maps with the count as the risk score, so that the three scores are
+gated on the same labels.  The certificates are recomputed with the functions
 of 45_certification_corrected.py exactly as script 48 computes them, and the
 pooled and fold agreement figures of learner_invariance.json are asserted.
 
@@ -87,20 +89,16 @@ def build_arms() -> tuple[dict, list[str], dict]:
     assert len(list(sd_dir.glob("*.parquet"))) == 9 and len(list(pd_dir.glob("*.parquet"))) == 36
     arms = {"gbdt": (cc.load_single(), cc.load_pairs()),
             "logreg": (load(sd_dir), pairs_map(pd_dir))}
-    rf, rule_name = li.rule_frame()
-    arms["rule"] = (cc._add_ranks(rf), None)
+    # the count on the units and labels of the boosted screen's maps, as in script 48
+    rs, rp, rule_name = li.rule_arm(*arms["gbdt"])
+    arms["rule"] = (rs, rp)
 
     campuses = sorted(arms["gbdt"][0].university.unique())
     results = {}
     for name, (single, prs) in arms.items():
         outer = {}
         for j in campuses:
-            if prs is None:
-                # the rule is not fitted, so every certifying context is read from
-                # the same unfitted score, as in script 48
-                dev = cc._add_ranks(single[single.university != j])
-            else:
-                dev = cc.dev_corpus(j, campuses, single, prs, "double")
+            dev = cc.dev_corpus(j, campuses, single, prs, "double")
             outer[j] = cc.gates_for(dev, cc.trace_for(j), RCOL, True)
         pooled = cc.gates_for(single, cc.trace_for(None), RCOL, True)
         results[name] = {"pooled": pooled, "outer": outer}

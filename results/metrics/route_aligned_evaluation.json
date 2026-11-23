@@ -15,7 +15,7 @@
     "random_tie_breaking": "rows of every map put in random order before the gates are computed, 200 repetitions, seeds [42, r]",
     "fractional_inclusion": "tied units at the boundary enter the top decile with equal fractional weight (expected precision under random tie-breaking)",
     "extreme_resolutions": "tied units taken non-high-burden first (low) and high-burden first (high); S is non-decreasing in every lift, so a verdict equal at both extremes is the same under any resolution of the ties",
-    "count_rule": "rule_upm_count_prevyear: prior-year reactive work-order count as the risk score, maps built as in scripts 48 and 59"
+    "count_rule": "rule_upm_count_prevyear: prior-year reactive work-order count as the risk score, maps built as in scripts 48 and 59 on the units and high-burden labels of the screening model's maps"
   },
   "reference_check": {
     "pooled_map_supported": "12/16",
@@ -34,7 +34,7 @@
   "count_rule_reference_check": {
     "rule": "rule_upm_count_prevyear",
     "pooled_map_supported": "10/16",
-    "held_out_supported": "89/142",
+    "held_out_supported": "88/141",
     "matches_learner_invariance_json": true,
     "matches_learner_agreement_json": true
   },
@@ -868,8 +868,8 @@
     },
     "count_rule": {
       "held_out_maps": {
-        "n": 142,
-        "n_supported_stored": 89,
+        "n": 141,
+        "n_supported_stored": 88,
         "random_tie_breaking": {
           "n_repetitions": 200,
           "n_verdicts_ever_changed": 9,
@@ -891,14 +891,6 @@
               "S_max": 0.7
             },
             {
-              "pair": "11/D10",
-              "supported_stored": false,
-              "share_of_repetitions_supported": 0.05,
-              "S_stored": 0.6,
-              "S_min": 0.5,
-              "S_max": 0.7
-            },
-            {
               "pair": "2/D10",
               "supported_stored": true,
               "share_of_repetitions_supported": 0.89,
@@ -917,7 +909,15 @@
             {
               "pair": "4/D10",
               "supported_stored": false,
-              "share_of_repetitions_supported": 0.115,
+              "share_of_repetitions_supported": 0.03,
+              "S_stored": 0.6,
+              "S_min": 0.6,
+              "S_max": 0.7
+            },
+            {
+              "pair": "5/B30",
+              "supported_stored": false,
+              "share_of_repetitions_supported": 0.645,
               "S_stored": 0.6,
               "S_min": 0.6,
               "S_max": 0.7
@@ -947,39 +947,42 @@
               "S_max": 0.7
             }
           ],
-          "n_pairs_S_ever_changed": 14,
-          "n_supported_per_repetition_min": 88,
-          "n_supported_per_repetition_max": 92
+          "n_pairs_S_ever_changed": 21,
+          "n_supported_per_repetition_min": 87,
+          "n_supported_per_repetition_max": 91
         },
         "fractional_inclusion": {
-          "n_verdicts_changed": 0,
-          "verdicts_changed": [],
+          "n_verdicts_changed": 1,
+          "verdicts_changed": [
+            "5/B30"
+          ],
           "n_supported": 89
         },
         "extreme_resolutions": {
-          "n_supported_low": 87,
-          "n_supported_high": 96,
-          "n_verdicts_that_can_change": 9,
+          "n_supported_low": 85,
+          "n_supported_high": 95,
+          "n_verdicts_that_can_change": 10,
           "verdicts_that_can_change": [
             "1/D10",
             "10/D10",
-            "11/D10",
             "2/D10",
             "3/D10",
             "4/D10",
+            "5/B20",
+            "5/B30",
             "5/D10",
             "6/D10",
             "7/D10"
           ]
         },
         "boundary_ties": {
-          "pairs_with_straddling_tie_pooled_lift": 142,
+          "pairs_with_straddling_tie_pooled_lift": 141,
           "max_units_at_boundary_score_pooled_lift": 4992,
-          "pairs_with_any_straddling_tie_peer_lift": 142,
-          "peer_lifts_with_straddling_tie": 720,
-          "peer_lifts_evaluated": 776,
+          "pairs_with_any_straddling_tie_peer_lift": 141,
+          "peer_lifts_with_straddling_tie": 718,
+          "peer_lifts_evaluated": 775,
           "max_units_at_boundary_score_peer_lift": 2940,
-          "max_abs_pooled_lift_range": 4.5429
+          "max_abs_pooled_lift_range": 3.7931
         }
       },
       "pooled_map": {
@@ -998,7 +1001,7 @@
               "S_max": 0.7
             }
           ],
-          "n_pairs_S_ever_changed": 1,
+          "n_pairs_S_ever_changed": 3,
           "n_supported_per_repetition_min": 10,
           "n_supported_per_repetition_max": 11
         },
@@ -1022,9 +1025,7 @@
         }
       }
     },
-    "count_rule_pairs_without_screening_model_verdict": [
-      "11/G30"
-    ]
+    "count_rule_pairs_without_screening_model_verdict": []
   },
-  "runtime_seconds": 752.6
+  "runtime_seconds": 698.4
 }

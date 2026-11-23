@@ -8,7 +8,8 @@ good one particular model is.  That is testable: run the whole certification
 under three risk scores of very different capability and compare the maps.
 
   rule    the best simple rule, prior-year UPM work-order count.  No fitting at
-          all, so no leakage question arises for it.
+          all; its gates read the units and high-burden labels of the boosted
+          screen's maps, so that only the risk score differs (rule_arm).
   logreg  l2-regularised logistic regression on the deployed feature set.
   gbdt    the deployed boosted screen.
 
@@ -17,7 +18,10 @@ If it is not, S must be described throughout as out-of-context model reliability
 Both outcomes are reportable; this script produces whichever holds.
 
 Needs 45 logistic fits (36 pairs + 9 singles) to keep the double-nested protocol
-identical across learners.  The rule needs none.
+identical across learners.  The rule needs none.  Every threshold that labels a
+unit is fitted on the training campuses of its split under each score: on the
+held-out map of target c a peer d is labeled with the 75th percentile fitted on
+C\\{c,d}, and on the pooled map campus d with the one fitted on C\\{d}.
 
 Outputs -> data/processed/pred_pair_logreg/, pred_single_logreg/
            results/metrics/learner_invariance.json
@@ -30,7 +34,7 @@ os.environ["FMSCREEN_THREADS"] = _T
 for _v in ("OMP_NUM_THREADS", "MKL_NUM_THREADS", "OPENBLAS_NUM_THREADS"):
     os.environ[_v] = _T
 
-import sys, json, itertools
+import sys, json, itertools, importlib.util
 from pathlib import Path
 import warnings; warnings.filterwarnings("ignore")
 import numpy as np, pandas as pd
@@ -43,6 +47,11 @@ from fmscreen import baselines as BL
 
 LAYER, TARGET, PCTL = "M1", "severity_labour", 75
 S_CUT = 0.67
+KEYS = ["university", "building", "system", "period_q"]     # one unit of a map
+
+_spec = importlib.util.spec_from_file_location(
+    "cert", Path(__file__).resolve().parent / "45_certification_corrected.py")
+cert = importlib.util.module_from_spec(_spec); _spec.loader.exec_module(cert)
 
 
 def _panel():
@@ -69,30 +78,65 @@ def _fit(held_out, model_name, outdir):
     return len(df)
 
 
-def rule_frame() -> pd.DataFrame:
-    """The best simple rule, scored on every panel row.  No model, no folds."""
+def rule_scores_frame() -> tuple[pd.DataFrame, str]:
+    """The best simple rule, scored on every panel unit.  No model, no folds.
+    The frame carries the unit keys of the prediction files and no label."""
     panel = _panel()
-    from fmscreen import features as FE
-    # label with train-fold-free thresholds is not available for a rule that is
-    # never trained; use the same system-specific p75 the panel defines.
-    _, y_all, _ = FE.make_labels(panel, panel, TARGET, PCTL)
     scores = BL.rule_scores(panel)
     name = "upm_count_prior_year" if "upm_count_prior_year" in scores else list(scores)[0]
+    univ = panel[C.COL_UNIV].astype(str)
     return pd.DataFrame({
-        "university": panel[C.COL_UNIV].astype(str).to_numpy(),
+        "university": univ.to_numpy(),
+        "building": (univ + "/" + panel[C.COL_BUILDING].astype(str)).to_numpy(),
         "system": panel[C.COL_SYSTEM].astype(str).to_numpy(),
         "period_q": panel["period_q"].to_numpy(),
-        "y": np.asarray(y_all).astype(np.int8),
-        "score": np.asarray(scores[name], dtype=np.float32),
+        "rule_score": np.asarray(scores[name], dtype=np.float32),
     }), name
 
 
-def main() -> None:
-    import importlib.util
-    spec = importlib.util.spec_from_file_location(
-        "cert", Path(__file__).resolve().parent / "45_certification_corrected.py")
-    cert = importlib.util.module_from_spec(spec); spec.loader.exec_module(cert)
+def _with_rule_score(frame: pd.DataFrame, rs: pd.DataFrame) -> pd.DataFrame:
+    """The frame with its score replaced by the rule's; rows, their order and
+    every other column unchanged."""
+    m = frame.drop(columns=["score"]).merge(rs, on=KEYS, how="left", validate="one_to_one")
+    assert len(m) == len(frame) and m["rule_score"].notna().all(), "unit without a rule score"
+    for k in KEYS + ["y"]:
+        assert np.array_equal(m[k].to_numpy(), frame[k].to_numpy()), f"{k} moved in the merge"
+    return m.rename(columns={"rule_score": "score"})[list(frame.columns)]
 
+
+def assert_same_units(a: pd.DataFrame, b: pd.DataFrame, where: str) -> None:
+    """Two maps hold the same units, in the same order, with the same labels."""
+    assert len(a) == len(b), f"{where}: {len(a)} units against {len(b)}"
+    for k in KEYS + ["y"]:
+        assert np.array_equal(a[k].to_numpy(), b[k].to_numpy()), f"{where}: {k} differs"
+
+
+def rule_arm(single: pd.DataFrame, pairs: dict) -> tuple[pd.DataFrame, dict, str]:
+    """The prior-year count rule as the risk score on the units and labels of
+    the boosted screen (single and pairs as loaded by script 45).
+
+    The rule is not fitted, but its gates read the same units with the same
+    high-burden labels as the main analysis, so that only the risk score
+    differs.  Each prediction frame keeps its rows, their order and their
+    labels, and its score is replaced by the count.  On the held-out map of
+    target c a peer d is thus read from the frame of f^(-{c,d}), labeled with
+    the threshold fitted on C\\{c,d}; on the pooled map campus d is read from
+    the frame of f^(-d), labeled with the threshold fitted on C\\{d}.  The risk
+    percentiles are recomputed from the count.  The label vectors of all ten
+    maps are asserted equal to those of the boosted screen."""
+    rs, name = rule_scores_frame()
+    single_r = cert._add_ranks(_with_rule_score(single, rs))
+    pairs_r = {k: _with_rule_score(v, rs) for k, v in pairs.items()}
+    campuses = sorted(single.university.unique())
+    for j in campuses:
+        assert_same_units(cert.dev_corpus(j, campuses, single_r, pairs_r, "double"),
+                          cert.dev_corpus(j, campuses, single, pairs, "double"),
+                          f"held-out map of campus {j}")
+    assert_same_units(single_r, single, "pooled map")
+    return single_r, pairs_r, name
+
+
+def main() -> None:
     panel = _panel()
     campuses = sorted(panel[C.COL_UNIV].astype(str).unique())
     pairs = list(itertools.combinations(campuses, 2))
@@ -126,21 +170,15 @@ def main() -> None:
     # gbdt: the deployed screen, reusing the fits from script 44
     arms["gbdt"] = (cert.load_single(), cert.load_pairs())
     arms["logreg"] = (load(sd_dir), pairs_map(pd_dir))
-
-    rf, rule_name = rule_frame()
-    rf = cert._add_ranks(rf)
-    arms["rule"] = (rf, None)
+    # rule: the count on the units and labels of the boosted screen's maps
+    rs, rp, rule_name = rule_arm(*arms["gbdt"])
+    arms["rule"] = (rs, rp)
 
     results = {}
     for name, (single, prs) in arms.items():
         outer = {}
         for j in campuses:
-            if prs is None:
-                # a rule is not fitted, so no context can leak into it; every
-                # certifying context is read from the same unfitted score.
-                dev = cert._add_ranks(single[single.university != j])
-            else:
-                dev = cert.dev_corpus(j, campuses, single, prs, "double")
+            dev = cert.dev_corpus(j, campuses, single, prs, "double")
             outer[j] = cert.gates_for(dev, cert.trace_for(j),
                                       "R_quarter", True)
         pooled = cert.gates_for(single, trace, "R_quarter", True)
@@ -179,7 +217,12 @@ def main() -> None:
             "outer_verdict_agreement": round(same_f / pairs_cmp, 3) if pairs_cmp else None,
         }
 
-    out = {"rule_used": rule_name, "certified_counts":
+    out = {"rule_used": rule_name,
+           "rule_labels": ("units and high-burden labels of the boosted screen's maps: on the "
+                           "held-out map of target c, peer d labeled with the threshold fitted on "
+                           "C\\{c,d}; on the pooled map, campus d with the threshold fitted on "
+                           "C\\{d}; label vectors asserted equal on all ten maps"),
+           "certified_counts":
            {n: int(sum(v >= S_CUT for v in results[n]["pooled"].values()))
             for n in results},
            "n_gated": {n: len(results[n]["pooled"]) for n in results},

@@ -1,0 +1,3817 @@
+{
+  "design": "Leave-one-campus-out and leave-one-building-system-out values of the held-out, forward and cold-start contrasts and of the Spearman correlation of S with held-out lift; clustered intervals for the difference between the rank correlations of the direct local lift and of the peer evidence score with the 2017 to 2019 lift; the labels, thresholds and eligibility counts of each construction of the gating; the verdicts and route counts with the prior-record-trace gate omitted, fixed, or scored on its frequency-matched reference. No model is fitted.",
+  "definitions": {
+    "removal": "all campus-system pairs of the removed campus (as target) or of the removed building system leave the set; verdicts are not recomputed",
+    "stairs_and_conveying_removed": "the pairs of stairs (C20) and conveying (D10) removed together",
+    "changes_sign": "the value has the opposite sign of the full value",
+    "removes_difference": "the value is at most zero for a positive full value (at least zero for a negative one), or undefined because a group is empty",
+    "below_half_of_full": "the absolute value is less than half the absolute full value",
+    "two_way_cluster": "campuses and building systems among the analysed pairs resampled independently; pair (c, k) enters a_c x b_k times (script 70)",
+    "bootstrap": "5000 replicates per scheme, 95% percentile intervals, seeds [42, 74, scheme]",
+    "omitted": "S as the mean of the other four gate scores, prerequisite rule and support level 2/3 unchanged",
+    "trace_pass|caution|fail": "the trace gate score replaced by the stated level",
+    "frequency_matched_ratio": "trace gate scored on the ratio of the no-antecedent share to its frequency-matched reference (script 61), from the peers' records of the map: pass below 0.5, caution below 1.0, fail at or above 1.0, caution below 30 extreme events; levels set for this analysis",
+    "verdict_depends_on_trace_score": "the verdict differs between the trace gate at pass and at fail; only these verdicts can change under any rescoring of that gate"
+  },
+  "leave_one_out": {
+    "held_out_contrast": {
+      "full": {
+        "value": 0.1833,
+        "n_supported": 77,
+        "k_supported": 74,
+        "n_not_supported": 18,
+        "k_not_supported": 14
+      },
+      "campus_removed": {
+        "by_removal": {
+          "1": {
+            "value": 0.1559,
+            "n_supported": 68,
+            "k_supported": 65,
+            "n_not_supported": 15,
+            "k_not_supported": 12,
+            "n_pairs_removed": 12,
+            "changes_sign": false,
+            "removes_difference": false,
+            "below_half_of_full": false
+          },
+          "2": {
+            "value": 0.2059,
+            "n_supported": 68,
+            "k_supported": 66,
+            "n_not_supported": 17,
+            "k_not_supported": 13,
+            "n_pairs_removed": 10,
+            "changes_sign": false,
+            "removes_difference": false,
+            "below_half_of_full": false
+          },
+          "3": {
+            "value": 0.1434,
+            "n_supported": 68,
+            "k_supported": 65,
+            "n_not_supported": 16,
+            "k_not_supported": 13,
+            "n_pairs_removed": 11,
+            "changes_sign": false,
+            "removes_difference": false,
+            "below_half_of_full": false
+          },
+          "4": {
+            "value": 0.2052,
+            "n_supported": 67,
+            "k_supported": 64,
+            "n_not_supported": 16,
+            "k_not_supported": 12,
+            "n_pairs_removed": 12,
+            "changes_sign": false,
+            "removes_difference": false,
+            "below_half_of_full": false
+          },
+          "5": {
+            "value": 0.1905,
+            "n_supported": 67,
+            "k_supported": 64,
+            "n_not_supported": 17,
+            "k_not_supported": 13,
+            "n_pairs_removed": 11,
+            "changes_sign": false,
+            "removes_difference": false,
+            "below_half_of_full": false
+          },
+          "6": {
+            "value": 0.2201,
+            "n_supported": 67,
+            "k_supported": 65,
+            "n_not_supported": 16,
+            "k_not_supported": 12,
+            "n_pairs_removed": 12,
+            "changes_sign": false,
+            "removes_difference": false,
+            "below_half_of_full": false
+          },
+          "7": {
+            "value": 0.1956,
+            "n_supported": 75,
+            "k_supported": 73,
+            "n_not_supported": 18,
+            "k_not_supported": 14,
+            "n_pairs_removed": 2,
+            "changes_sign": false,
+            "removes_difference": false,
+            "below_half_of_full": false
+          },
+          "10": {
+            "value": 0.0892,
+            "n_supported": 68,
+            "k_supported": 65,
+            "n_not_supported": 15,
+            "k_not_supported": 13,
+            "n_pairs_removed": 12,
+            "changes_sign": false,
+            "removes_difference": false,
+            "below_half_of_full": true
+          },
+          "11": {
+            "value": 0.2416,
+            "n_supported": 68,
+            "k_supported": 65,
+            "n_not_supported": 14,
+            "k_not_supported": 10,
+            "n_pairs_removed": 13,
+            "changes_sign": false,
+            "removes_difference": false,
+            "below_half_of_full": false
+          }
+        },
+        "range": [
+          0.0892,
+          0.2416
+        ],
+        "removals_changing_sign": [],
+        "removals_removing_difference": [],
+        "removals_below_half_of_full": [
+          "10"
+        ]
+      },
+      "system_removed": {
+        "by_removal": {
+          "B20": {
+            "value": 0.1937,
+            "n_supported": 70,
+            "k_supported": 68,
+            "n_not_supported": 18,
+            "k_not_supported": 14,
+            "n_pairs_removed": 7,
+            "changes_sign": false,
+            "removes_difference": false,
+            "below_half_of_full": false
+          },
+          "B30": {
+            "value": 0.1942,
+            "n_supported": 73,
+            "k_supported": 70,
+            "n_not_supported": 17,
+            "k_not_supported": 13,
+            "n_pairs_removed": 5,
+            "changes_sign": false,
+            "removes_difference": false,
+            "below_half_of_full": false
+          },
+          "C10": {
+            "value": 0.1787,
+            "n_supported": 69,
+            "k_supported": 66,
+            "n_not_supported": 18,
+            "k_not_supported": 14,
+            "n_pairs_removed": 8,
+            "changes_sign": false,
+            "removes_difference": false,
+            "below_half_of_full": false
+          },
+          "C20": {
+            "value": 0.1149,
+            "n_supported": 77,
+            "k_supported": 74,
+            "n_not_supported": 13,
+            "k_not_supported": 11,
+            "n_pairs_removed": 5,
+            "changes_sign": false,
+            "removes_difference": false,
+            "below_half_of_full": false
+          },
+          "C30": {
+            "value": 0.1787,
+            "n_supported": 69,
+            "k_supported": 66,
+            "n_not_supported": 18,
+            "k_not_supported": 14,
+            "n_pairs_removed": 8,
+            "changes_sign": false,
+            "removes_difference": false,
+            "below_half_of_full": false
+          },
+          "D10": {
+            "value": 0.1272,
+            "n_supported": 76,
+            "k_supported": 73,
+            "n_not_supported": 12,
+            "k_not_supported": 10,
+            "n_pairs_removed": 7,
+            "changes_sign": false,
+            "removes_difference": false,
+            "below_half_of_full": false
+          },
+          "D20": {
+            "value": 0.1787,
+            "n_supported": 69,
+            "k_supported": 66,
+            "n_not_supported": 18,
+            "k_not_supported": 14,
+            "n_pairs_removed": 8,
+            "changes_sign": false,
+            "removes_difference": false,
+            "below_half_of_full": false
+          },
+          "D30": {
+            "value": 0.1928,
+            "n_supported": 68,
+            "k_supported": 66,
+            "n_not_supported": 18,
+            "k_not_supported": 14,
+            "n_pairs_removed": 9,
+            "changes_sign": false,
+            "removes_difference": false,
+            "below_half_of_full": false
+          },
+          "D40": {
+            "value": 0.1928,
+            "n_supported": 68,
+            "k_supported": 66,
+            "n_not_supported": 18,
+            "k_not_supported": 14,
+            "n_pairs_removed": 9,
+            "changes_sign": false,
+            "removes_difference": false,
+            "below_half_of_full": false
+          },
+          "D50": {
+            "value": 0.1787,
+            "n_supported": 69,
+            "k_supported": 66,
+            "n_not_supported": 18,
+            "k_not_supported": 14,
+            "n_pairs_removed": 8,
+            "changes_sign": false,
+            "removes_difference": false,
+            "below_half_of_full": false
+          },
+          "E10": {
+            "value": 0.1787,
+            "n_supported": 69,
+            "k_supported": 66,
+            "n_not_supported": 18,
+            "k_not_supported": 14,
+            "n_pairs_removed": 8,
+            "changes_sign": false,
+            "removes_difference": false,
+            "below_half_of_full": false
+          },
+          "E20": {
+            "value": 0.1794,
+            "n_supported": 70,
+            "k_supported": 67,
+            "n_not_supported": 18,
+            "k_not_supported": 14,
+            "n_pairs_removed": 7,
+            "changes_sign": false,
+            "removes_difference": false,
+            "below_half_of_full": false
+          },
+          "F10": {
+            "value": 0.2277,
+            "n_supported": 77,
+            "k_supported": 74,
+            "n_not_supported": 15,
+            "k_not_supported": 11,
+            "n_pairs_removed": 3,
+            "changes_sign": false,
+            "removes_difference": false,
+            "below_half_of_full": false
+          },
+          "G20": {
+            "value": 0.2277,
+            "n_supported": 77,
+            "k_supported": 74,
+            "n_not_supported": 15,
+            "k_not_supported": 11,
+            "n_pairs_removed": 3,
+            "changes_sign": false,
+            "removes_difference": false,
+            "below_half_of_full": false
+          }
+        },
+        "range": [
+          0.1149,
+          0.2277
+        ],
+        "removals_changing_sign": [],
+        "removals_removing_difference": [],
+        "removals_below_half_of_full": []
+      },
+      "stairs_and_conveying_removed": {
+        "value": -0.0395,
+        "n_supported": 76,
+        "k_supported": 73,
+        "n_not_supported": 7,
+        "k_not_supported": 7,
+        "n_pairs_removed": 12,
+        "changes_sign": true,
+        "removes_difference": true
+      },
+      "label": "share of supported minus share of not supported pairs at two-fold, held-out check"
+    },
+    "held_out_spearman": {
+      "full": {
+        "value": 0.2628,
+        "p_naive": 0.01008,
+        "n": 95
+      },
+      "campus_removed": {
+        "by_removal": {
+          "1": {
+            "value": 0.2707,
+            "p_naive": 0.01333,
+            "n": 83,
+            "n_pairs_removed": 12,
+            "changes_sign": false,
+            "removes_difference": false,
+            "below_half_of_full": false
+          },
+          "2": {
+            "value": 0.2764,
+            "p_naive": 0.01044,
+            "n": 85,
+            "n_pairs_removed": 10,
+            "changes_sign": false,
+            "removes_difference": false,
+            "below_half_of_full": false
+          },
+          "3": {
+            "value": 0.1939,
+            "p_naive": 0.07724,
+            "n": 84,
+            "n_pairs_removed": 11,
+            "changes_sign": false,
+            "removes_difference": false,
+            "below_half_of_full": false
+          },
+          "4": {
+            "value": 0.2661,
+            "p_naive": 0.01503,
+            "n": 83,
+            "n_pairs_removed": 12,
+            "changes_sign": false,
+            "removes_difference": false,
+            "below_half_of_full": false
+          },
+          "5": {
+            "value": 0.2809,
+            "p_naive": 0.009656,
+            "n": 84,
+            "n_pairs_removed": 11,
+            "changes_sign": false,
+            "removes_difference": false,
+            "below_half_of_full": false
+          },
+          "6": {
+            "value": 0.3304,
+            "p_naive": 0.002283,
+            "n": 83,
+            "n_pairs_removed": 12,
+            "changes_sign": false,
+            "removes_difference": false,
+            "below_half_of_full": false
+          },
+          "7": {
+            "value": 0.2832,
+            "p_naive": 0.005943,
+            "n": 93,
+            "n_pairs_removed": 2,
+            "changes_sign": false,
+            "removes_difference": false,
+            "below_half_of_full": false
+          },
+          "10": {
+            "value": 0.201,
+            "p_naive": 0.06846,
+            "n": 83,
+            "n_pairs_removed": 12,
+            "changes_sign": false,
+            "removes_difference": false,
+            "below_half_of_full": false
+          },
+          "11": {
+            "value": 0.2677,
+            "p_naive": 0.01503,
+            "n": 82,
+            "n_pairs_removed": 13,
+            "changes_sign": false,
+            "removes_difference": false,
+            "below_half_of_full": false
+          }
+        },
+        "range": [
+          0.1939,
+          0.3304
+        ],
+        "removals_changing_sign": [],
+        "removals_removing_difference": [],
+        "removals_below_half_of_full": []
+      },
+      "system_removed": {
+        "by_removal": {
+          "B20": {
+            "value": 0.2254,
+            "p_naive": 0.03475,
+            "n": 88,
+            "n_pairs_removed": 7,
+            "changes_sign": false,
+            "removes_difference": false,
+            "below_half_of_full": false
+          },
+          "B30": {
+            "value": 0.2925,
+            "p_naive": 0.005151,
+            "n": 90,
+            "n_pairs_removed": 5,
+            "changes_sign": false,
+            "removes_difference": false,
+            "below_half_of_full": false
+          },
+          "C10": {
+            "value": 0.2634,
+            "p_naive": 0.01369,
+            "n": 87,
+            "n_pairs_removed": 8,
+            "changes_sign": false,
+            "removes_difference": false,
+            "below_half_of_full": false
+          },
+          "C20": {
+            "value": 0.168,
+            "p_naive": 0.1135,
+            "n": 90,
+            "n_pairs_removed": 5,
+            "changes_sign": false,
+            "removes_difference": false,
+            "below_half_of_full": false
+          },
+          "C30": {
+            "value": 0.2743,
+            "p_naive": 0.01013,
+            "n": 87,
+            "n_pairs_removed": 8,
+            "changes_sign": false,
+            "removes_difference": false,
+            "below_half_of_full": false
+          },
+          "D10": {
+            "value": 0.2545,
+            "p_naive": 0.01672,
+            "n": 88,
+            "n_pairs_removed": 7,
+            "changes_sign": false,
+            "removes_difference": false,
+            "below_half_of_full": false
+          },
+          "D20": {
+            "value": 0.2465,
+            "p_naive": 0.02136,
+            "n": 87,
+            "n_pairs_removed": 8,
+            "changes_sign": false,
+            "removes_difference": false,
+            "below_half_of_full": false
+          },
+          "D30": {
+            "value": 0.2562,
+            "p_naive": 0.01728,
+            "n": 86,
+            "n_pairs_removed": 9,
+            "changes_sign": false,
+            "removes_difference": false,
+            "below_half_of_full": false
+          },
+          "D40": {
+            "value": 0.3009,
+            "p_naive": 0.004877,
+            "n": 86,
+            "n_pairs_removed": 9,
+            "changes_sign": false,
+            "removes_difference": false,
+            "below_half_of_full": false
+          },
+          "D50": {
+            "value": 0.2671,
+            "p_naive": 0.01238,
+            "n": 87,
+            "n_pairs_removed": 8,
+            "changes_sign": false,
+            "removes_difference": false,
+            "below_half_of_full": false
+          },
+          "E10": {
+            "value": 0.2222,
+            "p_naive": 0.03863,
+            "n": 87,
+            "n_pairs_removed": 8,
+            "changes_sign": false,
+            "removes_difference": false,
+            "below_half_of_full": false
+          },
+          "E20": {
+            "value": 0.2722,
+            "p_naive": 0.01031,
+            "n": 88,
+            "n_pairs_removed": 7,
+            "changes_sign": false,
+            "removes_difference": false,
+            "below_half_of_full": false
+          },
+          "F10": {
+            "value": 0.313,
+            "p_naive": 0.00238,
+            "n": 92,
+            "n_pairs_removed": 3,
+            "changes_sign": false,
+            "removes_difference": false,
+            "below_half_of_full": false
+          },
+          "G20": {
+            "value": 0.3007,
+            "p_naive": 0.003586,
+            "n": 92,
+            "n_pairs_removed": 3,
+            "changes_sign": false,
+            "removes_difference": false,
+            "below_half_of_full": false
+          }
+        },
+        "range": [
+          0.168,
+          0.313
+        ],
+        "removals_changing_sign": [],
+        "removals_removing_difference": [],
+        "removals_below_half_of_full": []
+      },
+      "stairs_and_conveying_removed": {
+        "value": 0.1341,
+        "p_naive": 0.2269,
+        "n": 83,
+        "n_pairs_removed": 12,
+        "changes_sign": false,
+        "removes_difference": false
+      },
+      "label": "Spearman correlation of S with the held-out lift"
+    },
+    "forward_contrast": {
+      "full": {
+        "value": -0.0036,
+        "n_supported": 61,
+        "k_supported": 54,
+        "n_not_supported": 27,
+        "k_not_supported": 24
+      },
+      "campus_removed": {
+        "by_removal": {
+          "1": {
+            "value": 0.0193,
+            "n_supported": 54,
+            "k_supported": 48,
+            "n_not_supported": 23,
+            "k_not_supported": 20,
+            "n_pairs_removed": 11,
+            "changes_sign": true,
+            "removes_difference": true,
+            "below_half_of_full": false
+          },
+          "2": {
+            "value": 0.0139,
+            "n_supported": 54,
+            "k_supported": 48,
+            "n_not_supported": 24,
+            "k_not_supported": 21,
+            "n_pairs_removed": 10,
+            "changes_sign": true,
+            "removes_difference": true,
+            "below_half_of_full": false
+          },
+          "3": {
+            "value": -0.0023,
+            "n_supported": 55,
+            "k_supported": 48,
+            "n_not_supported": 24,
+            "k_not_supported": 21,
+            "n_pairs_removed": 9,
+            "changes_sign": false,
+            "removes_difference": false,
+            "below_half_of_full": false
+          },
+          "4": {
+            "value": -0.0427,
+            "n_supported": 54,
+            "k_supported": 47,
+            "n_not_supported": 23,
+            "k_not_supported": 21,
+            "n_pairs_removed": 11,
+            "changes_sign": false,
+            "removes_difference": false,
+            "below_half_of_full": false
+          },
+          "5": {
+            "value": -0.0403,
+            "n_supported": 55,
+            "k_supported": 48,
+            "n_not_supported": 23,
+            "k_not_supported": 21,
+            "n_pairs_removed": 10,
+            "changes_sign": false,
+            "removes_difference": false,
+            "below_half_of_full": false
+          },
+          "6": {
+            "value": 0.0096,
+            "n_supported": 52,
+            "k_supported": 46,
+            "n_not_supported": 24,
+            "k_not_supported": 21,
+            "n_pairs_removed": 12,
+            "changes_sign": true,
+            "removes_difference": true,
+            "below_half_of_full": false
+          },
+          "7": {
+            "value": 0.0421,
+            "n_supported": 58,
+            "k_supported": 54,
+            "n_not_supported": 27,
+            "k_not_supported": 24,
+            "n_pairs_removed": 3,
+            "changes_sign": true,
+            "removes_difference": true,
+            "below_half_of_full": false
+          },
+          "10": {
+            "value": -0.0299,
+            "n_supported": 53,
+            "k_supported": 47,
+            "n_not_supported": 24,
+            "k_not_supported": 22,
+            "n_pairs_removed": 11,
+            "changes_sign": false,
+            "removes_difference": false,
+            "below_half_of_full": false
+          },
+          "11": {
+            "value": -0.0071,
+            "n_supported": 53,
+            "k_supported": 46,
+            "n_not_supported": 24,
+            "k_not_supported": 21,
+            "n_pairs_removed": 11,
+            "changes_sign": false,
+            "removes_difference": false,
+            "below_half_of_full": false
+          }
+        },
+        "range": [
+          -0.0427,
+          0.0421
+        ],
+        "removals_changing_sign": [
+          "1",
+          "2",
+          "6",
+          "7"
+        ],
+        "removals_removing_difference": [
+          "1",
+          "2",
+          "6",
+          "7"
+        ],
+        "removals_below_half_of_full": []
+      },
+      "system_removed": {
+        "by_removal": {
+          "B20": {
+            "value": 0.0323,
+            "n_supported": 57,
+            "k_supported": 52,
+            "n_not_supported": 25,
+            "k_not_supported": 22,
+            "n_pairs_removed": 6,
+            "changes_sign": true,
+            "removes_difference": true,
+            "below_half_of_full": false
+          },
+          "B30": {
+            "value": 0.0157,
+            "n_supported": 61,
+            "k_supported": 54,
+            "n_not_supported": 23,
+            "k_not_supported": 20,
+            "n_pairs_removed": 4,
+            "changes_sign": true,
+            "removes_difference": true,
+            "below_half_of_full": false
+          },
+          "C10": {
+            "value": -0.021,
+            "n_supported": 53,
+            "k_supported": 46,
+            "n_not_supported": 27,
+            "k_not_supported": 24,
+            "n_pairs_removed": 8,
+            "changes_sign": false,
+            "removes_difference": false,
+            "below_half_of_full": false
+          },
+          "C20": {
+            "value": -0.0278,
+            "n_supported": 61,
+            "k_supported": 54,
+            "n_not_supported": 23,
+            "k_not_supported": 21,
+            "n_pairs_removed": 4,
+            "changes_sign": false,
+            "removes_difference": false,
+            "below_half_of_full": false
+          },
+          "C30": {
+            "value": -0.0142,
+            "n_supported": 54,
+            "k_supported": 47,
+            "n_not_supported": 26,
+            "k_not_supported": 23,
+            "n_pairs_removed": 8,
+            "changes_sign": false,
+            "removes_difference": false,
+            "below_half_of_full": false
+          },
+          "D10": {
+            "value": -0.0184,
+            "n_supported": 59,
+            "k_supported": 53,
+            "n_not_supported": 24,
+            "k_not_supported": 22,
+            "n_pairs_removed": 5,
+            "changes_sign": false,
+            "removes_difference": false,
+            "below_half_of_full": false
+          },
+          "D20": {
+            "value": -0.021,
+            "n_supported": 53,
+            "k_supported": 46,
+            "n_not_supported": 27,
+            "k_not_supported": 24,
+            "n_pairs_removed": 8,
+            "changes_sign": false,
+            "removes_difference": false,
+            "below_half_of_full": false
+          },
+          "D30": {
+            "value": -0.0043,
+            "n_supported": 52,
+            "k_supported": 46,
+            "n_not_supported": 27,
+            "k_not_supported": 24,
+            "n_pairs_removed": 9,
+            "changes_sign": false,
+            "removes_difference": false,
+            "below_half_of_full": false
+          },
+          "D40": {
+            "value": 0.0486,
+            "n_supported": 57,
+            "k_supported": 52,
+            "n_not_supported": 22,
+            "k_not_supported": 19,
+            "n_pairs_removed": 9,
+            "changes_sign": true,
+            "removes_difference": true,
+            "below_half_of_full": false
+          },
+          "D50": {
+            "value": -0.0043,
+            "n_supported": 52,
+            "k_supported": 46,
+            "n_not_supported": 27,
+            "k_not_supported": 24,
+            "n_pairs_removed": 9,
+            "changes_sign": false,
+            "removes_difference": false,
+            "below_half_of_full": false
+          },
+          "E10": {
+            "value": -0.021,
+            "n_supported": 53,
+            "k_supported": 46,
+            "n_not_supported": 27,
+            "k_not_supported": 24,
+            "n_pairs_removed": 8,
+            "changes_sign": false,
+            "removes_difference": false,
+            "below_half_of_full": false
+          },
+          "E20": {
+            "value": -0.0277,
+            "n_supported": 59,
+            "k_supported": 52,
+            "n_not_supported": 22,
+            "k_not_supported": 20,
+            "n_pairs_removed": 7,
+            "changes_sign": false,
+            "removes_difference": false,
+            "below_half_of_full": false
+          },
+          "F10": {
+            "value": 0.0006,
+            "n_supported": 61,
+            "k_supported": 54,
+            "n_not_supported": 26,
+            "k_not_supported": 23,
+            "n_pairs_removed": 1,
+            "changes_sign": true,
+            "removes_difference": true,
+            "below_half_of_full": true
+          },
+          "G20": {
+            "value": 0.0052,
+            "n_supported": 61,
+            "k_supported": 54,
+            "n_not_supported": 25,
+            "k_not_supported": 22,
+            "n_pairs_removed": 2,
+            "changes_sign": true,
+            "removes_difference": true,
+            "below_half_of_full": false
+          }
+        },
+        "range": [
+          -0.0278,
+          0.0486
+        ],
+        "removals_changing_sign": [
+          "B20",
+          "B30",
+          "D40",
+          "F10",
+          "G20"
+        ],
+        "removals_removing_difference": [
+          "B20",
+          "B30",
+          "D40",
+          "F10",
+          "G20"
+        ],
+        "removals_below_half_of_full": [
+          "F10"
+        ]
+      },
+      "stairs_and_conveying_removed": {
+        "value": -0.0517,
+        "n_supported": 59,
+        "k_supported": 53,
+        "n_not_supported": 20,
+        "k_not_supported": 19,
+        "n_pairs_removed": 9,
+        "changes_sign": false,
+        "removes_difference": false
+      },
+      "label": "forward test, pairs with a peer verdict"
+    },
+    "forward_contrast_no_verdict_as_not_supported": {
+      "full": {
+        "value": 0.0186,
+        "n_supported": 61,
+        "k_supported": 54,
+        "n_not_supported": 30,
+        "k_not_supported": 26
+      },
+      "campus_removed": {
+        "by_removal": {
+          "1": {
+            "value": 0.0427,
+            "n_supported": 54,
+            "k_supported": 48,
+            "n_not_supported": 26,
+            "k_not_supported": 22,
+            "n_pairs_removed": 11,
+            "changes_sign": false,
+            "removes_difference": false,
+            "below_half_of_full": false
+          },
+          "2": {
+            "value": 0.037,
+            "n_supported": 54,
+            "k_supported": 48,
+            "n_not_supported": 27,
+            "k_not_supported": 23,
+            "n_pairs_removed": 10,
+            "changes_sign": false,
+            "removes_difference": false,
+            "below_half_of_full": false
+          },
+          "3": {
+            "value": 0.0209,
+            "n_supported": 55,
+            "k_supported": 48,
+            "n_not_supported": 27,
+            "k_not_supported": 23,
+            "n_pairs_removed": 9,
+            "changes_sign": false,
+            "removes_difference": false,
+            "below_half_of_full": false
+          },
+          "4": {
+            "value": -0.0142,
+            "n_supported": 54,
+            "k_supported": 47,
+            "n_not_supported": 26,
+            "k_not_supported": 23,
+            "n_pairs_removed": 11,
+            "changes_sign": true,
+            "removes_difference": true,
+            "below_half_of_full": false
+          },
+          "5": {
+            "value": -0.0119,
+            "n_supported": 55,
+            "k_supported": 48,
+            "n_not_supported": 26,
+            "k_not_supported": 23,
+            "n_pairs_removed": 10,
+            "changes_sign": true,
+            "removes_difference": true,
+            "below_half_of_full": false
+          },
+          "6": {
+            "value": 0.0328,
+            "n_supported": 52,
+            "k_supported": 46,
+            "n_not_supported": 27,
+            "k_not_supported": 23,
+            "n_pairs_removed": 12,
+            "changes_sign": false,
+            "removes_difference": false,
+            "below_half_of_full": false
+          },
+          "7": {
+            "value": 0.0644,
+            "n_supported": 58,
+            "k_supported": 54,
+            "n_not_supported": 30,
+            "k_not_supported": 26,
+            "n_pairs_removed": 3,
+            "changes_sign": false,
+            "removes_difference": false,
+            "below_half_of_full": false
+          },
+          "10": {
+            "value": -0.0363,
+            "n_supported": 53,
+            "k_supported": 47,
+            "n_not_supported": 26,
+            "k_not_supported": 24,
+            "n_pairs_removed": 12,
+            "changes_sign": true,
+            "removes_difference": true,
+            "below_half_of_full": false
+          },
+          "11": {
+            "value": 0.0279,
+            "n_supported": 53,
+            "k_supported": 46,
+            "n_not_supported": 25,
+            "k_not_supported": 21,
+            "n_pairs_removed": 13,
+            "changes_sign": false,
+            "removes_difference": false,
+            "below_half_of_full": false
+          }
+        },
+        "range": [
+          -0.0363,
+          0.0644
+        ],
+        "removals_changing_sign": [
+          "4",
+          "5",
+          "10"
+        ],
+        "removals_removing_difference": [
+          "4",
+          "5",
+          "10"
+        ],
+        "removals_below_half_of_full": []
+      },
+      "system_removed": {
+        "by_removal": {
+          "B20": {
+            "value": 0.0551,
+            "n_supported": 57,
+            "k_supported": 52,
+            "n_not_supported": 28,
+            "k_not_supported": 24,
+            "n_pairs_removed": 6,
+            "changes_sign": false,
+            "removes_difference": false,
+            "below_half_of_full": false
+          },
+          "B30": {
+            "value": 0.0391,
+            "n_supported": 61,
+            "k_supported": 54,
+            "n_not_supported": 26,
+            "k_not_supported": 22,
+            "n_pairs_removed": 4,
+            "changes_sign": false,
+            "removes_difference": false,
+            "below_half_of_full": false
+          },
+          "C10": {
+            "value": 0.0013,
+            "n_supported": 53,
+            "k_supported": 46,
+            "n_not_supported": 30,
+            "k_not_supported": 26,
+            "n_pairs_removed": 8,
+            "changes_sign": false,
+            "removes_difference": false,
+            "below_half_of_full": true
+          },
+          "C20": {
+            "value": 0.0006,
+            "n_supported": 61,
+            "k_supported": 54,
+            "n_not_supported": 26,
+            "k_not_supported": 23,
+            "n_pairs_removed": 4,
+            "changes_sign": false,
+            "removes_difference": false,
+            "below_half_of_full": true
+          },
+          "C30": {
+            "value": 0.0083,
+            "n_supported": 54,
+            "k_supported": 47,
+            "n_not_supported": 29,
+            "k_not_supported": 25,
+            "n_pairs_removed": 8,
+            "changes_sign": false,
+            "removes_difference": false,
+            "below_half_of_full": true
+          },
+          "D10": {
+            "value": 0.0094,
+            "n_supported": 59,
+            "k_supported": 53,
+            "n_not_supported": 27,
+            "k_not_supported": 24,
+            "n_pairs_removed": 5,
+            "changes_sign": false,
+            "removes_difference": false,
+            "below_half_of_full": false
+          },
+          "D20": {
+            "value": 0.0013,
+            "n_supported": 53,
+            "k_supported": 46,
+            "n_not_supported": 30,
+            "k_not_supported": 26,
+            "n_pairs_removed": 8,
+            "changes_sign": false,
+            "removes_difference": false,
+            "below_half_of_full": true
+          },
+          "D30": {
+            "value": 0.0179,
+            "n_supported": 52,
+            "k_supported": 46,
+            "n_not_supported": 30,
+            "k_not_supported": 26,
+            "n_pairs_removed": 9,
+            "changes_sign": false,
+            "removes_difference": false,
+            "below_half_of_full": false
+          },
+          "D40": {
+            "value": 0.0723,
+            "n_supported": 57,
+            "k_supported": 52,
+            "n_not_supported": 25,
+            "k_not_supported": 21,
+            "n_pairs_removed": 9,
+            "changes_sign": false,
+            "removes_difference": false,
+            "below_half_of_full": false
+          },
+          "D50": {
+            "value": 0.0179,
+            "n_supported": 52,
+            "k_supported": 46,
+            "n_not_supported": 30,
+            "k_not_supported": 26,
+            "n_pairs_removed": 9,
+            "changes_sign": false,
+            "removes_difference": false,
+            "below_half_of_full": false
+          },
+          "E10": {
+            "value": 0.0013,
+            "n_supported": 53,
+            "k_supported": 46,
+            "n_not_supported": 30,
+            "k_not_supported": 26,
+            "n_pairs_removed": 8,
+            "changes_sign": false,
+            "removes_difference": false,
+            "below_half_of_full": true
+          },
+          "E20": {
+            "value": 0.0014,
+            "n_supported": 59,
+            "k_supported": 52,
+            "n_not_supported": 25,
+            "k_not_supported": 22,
+            "n_pairs_removed": 7,
+            "changes_sign": false,
+            "removes_difference": false,
+            "below_half_of_full": true
+          },
+          "F10": {
+            "value": -0.0036,
+            "n_supported": 61,
+            "k_supported": 54,
+            "n_not_supported": 27,
+            "k_not_supported": 24,
+            "n_pairs_removed": 3,
+            "changes_sign": true,
+            "removes_difference": true,
+            "below_half_of_full": true
+          },
+          "F20": {
+            "value": 0.0232,
+            "n_supported": 61,
+            "k_supported": 54,
+            "n_not_supported": 29,
+            "k_not_supported": 25,
+            "n_pairs_removed": 1,
+            "changes_sign": false,
+            "removes_difference": false,
+            "below_half_of_full": false
+          },
+          "G20": {
+            "value": 0.0281,
+            "n_supported": 61,
+            "k_supported": 54,
+            "n_not_supported": 28,
+            "k_not_supported": 24,
+            "n_pairs_removed": 2,
+            "changes_sign": false,
+            "removes_difference": false,
+            "below_half_of_full": false
+          }
+        },
+        "range": [
+          -0.0036,
+          0.0723
+        ],
+        "removals_changing_sign": [
+          "F10"
+        ],
+        "removals_removing_difference": [
+          "F10"
+        ],
+        "removals_below_half_of_full": [
+          "C10",
+          "C20",
+          "C30",
+          "D20",
+          "E10",
+          "E20",
+          "F10"
+        ]
+      },
+      "stairs_and_conveying_removed": {
+        "value": -0.0147,
+        "n_supported": 59,
+        "k_supported": 53,
+        "n_not_supported": 23,
+        "k_not_supported": 21,
+        "n_pairs_removed": 9,
+        "changes_sign": true,
+        "removes_difference": true
+      },
+      "label": "forward test, pairs without a peer verdict counted as not supported"
+    },
+    "cold_start_contrast": {
+      "full": {
+        "value": -0.096,
+        "n_supported": 22,
+        "k_supported": 15,
+        "n_not_supported": 9,
+        "k_not_supported": 7
+      },
+      "campus_removed": {
+        "by_removal": {
+          "1": {
+            "value": -0.0635,
+            "n_supported": 21,
+            "k_supported": 15,
+            "n_not_supported": 9,
+            "k_not_supported": 7,
+            "n_pairs_removed": 1,
+            "changes_sign": false,
+            "removes_difference": false,
+            "below_half_of_full": false
+          },
+          "2": {
+            "value": -0.0667,
+            "n_supported": 15,
+            "k_supported": 9,
+            "n_not_supported": 6,
+            "k_not_supported": 4,
+            "n_pairs_removed": 10,
+            "changes_sign": false,
+            "removes_difference": false,
+            "below_half_of_full": false
+          },
+          "6": {
+            "value": -0.1282,
+            "n_supported": 13,
+            "k_supported": 7,
+            "n_not_supported": 6,
+            "k_not_supported": 4,
+            "n_pairs_removed": 12,
+            "changes_sign": false,
+            "removes_difference": false,
+            "below_half_of_full": false
+          },
+          "7": {
+            "value": 0.0117,
+            "n_supported": 19,
+            "k_supported": 15,
+            "n_not_supported": 9,
+            "k_not_supported": 7,
+            "n_pairs_removed": 3,
+            "changes_sign": true,
+            "removes_difference": true,
+            "below_half_of_full": true
+          },
+          "10": {
+            "value": -0.2857,
+            "n_supported": 21,
+            "k_supported": 15,
+            "n_not_supported": 7,
+            "k_not_supported": 7,
+            "n_pairs_removed": 3,
+            "changes_sign": false,
+            "removes_difference": false,
+            "below_half_of_full": false
+          },
+          "11": {
+            "value": -0.0833,
+            "n_supported": 21,
+            "k_supported": 14,
+            "n_not_supported": 8,
+            "k_not_supported": 6,
+            "n_pairs_removed": 2,
+            "changes_sign": false,
+            "removes_difference": false,
+            "below_half_of_full": false
+          }
+        },
+        "range": [
+          -0.2857,
+          0.0117
+        ],
+        "removals_changing_sign": [
+          "7"
+        ],
+        "removals_removing_difference": [
+          "7"
+        ],
+        "removals_below_half_of_full": [
+          "7"
+        ]
+      },
+      "system_removed": {
+        "by_removal": {
+          "B20": {
+            "value": -0.0278,
+            "n_supported": 20,
+            "k_supported": 15,
+            "n_not_supported": 9,
+            "k_not_supported": 7,
+            "n_pairs_removed": 2,
+            "changes_sign": false,
+            "removes_difference": false,
+            "below_half_of_full": true
+          },
+          "B30": {
+            "value": -0.0325,
+            "n_supported": 22,
+            "k_supported": 15,
+            "n_not_supported": 7,
+            "k_not_supported": 5,
+            "n_pairs_removed": 2,
+            "changes_sign": false,
+            "removes_difference": false,
+            "below_half_of_full": true
+          },
+          "C10": {
+            "value": -0.1278,
+            "n_supported": 20,
+            "k_supported": 13,
+            "n_not_supported": 9,
+            "k_not_supported": 7,
+            "n_pairs_removed": 2,
+            "changes_sign": false,
+            "removes_difference": false,
+            "below_half_of_full": false
+          },
+          "C20": {
+            "value": -0.1753,
+            "n_supported": 22,
+            "k_supported": 15,
+            "n_not_supported": 7,
+            "k_not_supported": 6,
+            "n_pairs_removed": 2,
+            "changes_sign": false,
+            "removes_difference": false,
+            "below_half_of_full": false
+          },
+          "C30": {
+            "value": -0.1278,
+            "n_supported": 20,
+            "k_supported": 13,
+            "n_not_supported": 9,
+            "k_not_supported": 7,
+            "n_pairs_removed": 2,
+            "changes_sign": false,
+            "removes_difference": false,
+            "below_half_of_full": false
+          },
+          "D10": {
+            "value": -0.05,
+            "n_supported": 20,
+            "k_supported": 14,
+            "n_not_supported": 8,
+            "k_not_supported": 6,
+            "n_pairs_removed": 3,
+            "changes_sign": false,
+            "removes_difference": false,
+            "below_half_of_full": false
+          },
+          "D20": {
+            "value": -0.1278,
+            "n_supported": 20,
+            "k_supported": 13,
+            "n_not_supported": 9,
+            "k_not_supported": 7,
+            "n_pairs_removed": 2,
+            "changes_sign": false,
+            "removes_difference": false,
+            "below_half_of_full": false
+          },
+          "D30": {
+            "value": -0.0936,
+            "n_supported": 19,
+            "k_supported": 13,
+            "n_not_supported": 9,
+            "k_not_supported": 7,
+            "n_pairs_removed": 3,
+            "changes_sign": false,
+            "removes_difference": false,
+            "below_half_of_full": false
+          },
+          "D40": {
+            "value": -0.0409,
+            "n_supported": 19,
+            "k_supported": 14,
+            "n_not_supported": 9,
+            "k_not_supported": 7,
+            "n_pairs_removed": 3,
+            "changes_sign": false,
+            "removes_difference": false,
+            "below_half_of_full": true
+          },
+          "D50": {
+            "value": -0.0936,
+            "n_supported": 19,
+            "k_supported": 13,
+            "n_not_supported": 9,
+            "k_not_supported": 7,
+            "n_pairs_removed": 3,
+            "changes_sign": false,
+            "removes_difference": false,
+            "below_half_of_full": false
+          },
+          "E10": {
+            "value": -0.1278,
+            "n_supported": 20,
+            "k_supported": 13,
+            "n_not_supported": 9,
+            "k_not_supported": 7,
+            "n_pairs_removed": 2,
+            "changes_sign": false,
+            "removes_difference": false,
+            "below_half_of_full": false
+          },
+          "E20": {
+            "value": -0.0833,
+            "n_supported": 21,
+            "k_supported": 14,
+            "n_not_supported": 8,
+            "k_not_supported": 6,
+            "n_pairs_removed": 2,
+            "changes_sign": false,
+            "removes_difference": false,
+            "below_half_of_full": false
+          },
+          "F10": {
+            "value": -0.1753,
+            "n_supported": 22,
+            "k_supported": 15,
+            "n_not_supported": 7,
+            "k_not_supported": 6,
+            "n_pairs_removed": 2,
+            "changes_sign": false,
+            "removes_difference": false,
+            "below_half_of_full": false
+          },
+          "F20": {
+            "value": -0.0682,
+            "n_supported": 22,
+            "k_supported": 15,
+            "n_not_supported": 8,
+            "k_not_supported": 6,
+            "n_pairs_removed": 1,
+            "changes_sign": false,
+            "removes_difference": false,
+            "below_half_of_full": false
+          }
+        },
+        "range": [
+          -0.1753,
+          -0.0278
+        ],
+        "removals_changing_sign": [],
+        "removals_removing_difference": [],
+        "removals_below_half_of_full": [
+          "B20",
+          "B30",
+          "D40"
+        ]
+      },
+      "stairs_and_conveying_removed": {
+        "value": -0.1333,
+        "n_supported": 20,
+        "k_supported": 14,
+        "n_not_supported": 6,
+        "k_not_supported": 5,
+        "n_pairs_removed": 5,
+        "changes_sign": false,
+        "removes_difference": false
+      },
+      "label": "pairs without a direct local evaluation; not supported includes no peer verdict"
+    },
+    "cold_start_contrast_with_peer_verdict_only": {
+      "full": {
+        "value": -0.1753,
+        "n_supported": 22,
+        "k_supported": 15,
+        "n_not_supported": 7,
+        "k_not_supported": 6
+      },
+      "campus_removed": {
+        "by_removal": {
+          "1": {
+            "value": -0.1429,
+            "n_supported": 21,
+            "k_supported": 15,
+            "n_not_supported": 7,
+            "k_not_supported": 6,
+            "n_pairs_removed": 1,
+            "changes_sign": false,
+            "removes_difference": false,
+            "below_half_of_full": false
+          },
+          "2": {
+            "value": -0.15,
+            "n_supported": 15,
+            "k_supported": 9,
+            "n_not_supported": 4,
+            "k_not_supported": 3,
+            "n_pairs_removed": 10,
+            "changes_sign": false,
+            "removes_difference": false,
+            "below_half_of_full": false
+          },
+          "6": {
+            "value": -0.2115,
+            "n_supported": 13,
+            "k_supported": 7,
+            "n_not_supported": 4,
+            "k_not_supported": 3,
+            "n_pairs_removed": 12,
+            "changes_sign": false,
+            "removes_difference": false,
+            "below_half_of_full": false
+          },
+          "7": {
+            "value": -0.0677,
+            "n_supported": 19,
+            "k_supported": 15,
+            "n_not_supported": 7,
+            "k_not_supported": 6,
+            "n_pairs_removed": 3,
+            "changes_sign": false,
+            "removes_difference": false,
+            "below_half_of_full": true
+          },
+          "10": {
+            "value": -0.2857,
+            "n_supported": 21,
+            "k_supported": 15,
+            "n_not_supported": 6,
+            "k_not_supported": 6,
+            "n_pairs_removed": 2,
+            "changes_sign": false,
+            "removes_difference": false,
+            "below_half_of_full": false
+          },
+          "11": {
+            "value": -0.1905,
+            "n_supported": 21,
+            "k_supported": 14,
+            "n_not_supported": 7,
+            "k_not_supported": 6,
+            "n_pairs_removed": 1,
+            "changes_sign": false,
+            "removes_difference": false,
+            "below_half_of_full": false
+          }
+        },
+        "range": [
+          -0.2857,
+          -0.0677
+        ],
+        "removals_changing_sign": [],
+        "removals_removing_difference": [],
+        "removals_below_half_of_full": [
+          "7"
+        ]
+      },
+      "system_removed": {
+        "by_removal": {
+          "B20": {
+            "value": -0.1071,
+            "n_supported": 20,
+            "k_supported": 15,
+            "n_not_supported": 7,
+            "k_not_supported": 6,
+            "n_pairs_removed": 2,
+            "changes_sign": false,
+            "removes_difference": false,
+            "below_half_of_full": false
+          },
+          "B30": {
+            "value": -0.1182,
+            "n_supported": 22,
+            "k_supported": 15,
+            "n_not_supported": 5,
+            "k_not_supported": 4,
+            "n_pairs_removed": 2,
+            "changes_sign": false,
+            "removes_difference": false,
+            "below_half_of_full": false
+          },
+          "C10": {
+            "value": -0.2071,
+            "n_supported": 20,
+            "k_supported": 13,
+            "n_not_supported": 7,
+            "k_not_supported": 6,
+            "n_pairs_removed": 2,
+            "changes_sign": false,
+            "removes_difference": false,
+            "below_half_of_full": false
+          },
+          "C20": {
+            "value": -0.3182,
+            "n_supported": 22,
+            "k_supported": 15,
+            "n_not_supported": 5,
+            "k_not_supported": 5,
+            "n_pairs_removed": 2,
+            "changes_sign": false,
+            "removes_difference": false,
+            "below_half_of_full": false
+          },
+          "C30": {
+            "value": -0.2071,
+            "n_supported": 20,
+            "k_supported": 13,
+            "n_not_supported": 7,
+            "k_not_supported": 6,
+            "n_pairs_removed": 2,
+            "changes_sign": false,
+            "removes_difference": false,
+            "below_half_of_full": false
+          },
+          "D10": {
+            "value": -0.1333,
+            "n_supported": 20,
+            "k_supported": 14,
+            "n_not_supported": 6,
+            "k_not_supported": 5,
+            "n_pairs_removed": 3,
+            "changes_sign": false,
+            "removes_difference": false,
+            "below_half_of_full": false
+          },
+          "D20": {
+            "value": -0.2071,
+            "n_supported": 20,
+            "k_supported": 13,
+            "n_not_supported": 7,
+            "k_not_supported": 6,
+            "n_pairs_removed": 2,
+            "changes_sign": false,
+            "removes_difference": false,
+            "below_half_of_full": false
+          },
+          "D30": {
+            "value": -0.1729,
+            "n_supported": 19,
+            "k_supported": 13,
+            "n_not_supported": 7,
+            "k_not_supported": 6,
+            "n_pairs_removed": 3,
+            "changes_sign": false,
+            "removes_difference": false,
+            "below_half_of_full": false
+          },
+          "D40": {
+            "value": -0.1203,
+            "n_supported": 19,
+            "k_supported": 14,
+            "n_not_supported": 7,
+            "k_not_supported": 6,
+            "n_pairs_removed": 3,
+            "changes_sign": false,
+            "removes_difference": false,
+            "below_half_of_full": false
+          },
+          "D50": {
+            "value": -0.1729,
+            "n_supported": 19,
+            "k_supported": 13,
+            "n_not_supported": 7,
+            "k_not_supported": 6,
+            "n_pairs_removed": 3,
+            "changes_sign": false,
+            "removes_difference": false,
+            "below_half_of_full": false
+          },
+          "E10": {
+            "value": -0.2071,
+            "n_supported": 20,
+            "k_supported": 13,
+            "n_not_supported": 7,
+            "k_not_supported": 6,
+            "n_pairs_removed": 2,
+            "changes_sign": false,
+            "removes_difference": false,
+            "below_half_of_full": false
+          },
+          "E20": {
+            "value": -0.1667,
+            "n_supported": 21,
+            "k_supported": 14,
+            "n_not_supported": 6,
+            "k_not_supported": 5,
+            "n_pairs_removed": 2,
+            "changes_sign": false,
+            "removes_difference": false,
+            "below_half_of_full": false
+          },
+          "F10": {
+            "value": -0.1515,
+            "n_supported": 22,
+            "k_supported": 15,
+            "n_not_supported": 6,
+            "k_not_supported": 5,
+            "n_pairs_removed": 1,
+            "changes_sign": false,
+            "removes_difference": false,
+            "below_half_of_full": false
+          }
+        },
+        "range": [
+          -0.3182,
+          -0.1071
+        ],
+        "removals_changing_sign": [],
+        "removals_removing_difference": [],
+        "removals_below_half_of_full": []
+      },
+      "stairs_and_conveying_removed": {
+        "value": -0.3,
+        "n_supported": 20,
+        "k_supported": 14,
+        "n_not_supported": 4,
+        "k_not_supported": 4,
+        "n_pairs_removed": 5,
+        "changes_sign": false,
+        "removes_difference": false
+      },
+      "label": "pairs without a direct local evaluation, pairs without a peer verdict left out"
+    },
+    "forward_pairs_without_peer_verdict": [
+      {
+        "campus": "10",
+        "system": "F10",
+        "holds": false,
+        "lift": 1.656
+      },
+      {
+        "campus": "11",
+        "system": "F10",
+        "holds": true,
+        "lift": 4.439
+      },
+      {
+        "campus": "11",
+        "system": "F20",
+        "holds": true,
+        "lift": 5.137
+      }
+    ]
+  },
+  "rank_correlation_difference": {
+    "n_pairs": 59,
+    "n_campuses": 6,
+    "n_building_systems": 13,
+    "campuses": [
+      "1",
+      "10",
+      "11",
+      "3",
+      "4",
+      "5"
+    ],
+    "building_systems": [
+      "B20",
+      "B30",
+      "C10",
+      "C20",
+      "C30",
+      "D10",
+      "D20",
+      "D30",
+      "D40",
+      "D50",
+      "E10",
+      "E20",
+      "G20"
+    ],
+    "rho_direct_local_lift": 0.7675,
+    "rho_peer_evidence_score": 0.5227,
+    "difference": 0.2448,
+    "stored_pair_level_interval_script_68": {
+      "ci95": [
+        0.037,
+        0.467
+      ],
+      "n_resamples": 2000
+    },
+    "two_way_cluster_bootstrap": {
+      "difference": {
+        "ci95": [
+          -0.1474,
+          0.7113
+        ],
+        "n_defined": 5000,
+        "n_undefined": 0,
+        "share_of_defined_at_or_below_0": 0.1216
+      },
+      "rho_direct_local_lift": {
+        "ci95": [
+          0.4653,
+          0.9229
+        ],
+        "n_defined": 5000,
+        "n_undefined": 0,
+        "share_of_defined_at_or_below_0": 0.0
+      },
+      "rho_peer_evidence_score": {
+        "ci95": [
+          0.1032,
+          0.804
+        ],
+        "n_defined": 5000,
+        "n_undefined": 0,
+        "share_of_defined_at_or_below_0": 0.01
+      },
+      "mean_pairs_per_replicate": 58.9
+    },
+    "campus_cluster_bootstrap": {
+      "difference": {
+        "ci95": [
+          0.0043,
+          0.5064
+        ],
+        "n_defined": 5000,
+        "n_undefined": 0,
+        "share_of_defined_at_or_below_0": 0.0202
+      },
+      "rho_direct_local_lift": {
+        "ci95": [
+          0.671,
+          0.8935
+        ],
+        "n_defined": 5000,
+        "n_undefined": 0,
+        "share_of_defined_at_or_below_0": 0.0
+      },
+      "rho_peer_evidence_score": {
+        "ci95": [
+          0.3341,
+          0.7276
+        ],
+        "n_defined": 5000,
+        "n_undefined": 0,
+        "share_of_defined_at_or_below_0": 0.0
+      },
+      "mean_pairs_per_replicate": 59.0
+    },
+    "system_cluster_bootstrap": {
+      "difference": {
+        "ci95": [
+          -0.0626,
+          0.5802
+        ],
+        "n_defined": 5000,
+        "n_undefined": 0,
+        "share_of_defined_at_or_below_0": 0.056
+      },
+      "rho_direct_local_lift": {
+        "ci95": [
+          0.535,
+          0.8837
+        ],
+        "n_defined": 5000,
+        "n_undefined": 0,
+        "share_of_defined_at_or_below_0": 0.0
+      },
+      "rho_peer_evidence_score": {
+        "ci95": [
+          0.2255,
+          0.7355
+        ],
+        "n_defined": 5000,
+        "n_undefined": 0,
+        "share_of_defined_at_or_below_0": 0.0008
+      },
+      "mean_pairs_per_replicate": 58.9
+    },
+    "pair_level_bootstrap": {
+      "difference": {
+        "ci95": [
+          0.0307,
+          0.4699
+        ],
+        "n_defined": 5000,
+        "n_undefined": 0,
+        "share_of_defined_at_or_below_0": 0.0124
+      },
+      "rho_direct_local_lift": {
+        "ci95": [
+          0.6058,
+          0.8709
+        ],
+        "n_defined": 5000,
+        "n_undefined": 0,
+        "share_of_defined_at_or_below_0": 0.0
+      },
+      "rho_peer_evidence_score": {
+        "ci95": [
+          0.3011,
+          0.703
+        ],
+        "n_defined": 5000,
+        "n_undefined": 0,
+        "share_of_defined_at_or_below_0": 0.0
+      },
+      "mean_pairs_per_replicate": 59.0
+    },
+    "leave_one_out": {
+      "campus_removed": {
+        "by_removal": {
+          "1": {
+            "n_pairs": 49,
+            "rho_direct_local_lift": 0.7683,
+            "rho_peer_evidence_score": 0.5505,
+            "difference": 0.2177
+          },
+          "3": {
+            "n_pairs": 50,
+            "rho_direct_local_lift": 0.7265,
+            "rho_peer_evidence_score": 0.4784,
+            "difference": 0.2481
+          },
+          "4": {
+            "n_pairs": 48,
+            "rho_direct_local_lift": 0.7369,
+            "rho_peer_evidence_score": 0.5622,
+            "difference": 0.1747
+          },
+          "5": {
+            "n_pairs": 49,
+            "rho_direct_local_lift": 0.8157,
+            "rho_peer_evidence_score": 0.4437,
+            "difference": 0.372
+          },
+          "10": {
+            "n_pairs": 50,
+            "rho_direct_local_lift": 0.7788,
+            "rho_peer_evidence_score": 0.4969,
+            "difference": 0.282
+          },
+          "11": {
+            "n_pairs": 49,
+            "rho_direct_local_lift": 0.788,
+            "rho_peer_evidence_score": 0.6164,
+            "difference": 0.1716
+          }
+        },
+        "range": [
+          0.1716,
+          0.372
+        ],
+        "removals_at_or_below_zero": []
+      },
+      "system_removed": {
+        "by_removal": {
+          "B20": {
+            "n_pairs": 55,
+            "rho_direct_local_lift": 0.77,
+            "rho_peer_evidence_score": 0.4808,
+            "difference": 0.2891
+          },
+          "B30": {
+            "n_pairs": 57,
+            "rho_direct_local_lift": 0.8393,
+            "rho_peer_evidence_score": 0.5406,
+            "difference": 0.2987
+          },
+          "C10": {
+            "n_pairs": 53,
+            "rho_direct_local_lift": 0.7512,
+            "rho_peer_evidence_score": 0.573,
+            "difference": 0.1782
+          },
+          "C20": {
+            "n_pairs": 57,
+            "rho_direct_local_lift": 0.7597,
+            "rho_peer_evidence_score": 0.4768,
+            "difference": 0.283
+          },
+          "C30": {
+            "n_pairs": 53,
+            "rho_direct_local_lift": 0.7661,
+            "rho_peer_evidence_score": 0.5298,
+            "difference": 0.2363
+          },
+          "D10": {
+            "n_pairs": 57,
+            "rho_direct_local_lift": 0.7576,
+            "rho_peer_evidence_score": 0.4831,
+            "difference": 0.2746
+          },
+          "D20": {
+            "n_pairs": 53,
+            "rho_direct_local_lift": 0.7467,
+            "rho_peer_evidence_score": 0.5385,
+            "difference": 0.2082
+          },
+          "D30": {
+            "n_pairs": 53,
+            "rho_direct_local_lift": 0.7531,
+            "rho_peer_evidence_score": 0.506,
+            "difference": 0.2471
+          },
+          "D40": {
+            "n_pairs": 53,
+            "rho_direct_local_lift": 0.7545,
+            "rho_peer_evidence_score": 0.5315,
+            "difference": 0.223
+          },
+          "D50": {
+            "n_pairs": 53,
+            "rho_direct_local_lift": 0.7474,
+            "rho_peer_evidence_score": 0.6129,
+            "difference": 0.1345
+          },
+          "E10": {
+            "n_pairs": 53,
+            "rho_direct_local_lift": 0.7444,
+            "rho_peer_evidence_score": 0.4935,
+            "difference": 0.2509
+          },
+          "E20": {
+            "n_pairs": 54,
+            "rho_direct_local_lift": 0.7865,
+            "rho_peer_evidence_score": 0.4824,
+            "difference": 0.3041
+          },
+          "G20": {
+            "n_pairs": 57,
+            "rho_direct_local_lift": 0.785,
+            "rho_peer_evidence_score": 0.524,
+            "difference": 0.261
+          }
+        },
+        "range": [
+          0.1345,
+          0.3041
+        ],
+        "removals_at_or_below_zero": []
+      }
+    }
+  },
+  "construction_inputs": {
+    "label_check": {
+      "rows_checked": {
+        "pred_single": 514975,
+        "pred_pair": 4119800,
+        "pred_single_pre2017": 514975,
+        "pred_pair_pre2017": 2106239
+      },
+      "n_pair_pre2017_files": 35,
+      "count_rule_rows_checked": 4634775,
+      "statement": "every stored label equals the label recomputed with the 75th-percentile thresholds fitted on: C\\{c} for pred_single/c; C\\{a,b} for pred_pair/a__b; the same sets restricted to rows anchored in 2016 or earlier for the forward-test fits; the prior-year count rule of script 48 carries the labels of pred_single and pred_pair on the same rows"
+    },
+    "n_scored_pairs": {
+      "single_nesting": 142,
+      "double_nesting": 141,
+      "matched_nearest_size": 140,
+      "count_rule": 141
+    },
+    "differences_from_double_nesting": {
+      "single_nesting": [
+        {
+          "target_campus": "10",
+          "system": "G20",
+          "kind": "data sufficiency differs",
+          "here": {
+            "n_pos": 349,
+            "n_units": 14566,
+            "n_evaluable": 3,
+            "eligible": true,
+            "data_sufficiency": "caution"
+          },
+          "double_nesting": {
+            "n_pos": 345,
+            "n_units": 14566,
+            "n_evaluable": 2,
+            "eligible": true,
+            "data_sufficiency": "fail"
+          },
+          "per_peer_high_burden_quarters": {
+            "1": {
+              "here": 11,
+              "double_nesting": 7,
+              "units": 1292,
+              "labels_here_fitted_on": "all campuses except 1",
+              "labels_double_nesting_fitted_on": "all campuses except 10 and 1"
+            },
+            "2": {
+              "here": 4,
+              "double_nesting": 4,
+              "units": 551,
+              "labels_here_fitted_on": "all campuses except 2",
+              "labels_double_nesting_fitted_on": "all campuses except 10 and 2"
+            },
+            "3": {
+              "here": 4,
+              "double_nesting": 4,
+              "units": 3872,
+              "labels_here_fitted_on": "all campuses except 3",
+              "labels_double_nesting_fitted_on": "all campuses except 10 and 3"
+            },
+            "4": {
+              "here": 249,
+              "double_nesting": 249,
+              "units": 1987,
+              "labels_here_fitted_on": "all campuses except 4",
+              "labels_double_nesting_fitted_on": "all campuses except 10 and 4"
+            },
+            "5": {
+              "here": 0,
+              "double_nesting": 0,
+              "units": 47,
+              "labels_here_fitted_on": "all campuses except 5",
+              "labels_double_nesting_fitted_on": "all campuses except 10 and 5"
+            },
+            "6": {
+              "here": 7,
+              "double_nesting": 7,
+              "units": 178,
+              "labels_here_fitted_on": "all campuses except 6",
+              "labels_double_nesting_fitted_on": "all campuses except 10 and 6"
+            },
+            "11": {
+              "here": 74,
+              "double_nesting": 74,
+              "units": 6639,
+              "labels_here_fitted_on": "all campuses except 11",
+              "labels_double_nesting_fitted_on": "all campuses except 10 and 11"
+            }
+          }
+        },
+        {
+          "target_campus": "11",
+          "system": "G30",
+          "kind": "scored only here",
+          "here": {
+            "n_pos": 29,
+            "n_units": 1789,
+            "n_evaluable": 1,
+            "eligible": true,
+            "data_sufficiency": "fail"
+          },
+          "double_nesting": {
+            "n_pos": 14,
+            "n_units": 1789,
+            "n_evaluable": 1,
+            "eligible": false,
+            "data_sufficiency": "fail"
+          },
+          "per_peer_high_burden_quarters": {
+            "1": {
+              "here": 0,
+              "double_nesting": 0,
+              "units": 229,
+              "labels_here_fitted_on": "all campuses except 1",
+              "labels_double_nesting_fitted_on": "all campuses except 11 and 1"
+            },
+            "3": {
+              "here": 0,
+              "double_nesting": 0,
+              "units": 579,
+              "labels_here_fitted_on": "all campuses except 3",
+              "labels_double_nesting_fitted_on": "all campuses except 11 and 3"
+            },
+            "5": {
+              "here": 29,
+              "double_nesting": 14,
+              "units": 946,
+              "labels_here_fitted_on": "all campuses except 5",
+              "labels_double_nesting_fitted_on": "all campuses except 11 and 5"
+            },
+            "6": {
+              "here": 0,
+              "double_nesting": 0,
+              "units": 11,
+              "labels_here_fitted_on": "all campuses except 6",
+              "labels_double_nesting_fitted_on": "all campuses except 11 and 6"
+            },
+            "10": {
+              "here": 0,
+              "double_nesting": 0,
+              "units": 24,
+              "labels_here_fitted_on": "all campuses except 10",
+              "labels_double_nesting_fitted_on": "all campuses except 11 and 10"
+            }
+          }
+        },
+        {
+          "target_campus": "2",
+          "system": "G20",
+          "kind": "data sufficiency differs",
+          "here": {
+            "n_pos": 349,
+            "n_units": 14432,
+            "n_evaluable": 3,
+            "eligible": true,
+            "data_sufficiency": "caution"
+          },
+          "double_nesting": {
+            "n_pos": 336,
+            "n_units": 14432,
+            "n_evaluable": 2,
+            "eligible": true,
+            "data_sufficiency": "fail"
+          },
+          "per_peer_high_burden_quarters": {
+            "1": {
+              "here": 11,
+              "double_nesting": 7,
+              "units": 1292,
+              "labels_here_fitted_on": "all campuses except 1",
+              "labels_double_nesting_fitted_on": "all campuses except 2 and 1"
+            },
+            "3": {
+              "here": 4,
+              "double_nesting": 3,
+              "units": 3872,
+              "labels_here_fitted_on": "all campuses except 3",
+              "labels_double_nesting_fitted_on": "all campuses except 2 and 3"
+            },
+            "4": {
+              "here": 249,
+              "double_nesting": 249,
+              "units": 1987,
+              "labels_here_fitted_on": "all campuses except 4",
+              "labels_double_nesting_fitted_on": "all campuses except 2 and 4"
+            },
+            "5": {
+              "here": 0,
+              "double_nesting": 0,
+              "units": 47,
+              "labels_here_fitted_on": "all campuses except 5",
+              "labels_double_nesting_fitted_on": "all campuses except 2 and 5"
+            },
+            "6": {
+              "here": 7,
+              "double_nesting": 7,
+              "units": 178,
+              "labels_here_fitted_on": "all campuses except 6",
+              "labels_double_nesting_fitted_on": "all campuses except 2 and 6"
+            },
+            "10": {
+              "here": 4,
+              "double_nesting": 4,
+              "units": 417,
+              "labels_here_fitted_on": "all campuses except 10",
+              "labels_double_nesting_fitted_on": "all campuses except 2 and 10"
+            },
+            "11": {
+              "here": 74,
+              "double_nesting": 66,
+              "units": 6639,
+              "labels_here_fitted_on": "all campuses except 11",
+              "labels_double_nesting_fitted_on": "all campuses except 2 and 11"
+            }
+          }
+        }
+      ],
+      "matched_nearest_size": [
+        {
+          "target_campus": "10",
+          "system": "G30",
+          "kind": "scored only under double nesting",
+          "here": {
+            "n_pos": 14,
+            "n_units": 4985,
+            "n_evaluable": 1,
+            "eligible": false,
+            "data_sufficiency": "fail"
+          },
+          "double_nesting": {
+            "n_pos": 29,
+            "n_units": 4985,
+            "n_evaluable": 1,
+            "eligible": true,
+            "data_sufficiency": "fail"
+          },
+          "per_peer_high_burden_quarters": {
+            "1": {
+              "here": 0,
+              "double_nesting": 0,
+              "units": 229,
+              "labels_here_fitted_on": "all campuses except 1 and 11",
+              "labels_double_nesting_fitted_on": "all campuses except 10 and 1"
+            },
+            "3": {
+              "here": 0,
+              "double_nesting": 0,
+              "units": 579,
+              "labels_here_fitted_on": "all campuses except 3 and 11",
+              "labels_double_nesting_fitted_on": "all campuses except 10 and 3"
+            },
+            "5": {
+              "here": 14,
+              "double_nesting": 29,
+              "units": 946,
+              "labels_here_fitted_on": "all campuses except 5 and 11",
+              "labels_double_nesting_fitted_on": "all campuses except 10 and 5"
+            },
+            "6": {
+              "here": 0,
+              "double_nesting": 0,
+              "units": 11,
+              "labels_here_fitted_on": "all campuses except 6 and 11",
+              "labels_double_nesting_fitted_on": "all campuses except 10 and 6"
+            },
+            "11": {
+              "here": 0,
+              "double_nesting": 0,
+              "units": 3220,
+              "labels_here_fitted_on": "all campuses except 11 and 1",
+              "labels_double_nesting_fitted_on": "all campuses except 10 and 11"
+            }
+          }
+        },
+        {
+          "target_campus": "11",
+          "system": "G30",
+          "kind": "scored only here",
+          "here": {
+            "n_pos": 29,
+            "n_units": 1789,
+            "n_evaluable": 1,
+            "eligible": true,
+            "data_sufficiency": "fail"
+          },
+          "double_nesting": {
+            "n_pos": 14,
+            "n_units": 1789,
+            "n_evaluable": 1,
+            "eligible": false,
+            "data_sufficiency": "fail"
+          },
+          "per_peer_high_burden_quarters": {
+            "1": {
+              "here": 0,
+              "double_nesting": 0,
+              "units": 229,
+              "labels_here_fitted_on": "all campuses except 1 and 3",
+              "labels_double_nesting_fitted_on": "all campuses except 11 and 1"
+            },
+            "3": {
+              "here": 0,
+              "double_nesting": 0,
+              "units": 579,
+              "labels_here_fitted_on": "all campuses except 3 and 10",
+              "labels_double_nesting_fitted_on": "all campuses except 11 and 3"
+            },
+            "5": {
+              "here": 29,
+              "double_nesting": 14,
+              "units": 946,
+              "labels_here_fitted_on": "all campuses except 5 and 3",
+              "labels_double_nesting_fitted_on": "all campuses except 11 and 5"
+            },
+            "6": {
+              "here": 0,
+              "double_nesting": 0,
+              "units": 11,
+              "labels_here_fitted_on": "all campuses except 6 and 3",
+              "labels_double_nesting_fitted_on": "all campuses except 11 and 6"
+            },
+            "10": {
+              "here": 0,
+              "double_nesting": 0,
+              "units": 24,
+              "labels_here_fitted_on": "all campuses except 10 and 3",
+              "labels_double_nesting_fitted_on": "all campuses except 11 and 10"
+            }
+          }
+        },
+        {
+          "target_campus": "2",
+          "system": "G20",
+          "kind": "data sufficiency differs",
+          "here": {
+            "n_pos": 370,
+            "n_units": 14432,
+            "n_evaluable": 3,
+            "eligible": true,
+            "data_sufficiency": "caution"
+          },
+          "double_nesting": {
+            "n_pos": 336,
+            "n_units": 14432,
+            "n_evaluable": 2,
+            "eligible": true,
+            "data_sufficiency": "fail"
+          },
+          "per_peer_high_burden_quarters": {
+            "1": {
+              "here": 11,
+              "double_nesting": 7,
+              "units": 1292,
+              "labels_here_fitted_on": "all campuses except 1 and 6",
+              "labels_double_nesting_fitted_on": "all campuses except 2 and 1"
+            },
+            "3": {
+              "here": 4,
+              "double_nesting": 3,
+              "units": 3872,
+              "labels_here_fitted_on": "all campuses except 3 and 6",
+              "labels_double_nesting_fitted_on": "all campuses except 2 and 3"
+            },
+            "4": {
+              "here": 268,
+              "double_nesting": 249,
+              "units": 1987,
+              "labels_here_fitted_on": "all campuses except 4 and 6",
+              "labels_double_nesting_fitted_on": "all campuses except 2 and 4"
+            },
+            "5": {
+              "here": 0,
+              "double_nesting": 0,
+              "units": 47,
+              "labels_here_fitted_on": "all campuses except 5 and 6",
+              "labels_double_nesting_fitted_on": "all campuses except 2 and 5"
+            },
+            "6": {
+              "here": 9,
+              "double_nesting": 7,
+              "units": 178,
+              "labels_here_fitted_on": "all campuses except 6 and 4",
+              "labels_double_nesting_fitted_on": "all campuses except 2 and 6"
+            },
+            "10": {
+              "here": 4,
+              "double_nesting": 4,
+              "units": 417,
+              "labels_here_fitted_on": "all campuses except 10 and 6",
+              "labels_double_nesting_fitted_on": "all campuses except 2 and 10"
+            },
+            "11": {
+              "here": 74,
+              "double_nesting": 66,
+              "units": 6639,
+              "labels_here_fitted_on": "all campuses except 11 and 6",
+              "labels_double_nesting_fitted_on": "all campuses except 2 and 11"
+            }
+          }
+        },
+        {
+          "target_campus": "3",
+          "system": "C20",
+          "kind": "data sufficiency differs",
+          "here": {
+            "n_pos": 95,
+            "n_units": 6863,
+            "n_evaluable": 4,
+            "eligible": true,
+            "data_sufficiency": "fail"
+          },
+          "double_nesting": {
+            "n_pos": 129,
+            "n_units": 6863,
+            "n_evaluable": 4,
+            "eligible": true,
+            "data_sufficiency": "caution"
+          },
+          "per_peer_high_burden_quarters": {
+            "1": {
+              "here": 49,
+              "double_nesting": 56,
+              "units": 1534,
+              "labels_here_fitted_on": "all campuses except 1 and 11",
+              "labels_double_nesting_fitted_on": "all campuses except 3 and 1"
+            },
+            "4": {
+              "here": 5,
+              "double_nesting": 6,
+              "units": 1076,
+              "labels_here_fitted_on": "all campuses except 4 and 11",
+              "labels_double_nesting_fitted_on": "all campuses except 3 and 4"
+            },
+            "5": {
+              "here": 2,
+              "double_nesting": 3,
+              "units": 399,
+              "labels_here_fitted_on": "all campuses except 5 and 11",
+              "labels_double_nesting_fitted_on": "all campuses except 3 and 5"
+            },
+            "6": {
+              "here": 17,
+              "double_nesting": 21,
+              "units": 592,
+              "labels_here_fitted_on": "all campuses except 6 and 11",
+              "labels_double_nesting_fitted_on": "all campuses except 3 and 6"
+            },
+            "10": {
+              "here": 10,
+              "double_nesting": 14,
+              "units": 1367,
+              "labels_here_fitted_on": "all campuses except 10 and 11",
+              "labels_double_nesting_fitted_on": "all campuses except 3 and 10"
+            },
+            "11": {
+              "here": 12,
+              "double_nesting": 29,
+              "units": 1895,
+              "labels_here_fitted_on": "all campuses except 11 and 10",
+              "labels_double_nesting_fitted_on": "all campuses except 3 and 11"
+            }
+          }
+        },
+        {
+          "target_campus": "3",
+          "system": "F10",
+          "kind": "data sufficiency differs",
+          "here": {
+            "n_pos": 77,
+            "n_units": 6417,
+            "n_evaluable": 3,
+            "eligible": true,
+            "data_sufficiency": "fail"
+          },
+          "double_nesting": {
+            "n_pos": 101,
+            "n_units": 6417,
+            "n_evaluable": 3,
+            "eligible": true,
+            "data_sufficiency": "caution"
+          },
+          "per_peer_high_burden_quarters": {
+            "1": {
+              "here": 1,
+              "double_nesting": 1,
+              "units": 123,
+              "labels_here_fitted_on": "all campuses except 1 and 11",
+              "labels_double_nesting_fitted_on": "all campuses except 3 and 1"
+            },
+            "2": {
+              "here": 0,
+              "double_nesting": 0,
+              "units": 57,
+              "labels_here_fitted_on": "all campuses except 2 and 11",
+              "labels_double_nesting_fitted_on": "all campuses except 3 and 2"
+            },
+            "4": {
+              "here": 3,
+              "double_nesting": 3,
+              "units": 321,
+              "labels_here_fitted_on": "all campuses except 4 and 11",
+              "labels_double_nesting_fitted_on": "all campuses except 3 and 4"
+            },
+            "6": {
+              "here": 21,
+              "double_nesting": 20,
+              "units": 149,
+              "labels_here_fitted_on": "all campuses except 6 and 11",
+              "labels_double_nesting_fitted_on": "all campuses except 3 and 6"
+            },
+            "10": {
+              "here": 20,
+              "double_nesting": 26,
+              "units": 1563,
+              "labels_here_fitted_on": "all campuses except 10 and 11",
+              "labels_double_nesting_fitted_on": "all campuses except 3 and 10"
+            },
+            "11": {
+              "here": 32,
+              "double_nesting": 51,
+              "units": 4204,
+              "labels_here_fitted_on": "all campuses except 11 and 10",
+              "labels_double_nesting_fitted_on": "all campuses except 3 and 11"
+            }
+          }
+        },
+        {
+          "target_campus": "3",
+          "system": "G20",
+          "kind": "data sufficiency differs",
+          "here": {
+            "n_pos": 407,
+            "n_units": 11111,
+            "n_evaluable": 2,
+            "eligible": true,
+            "data_sufficiency": "fail"
+          },
+          "double_nesting": {
+            "n_pos": 368,
+            "n_units": 11111,
+            "n_evaluable": 3,
+            "eligible": true,
+            "data_sufficiency": "caution"
+          },
+          "per_peer_high_burden_quarters": {
+            "1": {
+              "here": 7,
+              "double_nesting": 11,
+              "units": 1292,
+              "labels_here_fitted_on": "all campuses except 1 and 11",
+              "labels_double_nesting_fitted_on": "all campuses except 3 and 1"
+            },
+            "2": {
+              "here": 4,
+              "double_nesting": 4,
+              "units": 551,
+              "labels_here_fitted_on": "all campuses except 2 and 11",
+              "labels_double_nesting_fitted_on": "all campuses except 3 and 2"
+            },
+            "4": {
+              "here": 311,
+              "double_nesting": 268,
+              "units": 1987,
+              "labels_here_fitted_on": "all campuses except 4 and 11",
+              "labels_double_nesting_fitted_on": "all campuses except 3 and 4"
+            },
+            "5": {
+              "here": 0,
+              "double_nesting": 0,
+              "units": 47,
+              "labels_here_fitted_on": "all campuses except 5 and 11",
+              "labels_double_nesting_fitted_on": "all campuses except 3 and 5"
+            },
+            "6": {
+              "here": 7,
+              "double_nesting": 7,
+              "units": 178,
+              "labels_here_fitted_on": "all campuses except 6 and 11",
+              "labels_double_nesting_fitted_on": "all campuses except 3 and 6"
+            },
+            "10": {
+              "here": 4,
+              "double_nesting": 4,
+              "units": 417,
+              "labels_here_fitted_on": "all campuses except 10 and 11",
+              "labels_double_nesting_fitted_on": "all campuses except 3 and 10"
+            },
+            "11": {
+              "here": 74,
+              "double_nesting": 74,
+              "units": 6639,
+              "labels_here_fitted_on": "all campuses except 11 and 10",
+              "labels_double_nesting_fitted_on": "all campuses except 3 and 11"
+            }
+          }
+        },
+        {
+          "target_campus": "3",
+          "system": "G30",
+          "kind": "scored only under double nesting",
+          "here": {
+            "n_pos": 14,
+            "n_units": 4430,
+            "n_evaluable": 1,
+            "eligible": false,
+            "data_sufficiency": "fail"
+          },
+          "double_nesting": {
+            "n_pos": 29,
+            "n_units": 4430,
+            "n_evaluable": 1,
+            "eligible": true,
+            "data_sufficiency": "fail"
+          },
+          "per_peer_high_burden_quarters": {
+            "1": {
+              "here": 0,
+              "double_nesting": 0,
+              "units": 229,
+              "labels_here_fitted_on": "all campuses except 1 and 11",
+              "labels_double_nesting_fitted_on": "all campuses except 3 and 1"
+            },
+            "5": {
+              "here": 14,
+              "double_nesting": 29,
+              "units": 946,
+              "labels_here_fitted_on": "all campuses except 5 and 11",
+              "labels_double_nesting_fitted_on": "all campuses except 3 and 5"
+            },
+            "6": {
+              "here": 0,
+              "double_nesting": 0,
+              "units": 11,
+              "labels_here_fitted_on": "all campuses except 6 and 11",
+              "labels_double_nesting_fitted_on": "all campuses except 3 and 6"
+            },
+            "10": {
+              "here": 0,
+              "double_nesting": 0,
+              "units": 24,
+              "labels_here_fitted_on": "all campuses except 10 and 11",
+              "labels_double_nesting_fitted_on": "all campuses except 3 and 10"
+            },
+            "11": {
+              "here": 0,
+              "double_nesting": 0,
+              "units": 3220,
+              "labels_here_fitted_on": "all campuses except 11 and 10",
+              "labels_double_nesting_fitted_on": "all campuses except 3 and 11"
+            }
+          }
+        },
+        {
+          "target_campus": "4",
+          "system": "F10",
+          "kind": "data sufficiency differs",
+          "here": {
+            "n_pos": 116,
+            "n_units": 6757,
+            "n_evaluable": 3,
+            "eligible": true,
+            "data_sufficiency": "caution"
+          },
+          "double_nesting": {
+            "n_pos": 99,
+            "n_units": 6757,
+            "n_evaluable": 3,
+            "eligible": true,
+            "data_sufficiency": "fail"
+          },
+          "per_peer_high_burden_quarters": {
+            "1": {
+              "here": 1,
+              "double_nesting": 1,
+              "units": 123,
+              "labels_here_fitted_on": "all campuses except 1 and 6",
+              "labels_double_nesting_fitted_on": "all campuses except 4 and 1"
+            },
+            "2": {
+              "here": 0,
+              "double_nesting": 0,
+              "units": 57,
+              "labels_here_fitted_on": "all campuses except 2 and 6",
+              "labels_double_nesting_fitted_on": "all campuses except 4 and 2"
+            },
+            "3": {
+              "here": 1,
+              "double_nesting": 1,
+              "units": 661,
+              "labels_here_fitted_on": "all campuses except 3 and 6",
+              "labels_double_nesting_fitted_on": "all campuses except 4 and 3"
+            },
+            "6": {
+              "here": 20,
+              "double_nesting": 20,
+              "units": 149,
+              "labels_here_fitted_on": "all campuses except 6 and 1",
+              "labels_double_nesting_fitted_on": "all campuses except 4 and 6"
+            },
+            "10": {
+              "here": 31,
+              "double_nesting": 26,
+              "units": 1563,
+              "labels_here_fitted_on": "all campuses except 10 and 6",
+              "labels_double_nesting_fitted_on": "all campuses except 4 and 10"
+            },
+            "11": {
+              "here": 63,
+              "double_nesting": 51,
+              "units": 4204,
+              "labels_here_fitted_on": "all campuses except 11 and 6",
+              "labels_double_nesting_fitted_on": "all campuses except 4 and 11"
+            }
+          }
+        },
+        {
+          "target_campus": "6",
+          "system": "E20",
+          "kind": "data sufficiency differs",
+          "here": {
+            "n_pos": 499,
+            "n_units": 24728,
+            "n_evaluable": 6,
+            "eligible": true,
+            "data_sufficiency": "caution"
+          },
+          "double_nesting": {
+            "n_pos": 908,
+            "n_units": 24728,
+            "n_evaluable": 7,
+            "eligible": true,
+            "data_sufficiency": "pass"
+          },
+          "per_peer_high_burden_quarters": {
+            "1": {
+              "here": 60,
+              "double_nesting": 114,
+              "units": 1686,
+              "labels_here_fitted_on": "all campuses except 1 and 4",
+              "labels_double_nesting_fitted_on": "all campuses except 6 and 1"
+            },
+            "2": {
+              "here": 11,
+              "double_nesting": 18,
+              "units": 439,
+              "labels_here_fitted_on": "all campuses except 2 and 4",
+              "labels_double_nesting_fitted_on": "all campuses except 6 and 2"
+            },
+            "3": {
+              "here": 43,
+              "double_nesting": 67,
+              "units": 6609,
+              "labels_here_fitted_on": "all campuses except 3 and 4",
+              "labels_double_nesting_fitted_on": "all campuses except 6 and 3"
+            },
+            "4": {
+              "here": 133,
+              "double_nesting": 252,
+              "units": 1732,
+              "labels_here_fitted_on": "all campuses except 4 and 1",
+              "labels_double_nesting_fitted_on": "all campuses except 6 and 4"
+            },
+            "5": {
+              "here": 204,
+              "double_nesting": 363,
+              "units": 7986,
+              "labels_here_fitted_on": "all campuses except 5 and 4",
+              "labels_double_nesting_fitted_on": "all campuses except 6 and 5"
+            },
+            "7": {
+              "here": 0,
+              "double_nesting": 0,
+              "units": 8,
+              "labels_here_fitted_on": "all campuses except 7 and 4",
+              "labels_double_nesting_fitted_on": "all campuses except 6 and 7"
+            },
+            "10": {
+              "here": 43,
+              "double_nesting": 82,
+              "units": 2268,
+              "labels_here_fitted_on": "all campuses except 10 and 4",
+              "labels_double_nesting_fitted_on": "all campuses except 6 and 10"
+            },
+            "11": {
+              "here": 5,
+              "double_nesting": 12,
+              "units": 4000,
+              "labels_here_fitted_on": "all campuses except 11 and 4",
+              "labels_double_nesting_fitted_on": "all campuses except 6 and 11"
+            }
+          }
+        },
+        {
+          "target_campus": "7",
+          "system": "G20",
+          "kind": "data sufficiency differs",
+          "here": {
+            "n_pos": 340,
+            "n_units": 14983,
+            "n_evaluable": 2,
+            "eligible": true,
+            "data_sufficiency": "fail"
+          },
+          "double_nesting": {
+            "n_pos": 353,
+            "n_units": 14983,
+            "n_evaluable": 3,
+            "eligible": true,
+            "data_sufficiency": "caution"
+          },
+          "per_peer_high_burden_quarters": {
+            "1": {
+              "here": 7,
+              "double_nesting": 11,
+              "units": 1292,
+              "labels_here_fitted_on": "all campuses except 1 and 2",
+              "labels_double_nesting_fitted_on": "all campuses except 7 and 1"
+            },
+            "2": {
+              "here": 4,
+              "double_nesting": 4,
+              "units": 551,
+              "labels_here_fitted_on": "all campuses except 2 and 6",
+              "labels_double_nesting_fitted_on": "all campuses except 7 and 2"
+            },
+            "3": {
+              "here": 3,
+              "double_nesting": 4,
+              "units": 3872,
+              "labels_here_fitted_on": "all campuses except 3 and 2",
+              "labels_double_nesting_fitted_on": "all campuses except 7 and 3"
+            },
+            "4": {
+              "here": 249,
+              "double_nesting": 249,
+              "units": 1987,
+              "labels_here_fitted_on": "all campuses except 4 and 2",
+              "labels_double_nesting_fitted_on": "all campuses except 7 and 4"
+            },
+            "5": {
+              "here": 0,
+              "double_nesting": 0,
+              "units": 47,
+              "labels_here_fitted_on": "all campuses except 5 and 2",
+              "labels_double_nesting_fitted_on": "all campuses except 7 and 5"
+            },
+            "6": {
+              "here": 7,
+              "double_nesting": 7,
+              "units": 178,
+              "labels_here_fitted_on": "all campuses except 6 and 2",
+              "labels_double_nesting_fitted_on": "all campuses except 7 and 6"
+            },
+            "10": {
+              "here": 4,
+              "double_nesting": 4,
+              "units": 417,
+              "labels_here_fitted_on": "all campuses except 10 and 2",
+              "labels_double_nesting_fitted_on": "all campuses except 7 and 10"
+            },
+            "11": {
+              "here": 66,
+              "double_nesting": 74,
+              "units": 6639,
+              "labels_here_fitted_on": "all campuses except 11 and 2",
+              "labels_double_nesting_fitted_on": "all campuses except 7 and 11"
+            }
+          }
+        }
+      ],
+      "count_rule": []
+    },
+    "thresholds_G30_target_11": {
+      "system": "G30",
+      "p75_fitted_on": {
+        "all nine campuses": 10.0,
+        "all except 11 (peer campuses)": 23.75
+      },
+      "per_peer": {
+        "1": {
+          "single_nesting_all_except_peer": 10.0,
+          "double_nesting_all_except_11_and_peer": 23.75
+        },
+        "10": {
+          "single_nesting_all_except_peer": 10.0,
+          "double_nesting_all_except_11_and_peer": 23.75
+        },
+        "2": {
+          "single_nesting_all_except_peer": 10.0,
+          "double_nesting_all_except_11_and_peer": 23.75
+        },
+        "3": {
+          "single_nesting_all_except_peer": 10.0,
+          "double_nesting_all_except_11_and_peer": 23.75
+        },
+        "4": {
+          "single_nesting_all_except_peer": 10.0,
+          "double_nesting_all_except_11_and_peer": 23.75
+        },
+        "5": {
+          "single_nesting_all_except_peer": 5.0,
+          "double_nesting_all_except_11_and_peer": 22.5
+        },
+        "6": {
+          "single_nesting_all_except_peer": 10.0,
+          "double_nesting_all_except_11_and_peer": 23.75
+        },
+        "7": {
+          "single_nesting_all_except_peer": 10.0,
+          "double_nesting_all_except_11_and_peer": 23.75
+        }
+      }
+    }
+  },
+  "prior_record_trace": {
+    "held_out_maps": {
+      "stored": {
+        "n_supported": 98,
+        "n_verdicts_changed": 0,
+        "gained_support": [],
+        "lost_support": []
+      },
+      "omitted": {
+        "n_supported": 94,
+        "n_verdicts_changed": 4,
+        "gained_support": [],
+        "lost_support": [
+          "3/G20",
+          "5/G20",
+          "6/G20",
+          "7/G20"
+        ]
+      },
+      "trace_pass": {
+        "n_supported": 110,
+        "n_verdicts_changed": 12,
+        "gained_support": [
+          "1/C20",
+          "1/D10",
+          "10/D10",
+          "2/B30",
+          "3/C20",
+          "3/D10",
+          "3/F10",
+          "4/C20",
+          "5/F10",
+          "6/C20",
+          "7/C20",
+          "7/D10"
+        ],
+        "lost_support": []
+      },
+      "trace_caution": {
+        "n_supported": 94,
+        "n_verdicts_changed": 4,
+        "gained_support": [],
+        "lost_support": [
+          "3/G20",
+          "5/G20",
+          "6/G20",
+          "7/G20"
+        ]
+      },
+      "trace_fail": {
+        "n_supported": 82,
+        "n_verdicts_changed": 16,
+        "gained_support": [],
+        "lost_support": [
+          "1/B30",
+          "1/F10",
+          "10/B30",
+          "11/B30",
+          "2/F10",
+          "3/B30",
+          "3/G20",
+          "4/B30",
+          "5/B30",
+          "5/G20",
+          "6/B30",
+          "6/D10",
+          "6/G20",
+          "7/B30",
+          "7/F10",
+          "7/G20"
+        ]
+      },
+      "frequency_matched_ratio": {
+        "n_supported": 98,
+        "n_verdicts_changed": 0,
+        "gained_support": [],
+        "lost_support": []
+      },
+      "verdict_depends_on_trace_score": {
+        "definition": "verdict with the trace gate at pass differs from the verdict with it at fail",
+        "n": 28,
+        "pairs": [
+          "1/B30",
+          "1/C20",
+          "1/D10",
+          "1/F10",
+          "10/B30",
+          "10/D10",
+          "11/B30",
+          "2/B30",
+          "2/F10",
+          "3/B30",
+          "3/C20",
+          "3/D10",
+          "3/F10",
+          "3/G20",
+          "4/B30",
+          "4/C20",
+          "5/B30",
+          "5/F10",
+          "5/G20",
+          "6/B30",
+          "6/C20",
+          "6/D10",
+          "6/G20",
+          "7/B30",
+          "7/C20",
+          "7/D10",
+          "7/F10",
+          "7/G20"
+        ],
+        "of_which_stored_trace": {
+          "pass": 4,
+          "caution": 18,
+          "fail": 6
+        }
+      },
+      "trace_gate_score_counts": {
+        "pass": 80,
+        "caution": 49,
+        "fail": 12
+      },
+      "ratio_gate_score_counts": {
+        "pass": 53,
+        "caution": 88,
+        "fail": 0
+      },
+      "per_pair": {
+        "1/B30": {
+          "trace": "caution",
+          "ratio": 0.756,
+          "ratio_gate": "caution",
+          "zero_prior_share": 0.24,
+          "S_stored": 0.7,
+          "S_omitted": 0.75,
+          "S_trace_pass": 0.8,
+          "S_trace_caution": 0.7,
+          "S_trace_fail": 0.6,
+          "S_frequency_matched_ratio": 0.7
+        },
+        "1/C20": {
+          "trace": "fail",
+          "ratio": 0.891,
+          "ratio_gate": "caution",
+          "zero_prior_share": 0.5,
+          "S_stored": 0.5,
+          "S_omitted": 0.625,
+          "S_trace_pass": 0.7,
+          "S_trace_caution": 0.6,
+          "S_trace_fail": 0.5,
+          "S_frequency_matched_ratio": 0.6
+        },
+        "1/D10": {
+          "trace": "caution",
+          "ratio": 0.831,
+          "ratio_gate": "caution",
+          "zero_prior_share": 0.2,
+          "S_stored": 0.6,
+          "S_omitted": 0.625,
+          "S_trace_pass": 0.7,
+          "S_trace_caution": 0.6,
+          "S_trace_fail": 0.5,
+          "S_frequency_matched_ratio": 0.6
+        },
+        "1/F10": {
+          "trace": "caution",
+          "ratio": 0.59,
+          "ratio_gate": "caution",
+          "zero_prior_share": 0.194,
+          "S_stored": 0.7,
+          "S_omitted": 0.75,
+          "S_trace_pass": 0.8,
+          "S_trace_caution": 0.7,
+          "S_trace_fail": 0.6,
+          "S_frequency_matched_ratio": 0.7
+        },
+        "10/B30": {
+          "trace": "caution",
+          "ratio": 0.77,
+          "ratio_gate": "caution",
+          "zero_prior_share": 0.245,
+          "S_stored": 0.7,
+          "S_omitted": 0.75,
+          "S_trace_pass": 0.8,
+          "S_trace_caution": 0.7,
+          "S_trace_fail": 0.6,
+          "S_frequency_matched_ratio": 0.7
+        },
+        "10/D10": {
+          "trace": "caution",
+          "ratio": 0.84,
+          "ratio_gate": "caution",
+          "zero_prior_share": 0.188,
+          "S_stored": 0.6,
+          "S_omitted": 0.625,
+          "S_trace_pass": 0.7,
+          "S_trace_caution": 0.6,
+          "S_trace_fail": 0.5,
+          "S_frequency_matched_ratio": 0.6
+        },
+        "11/B30": {
+          "trace": "caution",
+          "ratio": 0.737,
+          "ratio_gate": "caution",
+          "zero_prior_share": 0.244,
+          "S_stored": 0.7,
+          "S_omitted": 0.75,
+          "S_trace_pass": 0.8,
+          "S_trace_caution": 0.7,
+          "S_trace_fail": 0.6,
+          "S_frequency_matched_ratio": 0.7
+        },
+        "2/B30": {
+          "trace": "fail",
+          "ratio": 0.808,
+          "ratio_gate": "caution",
+          "zero_prior_share": 0.251,
+          "S_stored": 0.5,
+          "S_omitted": 0.625,
+          "S_trace_pass": 0.7,
+          "S_trace_caution": 0.6,
+          "S_trace_fail": 0.5,
+          "S_frequency_matched_ratio": 0.6
+        },
+        "2/F10": {
+          "trace": "caution",
+          "ratio": 0.605,
+          "ratio_gate": "caution",
+          "zero_prior_share": 0.2,
+          "S_stored": 0.7,
+          "S_omitted": 0.75,
+          "S_trace_pass": 0.8,
+          "S_trace_caution": 0.7,
+          "S_trace_fail": 0.6,
+          "S_frequency_matched_ratio": 0.7
+        },
+        "3/B30": {
+          "trace": "caution",
+          "ratio": 0.784,
+          "ratio_gate": "caution",
+          "zero_prior_share": 0.244,
+          "S_stored": 0.7,
+          "S_omitted": 0.75,
+          "S_trace_pass": 0.8,
+          "S_trace_caution": 0.7,
+          "S_trace_fail": 0.6,
+          "S_frequency_matched_ratio": 0.7
+        },
+        "3/C20": {
+          "trace": "fail",
+          "ratio": 0.704,
+          "ratio_gate": "caution",
+          "zero_prior_share": 0.281,
+          "S_stored": 0.5,
+          "S_omitted": 0.625,
+          "S_trace_pass": 0.7,
+          "S_trace_caution": 0.6,
+          "S_trace_fail": 0.5,
+          "S_frequency_matched_ratio": 0.6
+        },
+        "3/D10": {
+          "trace": "caution",
+          "ratio": 0.93,
+          "ratio_gate": "caution",
+          "zero_prior_share": 0.183,
+          "S_stored": 0.6,
+          "S_omitted": 0.625,
+          "S_trace_pass": 0.7,
+          "S_trace_caution": 0.6,
+          "S_trace_fail": 0.5,
+          "S_frequency_matched_ratio": 0.6
+        },
+        "3/F10": {
+          "trace": "caution",
+          "ratio": 0.647,
+          "ratio_gate": "caution",
+          "zero_prior_share": 0.222,
+          "S_stored": 0.6,
+          "S_omitted": 0.625,
+          "S_trace_pass": 0.7,
+          "S_trace_caution": 0.6,
+          "S_trace_fail": 0.5,
+          "S_frequency_matched_ratio": 0.6
+        },
+        "3/G20": {
+          "trace": "pass",
+          "ratio": 0.362,
+          "ratio_gate": "pass",
+          "zero_prior_share": 0.049,
+          "S_stored": 0.7,
+          "S_omitted": 0.625,
+          "S_trace_pass": 0.7,
+          "S_trace_caution": 0.6,
+          "S_trace_fail": 0.5,
+          "S_frequency_matched_ratio": 0.7
+        },
+        "4/B30": {
+          "trace": "caution",
+          "ratio": 0.764,
+          "ratio_gate": "caution",
+          "zero_prior_share": 0.243,
+          "S_stored": 0.7,
+          "S_omitted": 0.75,
+          "S_trace_pass": 0.8,
+          "S_trace_caution": 0.7,
+          "S_trace_fail": 0.6,
+          "S_frequency_matched_ratio": 0.7
+        },
+        "4/C20": {
+          "trace": "fail",
+          "ratio": 0.862,
+          "ratio_gate": "caution",
+          "zero_prior_share": 0.447,
+          "S_stored": 0.5,
+          "S_omitted": 0.625,
+          "S_trace_pass": 0.7,
+          "S_trace_caution": 0.6,
+          "S_trace_fail": 0.5,
+          "S_frequency_matched_ratio": 0.6
+        },
+        "5/B30": {
+          "trace": "caution",
+          "ratio": 0.753,
+          "ratio_gate": "caution",
+          "zero_prior_share": 0.216,
+          "S_stored": 0.7,
+          "S_omitted": 0.75,
+          "S_trace_pass": 0.8,
+          "S_trace_caution": 0.7,
+          "S_trace_fail": 0.6,
+          "S_frequency_matched_ratio": 0.7
+        },
+        "5/F10": {
+          "trace": "caution",
+          "ratio": 0.647,
+          "ratio_gate": "caution",
+          "zero_prior_share": 0.216,
+          "S_stored": 0.6,
+          "S_omitted": 0.625,
+          "S_trace_pass": 0.7,
+          "S_trace_caution": 0.6,
+          "S_trace_fail": 0.5,
+          "S_frequency_matched_ratio": 0.6
+        },
+        "5/G20": {
+          "trace": "pass",
+          "ratio": 0.362,
+          "ratio_gate": "pass",
+          "zero_prior_share": 0.05,
+          "S_stored": 0.7,
+          "S_omitted": 0.625,
+          "S_trace_pass": 0.7,
+          "S_trace_caution": 0.6,
+          "S_trace_fail": 0.5,
+          "S_frequency_matched_ratio": 0.7
+        },
+        "6/B30": {
+          "trace": "caution",
+          "ratio": 0.755,
+          "ratio_gate": "caution",
+          "zero_prior_share": 0.241,
+          "S_stored": 0.7,
+          "S_omitted": 0.75,
+          "S_trace_pass": 0.8,
+          "S_trace_caution": 0.7,
+          "S_trace_fail": 0.6,
+          "S_frequency_matched_ratio": 0.7
+        },
+        "6/C20": {
+          "trace": "fail",
+          "ratio": 0.799,
+          "ratio_gate": "caution",
+          "zero_prior_share": 0.429,
+          "S_stored": 0.5,
+          "S_omitted": 0.625,
+          "S_trace_pass": 0.7,
+          "S_trace_caution": 0.6,
+          "S_trace_fail": 0.5,
+          "S_frequency_matched_ratio": 0.6
+        },
+        "6/D10": {
+          "trace": "caution",
+          "ratio": 0.883,
+          "ratio_gate": "caution",
+          "zero_prior_share": 0.207,
+          "S_stored": 0.7,
+          "S_omitted": 0.75,
+          "S_trace_pass": 0.8,
+          "S_trace_caution": 0.7,
+          "S_trace_fail": 0.6,
+          "S_frequency_matched_ratio": 0.7
+        },
+        "6/G20": {
+          "trace": "pass",
+          "ratio": 0.428,
+          "ratio_gate": "pass",
+          "zero_prior_share": 0.059,
+          "S_stored": 0.7,
+          "S_omitted": 0.625,
+          "S_trace_pass": 0.7,
+          "S_trace_caution": 0.6,
+          "S_trace_fail": 0.5,
+          "S_frequency_matched_ratio": 0.7
+        },
+        "7/B30": {
+          "trace": "caution",
+          "ratio": 0.777,
+          "ratio_gate": "caution",
+          "zero_prior_share": 0.247,
+          "S_stored": 0.7,
+          "S_omitted": 0.75,
+          "S_trace_pass": 0.8,
+          "S_trace_caution": 0.7,
+          "S_trace_fail": 0.6,
+          "S_frequency_matched_ratio": 0.7
+        },
+        "7/C20": {
+          "trace": "fail",
+          "ratio": 0.833,
+          "ratio_gate": "caution",
+          "zero_prior_share": 0.434,
+          "S_stored": 0.5,
+          "S_omitted": 0.625,
+          "S_trace_pass": 0.7,
+          "S_trace_caution": 0.6,
+          "S_trace_fail": 0.5,
+          "S_frequency_matched_ratio": 0.6
+        },
+        "7/D10": {
+          "trace": "caution",
+          "ratio": 0.883,
+          "ratio_gate": "caution",
+          "zero_prior_share": 0.207,
+          "S_stored": 0.6,
+          "S_omitted": 0.625,
+          "S_trace_pass": 0.7,
+          "S_trace_caution": 0.6,
+          "S_trace_fail": 0.5,
+          "S_frequency_matched_ratio": 0.6
+        },
+        "7/F10": {
+          "trace": "caution",
+          "ratio": 0.647,
+          "ratio_gate": "caution",
+          "zero_prior_share": 0.216,
+          "S_stored": 0.7,
+          "S_omitted": 0.75,
+          "S_trace_pass": 0.8,
+          "S_trace_caution": 0.7,
+          "S_trace_fail": 0.6,
+          "S_frequency_matched_ratio": 0.7
+        },
+        "7/G20": {
+          "trace": "pass",
+          "ratio": 0.362,
+          "ratio_gate": "pass",
+          "zero_prior_share": 0.05,
+          "S_stored": 0.7,
+          "S_omitted": 0.625,
+          "S_trace_pass": 0.7,
+          "S_trace_caution": 0.6,
+          "S_trace_fail": 0.5,
+          "S_frequency_matched_ratio": 0.7
+        }
+      }
+    },
+    "pooled_map": {
+      "stored": {
+        "n_supported": 12,
+        "n_verdicts_changed": 0,
+        "gained_support": [],
+        "lost_support": []
+      },
+      "omitted": {
+        "n_supported": 11,
+        "n_verdicts_changed": 1,
+        "gained_support": [],
+        "lost_support": [
+          "G20"
+        ]
+      },
+      "trace_pass": {
+        "n_supported": 13,
+        "n_verdicts_changed": 1,
+        "gained_support": [
+          "D10"
+        ],
+        "lost_support": []
+      },
+      "trace_caution": {
+        "n_supported": 11,
+        "n_verdicts_changed": 1,
+        "gained_support": [],
+        "lost_support": [
+          "G20"
+        ]
+      },
+      "trace_fail": {
+        "n_supported": 9,
+        "n_verdicts_changed": 3,
+        "gained_support": [],
+        "lost_support": [
+          "B30",
+          "G20",
+          "F10"
+        ]
+      },
+      "frequency_matched_ratio": {
+        "n_supported": 12,
+        "n_verdicts_changed": 0,
+        "gained_support": [],
+        "lost_support": []
+      },
+      "verdict_depends_on_trace_score": {
+        "definition": "verdict with the trace gate at pass differs from the verdict with it at fail",
+        "n": 4,
+        "pairs": [
+          "B30",
+          "G20",
+          "D10",
+          "F10"
+        ],
+        "of_which_stored_trace": {
+          "pass": 1,
+          "caution": 3,
+          "fail": 0
+        }
+      },
+      "trace_gate_score_counts": {
+        "pass": 9,
+        "caution": 6,
+        "fail": 1
+      },
+      "ratio_gate_score_counts": {
+        "pass": 6,
+        "caution": 10,
+        "fail": 0
+      },
+      "per_system": {
+        "D30": {
+          "trace": "pass",
+          "ratio": 0.051,
+          "ratio_gate": "pass",
+          "S_stored": 1.0,
+          "S_omitted": 1.0,
+          "S_trace_pass": 1.0,
+          "S_trace_caution": 0.9,
+          "S_trace_fail": 0.8,
+          "S_frequency_matched_ratio": 1.0
+        },
+        "D20": {
+          "trace": "pass",
+          "ratio": 0.178,
+          "ratio_gate": "pass",
+          "S_stored": 1.0,
+          "S_omitted": 1.0,
+          "S_trace_pass": 1.0,
+          "S_trace_caution": 0.9,
+          "S_trace_fail": 0.8,
+          "S_frequency_matched_ratio": 1.0
+        },
+        "D50": {
+          "trace": "pass",
+          "ratio": 0.254,
+          "ratio_gate": "pass",
+          "S_stored": 1.0,
+          "S_omitted": 1.0,
+          "S_trace_pass": 1.0,
+          "S_trace_caution": 0.9,
+          "S_trace_fail": 0.8,
+          "S_frequency_matched_ratio": 1.0
+        },
+        "C30": {
+          "trace": "pass",
+          "ratio": 0.735,
+          "ratio_gate": "caution",
+          "S_stored": 1.0,
+          "S_omitted": 1.0,
+          "S_trace_pass": 1.0,
+          "S_trace_caution": 0.9,
+          "S_trace_fail": 0.8,
+          "S_frequency_matched_ratio": 0.9
+        },
+        "C10": {
+          "trace": "pass",
+          "ratio": 0.165,
+          "ratio_gate": "pass",
+          "S_stored": 1.0,
+          "S_omitted": 1.0,
+          "S_trace_pass": 1.0,
+          "S_trace_caution": 0.9,
+          "S_trace_fail": 0.8,
+          "S_frequency_matched_ratio": 1.0
+        },
+        "E10": {
+          "trace": "pass",
+          "ratio": 0.152,
+          "ratio_gate": "pass",
+          "S_stored": 1.0,
+          "S_omitted": 1.0,
+          "S_trace_pass": 1.0,
+          "S_trace_caution": 0.9,
+          "S_trace_fail": 0.8,
+          "S_frequency_matched_ratio": 1.0
+        },
+        "D40": {
+          "trace": "pass",
+          "ratio": 0.53,
+          "ratio_gate": "caution",
+          "S_stored": 1.0,
+          "S_omitted": 1.0,
+          "S_trace_pass": 1.0,
+          "S_trace_caution": 0.9,
+          "S_trace_fail": 0.8,
+          "S_frequency_matched_ratio": 0.9
+        },
+        "E20": {
+          "trace": "pass",
+          "ratio": 0.646,
+          "ratio_gate": "caution",
+          "S_stored": 1.0,
+          "S_omitted": 1.0,
+          "S_trace_pass": 1.0,
+          "S_trace_caution": 0.9,
+          "S_trace_fail": 0.8,
+          "S_frequency_matched_ratio": 0.9
+        },
+        "B20": {
+          "trace": "caution",
+          "ratio": 0.65,
+          "ratio_gate": "caution",
+          "S_stored": 0.9,
+          "S_omitted": 1.0,
+          "S_trace_pass": 1.0,
+          "S_trace_caution": 0.9,
+          "S_trace_fail": 0.8,
+          "S_frequency_matched_ratio": 0.9
+        },
+        "B30": {
+          "trace": "caution",
+          "ratio": 0.777,
+          "ratio_gate": "caution",
+          "S_stored": 0.7,
+          "S_omitted": 0.75,
+          "S_trace_pass": 0.8,
+          "S_trace_caution": 0.7,
+          "S_trace_fail": 0.6,
+          "S_frequency_matched_ratio": 0.7
+        },
+        "G20": {
+          "trace": "pass",
+          "ratio": 0.362,
+          "ratio_gate": "pass",
+          "S_stored": 0.7,
+          "S_omitted": 0.625,
+          "S_trace_pass": 0.7,
+          "S_trace_caution": 0.6,
+          "S_trace_fail": 0.5,
+          "S_frequency_matched_ratio": 0.7
+        },
+        "D10": {
+          "trace": "caution",
+          "ratio": 0.883,
+          "ratio_gate": "caution",
+          "S_stored": 0.6,
+          "S_omitted": 0.625,
+          "S_trace_pass": 0.7,
+          "S_trace_caution": 0.6,
+          "S_trace_fail": 0.5,
+          "S_frequency_matched_ratio": 0.6
+        },
+        "C20": {
+          "trace": "fail",
+          "ratio": 0.833,
+          "ratio_gate": "caution",
+          "S_stored": 0.4,
+          "S_omitted": 0.5,
+          "S_trace_pass": 0.5,
+          "S_trace_caution": 0.5,
+          "S_trace_fail": 0.4,
+          "S_frequency_matched_ratio": 0.5
+        },
+        "F10": {
+          "trace": "caution",
+          "ratio": 0.647,
+          "ratio_gate": "caution",
+          "S_stored": 0.7,
+          "S_omitted": 0.75,
+          "S_trace_pass": 0.8,
+          "S_trace_caution": 0.7,
+          "S_trace_fail": 0.6,
+          "S_frequency_matched_ratio": 0.7
+        },
+        "G30": {
+          "trace": "caution",
+          "ratio": 0.575,
+          "ratio_gate": "caution",
+          "S_stored": 0.5,
+          "S_omitted": 0.5,
+          "S_trace_pass": 0.5,
+          "S_trace_caution": 0.5,
+          "S_trace_fail": 0.4,
+          "S_frequency_matched_ratio": 0.5
+        },
+        "F20": {
+          "trace": "caution",
+          "ratio": 0.581,
+          "ratio_gate": "caution",
+          "S_stored": 0.5,
+          "S_omitted": 0.5,
+          "S_trace_pass": 0.5,
+          "S_trace_caution": 0.5,
+          "S_trace_fail": 0.4,
+          "S_frequency_matched_ratio": 0.5
+        }
+      }
+    },
+    "route_counts": {
+      "stored": {
+        "decision_tasks": 50968,
+        "verification_tasks": 705,
+        "standard_maintenance": 385725,
+        "watch_list": 77577,
+        "share_high_risk_with_decision_task": 0.9864
+      },
+      "omitted": {
+        "decision_tasks": 50766,
+        "verification_tasks": 907,
+        "standard_maintenance": 381830,
+        "watch_list": 81472,
+        "share_high_risk_with_decision_task": 0.9824
+      },
+      "trace_pass": {
+        "decision_tasks": 51381,
+        "verification_tasks": 292,
+        "standard_maintenance": 400867,
+        "watch_list": 62435,
+        "share_high_risk_with_decision_task": 0.9943
+      },
+      "trace_caution": {
+        "decision_tasks": 50766,
+        "verification_tasks": 907,
+        "standard_maintenance": 381830,
+        "watch_list": 81472,
+        "share_high_risk_with_decision_task": 0.9824
+      },
+      "trace_fail": {
+        "decision_tasks": 49041,
+        "verification_tasks": 2632,
+        "standard_maintenance": 341697,
+        "watch_list": 121605,
+        "share_high_risk_with_decision_task": 0.9491
+      },
+      "frequency_matched_ratio": {
+        "decision_tasks": 50968,
+        "verification_tasks": 705,
+        "standard_maintenance": 385725,
+        "watch_list": 77577,
+        "share_high_risk_with_decision_task": 0.9864
+      }
+    },
+    "ratios_pooled_map": {
+      "B20": {
+        "n_events": 576,
+        "share": 0.1111,
+        "reference": 0.1708,
+        "ratio": 0.65
+      },
+      "B30": {
+        "n_events": 304,
+        "share": 0.2467,
+        "reference": 0.3175,
+        "ratio": 0.777
+      },
+      "C10": {
+        "n_events": 1649,
+        "share": 0.0061,
+        "reference": 0.0367,
+        "ratio": 0.165
+      },
+      "C20": {
+        "n_events": 53,
+        "share": 0.434,
+        "reference": 0.5212,
+        "ratio": 0.833
+      },
+      "C30": {
+        "n_events": 820,
+        "share": 0.0634,
+        "reference": 0.0863,
+        "ratio": 0.735
+      },
+      "D10": {
+        "n_events": 111,
+        "share": 0.2072,
+        "reference": 0.2348,
+        "ratio": 0.883
+      },
+      "D20": {
+        "n_events": 2269,
+        "share": 0.0079,
+        "reference": 0.0447,
+        "ratio": 0.178
+      },
+      "D30": {
+        "n_events": 2278,
+        "share": 0.0022,
+        "reference": 0.043,
+        "ratio": 0.051
+      },
+      "D40": {
+        "n_events": 625,
+        "share": 0.0752,
+        "reference": 0.1418,
+        "ratio": 0.53
+      },
+      "D50": {
+        "n_events": 1839,
+        "share": 0.0103,
+        "reference": 0.0407,
+        "ratio": 0.254
+      },
+      "E10": {
+        "n_events": 919,
+        "share": 0.012,
+        "reference": 0.0786,
+        "ratio": 0.152
+      },
+      "E20": {
+        "n_events": 390,
+        "share": 0.0821,
+        "reference": 0.127,
+        "ratio": 0.646
+      },
+      "F10": {
+        "n_events": 37,
+        "share": 0.2162,
+        "reference": 0.3343,
+        "ratio": 0.647
+      },
+      "F20": {
+        "n_events": 23,
+        "share": 0.2174,
+        "reference": 0.3744,
+        "ratio": 0.581
+      },
+      "G20": {
+        "n_events": 100,
+        "share": 0.05,
+        "reference": 0.138,
+        "ratio": 0.362
+      },
+      "G30": {
+        "n_events": 16,
+        "share": 0.1875,
+        "reference": 0.3259,
+        "ratio": 0.575
+      }
+    }
+  },
+  "runtime_seconds": 42.2
+}

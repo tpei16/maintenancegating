@@ -25,7 +25,7 @@
       },
       "outer_verdict_agreement_vs_gbdt": {
         "logreg": 0.943,
-        "rule": 0.894
+        "rule": 0.915
       }
     }
   },
@@ -50,12 +50,12 @@
   "certified_counts_folds": {
     "gbdt": 98,
     "logreg": 98,
-    "rule": 89
+    "rule": 88
   },
   "n_stratum_folds": {
     "gbdt": 141,
     "logreg": 141,
-    "rule": 142
+    "rule": 141
   },
   "comparisons": {
     "logreg_vs_gbdt": {
@@ -249,21 +249,17 @@
       },
       "folds": {
         "n": 141,
-        "n_agree": 126,
-        "agreement": 0.8936,
-        "kappa": 0.763,
+        "n_agree": 129,
+        "agreement": 0.9149,
+        "kappa": 0.8115,
         "n_certified": [
-          89,
+          88,
           98
         ],
         "disagreements": [
           [
             "1",
             "B30"
-          ],
-          [
-            "1",
-            "F10"
           ],
           [
             "10",
@@ -274,20 +270,12 @@
             "D10"
           ],
           [
-            "10",
-            "G20"
-          ],
-          [
             "11",
             "B30"
           ],
           [
             "2",
             "F10"
-          ],
-          [
-            "2",
-            "G20"
           ],
           [
             "3",
@@ -323,19 +311,14 @@
           "n_undefined": 0,
           "n_clusters": 16,
           "ci95": [
-            0.481,
-            0.9564
+            0.5436,
+            1.0
           ],
           "note": "undefined replicates (every drawn fold certified, or none, under both scores) are dropped"
         }
       },
       "stratum_folds_gated_only_in": {
-        "rule": [
-          [
-            "11",
-            "G30"
-          ]
-        ],
+        "rule": [],
         "gbdt": []
       },
       "provisional_strata": {
@@ -355,21 +338,17 @@
         },
         "folds": {
           "n": 36,
-          "n_agree": 21,
-          "agreement": 0.5833,
-          "kappa": 0.1401,
+          "n_agree": 24,
+          "agreement": 0.6667,
+          "kappa": 0.3099,
           "n_certified": [
-            8,
+            7,
             17
           ],
           "disagreements": [
             [
               "1",
               "B30"
-            ],
-            [
-              "1",
-              "F10"
             ],
             [
               "10",
@@ -380,20 +359,12 @@
               "D10"
             ],
             [
-              "10",
-              "G20"
-            ],
-            [
               "11",
               "B30"
             ],
             [
               "2",
               "F10"
-            ],
-            [
-              "2",
-              "G20"
             ],
             [
               "3",
@@ -429,8 +400,8 @@
             "n_undefined": 0,
             "n_clusters": 4,
             "ci95": [
-              -0.0354,
-              0.5385
+              -0.0227,
+              0.8831
             ],
             "note": "undefined replicates (every drawn fold certified, or none, under both scores) are dropped"
           }
@@ -445,31 +416,22 @@
         },
         "transfer_stability": {
           "n": 141,
-          "agreement": 0.9362,
-          "weighted_kappa_linear": 0.8772,
-          "n_differ": 9
+          "agreement": 0.9433,
+          "weighted_kappa_linear": 0.8938,
+          "n_differ": 8
         },
         "risk_gradient": {
           "n": 141,
-          "agreement": 0.7092,
-          "weighted_kappa_linear": 0.464,
-          "n_differ": 41
+          "agreement": 0.7447,
+          "weighted_kappa_linear": 0.5143,
+          "n_differ": 36
         }
       },
       "gates_not_reading_the_score": {
         "data_sufficiency": {
-          "identical_over_stratum_folds": false,
-          "n_stratum_folds_differ": 2,
-          "stratum_folds_differ": [
-            [
-              "10",
-              "G20"
-            ],
-            [
-              "2",
-              "G20"
-            ]
-          ],
+          "identical_over_stratum_folds": true,
+          "n_stratum_folds_differ": 0,
+          "stratum_folds_differ": [],
           "identical_on_pooled_map": true,
           "pooled_strata_differ": []
         },
@@ -499,11 +461,11 @@
       },
       "folds": {
         "n": 141,
-        "n_agree": 128,
-        "agreement": 0.9078,
-        "kappa": 0.7946,
+        "n_agree": 131,
+        "agreement": 0.9291,
+        "kappa": 0.8429,
         "n_certified": [
-          89,
+          88,
           98
         ],
         "disagreements": [
@@ -512,24 +474,12 @@
             "B30"
           ],
           [
-            "1",
-            "F10"
-          ],
-          [
-            "10",
-            "G20"
-          ],
-          [
             "11",
             "B30"
           ],
           [
             "2",
             "F10"
-          ],
-          [
-            "2",
-            "G20"
           ],
           [
             "3",
@@ -565,19 +515,14 @@
           "n_undefined": 0,
           "n_clusters": 16,
           "ci95": [
-            0.5918,
-            0.9678
+            0.6578,
+            1.0
           ],
           "note": "undefined replicates (every drawn fold certified, or none, under both scores) are dropped"
         }
       },
       "stratum_folds_gated_only_in": {
-        "rule": [
-          [
-            "11",
-            "G30"
-          ]
-        ],
+        "rule": [],
         "logreg": []
       },
       "provisional_strata": {
@@ -597,11 +542,11 @@
         },
         "folds": {
           "n": 36,
-          "n_agree": 23,
-          "agreement": 0.6389,
-          "kappa": 0.2548,
+          "n_agree": 26,
+          "agreement": 0.7222,
+          "kappa": 0.4249,
           "n_certified": [
-            8,
+            7,
             17
           ],
           "disagreements": [
@@ -610,24 +555,12 @@
               "B30"
             ],
             [
-              "1",
-              "F10"
-            ],
-            [
-              "10",
-              "G20"
-            ],
-            [
               "11",
               "B30"
             ],
             [
               "2",
               "F10"
-            ],
-            [
-              "2",
-              "G20"
             ],
             [
               "3",
@@ -663,8 +596,8 @@
             "n_undefined": 0,
             "n_clusters": 4,
             "ci95": [
-              0.0,
-              0.6582
+              0.0888,
+              0.88
             ],
             "note": "undefined replicates (every drawn fold certified, or none, under both scores) are dropped"
           }
@@ -679,31 +612,22 @@
         },
         "transfer_stability": {
           "n": 141,
-          "agreement": 0.9291,
-          "weighted_kappa_linear": 0.863,
-          "n_differ": 10
+          "agreement": 0.922,
+          "weighted_kappa_linear": 0.8533,
+          "n_differ": 11
         },
         "risk_gradient": {
           "n": 141,
-          "agreement": 0.6879,
-          "weighted_kappa_linear": 0.3961,
-          "n_differ": 44
+          "agreement": 0.7092,
+          "weighted_kappa_linear": 0.4185,
+          "n_differ": 41
         }
       },
       "gates_not_reading_the_score": {
         "data_sufficiency": {
-          "identical_over_stratum_folds": false,
-          "n_stratum_folds_differ": 2,
-          "stratum_folds_differ": [
-            [
-              "10",
-              "G20"
-            ],
-            [
-              "2",
-              "G20"
-            ]
-          ],
+          "identical_over_stratum_folds": true,
+          "n_stratum_folds_differ": 0,
+          "stratum_folds_differ": [],
           "identical_on_pooled_map": true,
           "pooled_strata_differ": []
         },
@@ -717,5 +641,5 @@
       }
     }
   },
-  "runtime_seconds": 8.6
+  "runtime_seconds": 15.2
 }
