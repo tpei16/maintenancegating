@@ -8,7 +8,7 @@ system (CMMS) is usually validated by one accuracy figure pooled over a portfoli
 maintenance planner acts on its ranking one building system at a time. The code in this
 repository computes two quantities for a target campus. The first is a risk percentile *R* for
 each unit (one building system of one building in one quarter), which ranks the units of the
-campus within a quarter by the score of a model trained on the other campuses. The second is a
+campus within a quarter by the score of a model trained on the other campuses. The second is an
 evidence score *S* for each building system, computed from the records of the other
 campuses by five gates: data sufficiency, risk concentration, transfer stability, risk-gradient
 reliability and prior-record trace. Three of the gates are prerequisites, and the scores are
@@ -60,12 +60,19 @@ The analyses that examine the evidence gating are:
 | Script | Analysis |
 |---|---|
 | `43`, `63` | synthetic benchmark with known ground truth, with the shared-attribute construction and the two comparison rules |
+| `66` | permuted-score test: gates recomputed on the real records after the scores of a building system are permuted on a share of the peer campuses |
+| `67` | partially pooled rule: threshold on the predictive probability of two-fold lift from a random-effects model across peer campuses |
 | `57` | single nesting, size-matched control and double nesting |
 | `58` | bootstrap probability of a positive verdict |
 | `48`, `59` | evidence gating under two other risk scores and its agreement with the boosted model |
 | `60`, `64` | evidence gating from a campus's own history against gating from its peers, and the figure |
+| `68` | direct validation of the ranking on a campus's own earlier outcomes, by length of the outcome record |
 | `61` | no-antecedent share against service frequency |
 | `62` | order of the verification queue |
+| `69` | flags of the routing rule by building system, pooling by percentile, and resolution of ties |
+| `70` | intervals under clustering by campus and building system |
+| `71` | outcome-free comparability of a campus with its peers, labor-recording audit, and record flow |
+| `72` | verdicts under other outcome definitions (work-order count, campus-specific labor threshold, occurrence) |
 | `65` | risk-gradient gate with campus-specific and with pooled base rates |
 | `49` | sensitivity to the gate levels, the support level and the set of prerequisite gates |
 | `51` | score distribution of missed high-burden units and one campus-quarter worked through |
@@ -99,6 +106,8 @@ The result files keep the identifiers under which the analysis was written.
 | `antecedent_signal`, `zero_prior`, no-antecedent share | prior-record trace gate and its quantity |
 | `pma`, `verify`, `continue`, `watch` | maintenance decision task, condition verification, standard maintenance, watch list |
 | `W`, `B` (bootstrap) | buildings resampled within campuses; campuses resampled, then buildings |
+| `deranged` | scores permuted within campus and quarter (permuted-score test) |
+| `count_rule_*` in `route_aligned_evaluation.csv` | the prior-year count of reactive work orders used as a risk score |
 
 ## Leakage discipline
 

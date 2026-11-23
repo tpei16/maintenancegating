@@ -1,0 +1,1250 @@
+{
+  "design": "Uncertainty of the held-out comparisons with campus-system pairs clustered by campus and by building system: two-way (pigeonhole) and one-way cluster bootstraps, a permutation of the verdicts of whole building systems, and the pair-level intervals beside them; from the stored tables, no model.",
+  "definitions": {
+    "two_way_cluster": "campuses and building systems present among the analysed pairs resampled independently with replacement; pair (c, k) enters with multiplicity a_c x b_k",
+    "campus_cluster": "campuses resampled with replacement; pair (c, k) enters a_c times",
+    "system_cluster": "building systems resampled with replacement; pair (c, k) enters b_k times",
+    "pair_level": "pairs resampled with replacement as if independent",
+    "bootstrap": "5000 replicates per scheme, 95% percentile interval, seeds [42, test, scheme]",
+    "undefined_replicate": "a replicate in which the supported or the not supported group receives no pair, or a correlation has a constant argument; counted and left out of the interval",
+    "system_block_permutation": "10000 random permutations pi of the building systems analysed; pair (c, k) takes the verdict and S of pair (c, pi(k)) in the stored verdict table; a pair whose source has no verdict is left out of that permutation; two-sided p = (1 + #|T*| >= |T|) / (1 + permutations)",
+    "two_fold": "lift of at least 2",
+    "held_out_check": "95 pairs evaluable on the held-out campus, fold_gate_verdicts.csv",
+    "count_based_rule": "simple_rule_prespecified of fold_gate_verdicts.csv on the same 95 pairs",
+    "forward_test": "pairs evaluable in 2017 to 2019 with a peer verdict from records dated 2016 or earlier, local_history_baseline.csv (cert_peer, S_peer, lift_eval_model)",
+    "naive_newcombe95": "Newcombe hybrid score interval from the two Wilson intervals",
+    "naive_fisher_z95": "Fisher z interval with the Bonett-Wright standard error"
+  },
+  "reference_check": {
+    "held_out_check": "74/77 and 14/18, Spearman 0.2628 (p 0.0101)",
+    "count_based_rule": "78/83 and 10/12",
+    "forward_test": "54/61 and 24/27, 3 pairs without a peer verdict",
+    "matches_stored_tables": true
+  },
+  "tests": {
+    "held_out_check": {
+      "n_pairs": 95,
+      "n_supported": 77,
+      "n_not_supported": 18,
+      "n_campuses": 9,
+      "n_building_systems": 14,
+      "campuses": [
+        "1",
+        "10",
+        "11",
+        "2",
+        "3",
+        "4",
+        "5",
+        "6",
+        "7"
+      ],
+      "building_systems": [
+        "B20",
+        "B30",
+        "C10",
+        "C20",
+        "C30",
+        "D10",
+        "D20",
+        "D30",
+        "D40",
+        "D50",
+        "E10",
+        "E20",
+        "F10",
+        "G20"
+      ],
+      "supported": {
+        "n_lift_ge_2": 74,
+        "n": 77,
+        "share": 0.961,
+        "wilson95_quoted": [
+          0.8916,
+          0.9867
+        ],
+        "median_lift": 4.254
+      },
+      "not_supported": {
+        "n_lift_ge_2": 14,
+        "n": 18,
+        "share": 0.7778,
+        "wilson95_quoted": [
+          0.5479,
+          0.91
+        ],
+        "median_lift": 3.701
+      },
+      "difference_in_share_two_fold": {
+        "point": 0.1833,
+        "naive_newcombe95": [
+          0.0339,
+          0.4146
+        ],
+        "two_way_cluster_bootstrap": {
+          "ci95": [
+            -0.0884,
+            0.5009
+          ],
+          "n_defined": 4981,
+          "n_undefined": 19,
+          "share_of_defined_at_or_below_0": 0.1927
+        },
+        "campus_cluster_bootstrap": {
+          "ci95": [
+            -0.038,
+            0.3988
+          ],
+          "n_defined": 5000,
+          "n_undefined": 0,
+          "share_of_defined_at_or_below_0": 0.0458
+        },
+        "system_cluster_bootstrap": {
+          "ci95": [
+            -0.05,
+            0.3204
+          ],
+          "n_defined": 4992,
+          "n_undefined": 8,
+          "share_of_defined_at_or_below_0": 0.1066
+        },
+        "pair_level_bootstrap": {
+          "ci95": [
+            -0.0008,
+            0.3937
+          ],
+          "n_defined": 5000,
+          "n_undefined": 0,
+          "share_of_defined_at_or_below_0": 0.0266
+        }
+      },
+      "permutation_difference_in_share": {
+        "system_blocks": {
+          "p_two_sided": 0.0135,
+          "p_one_sided_greater": 0.0135,
+          "n_permutations_defined": 10000,
+          "n_permutations_undefined": 0
+        },
+        "mean_pairs_per_permutation": 95.0,
+        "min_pairs_per_permutation": 95,
+        "pair_level_permutation_p_two_sided": 0.0231,
+        "fisher_exact_p_two_sided": 0.0227
+      },
+      "difference_in_median_lift": {
+        "point": 0.553,
+        "two_way_cluster_bootstrap": {
+          "ci95": [
+            -1.2505,
+            2.711
+          ],
+          "n_defined": 4981,
+          "n_undefined": 19,
+          "share_of_defined_at_or_below_0": 0.2323
+        },
+        "campus_cluster_bootstrap": {
+          "ci95": [
+            -0.283,
+            2.3481
+          ],
+          "n_defined": 5000,
+          "n_undefined": 0,
+          "share_of_defined_at_or_below_0": 0.1008
+        },
+        "system_cluster_bootstrap": {
+          "ci95": [
+            -0.4835,
+            1.669
+          ],
+          "n_defined": 4992,
+          "n_undefined": 8,
+          "share_of_defined_at_or_below_0": 0.0968
+        },
+        "pair_level_bootstrap": {
+          "ci95": [
+            -0.264,
+            1.544
+          ],
+          "n_defined": 5000,
+          "n_undefined": 0,
+          "share_of_defined_at_or_below_0": 0.0662
+        },
+        "permutation_system_blocks": {
+          "p_two_sided": 0.3098,
+          "p_one_sided_greater": 0.1293,
+          "n_permutations_defined": 10000,
+          "n_permutations_undefined": 0
+        }
+      },
+      "spearman_binary_verdict_vs_lift": {
+        "rho": 0.1606,
+        "two_way_cluster_bootstrap": {
+          "ci95": [
+            -0.2459,
+            0.5169
+          ],
+          "n_defined": 4981,
+          "n_undefined": 19,
+          "share_of_defined_at_or_below_0": 0.2445
+        },
+        "campus_cluster_bootstrap": {
+          "ci95": [
+            -0.1204,
+            0.4003
+          ],
+          "n_defined": 5000,
+          "n_undefined": 0,
+          "share_of_defined_at_or_below_0": 0.131
+        },
+        "system_cluster_bootstrap": {
+          "ci95": [
+            -0.1157,
+            0.4132
+          ],
+          "n_defined": 4992,
+          "n_undefined": 8,
+          "share_of_defined_at_or_below_0": 0.1605
+        },
+        "pair_level_bootstrap": {
+          "ci95": [
+            -0.0584,
+            0.354
+          ],
+          "n_defined": 5000,
+          "n_undefined": 0,
+          "share_of_defined_at_or_below_0": 0.076
+        },
+        "permutation_system_blocks": {
+          "p_two_sided": 0.2422,
+          "p_one_sided_greater": 0.0675,
+          "n_permutations_defined": 10000,
+          "n_permutations_undefined": 0
+        }
+      },
+      "mean_pairs_per_replicate": {
+        "two_way_cluster": 95.4,
+        "campus_cluster": 94.7,
+        "system_cluster": 95.0,
+        "pair_level": 95.0
+      },
+      "spearman_S_vs_lift": {
+        "rho": 0.2628,
+        "p_naive": 0.01008,
+        "naive_fisher_z95": [
+          0.0612,
+          0.4438
+        ],
+        "two_way_cluster_bootstrap": {
+          "ci95": [
+            -0.118,
+            0.5804
+          ],
+          "n_defined": 5000,
+          "n_undefined": 0,
+          "share_of_defined_at_or_below_0": 0.0896
+        },
+        "campus_cluster_bootstrap": {
+          "ci95": [
+            0.0314,
+            0.4655
+          ],
+          "n_defined": 5000,
+          "n_undefined": 0,
+          "share_of_defined_at_or_below_0": 0.013
+        },
+        "system_cluster_bootstrap": {
+          "ci95": [
+            -0.0,
+            0.4774
+          ],
+          "n_defined": 5000,
+          "n_undefined": 0,
+          "share_of_defined_at_or_below_0": 0.0252
+        },
+        "pair_level_bootstrap": {
+          "ci95": [
+            0.0565,
+            0.4459
+          ],
+          "n_defined": 5000,
+          "n_undefined": 0,
+          "share_of_defined_at_or_below_0": 0.0082
+        },
+        "permutation_system_blocks": {
+          "p_two_sided": 0.0516,
+          "p_one_sided_greater": 0.0203,
+          "n_permutations_defined": 10000,
+          "n_permutations_undefined": 0
+        }
+      }
+    },
+    "count_based_rule": {
+      "n_pairs": 95,
+      "n_supported": 83,
+      "n_not_supported": 12,
+      "n_campuses": 9,
+      "n_building_systems": 14,
+      "campuses": [
+        "1",
+        "10",
+        "11",
+        "2",
+        "3",
+        "4",
+        "5",
+        "6",
+        "7"
+      ],
+      "building_systems": [
+        "B20",
+        "B30",
+        "C10",
+        "C20",
+        "C30",
+        "D10",
+        "D20",
+        "D30",
+        "D40",
+        "D50",
+        "E10",
+        "E20",
+        "F10",
+        "G20"
+      ],
+      "supported": {
+        "n_lift_ge_2": 78,
+        "n": 83,
+        "share": 0.9398,
+        "wilson95_quoted": [
+          0.8666,
+          0.974
+        ],
+        "median_lift": 4.215
+      },
+      "not_supported": {
+        "n_lift_ge_2": 10,
+        "n": 12,
+        "share": 0.8333,
+        "wilson95_quoted": [
+          0.552,
+          0.953
+        ],
+        "median_lift": 3.799
+      },
+      "difference_in_share_two_fold": {
+        "point": 0.1064,
+        "naive_newcombe95": [
+          -0.0338,
+          0.3898
+        ],
+        "two_way_cluster_bootstrap": {
+          "ci95": [
+            -0.131,
+            0.5038
+          ],
+          "n_defined": 4899,
+          "n_undefined": 101,
+          "share_of_defined_at_or_below_0": 0.4409
+        },
+        "campus_cluster_bootstrap": {
+          "ci95": [
+            -0.08,
+            0.3092
+          ],
+          "n_defined": 5000,
+          "n_undefined": 0,
+          "share_of_defined_at_or_below_0": 0.1424
+        },
+        "system_cluster_bootstrap": {
+          "ci95": [
+            -0.0978,
+            0.3159
+          ],
+          "n_defined": 4957,
+          "n_undefined": 43,
+          "share_of_defined_at_or_below_0": 0.3532
+        },
+        "pair_level_bootstrap": {
+          "ci95": [
+            -0.0824,
+            0.3553
+          ],
+          "n_defined": 5000,
+          "n_undefined": 0,
+          "share_of_defined_at_or_below_0": 0.1758
+        }
+      },
+      "permutation_difference_in_share": {
+        "system_blocks": {
+          "p_two_sided": 0.1111,
+          "p_one_sided_greater": 0.1111,
+          "n_permutations_defined": 10000,
+          "n_permutations_undefined": 0
+        },
+        "mean_pairs_per_permutation": 95.0,
+        "min_pairs_per_permutation": 95,
+        "pair_level_permutation_p_two_sided": 0.2132,
+        "fisher_exact_p_two_sided": 0.2144
+      },
+      "difference_in_median_lift": {
+        "point": 0.416,
+        "two_way_cluster_bootstrap": {
+          "ci95": [
+            -1.7058,
+            2.4597
+          ],
+          "n_defined": 4899,
+          "n_undefined": 101,
+          "share_of_defined_at_or_below_0": 0.3007
+        },
+        "campus_cluster_bootstrap": {
+          "ci95": [
+            -0.365,
+            1.9435
+          ],
+          "n_defined": 5000,
+          "n_undefined": 0,
+          "share_of_defined_at_or_below_0": 0.1674
+        },
+        "system_cluster_bootstrap": {
+          "ci95": [
+            -0.9516,
+            1.993
+          ],
+          "n_defined": 4957,
+          "n_undefined": 43,
+          "share_of_defined_at_or_below_0": 0.2376
+        },
+        "pair_level_bootstrap": {
+          "ci95": [
+            -0.644,
+            1.7224
+          ],
+          "n_defined": 5000,
+          "n_undefined": 0,
+          "share_of_defined_at_or_below_0": 0.1248
+        },
+        "permutation_system_blocks": {
+          "p_two_sided": 0.4883,
+          "p_one_sided_greater": 0.2788,
+          "n_permutations_defined": 10000,
+          "n_permutations_undefined": 0
+        }
+      },
+      "spearman_binary_verdict_vs_lift": {
+        "rho": 0.1155,
+        "two_way_cluster_bootstrap": {
+          "ci95": [
+            -0.2744,
+            0.4696
+          ],
+          "n_defined": 4899,
+          "n_undefined": 101,
+          "share_of_defined_at_or_below_0": 0.327
+        },
+        "campus_cluster_bootstrap": {
+          "ci95": [
+            -0.0903,
+            0.2815
+          ],
+          "n_defined": 5000,
+          "n_undefined": 0,
+          "share_of_defined_at_or_below_0": 0.1356
+        },
+        "system_cluster_bootstrap": {
+          "ci95": [
+            -0.1775,
+            0.397
+          ],
+          "n_defined": 4957,
+          "n_undefined": 43,
+          "share_of_defined_at_or_below_0": 0.3496
+        },
+        "pair_level_bootstrap": {
+          "ci95": [
+            -0.0832,
+            0.3028
+          ],
+          "n_defined": 5000,
+          "n_undefined": 0,
+          "share_of_defined_at_or_below_0": 0.133
+        },
+        "permutation_system_blocks": {
+          "p_two_sided": 0.3584,
+          "p_one_sided_greater": 0.1707,
+          "n_permutations_defined": 10000,
+          "n_permutations_undefined": 0
+        }
+      },
+      "mean_pairs_per_replicate": {
+        "two_way_cluster": 94.7,
+        "campus_cluster": 94.9,
+        "system_cluster": 95.1,
+        "pair_level": 95.0
+      }
+    },
+    "forward_test": {
+      "n_pairs": 88,
+      "n_supported": 61,
+      "n_not_supported": 27,
+      "n_campuses": 9,
+      "n_building_systems": 14,
+      "campuses": [
+        "1",
+        "10",
+        "11",
+        "2",
+        "3",
+        "4",
+        "5",
+        "6",
+        "7"
+      ],
+      "building_systems": [
+        "B20",
+        "B30",
+        "C10",
+        "C20",
+        "C30",
+        "D10",
+        "D20",
+        "D30",
+        "D40",
+        "D50",
+        "E10",
+        "E20",
+        "F10",
+        "G20"
+      ],
+      "supported": {
+        "n_lift_ge_2": 54,
+        "n": 61,
+        "share": 0.8852,
+        "wilson95_quoted": [
+          0.7816,
+          0.9433
+        ],
+        "median_lift": 4.143
+      },
+      "not_supported": {
+        "n_lift_ge_2": 24,
+        "n": 27,
+        "share": 0.8889,
+        "wilson95_quoted": [
+          0.7194,
+          0.9615
+        ],
+        "median_lift": 3.333
+      },
+      "difference_in_share_two_fold": {
+        "point": -0.0036,
+        "naive_newcombe95": [
+          -0.1302,
+          0.1755
+        ],
+        "two_way_cluster_bootstrap": {
+          "ci95": [
+            -0.2632,
+            0.2424
+          ],
+          "n_defined": 5000,
+          "n_undefined": 0,
+          "share_of_defined_at_or_below_0": 0.5478
+        },
+        "campus_cluster_bootstrap": {
+          "ci95": [
+            -0.1745,
+            0.1274
+          ],
+          "n_defined": 5000,
+          "n_undefined": 0,
+          "share_of_defined_at_or_below_0": 0.5156
+        },
+        "system_cluster_bootstrap": {
+          "ci95": [
+            -0.1655,
+            0.1316
+          ],
+          "n_defined": 5000,
+          "n_undefined": 0,
+          "share_of_defined_at_or_below_0": 0.5412
+        },
+        "pair_level_bootstrap": {
+          "ci95": [
+            -0.1411,
+            0.1501
+          ],
+          "n_defined": 5000,
+          "n_undefined": 0,
+          "share_of_defined_at_or_below_0": 0.5228
+        }
+      },
+      "permutation_difference_in_share": {
+        "system_blocks": {
+          "p_two_sided": 0.9692,
+          "p_one_sided_greater": 0.2871,
+          "n_permutations_defined": 10000,
+          "n_permutations_undefined": 0
+        },
+        "mean_pairs_per_permutation": 84.1,
+        "min_pairs_per_permutation": 81,
+        "pair_level_permutation_p_two_sided": 1.0,
+        "fisher_exact_p_two_sided": 1.0
+      },
+      "difference_in_median_lift": {
+        "point": 0.81,
+        "two_way_cluster_bootstrap": {
+          "ci95": [
+            -0.8455,
+            2.6392
+          ],
+          "n_defined": 5000,
+          "n_undefined": 0,
+          "share_of_defined_at_or_below_0": 0.128
+        },
+        "campus_cluster_bootstrap": {
+          "ci95": [
+            -0.4745,
+            2.112
+          ],
+          "n_defined": 5000,
+          "n_undefined": 0,
+          "share_of_defined_at_or_below_0": 0.0652
+        },
+        "system_cluster_bootstrap": {
+          "ci95": [
+            0.04,
+            1.872
+          ],
+          "n_defined": 5000,
+          "n_undefined": 0,
+          "share_of_defined_at_or_below_0": 0.0232
+        },
+        "pair_level_bootstrap": {
+          "ci95": [
+            0.191,
+            1.621
+          ],
+          "n_defined": 5000,
+          "n_undefined": 0,
+          "share_of_defined_at_or_below_0": 0.0058
+        },
+        "permutation_system_blocks": {
+          "p_two_sided": 0.0793,
+          "p_one_sided_greater": 0.0185,
+          "n_permutations_defined": 10000,
+          "n_permutations_undefined": 0
+        }
+      },
+      "spearman_binary_verdict_vs_lift": {
+        "rho": 0.274,
+        "two_way_cluster_bootstrap": {
+          "ci95": [
+            -0.1802,
+            0.6225
+          ],
+          "n_defined": 5000,
+          "n_undefined": 0,
+          "share_of_defined_at_or_below_0": 0.1104
+        },
+        "campus_cluster_bootstrap": {
+          "ci95": [
+            -0.0748,
+            0.553
+          ],
+          "n_defined": 5000,
+          "n_undefined": 0,
+          "share_of_defined_at_or_below_0": 0.0554
+        },
+        "system_cluster_bootstrap": {
+          "ci95": [
+            0.0069,
+            0.4799
+          ],
+          "n_defined": 5000,
+          "n_undefined": 0,
+          "share_of_defined_at_or_below_0": 0.0222
+        },
+        "pair_level_bootstrap": {
+          "ci95": [
+            0.082,
+            0.4551
+          ],
+          "n_defined": 5000,
+          "n_undefined": 0,
+          "share_of_defined_at_or_below_0": 0.0024
+        },
+        "permutation_system_blocks": {
+          "p_two_sided": 0.0685,
+          "p_one_sided_greater": 0.0137,
+          "n_permutations_defined": 10000,
+          "n_permutations_undefined": 0
+        }
+      },
+      "mean_pairs_per_replicate": {
+        "two_way_cluster": 87.8,
+        "campus_cluster": 88.0,
+        "system_cluster": 88.1,
+        "pair_level": 88.0
+      },
+      "spearman_S_vs_lift": {
+        "rho": 0.1298,
+        "p_naive": 0.228,
+        "naive_fisher_z95": [
+          -0.0827,
+          0.3311
+        ],
+        "two_way_cluster_bootstrap": {
+          "ci95": [
+            -0.3796,
+            0.6053
+          ],
+          "n_defined": 5000,
+          "n_undefined": 0,
+          "share_of_defined_at_or_below_0": 0.3072
+        },
+        "campus_cluster_bootstrap": {
+          "ci95": [
+            -0.2198,
+            0.5217
+          ],
+          "n_defined": 5000,
+          "n_undefined": 0,
+          "share_of_defined_at_or_below_0": 0.222
+        },
+        "system_cluster_bootstrap": {
+          "ci95": [
+            -0.237,
+            0.4347
+          ],
+          "n_defined": 5000,
+          "n_undefined": 0,
+          "share_of_defined_at_or_below_0": 0.2802
+        },
+        "pair_level_bootstrap": {
+          "ci95": [
+            -0.0979,
+            0.3487
+          ],
+          "n_defined": 5000,
+          "n_undefined": 0,
+          "share_of_defined_at_or_below_0": 0.1346
+        },
+        "permutation_system_blocks": {
+          "p_two_sided": 0.474,
+          "p_one_sided_greater": 0.0559,
+          "n_permutations_defined": 10000,
+          "n_permutations_undefined": 0
+        }
+      }
+    },
+    "forward_test_no_verdict_as_not_supported": {
+      "n_pairs": 91,
+      "n_supported": 61,
+      "n_not_supported": 30,
+      "n_campuses": 9,
+      "n_building_systems": 15,
+      "campuses": [
+        "1",
+        "10",
+        "11",
+        "2",
+        "3",
+        "4",
+        "5",
+        "6",
+        "7"
+      ],
+      "building_systems": [
+        "B20",
+        "B30",
+        "C10",
+        "C20",
+        "C30",
+        "D10",
+        "D20",
+        "D30",
+        "D40",
+        "D50",
+        "E10",
+        "E20",
+        "F10",
+        "F20",
+        "G20"
+      ],
+      "supported": {
+        "n_lift_ge_2": 54,
+        "n": 61,
+        "share": 0.8852,
+        "wilson95_quoted": [
+          0.7816,
+          0.9433
+        ],
+        "median_lift": 4.143
+      },
+      "not_supported": {
+        "n_lift_ge_2": 26,
+        "n": 30,
+        "share": 0.8667,
+        "wilson95_quoted": [
+          0.7032,
+          0.9469
+        ],
+        "median_lift": 3.35
+      },
+      "difference_in_share_two_fold": {
+        "point": 0.0186,
+        "naive_newcombe95": [
+          -0.1125,
+          0.192
+        ],
+        "two_way_cluster_bootstrap": {
+          "ci95": [
+            -0.2579,
+            0.2872
+          ],
+          "n_defined": 5000,
+          "n_undefined": 0,
+          "share_of_defined_at_or_below_0": 0.4696
+        },
+        "campus_cluster_bootstrap": {
+          "ci95": [
+            -0.1621,
+            0.1667
+          ],
+          "n_defined": 5000,
+          "n_undefined": 0,
+          "share_of_defined_at_or_below_0": 0.4098
+        },
+        "system_cluster_bootstrap": {
+          "ci95": [
+            -0.1429,
+            0.1548
+          ],
+          "n_defined": 5000,
+          "n_undefined": 0,
+          "share_of_defined_at_or_below_0": 0.4218
+        },
+        "pair_level_bootstrap": {
+          "ci95": [
+            -0.1239,
+            0.1726
+          ],
+          "n_defined": 5000,
+          "n_undefined": 0,
+          "share_of_defined_at_or_below_0": 0.4092
+        }
+      },
+      "permutation_difference_in_share": {
+        "system_blocks": {
+          "p_two_sided": 0.8177,
+          "p_one_sided_greater": 0.1947,
+          "n_permutations_defined": 10000,
+          "n_permutations_undefined": 0
+        },
+        "mean_pairs_per_permutation": 87.3,
+        "min_pairs_per_permutation": 84,
+        "pair_level_permutation_p_two_sided": 1.0,
+        "fisher_exact_p_two_sided": 1.0
+      },
+      "difference_in_median_lift": {
+        "point": 0.793,
+        "two_way_cluster_bootstrap": {
+          "ci95": [
+            -0.8571,
+            2.515
+          ],
+          "n_defined": 5000,
+          "n_undefined": 0,
+          "share_of_defined_at_or_below_0": 0.1522
+        },
+        "campus_cluster_bootstrap": {
+          "ci95": [
+            -0.4421,
+            1.986
+          ],
+          "n_defined": 5000,
+          "n_undefined": 0,
+          "share_of_defined_at_or_below_0": 0.0818
+        },
+        "system_cluster_bootstrap": {
+          "ci95": [
+            0.04,
+            1.8305
+          ],
+          "n_defined": 5000,
+          "n_undefined": 0,
+          "share_of_defined_at_or_below_0": 0.0216
+        },
+        "pair_level_bootstrap": {
+          "ci95": [
+            0.1405,
+            1.5831
+          ],
+          "n_defined": 5000,
+          "n_undefined": 0,
+          "share_of_defined_at_or_below_0": 0.0086
+        },
+        "permutation_system_blocks": {
+          "p_two_sided": 0.0884,
+          "p_one_sided_greater": 0.0147,
+          "n_permutations_defined": 10000,
+          "n_permutations_undefined": 0
+        }
+      },
+      "spearman_binary_verdict_vs_lift": {
+        "rho": 0.2607,
+        "two_way_cluster_bootstrap": {
+          "ci95": [
+            -0.192,
+            0.6074
+          ],
+          "n_defined": 5000,
+          "n_undefined": 0,
+          "share_of_defined_at_or_below_0": 0.1178
+        },
+        "campus_cluster_bootstrap": {
+          "ci95": [
+            -0.0669,
+            0.5482
+          ],
+          "n_defined": 5000,
+          "n_undefined": 0,
+          "share_of_defined_at_or_below_0": 0.0552
+        },
+        "system_cluster_bootstrap": {
+          "ci95": [
+            0.0199,
+            0.4567
+          ],
+          "n_defined": 5000,
+          "n_undefined": 0,
+          "share_of_defined_at_or_below_0": 0.0188
+        },
+        "pair_level_bootstrap": {
+          "ci95": [
+            0.0675,
+            0.4369
+          ],
+          "n_defined": 5000,
+          "n_undefined": 0,
+          "share_of_defined_at_or_below_0": 0.0046
+        },
+        "permutation_system_blocks": {
+          "p_two_sided": 0.0774,
+          "p_one_sided_greater": 0.0104,
+          "n_permutations_defined": 10000,
+          "n_permutations_undefined": 0
+        }
+      },
+      "mean_pairs_per_replicate": {
+        "two_way_cluster": 91.0,
+        "campus_cluster": 91.0,
+        "system_cluster": 91.2,
+        "pair_level": 91.0
+      }
+    }
+  },
+  "route_aligned": {
+    "share_route_lift_ge_2": {
+      "n_pairs": 75,
+      "n_supported": 67,
+      "n_not_supported": 8,
+      "n_campuses": 9,
+      "n_building_systems": 14,
+      "campuses": [
+        "1",
+        "10",
+        "11",
+        "2",
+        "3",
+        "4",
+        "5",
+        "6",
+        "7"
+      ],
+      "building_systems": [
+        "B20",
+        "B30",
+        "C10",
+        "C20",
+        "C30",
+        "D10",
+        "D20",
+        "D30",
+        "D40",
+        "D50",
+        "E10",
+        "E20",
+        "F10",
+        "G20"
+      ],
+      "supported": {
+        "n_lift_ge_2": 65,
+        "n": 67,
+        "share": 0.9701,
+        "wilson95_quoted": [
+          0.8975,
+          0.9918
+        ],
+        "median_lift": 4.123
+      },
+      "not_supported": {
+        "n_lift_ge_2": 7,
+        "n": 8,
+        "share": 0.875,
+        "wilson95_quoted": [
+          0.5291,
+          0.9776
+        ],
+        "median_lift": 6.553
+      },
+      "difference_in_share_two_fold": {
+        "point": 0.0951,
+        "naive_newcombe95": [
+          -0.0306,
+          0.4417
+        ],
+        "two_way_cluster_bootstrap": {
+          "ci95": [
+            -0.113,
+            0.833
+          ],
+          "n_defined": 4865,
+          "n_undefined": 135,
+          "share_of_defined_at_or_below_0": 0.5731
+        },
+        "campus_cluster_bootstrap": {
+          "ci95": [
+            -0.0784,
+            0.5
+          ],
+          "n_defined": 4998,
+          "n_undefined": 2,
+          "share_of_defined_at_or_below_0": 0.3533
+        },
+        "system_cluster_bootstrap": {
+          "ci95": [
+            -0.0571,
+            0.3353
+          ],
+          "n_defined": 4990,
+          "n_undefined": 10,
+          "share_of_defined_at_or_below_0": 0.3557
+        },
+        "pair_level_bootstrap": {
+          "ci95": [
+            -0.0615,
+            0.3992
+          ],
+          "n_defined": 4999,
+          "n_undefined": 1,
+          "share_of_defined_at_or_below_0": 0.3659
+        }
+      },
+      "permutation_difference_in_share": {
+        "system_blocks": {
+          "p_two_sided": 0.0568,
+          "p_one_sided_greater": 0.0568,
+          "n_permutations_defined": 10000,
+          "n_permutations_undefined": 0
+        },
+        "mean_pairs_per_permutation": 75.0,
+        "min_pairs_per_permutation": 75,
+        "pair_level_permutation_p_two_sided": 0.2978,
+        "fisher_exact_p_two_sided": 0.2906
+      },
+      "difference_in_median_lift": {
+        "point": -2.431,
+        "two_way_cluster_bootstrap": {
+          "ci95": [
+            -22.7492,
+            4.1226
+          ],
+          "n_defined": 4865,
+          "n_undefined": 135,
+          "share_of_defined_at_or_below_0": 0.7905
+        },
+        "campus_cluster_bootstrap": {
+          "ci95": [
+            -11.5576,
+            3.3238
+          ],
+          "n_defined": 4998,
+          "n_undefined": 2,
+          "share_of_defined_at_or_below_0": 0.8737
+        },
+        "system_cluster_bootstrap": {
+          "ci95": [
+            -17.5452,
+            2.2098
+          ],
+          "n_defined": 4990,
+          "n_undefined": 10,
+          "share_of_defined_at_or_below_0": 0.8954
+        },
+        "pair_level_bootstrap": {
+          "ci95": [
+            -12.0493,
+            2.336
+          ],
+          "n_defined": 4999,
+          "n_undefined": 1,
+          "share_of_defined_at_or_below_0": 0.9106
+        },
+        "permutation_system_blocks": {
+          "p_two_sided": 0.0012,
+          "p_one_sided_greater": 0.9989,
+          "n_permutations_defined": 10000,
+          "n_permutations_undefined": 0
+        }
+      },
+      "spearman_binary_verdict_vs_lift": {
+        "rho": -0.1756,
+        "two_way_cluster_bootstrap": {
+          "ci95": [
+            -0.6072,
+            0.414
+          ],
+          "n_defined": 4865,
+          "n_undefined": 135,
+          "share_of_defined_at_or_below_0": 0.7457
+        },
+        "campus_cluster_bootstrap": {
+          "ci95": [
+            -0.5066,
+            0.2426
+          ],
+          "n_defined": 4998,
+          "n_undefined": 2,
+          "share_of_defined_at_or_below_0": 0.7799
+        },
+        "system_cluster_bootstrap": {
+          "ci95": [
+            -0.429,
+            0.1518
+          ],
+          "n_defined": 4990,
+          "n_undefined": 10,
+          "share_of_defined_at_or_below_0": 0.8756
+        },
+        "pair_level_bootstrap": {
+          "ci95": [
+            -0.4406,
+            0.1507
+          ],
+          "n_defined": 4999,
+          "n_undefined": 1,
+          "share_of_defined_at_or_below_0": 0.8632
+        },
+        "permutation_system_blocks": {
+          "p_two_sided": 0.1095,
+          "p_one_sided_greater": 0.9018,
+          "n_permutations_defined": 10000,
+          "n_permutations_undefined": 0
+        }
+      },
+      "mean_pairs_per_replicate": {
+        "two_way_cluster": 75.0,
+        "campus_cluster": 74.7,
+        "system_cluster": 75.3,
+        "pair_level": 75.0
+      },
+      "spearman_S_vs_lift": {
+        "rho": -0.0708,
+        "p_naive": 0.5459,
+        "naive_fisher_z95": [
+          -0.2934,
+          0.159
+        ],
+        "two_way_cluster_bootstrap": {
+          "ci95": [
+            -0.4909,
+            0.411
+          ],
+          "n_defined": 4988,
+          "n_undefined": 12,
+          "share_of_defined_at_or_below_0": 0.6297
+        },
+        "campus_cluster_bootstrap": {
+          "ci95": [
+            -0.3279,
+            0.2422
+          ],
+          "n_defined": 5000,
+          "n_undefined": 0,
+          "share_of_defined_at_or_below_0": 0.655
+        },
+        "system_cluster_bootstrap": {
+          "ci95": [
+            -0.2895,
+            0.1714
+          ],
+          "n_defined": 5000,
+          "n_undefined": 0,
+          "share_of_defined_at_or_below_0": 0.7326
+        },
+        "pair_level_bootstrap": {
+          "ci95": [
+            -0.3366,
+            0.2179
+          ],
+          "n_defined": 5000,
+          "n_undefined": 0,
+          "share_of_defined_at_or_below_0": 0.6936
+        },
+        "permutation_system_blocks": {
+          "p_two_sided": 0.5073,
+          "p_one_sided_greater": 0.7143,
+          "n_permutations_defined": 10000,
+          "n_permutations_undefined": 0
+        }
+      }
+    },
+    "spearman_route_lift_vs_heldout_top_decile_lift": {
+      "n_pairs": 75,
+      "rho": 0.713,
+      "p_naive": 7.147e-13,
+      "naive_fisher_z95": [
+        0.5612,
+        0.8184
+      ],
+      "two_way_cluster_bootstrap": {
+        "ci95": [
+          0.3772,
+          0.9137
+        ],
+        "n_defined": 5000,
+        "n_undefined": 0,
+        "share_of_defined_at_or_below_0": 0.0004
+      },
+      "campus_cluster_bootstrap": {
+        "ci95": [
+          0.4649,
+          0.8862
+        ],
+        "n_defined": 5000,
+        "n_undefined": 0,
+        "share_of_defined_at_or_below_0": 0.0
+      },
+      "system_cluster_bootstrap": {
+        "ci95": [
+          0.5758,
+          0.814
+        ],
+        "n_defined": 5000,
+        "n_undefined": 0,
+        "share_of_defined_at_or_below_0": 0.0
+      },
+      "pair_level_bootstrap": {
+        "ci95": [
+          0.5562,
+          0.8243
+        ],
+        "n_defined": 5000,
+        "n_undefined": 0,
+        "share_of_defined_at_or_below_0": 0.0
+      }
+    }
+  },
+  "runtime_seconds": 40.9
+}

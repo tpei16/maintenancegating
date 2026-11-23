@@ -1,0 +1,1030 @@
+{
+  "design": "The 141 verdicts of the held-out maps (double nesting, risk percentile within campus and quarter, capped transfer gate) recomputed with the functions of 45_certification_corrected.py and read against the units that the routing rule flags on the held-out campus; the pooled gate quantities recomputed on a percentile scale; and the verdicts under other resolutions of ties at a top-decile boundary, for the screening model and for the prior-year count rule.",
+  "definitions": {
+    "flag": "unit with risk percentile R >= 0.90, R the percentile of the f^(-c) score within campus and quarter over all building systems (R_quarter), as in route() of script 45",
+    "precision_flags": "share of flagged units of the system on the held-out campus that have a high-burden next quarter",
+    "base_rate": "share of all units of the system on the held-out campus with a high-burden next quarter",
+    "route_lift": "precision_flags / base_rate",
+    "route_evaluable": "at least 30 flagged units, at least 10 high-burden quarters and at least 100 units of the system on the held-out campus; fixed before any outcome was read",
+    "bootstrap": "1000 resamples of the buildings of the campus that hold units of the system, with replacement, R and flags held at their stored values; 95% percentile interval; seed [42, pair index]",
+    "heldout_lift": "top-decile lift of f^(-c) within the system on campus c (raw score, ties in stored order), as in fold_gate_verdicts.csv",
+    "system_percentile": "percentile of the score within campus, quarter and building system",
+    "campus_percentile_R": "the campus-wide risk percentile R",
+    "scale_variant": "the pooled top-decile lift and the risk-gradient bands read the stated percentile instead of the raw score; per-campus lifts, data sufficiency and prior-record trace as stored; S by sufficiency() of script 45",
+    "tie_straddles": "more units share the boundary score of the top decile than the decile has room for after the units scoring above it, so the stored record order decides which of them enter",
+    "random_tie_breaking": "rows of every map put in random order before the gates are computed, 200 repetitions, seeds [42, r]",
+    "fractional_inclusion": "tied units at the boundary enter the top decile with equal fractional weight (expected precision under random tie-breaking)",
+    "extreme_resolutions": "tied units taken non-high-burden first (low) and high-burden first (high); S is non-decreasing in every lift, so a verdict equal at both extremes is the same under any resolution of the ties",
+    "count_rule": "rule_upm_count_prevyear: prior-year reactive work-order count as the risk score, maps built as in scripts 48 and 59"
+  },
+  "reference_check": {
+    "pooled_map_supported": "12/16",
+    "held_out_verdicts": 141,
+    "held_out_supported": 98,
+    "route_counts": {
+      "pma": 50968,
+      "verify": 705,
+      "continue": 385725,
+      "watch": 77577
+    },
+    "matches_cert_corrected_json": true,
+    "matches_gate_evidence_corrected_csv": true,
+    "matches_fold_gate_verdicts_csv": true
+  },
+  "count_rule_reference_check": {
+    "rule": "rule_upm_count_prevyear",
+    "pooled_map_supported": "10/16",
+    "held_out_supported": "89/142",
+    "matches_learner_invariance_json": true,
+    "matches_learner_agreement_json": true
+  },
+  "route_aligned": {
+    "reproduction": {
+      "decision_tasks": 50968,
+      "decision_task_outcome_rate": 0.3858,
+      "verification_tasks": 705,
+      "verification_outcome_rate": 0.1035,
+      "verification_tasks_in_pairs_with_verdict": 681,
+      "verification_tasks_in_systems_without_verdict": 24,
+      "matches_route_yield_corrected_json": true,
+      "matches_cert_corrected_routing": true
+    },
+    "summary": {
+      "n_pairs": 141,
+      "n_route_evaluable": 75,
+      "n_route_evaluable_supported": 67,
+      "n_route_evaluable_not_supported": 8,
+      "n_route_evaluable_and_heldout_evaluable": 75,
+      "route_evaluable": {
+        "supported": {
+          "n_pairs": 67,
+          "flagged_units": 50565,
+          "pooled_precision": 0.388,
+          "median_precision": 0.3934,
+          "median_route_lift": 4.123,
+          "n_route_lift_ge_2": 65,
+          "share_route_lift_ge_2": 0.9701,
+          "share_route_lift_ge_2_wilson95": [
+            0.8975,
+            0.9918
+          ],
+          "median_share_flagged": 0.1256,
+          "pairs": null
+        },
+        "not_supported": {
+          "n_pairs": 8,
+          "flagged_units": 595,
+          "pooled_precision": 0.0975,
+          "median_precision": 0.175,
+          "median_route_lift": 6.553,
+          "n_route_lift_ge_2": 7,
+          "share_route_lift_ge_2": 0.875,
+          "share_route_lift_ge_2_wilson95": [
+            0.5291,
+            0.9776
+          ],
+          "median_share_flagged": 0.0224,
+          "pairs": [
+            "10/F10",
+            "11/D10",
+            "11/F10",
+            "11/G20",
+            "2/B30",
+            "3/C20",
+            "3/D10",
+            "5/D10"
+          ]
+        }
+      },
+      "all_141_pairs": {
+        "supported": {
+          "n_pairs": 98,
+          "n_pairs_with_flags": 81,
+          "flagged_units": 50968,
+          "pooled_precision": 0.3858,
+          "pooled_base_rate_of_these_units": 0.0791
+        },
+        "not_supported": {
+          "n_pairs": 43,
+          "n_pairs_with_flags": 19,
+          "flagged_units": 681,
+          "pooled_precision": 0.1013,
+          "pooled_base_rate_of_these_units": 0.0188
+        }
+      },
+      "spearman_route_lift_vs_heldout_top_decile_lift": {
+        "rho": 0.713,
+        "p_value": 7.147e-13,
+        "n": 75
+      },
+      "spearman_route_lift_vs_S": {
+        "rho": -0.0708,
+        "p_value": 0.5459,
+        "n": 75
+      },
+      "heldout_top_decile_lift_on_route_evaluable_pairs": {
+        "supported": {
+          "n": 67,
+          "n_lift_ge_2": 65,
+          "share_lift_ge_2": 0.9701,
+          "share_lift_ge_2_wilson95": [
+            0.8975,
+            0.9918
+          ],
+          "median_lift": 4.393
+        },
+        "not_supported": {
+          "n": 8,
+          "n_lift_ge_2": 7,
+          "share_lift_ge_2": 0.875,
+          "share_lift_ge_2_wilson95": [
+            0.5291,
+            0.9776
+          ],
+          "median_lift": 4.09
+        }
+      },
+      "route_lift_and_top_decile_lift_agree_on_two_fold": {
+        "n": 75,
+        "both_ge_2": 71,
+        "route_only_ge_2": 1,
+        "top_decile_only_ge_2": 1,
+        "neither": 2
+      },
+      "not_route_evaluable": {
+        "n": 66,
+        "supported": 31,
+        "not_supported": 35,
+        "with_zero_flags": 41,
+        "supported_with_zero_flags": 17,
+        "supported_with_1_to_29_flags": 12,
+        "supported_with_at_least_30_flags_but_too_few_units_or_positives": 2,
+        "with_no_units": 12
+      },
+      "overlap_with_system_top_decile": {
+        "flagged_units": 51649,
+        "flagged_units_in_system_top_decile": 31103,
+        "system_top_decile_units": 48666,
+        "share_of_flags_in_system_top_decile": 0.6022,
+        "share_of_system_top_decile_flagged": 0.6391
+      },
+      "per_system_share_flagged": {
+        "D20": {
+          "units": 58371,
+          "flagged": 10732,
+          "share_flagged": 0.1839,
+          "base_rate": 0.1089,
+          "precision_flags": 0.4349,
+          "share_of_all_flags": 0.2077,
+          "share_of_all_units": 0.1133,
+          "share_flagged_across_campuses": {
+            "min": 0.0419,
+            "median": 0.1887,
+            "max": 0.2619,
+            "n_campuses": 9
+          }
+        },
+        "D30": {
+          "units": 58595,
+          "flagged": 9956,
+          "share_flagged": 0.1699,
+          "base_rate": 0.1127,
+          "precision_flags": 0.4855,
+          "share_of_all_flags": 0.1927,
+          "share_of_all_units": 0.1138,
+          "share_flagged_across_campuses": {
+            "min": 0.0748,
+            "median": 0.1824,
+            "max": 0.3302,
+            "n_campuses": 9
+          }
+        },
+        "C10": {
+          "units": 44736,
+          "flagged": 7323,
+          "share_flagged": 0.1637,
+          "base_rate": 0.1023,
+          "precision_flags": 0.3948,
+          "share_of_all_flags": 0.1417,
+          "share_of_all_units": 0.0869,
+          "share_flagged_across_campuses": {
+            "min": 0.1167,
+            "median": 0.1566,
+            "max": 0.3656,
+            "n_campuses": 8
+          }
+        },
+        "D50": {
+          "units": 54417,
+          "flagged": 8138,
+          "share_flagged": 0.1495,
+          "base_rate": 0.1012,
+          "precision_flags": 0.4532,
+          "share_of_all_flags": 0.1575,
+          "share_of_all_units": 0.1057,
+          "share_flagged_across_campuses": {
+            "min": 0.0698,
+            "median": 0.1761,
+            "max": 0.2784,
+            "n_campuses": 9
+          }
+        },
+        "E10": {
+          "units": 32719,
+          "flagged": 4599,
+          "share_flagged": 0.1406,
+          "base_rate": 0.0826,
+          "precision_flags": 0.3492,
+          "share_of_all_flags": 0.089,
+          "share_of_all_units": 0.0635,
+          "share_flagged_across_campuses": {
+            "min": 0.0352,
+            "median": 0.1048,
+            "max": 0.2554,
+            "n_campuses": 8
+          }
+        },
+        "D40": {
+          "units": 38855,
+          "flagged": 3024,
+          "share_flagged": 0.0778,
+          "base_rate": 0.0522,
+          "precision_flags": 0.1614,
+          "share_of_all_flags": 0.0585,
+          "share_of_all_units": 0.0755,
+          "share_flagged_across_campuses": {
+            "min": 0.0042,
+            "median": 0.0427,
+            "max": 0.1919,
+            "n_campuses": 9
+          }
+        },
+        "C30": {
+          "units": 35040,
+          "flagged": 2498,
+          "share_flagged": 0.0713,
+          "base_rate": 0.0727,
+          "precision_flags": 0.2982,
+          "share_of_all_flags": 0.0483,
+          "share_of_all_units": 0.068,
+          "share_flagged_across_campuses": {
+            "min": 0.032,
+            "median": 0.0643,
+            "max": 0.1308,
+            "n_campuses": 8
+          }
+        },
+        "B20": {
+          "units": 40441,
+          "flagged": 2040,
+          "share_flagged": 0.0504,
+          "base_rate": 0.0442,
+          "precision_flags": 0.1505,
+          "share_of_all_flags": 0.0395,
+          "share_of_all_units": 0.0785,
+          "share_flagged_across_campuses": {
+            "min": 0.0,
+            "median": 0.0264,
+            "max": 0.1146,
+            "n_campuses": 8
+          }
+        },
+        "B30": {
+          "units": 42568,
+          "flagged": 1762,
+          "share_flagged": 0.0414,
+          "base_rate": 0.0244,
+          "precision_flags": 0.1515,
+          "share_of_all_flags": 0.0341,
+          "share_of_all_units": 0.0827,
+          "share_flagged_across_campuses": {
+            "min": 0.0,
+            "median": 0.0059,
+            "max": 0.0655,
+            "n_campuses": 8
+          }
+        },
+        "E20": {
+          "units": 26949,
+          "flagged": 657,
+          "share_flagged": 0.0244,
+          "base_rate": 0.0496,
+          "precision_flags": 0.2374,
+          "share_of_all_flags": 0.0127,
+          "share_of_all_units": 0.0523,
+          "share_flagged_across_campuses": {
+            "min": 0.0043,
+            "median": 0.0252,
+            "max": 0.0374,
+            "n_campuses": 8
+          }
+        },
+        "C20": {
+          "units": 11829,
+          "flagged": 254,
+          "share_flagged": 0.0215,
+          "base_rate": 0.0147,
+          "precision_flags": 0.0276,
+          "share_of_all_flags": 0.0049,
+          "share_of_all_units": 0.023,
+          "share_flagged_across_campuses": {
+            "min": 0.0,
+            "median": 0.0,
+            "max": 0.0475,
+            "n_campuses": 7
+          }
+        },
+        "D10": {
+          "units": 16515,
+          "flagged": 313,
+          "share_flagged": 0.019,
+          "base_rate": 0.0209,
+          "precision_flags": 0.1565,
+          "share_of_all_flags": 0.0061,
+          "share_of_all_units": 0.0321,
+          "share_flagged_across_campuses": {
+            "min": 0.0,
+            "median": 0.0088,
+            "max": 0.1203,
+            "n_campuses": 8
+          }
+        },
+        "G20": {
+          "units": 14983,
+          "flagged": 252,
+          "share_flagged": 0.0168,
+          "base_rate": 0.0236,
+          "precision_flags": 0.0833,
+          "share_of_all_flags": 0.0049,
+          "share_of_all_units": 0.0291,
+          "share_flagged_across_campuses": {
+            "min": 0.0,
+            "median": 0.005,
+            "max": 0.0522,
+            "n_campuses": 7
+          }
+        },
+        "F10": {
+          "units": 7078,
+          "flagged": 75,
+          "share_flagged": 0.0106,
+          "base_rate": 0.0144,
+          "precision_flags": 0.0933,
+          "share_of_all_flags": 0.0015,
+          "share_of_all_units": 0.0137,
+          "share_flagged_across_campuses": {
+            "min": 0.0,
+            "median": 0.0015,
+            "max": 0.0237,
+            "n_campuses": 6
+          }
+        },
+        "F20": {
+          "units": 4899,
+          "flagged": 25,
+          "share_flagged": 0.0051,
+          "base_rate": 0.0147,
+          "precision_flags": 0.0,
+          "share_of_all_flags": 0.0005,
+          "share_of_all_units": 0.0095,
+          "share_flagged_across_campuses": {
+            "min": 0.0,
+            "median": 0.0093,
+            "max": 0.0186,
+            "n_campuses": 2
+          }
+        },
+        "A10": {
+          "units": 252,
+          "flagged": 1,
+          "share_flagged": 0.004,
+          "base_rate": 0.0,
+          "precision_flags": 0.0,
+          "share_of_all_flags": 0.0,
+          "share_of_all_units": 0.0005,
+          "share_flagged_across_campuses": null
+        },
+        "G30": {
+          "units": 5009,
+          "flagged": 18,
+          "share_flagged": 0.0036,
+          "base_rate": 0.0058,
+          "precision_flags": 0.2222,
+          "share_of_all_flags": 0.0003,
+          "share_of_all_units": 0.0097,
+          "share_flagged_across_campuses": {
+            "min": 0.0,
+            "median": 0.0009,
+            "max": 0.0017,
+            "n_campuses": 2
+          }
+        },
+        "G40": {
+          "units": 2925,
+          "flagged": 6,
+          "share_flagged": 0.0021,
+          "base_rate": 0.0024,
+          "precision_flags": 0.0,
+          "share_of_all_flags": 0.0001,
+          "share_of_all_units": 0.0057,
+          "share_flagged_across_campuses": null
+        },
+        "B10": {
+          "units": 1832,
+          "flagged": 0,
+          "share_flagged": 0.0,
+          "base_rate": 0.0016,
+          "precision_flags": null,
+          "share_of_all_flags": 0.0,
+          "share_of_all_units": 0.0036,
+          "share_flagged_across_campuses": null
+        },
+        "D90": {
+          "units": 16556,
+          "flagged": 0,
+          "share_flagged": 0.0,
+          "base_rate": 0.0,
+          "precision_flags": null,
+          "share_of_all_flags": 0.0,
+          "share_of_all_units": 0.0321,
+          "share_flagged_across_campuses": null
+        },
+        "G10": {
+          "units": 406,
+          "flagged": 0,
+          "share_flagged": 0.0,
+          "base_rate": 0.0,
+          "precision_flags": null,
+          "share_of_all_flags": 0.0,
+          "share_of_all_units": 0.0008,
+          "share_flagged_across_campuses": null
+        }
+      },
+      "share_flagged_spread": {
+        "overall_share_flagged": 0.1003,
+        "pairs_with_at_least_100_units": 116,
+        "pair_share_flagged_min": 0.0,
+        "pair_share_flagged_median": 0.0479,
+        "pair_share_flagged_max": 0.3656,
+        "pairs_share_flagged_below_0.02": 40,
+        "pairs_share_flagged_above_0.20": 14,
+        "spearman_pair_share_flagged_vs_base_rate": {
+          "rho": 0.6453,
+          "p_value": 5.3e-15,
+          "n": 116
+        },
+        "system_share_flagged_min": 0.0,
+        "system_share_flagged_max": 0.1839
+      }
+    }
+  },
+  "pooled_gate_scale": {
+    "system_percentile": {
+      "held_out_maps": {
+        "n": 141,
+        "n_verdicts_changed": 6,
+        "verdicts_changed": [
+          {
+            "pair": "1/D10",
+            "S_stored": 0.6,
+            "S_variant": 0.7,
+            "supported_stored": false,
+            "supported_variant": true,
+            "gates_changed": {
+              "risk_gradient": [
+                "caution",
+                "pass"
+              ]
+            },
+            "pooled_lift": [
+              5.53,
+              2.41
+            ],
+            "top_band": [
+              1.69,
+              2.0
+            ],
+            "rho": [
+              0.7,
+              1.0
+            ]
+          },
+          {
+            "pair": "10/D10",
+            "S_stored": 0.6,
+            "S_variant": 0.7,
+            "supported_stored": false,
+            "supported_variant": true,
+            "gates_changed": {
+              "risk_gradient": [
+                "caution",
+                "pass"
+              ]
+            },
+            "pooled_lift": [
+              5.36,
+              2.4
+            ],
+            "top_band": [
+              1.84,
+              2.2
+            ],
+            "rho": [
+              1.0,
+              1.0
+            ]
+          },
+          {
+            "pair": "2/F10",
+            "S_stored": 0.7,
+            "S_variant": 0.6,
+            "supported_stored": true,
+            "supported_variant": false,
+            "gates_changed": {
+              "risk_gradient": [
+                "pass",
+                "caution"
+              ]
+            },
+            "pooled_lift": [
+              5.19,
+              3.62
+            ],
+            "top_band": [
+              2.53,
+              2.84
+            ],
+            "rho": [
+              1.0,
+              0.9
+            ]
+          },
+          {
+            "pair": "3/D10",
+            "S_stored": 0.6,
+            "S_variant": 0.7,
+            "supported_stored": false,
+            "supported_variant": true,
+            "gates_changed": {
+              "risk_gradient": [
+                "caution",
+                "pass"
+              ]
+            },
+            "pooled_lift": [
+              4.77,
+              2.22
+            ],
+            "top_band": [
+              1.83,
+              2.1
+            ],
+            "rho": [
+              0.6,
+              1.0
+            ]
+          },
+          {
+            "pair": "3/F10",
+            "S_stored": 0.6,
+            "S_variant": 0.7,
+            "supported_stored": false,
+            "supported_variant": true,
+            "gates_changed": {
+              "risk_gradient": [
+                "caution",
+                "pass"
+              ]
+            },
+            "pooled_lift": [
+              5.15,
+              4.45
+            ],
+            "top_band": [
+              2.52,
+              2.74
+            ],
+            "rho": [
+              0.9,
+              1.0
+            ]
+          },
+          {
+            "pair": "7/D10",
+            "S_stored": 0.6,
+            "S_variant": 0.7,
+            "supported_stored": false,
+            "supported_variant": true,
+            "gates_changed": {
+              "risk_gradient": [
+                "caution",
+                "pass"
+              ]
+            },
+            "pooled_lift": [
+              5.25,
+              2.57
+            ],
+            "top_band": [
+              1.91,
+              2.13
+            ],
+            "rho": [
+              0.9,
+              1.0
+            ]
+          }
+        ],
+        "n_gate_score_changes": {
+          "data_sufficiency": 0,
+          "risk_concentration": 5,
+          "transfer_stability": 0,
+          "risk_gradient": 34,
+          "prior_record_trace": 0
+        },
+        "gate_score_transitions": {
+          "risk_concentration": {
+            "pass->caution": 2,
+            "caution->pass": 3
+          },
+          "risk_gradient": {
+            "caution->pass": 21,
+            "fail->caution": 3,
+            "pass->caution": 9,
+            "fail->pass": 1
+          }
+        },
+        "n_pooled_lift_below_2_stored": 3,
+        "n_pooled_lift_below_2_variant": 2,
+        "n_verdicts_changed_with_risk_concentration_change": 0,
+        "n_S_changed": 24,
+        "max_abs_delta_S": 0.3,
+        "pooled_lift_delta_median": -1.76,
+        "pooled_lift_delta_min": -4.63,
+        "pooled_lift_delta_max": 1.94
+      },
+      "pooled_map": {
+        "n": 16,
+        "n_verdicts_changed": 2,
+        "verdicts_changed": [
+          {
+            "pair": "D10",
+            "S_stored": 0.6,
+            "S_variant": 0.7,
+            "supported_stored": false,
+            "supported_variant": true,
+            "gates_changed": {
+              "risk_gradient": [
+                "caution",
+                "pass"
+              ]
+            },
+            "pooled_lift": [
+              5.39,
+              2.58
+            ],
+            "top_band": [
+              1.9,
+              2.18
+            ],
+            "rho": [
+              0.9,
+              1.0
+            ]
+          },
+          {
+            "pair": "F10",
+            "S_stored": 0.7,
+            "S_variant": 0.6,
+            "supported_stored": true,
+            "supported_variant": false,
+            "gates_changed": {
+              "risk_gradient": [
+                "pass",
+                "caution"
+              ]
+            },
+            "pooled_lift": [
+              5.39,
+              3.82
+            ],
+            "top_band": [
+              2.45,
+              2.93
+            ],
+            "rho": [
+              1.0,
+              0.7
+            ]
+          }
+        ],
+        "n_gate_score_changes": {
+          "data_sufficiency": 0,
+          "risk_concentration": 0,
+          "transfer_stability": 0,
+          "risk_gradient": 4,
+          "prior_record_trace": 0
+        },
+        "gate_score_transitions": {
+          "risk_concentration": {},
+          "risk_gradient": {
+            "fail->pass": 1,
+            "caution->pass": 2,
+            "pass->caution": 1
+          }
+        },
+        "n_pooled_lift_below_2_stored": 0,
+        "n_pooled_lift_below_2_variant": 0,
+        "n_verdicts_changed_with_risk_concentration_change": 0,
+        "n_S_changed": 4,
+        "max_abs_delta_S": 0.2,
+        "pooled_lift_delta_median": -1.65,
+        "pooled_lift_delta_min": -3.77,
+        "pooled_lift_delta_max": 1.81
+      }
+    },
+    "campus_percentile_R": {
+      "held_out_maps": {
+        "n": 141,
+        "n_verdicts_changed": 0,
+        "verdicts_changed": [],
+        "n_gate_score_changes": {
+          "data_sufficiency": 0,
+          "risk_concentration": 18,
+          "transfer_stability": 0,
+          "risk_gradient": 0,
+          "prior_record_trace": 0
+        },
+        "gate_score_transitions": {
+          "risk_concentration": {
+            "pass->caution": 6,
+            "pass->fail": 9,
+            "caution->fail": 3
+          },
+          "risk_gradient": {}
+        },
+        "n_pooled_lift_below_2_stored": 3,
+        "n_pooled_lift_below_2_variant": 18,
+        "n_verdicts_changed_with_risk_concentration_change": 0,
+        "n_S_changed": 15,
+        "max_abs_delta_S": 0.2,
+        "pooled_lift_delta_median": -1.37,
+        "pooled_lift_delta_min": -4.55,
+        "pooled_lift_delta_max": 0.69
+      },
+      "pooled_map": {
+        "n": 16,
+        "n_verdicts_changed": 0,
+        "verdicts_changed": [],
+        "n_gate_score_changes": {
+          "data_sufficiency": 0,
+          "risk_concentration": 2,
+          "transfer_stability": 0,
+          "risk_gradient": 0,
+          "prior_record_trace": 0
+        },
+        "gate_score_transitions": {
+          "risk_concentration": {
+            "pass->fail": 2
+          },
+          "risk_gradient": {}
+        },
+        "n_pooled_lift_below_2_stored": 0,
+        "n_pooled_lift_below_2_variant": 2,
+        "n_verdicts_changed_with_risk_concentration_change": 0,
+        "n_S_changed": 2,
+        "max_abs_delta_S": 0.2,
+        "pooled_lift_delta_median": -1.405,
+        "pooled_lift_delta_min": -2.97,
+        "pooled_lift_delta_max": 0.35
+      }
+    }
+  },
+  "ties": {
+    "screening_model": {
+      "held_out_maps": {
+        "n": 141,
+        "n_supported_stored": 98,
+        "random_tie_breaking": {
+          "n_repetitions": 200,
+          "n_verdicts_ever_changed": 0,
+          "verdicts_ever_changed": [],
+          "n_pairs_S_ever_changed": 0,
+          "n_supported_per_repetition_min": 98,
+          "n_supported_per_repetition_max": 98
+        },
+        "fractional_inclusion": {
+          "n_verdicts_changed": 0,
+          "verdicts_changed": [],
+          "n_supported": 98
+        },
+        "extreme_resolutions": {
+          "n_supported_low": 98,
+          "n_supported_high": 98,
+          "n_verdicts_that_can_change": 0,
+          "verdicts_that_can_change": []
+        },
+        "boundary_ties": {
+          "pairs_with_straddling_tie_pooled_lift": 1,
+          "max_units_at_boundary_score_pooled_lift": 2,
+          "pairs_with_any_straddling_tie_peer_lift": 6,
+          "peer_lifts_with_straddling_tie": 6,
+          "peer_lifts_evaluated": 775,
+          "max_units_at_boundary_score_peer_lift": 8,
+          "max_abs_pooled_lift_range": 0.0,
+          "heldout_lift_pairs_evaluated": 95,
+          "heldout_lift_with_straddling_tie": 2,
+          "heldout_two_fold_status_can_change": 0
+        }
+      },
+      "pooled_map": {
+        "n": 16,
+        "n_supported_stored": 12,
+        "random_tie_breaking": {
+          "n_repetitions": 200,
+          "n_verdicts_ever_changed": 0,
+          "verdicts_ever_changed": [],
+          "n_pairs_S_ever_changed": 0,
+          "n_supported_per_repetition_min": 12,
+          "n_supported_per_repetition_max": 12
+        },
+        "fractional_inclusion": {
+          "n_verdicts_changed": 0,
+          "verdicts_changed": [],
+          "n_supported": 12
+        },
+        "extreme_resolutions": {
+          "n_supported_low": 12,
+          "n_supported_high": 12,
+          "n_verdicts_that_can_change": 0,
+          "verdicts_that_can_change": []
+        },
+        "boundary_ties": {
+          "systems_with_straddling_tie_pooled_lift": 1,
+          "peer_lifts_with_straddling_tie": 2,
+          "peer_lifts_evaluated": 97
+        }
+      }
+    },
+    "count_rule": {
+      "held_out_maps": {
+        "n": 142,
+        "n_supported_stored": 89,
+        "random_tie_breaking": {
+          "n_repetitions": 200,
+          "n_verdicts_ever_changed": 9,
+          "verdicts_ever_changed": [
+            {
+              "pair": "1/D10",
+              "supported_stored": false,
+              "share_of_repetitions_supported": 0.055,
+              "S_stored": 0.6,
+              "S_min": 0.5,
+              "S_max": 0.7
+            },
+            {
+              "pair": "10/D10",
+              "supported_stored": true,
+              "share_of_repetitions_supported": 0.87,
+              "S_stored": 0.7,
+              "S_min": 0.6,
+              "S_max": 0.7
+            },
+            {
+              "pair": "11/D10",
+              "supported_stored": false,
+              "share_of_repetitions_supported": 0.05,
+              "S_stored": 0.6,
+              "S_min": 0.5,
+              "S_max": 0.7
+            },
+            {
+              "pair": "2/D10",
+              "supported_stored": true,
+              "share_of_repetitions_supported": 0.89,
+              "S_stored": 0.7,
+              "S_min": 0.6,
+              "S_max": 0.7
+            },
+            {
+              "pair": "3/D10",
+              "supported_stored": false,
+              "share_of_repetitions_supported": 0.08,
+              "S_stored": 0.6,
+              "S_min": 0.5,
+              "S_max": 0.7
+            },
+            {
+              "pair": "4/D10",
+              "supported_stored": false,
+              "share_of_repetitions_supported": 0.115,
+              "S_stored": 0.6,
+              "S_min": 0.6,
+              "S_max": 0.7
+            },
+            {
+              "pair": "5/D10",
+              "supported_stored": false,
+              "share_of_repetitions_supported": 0.07,
+              "S_stored": 0.6,
+              "S_min": 0.5,
+              "S_max": 0.7
+            },
+            {
+              "pair": "6/D10",
+              "supported_stored": false,
+              "share_of_repetitions_supported": 0.065,
+              "S_stored": 0.6,
+              "S_min": 0.5,
+              "S_max": 0.7
+            },
+            {
+              "pair": "7/D10",
+              "supported_stored": false,
+              "share_of_repetitions_supported": 0.065,
+              "S_stored": 0.6,
+              "S_min": 0.5,
+              "S_max": 0.7
+            }
+          ],
+          "n_pairs_S_ever_changed": 14,
+          "n_supported_per_repetition_min": 88,
+          "n_supported_per_repetition_max": 92
+        },
+        "fractional_inclusion": {
+          "n_verdicts_changed": 0,
+          "verdicts_changed": [],
+          "n_supported": 89
+        },
+        "extreme_resolutions": {
+          "n_supported_low": 87,
+          "n_supported_high": 96,
+          "n_verdicts_that_can_change": 9,
+          "verdicts_that_can_change": [
+            "1/D10",
+            "10/D10",
+            "11/D10",
+            "2/D10",
+            "3/D10",
+            "4/D10",
+            "5/D10",
+            "6/D10",
+            "7/D10"
+          ]
+        },
+        "boundary_ties": {
+          "pairs_with_straddling_tie_pooled_lift": 142,
+          "max_units_at_boundary_score_pooled_lift": 4992,
+          "pairs_with_any_straddling_tie_peer_lift": 142,
+          "peer_lifts_with_straddling_tie": 720,
+          "peer_lifts_evaluated": 776,
+          "max_units_at_boundary_score_peer_lift": 2940,
+          "max_abs_pooled_lift_range": 4.5429
+        }
+      },
+      "pooled_map": {
+        "n": 16,
+        "n_supported_stored": 10,
+        "random_tie_breaking": {
+          "n_repetitions": 200,
+          "n_verdicts_ever_changed": 1,
+          "verdicts_ever_changed": [
+            {
+              "pair": "D10",
+              "supported_stored": false,
+              "share_of_repetitions_supported": 0.1,
+              "S_stored": 0.6,
+              "S_min": 0.5,
+              "S_max": 0.7
+            }
+          ],
+          "n_pairs_S_ever_changed": 1,
+          "n_supported_per_repetition_min": 10,
+          "n_supported_per_repetition_max": 11
+        },
+        "fractional_inclusion": {
+          "n_verdicts_changed": 0,
+          "verdicts_changed": [],
+          "n_supported": 10
+        },
+        "extreme_resolutions": {
+          "n_supported_low": 10,
+          "n_supported_high": 11,
+          "n_verdicts_that_can_change": 1,
+          "verdicts_that_can_change": [
+            "D10"
+          ]
+        },
+        "boundary_ties": {
+          "systems_with_straddling_tie_pooled_lift": 16,
+          "peer_lifts_with_straddling_tie": 90,
+          "peer_lifts_evaluated": 97
+        }
+      }
+    },
+    "count_rule_pairs_without_screening_model_verdict": [
+      "11/G30"
+    ]
+  },
+  "runtime_seconds": 752.6
+}

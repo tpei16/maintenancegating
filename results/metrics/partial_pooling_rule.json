@@ -1,0 +1,3645 @@
+{
+  "design": "For each campus-system pair, the top-decile lift of the ranking on each evaluable peer campus, read through the model that excluded the target and the peer, with a building-level bootstrap variance of its logarithm; a random-effects model on the log lifts (REML); the predictive probability P that the true lift on a new campus is at least 2; accepted when P >= p0. Compared with the evidence gating over the 141 pairs and the 16 systems of the pooled map, and checked on the held-out campus.",
+  "definitions": {
+    "peer_lift": "top-decile lift of f^(-{c,d}) on the units of system k on peer campus d, for peers with >= 10 high-burden quarters and >= 100 units of the system",
+    "variance": "variance of the log lift over 1000 replicates resampling with replacement the buildings that hold system k on campus d; replicate counts carry a continuity correction of 0.5",
+    "random_effects": "log L_d ~ N(theta_d, v_d), theta_d ~ N(mu, tau^2); tau^2 by REML, mu by inverse-variance weights 1/(v_d + tau^2)",
+    "P": "P(theta_new >= log 2), theta_new ~ mu_hat + sqrt(tau^2 + SE(mu_hat)^2) * t_(k-2) for k >= 3; standard normal in place of t for k = 2; no estimate for k < 2",
+    "accepted": "P >= p0; not accepted when fewer than two peers are evaluable",
+    "principal_level": "p0 = 0.8, fixed as a convention before agreement with the gating was computed; 0.5 and 0.9 reported as sensitivity",
+    "heldout": "top-decile lift of f^(-c) on system k in campus c, for the 95 pairs evaluable there (>= 10 high-burden quarters, >= 100 units)",
+    "exchangeability": "the rule treats the target campus as exchangeable with its peers: its true log lift is a draw from the same normal distribution"
+  },
+  "reference_check": {
+    "n_stratum_folds": 141,
+    "pooled_certified": "12/16",
+    "route_counts": {
+      "pma": 50968,
+      "verify": 705,
+      "continue": 385725,
+      "watch": 77577
+    },
+    "matches_cert_corrected_json": true,
+    "matches_fold_gate_verdicts_csv": true
+  },
+  "invariant": {
+    "per_pair_n_campuses_and_frac_2x_reproduced": true,
+    "n_pairs": 141,
+    "pooled_map_n_campuses_and_frac_2x_reproduced": true,
+    "n_pooled_systems": 16,
+    "bootstrap_lift_equals_lift_at_topk": true
+  },
+  "exclusion_check": {
+    "n_rows_checked": 4119800,
+    "n_corpora": 9,
+    "statement": "every row of the corpus for target c is a peer row scored by a model whose held-out set contains c and that peer"
+  },
+  "estimator_check": {
+    "data": "BCG vaccine trials, 13 log risk ratios (Colditz et al. 1994)",
+    "REML": {
+      "tau2": 0.3132,
+      "mu": -0.7145,
+      "published": [
+        0.3132,
+        -0.7145
+      ]
+    },
+    "DL": {
+      "tau2": 0.3088,
+      "mu": -0.7141,
+      "published": [
+        0.3088,
+        -0.7141
+      ]
+    }
+  },
+  "monte_carlo_check": {
+    "seed_principal": 42,
+    "seed_check": 43,
+    "max_abs_delta_P_141": 0.0332,
+    "median_abs_delta_P_141": 0.0003,
+    "verdict_changes_141_p0.5": {
+      "n": 0,
+      "pairs": []
+    },
+    "verdict_changes_141_p0.8": {
+      "n": 1,
+      "pairs": [
+        [
+          "5",
+          "B20",
+          0.7992,
+          0.8011
+        ]
+      ]
+    },
+    "verdict_changes_141_p0.9": {
+      "n": 2,
+      "pairs": [
+        [
+          "3",
+          "C20",
+          0.9025,
+          0.8968
+        ],
+        [
+          "7",
+          "G20",
+          0.9102,
+          0.897
+        ]
+      ]
+    },
+    "max_abs_delta_P_pooled_map": 0.0177,
+    "verdict_changes_pooled_map_p0.8": [
+      "C20"
+    ]
+  },
+  "bootstrap": {
+    "B": 1000,
+    "unit": "buildings holding the system on the campus",
+    "seeds": "one seed per (corpus, campus, system), drawn in a fixed order from numpy.random.default_rng(RANDOM_SEED)",
+    "continuity_correction": 0.5
+  },
+  "fits": {
+    "k_distribution": {
+      "1": 16,
+      "2": 7,
+      "3": 11,
+      "4": 8,
+      "5": 8,
+      "6": 21,
+      "7": 46,
+      "8": 24
+    },
+    "prediction_form_counts": {
+      "t": 118,
+      "none": 16,
+      "normal_k2": 7
+    },
+    "n_pairs_no_estimate_k_lt_2": 16,
+    "n_pairs_normal_form_k_eq_2": 7,
+    "tau_reml": {
+      "median": 0.321,
+      "min": 0.0,
+      "max": 0.8903,
+      "share_zero": 0.184
+    },
+    "P_by_group": {
+      "all_141": {
+        "median": 0.9319,
+        "min": 0.3835,
+        "max": 1.0,
+        "n": 125
+      },
+      "provisional_36": {
+        "median": 0.9271,
+        "min": 0.3835,
+        "max": 1.0,
+        "n": 35
+      },
+      "supported_in_every_map": {
+        "median": 0.9416,
+        "min": 0.7992,
+        "max": 0.998,
+        "n": 81
+      },
+      "supported_in_no_map": {
+        "median": 0.8947,
+        "min": 0.4366,
+        "max": 0.9603,
+        "n": 9
+      }
+    },
+    "peer_evidence": {
+      "n_campus_system_estimates": 775,
+      "buildings_per_estimate": {
+        "median": 180,
+        "min": 15
+      },
+      "sd_log_lift": {
+        "median": 0.107,
+        "min": 0.0386,
+        "max": 0.8567
+      },
+      "ratio_bootstrap_sd_to_binomial_sd": {
+        "median": 1.0063,
+        "p10": 0.6926,
+        "p90": 2.0581
+      },
+      "n_point_lifts_zero": 2,
+      "n_estimates_with_a_zero_top_replicate": 130,
+      "max_share_zero_top_replicates": 0.999,
+      "n_replicates_zero_pos_total": 141
+    }
+  },
+  "rule_variants": {
+    "reml_p0.8": "principal: REML, p0 = 0.8, normal form at two peers",
+    "reml_p0.5": "sensitivity: p0 = 0.5",
+    "reml_p0.9": "sensitivity: p0 = 0.9",
+    "dl_p0.8": "sensitivity: DerSimonian-Laird estimate of tau^2, p0 = 0.8",
+    "reml_p0.8_min3peers": "sensitivity added after the principal results were seen: as the principal rule, but no verdict for pairs with two evaluable peers"
+  },
+  "principal_rule": "reml_p0.8",
+  "agreement": {
+    "reml_p0.5": {
+      "all_141": {
+        "n": 141,
+        "n_agree": 116,
+        "agreement": 0.8227,
+        "kappa": 0.5002,
+        "n_supported_by_gating": 98,
+        "n_accepted_by_rule": 123,
+        "n_gating_yes_rule_no": 0,
+        "n_gating_no_rule_yes": 25,
+        "kappa_ci95_resampling_systems": {
+          "n_boot": 1000,
+          "n_clusters": 16,
+          "n_undefined": 0,
+          "ci95": [
+            0.1256,
+            0.8587
+          ]
+        }
+      },
+      "provisional_36": {
+        "n": 36,
+        "n_agree": 19,
+        "agreement": 0.5278,
+        "kappa": 0.1,
+        "n_supported_by_gating": 17,
+        "n_accepted_by_rule": 34,
+        "n_gating_yes_rule_no": 0,
+        "n_gating_no_rule_yes": 17,
+        "kappa_ci95_resampling_systems": {
+          "n_boot": 1000,
+          "n_clusters": 4,
+          "n_undefined": 0,
+          "ci95": [
+            0.0,
+            0.2041
+          ]
+        }
+      },
+      "supported_in_every_map": {
+        "n": 81,
+        "n_agree": 81,
+        "agreement": 1.0,
+        "kappa": null,
+        "n_supported_by_gating": 81,
+        "n_accepted_by_rule": 81,
+        "n_gating_yes_rule_no": 0,
+        "n_gating_no_rule_yes": 0
+      },
+      "supported_in_no_map": {
+        "n": 24,
+        "n_agree": 16,
+        "agreement": 0.6667,
+        "kappa": null,
+        "n_supported_by_gating": 0,
+        "n_accepted_by_rule": 8,
+        "n_gating_yes_rule_no": 0,
+        "n_gating_no_rule_yes": 8
+      },
+      "pooled_map_16": {
+        "n": 16,
+        "n_agree": 14,
+        "agreement": 0.875,
+        "kappa": 0.6,
+        "n_supported_by_gating": 12,
+        "n_accepted_by_rule": 14,
+        "n_gating_yes_rule_no": 0,
+        "n_gating_no_rule_yes": 2
+      }
+    },
+    "reml_p0.8": {
+      "all_141": {
+        "n": 141,
+        "n_agree": 121,
+        "agreement": 0.8582,
+        "kappa": 0.6318,
+        "n_supported_by_gating": 98,
+        "n_accepted_by_rule": 112,
+        "n_gating_yes_rule_no": 3,
+        "n_gating_no_rule_yes": 17,
+        "kappa_ci95_resampling_systems": {
+          "n_boot": 1000,
+          "n_clusters": 16,
+          "n_undefined": 0,
+          "ci95": [
+            0.2483,
+            0.8802
+          ]
+        }
+      },
+      "provisional_36": {
+        "n": 36,
+        "n_agree": 24,
+        "agreement": 0.6667,
+        "kappa": 0.3474,
+        "n_supported_by_gating": 17,
+        "n_accepted_by_rule": 25,
+        "n_gating_yes_rule_no": 2,
+        "n_gating_no_rule_yes": 10,
+        "kappa_ci95_resampling_systems": {
+          "n_boot": 1000,
+          "n_clusters": 4,
+          "n_undefined": 0,
+          "ci95": [
+            0.0217,
+            0.6667
+          ]
+        }
+      },
+      "supported_in_every_map": {
+        "n": 81,
+        "n_agree": 80,
+        "agreement": 0.9877,
+        "kappa": null,
+        "n_supported_by_gating": 81,
+        "n_accepted_by_rule": 80,
+        "n_gating_yes_rule_no": 1,
+        "n_gating_no_rule_yes": 0
+      },
+      "supported_in_no_map": {
+        "n": 24,
+        "n_agree": 17,
+        "agreement": 0.7083,
+        "kappa": null,
+        "n_supported_by_gating": 0,
+        "n_accepted_by_rule": 7,
+        "n_gating_yes_rule_no": 0,
+        "n_gating_no_rule_yes": 7
+      },
+      "pooled_map_16": {
+        "n": 16,
+        "n_agree": 15,
+        "agreement": 0.9375,
+        "kappa": 0.8182,
+        "n_supported_by_gating": 12,
+        "n_accepted_by_rule": 13,
+        "n_gating_yes_rule_no": 0,
+        "n_gating_no_rule_yes": 1
+      }
+    },
+    "reml_p0.9": {
+      "all_141": {
+        "n": 141,
+        "n_agree": 114,
+        "agreement": 0.8085,
+        "kappa": 0.557,
+        "n_supported_by_gating": 98,
+        "n_accepted_by_rule": 95,
+        "n_gating_yes_rule_no": 15,
+        "n_gating_no_rule_yes": 12,
+        "kappa_ci95_resampling_systems": {
+          "n_boot": 1000,
+          "n_clusters": 16,
+          "n_undefined": 0,
+          "ci95": [
+            0.2,
+            0.8233
+          ]
+        }
+      },
+      "provisional_36": {
+        "n": 36,
+        "n_agree": 24,
+        "agreement": 0.6667,
+        "kappa": 0.3394,
+        "n_supported_by_gating": 17,
+        "n_accepted_by_rule": 21,
+        "n_gating_yes_rule_no": 4,
+        "n_gating_no_rule_yes": 8,
+        "kappa_ci95_resampling_systems": {
+          "n_boot": 1000,
+          "n_clusters": 4,
+          "n_undefined": 0,
+          "ci95": [
+            -0.1053,
+            0.6667
+          ]
+        }
+      },
+      "supported_in_every_map": {
+        "n": 81,
+        "n_agree": 70,
+        "agreement": 0.8642,
+        "kappa": null,
+        "n_supported_by_gating": 81,
+        "n_accepted_by_rule": 70,
+        "n_gating_yes_rule_no": 11,
+        "n_gating_no_rule_yes": 0
+      },
+      "supported_in_no_map": {
+        "n": 24,
+        "n_agree": 20,
+        "agreement": 0.8333,
+        "kappa": null,
+        "n_supported_by_gating": 0,
+        "n_accepted_by_rule": 4,
+        "n_gating_yes_rule_no": 0,
+        "n_gating_no_rule_yes": 4
+      },
+      "pooled_map_16": {
+        "n": 16,
+        "n_agree": 14,
+        "agreement": 0.875,
+        "kappa": 0.7143,
+        "n_supported_by_gating": 12,
+        "n_accepted_by_rule": 10,
+        "n_gating_yes_rule_no": 2,
+        "n_gating_no_rule_yes": 0
+      }
+    },
+    "dl_p0.8": {
+      "all_141": {
+        "n": 141,
+        "n_agree": 117,
+        "agreement": 0.8298,
+        "kappa": 0.5704,
+        "n_supported_by_gating": 98,
+        "n_accepted_by_rule": 108,
+        "n_gating_yes_rule_no": 7,
+        "n_gating_no_rule_yes": 17,
+        "kappa_ci95_resampling_systems": {
+          "n_boot": 1000,
+          "n_clusters": 16,
+          "n_undefined": 0,
+          "ci95": [
+            0.1917,
+            0.8725
+          ]
+        }
+      },
+      "provisional_36": {
+        "n": 36,
+        "n_agree": 24,
+        "agreement": 0.6667,
+        "kappa": 0.3474,
+        "n_supported_by_gating": 17,
+        "n_accepted_by_rule": 25,
+        "n_gating_yes_rule_no": 2,
+        "n_gating_no_rule_yes": 10,
+        "kappa_ci95_resampling_systems": {
+          "n_boot": 1000,
+          "n_clusters": 4,
+          "n_undefined": 0,
+          "ci95": [
+            0.0217,
+            0.6667
+          ]
+        }
+      },
+      "supported_in_every_map": {
+        "n": 81,
+        "n_agree": 76,
+        "agreement": 0.9383,
+        "kappa": null,
+        "n_supported_by_gating": 81,
+        "n_accepted_by_rule": 76,
+        "n_gating_yes_rule_no": 5,
+        "n_gating_no_rule_yes": 0
+      },
+      "supported_in_no_map": {
+        "n": 24,
+        "n_agree": 17,
+        "agreement": 0.7083,
+        "kappa": null,
+        "n_supported_by_gating": 0,
+        "n_accepted_by_rule": 7,
+        "n_gating_yes_rule_no": 0,
+        "n_gating_no_rule_yes": 7
+      },
+      "pooled_map_16": {
+        "n": 16,
+        "n_agree": 15,
+        "agreement": 0.9375,
+        "kappa": 0.8182,
+        "n_supported_by_gating": 12,
+        "n_accepted_by_rule": 13,
+        "n_gating_yes_rule_no": 0,
+        "n_gating_no_rule_yes": 1
+      }
+    },
+    "reml_p0.8_min3peers": {
+      "all_141": {
+        "n": 141,
+        "n_agree": 127,
+        "agreement": 0.9007,
+        "kappa": 0.7529,
+        "n_supported_by_gating": 98,
+        "n_accepted_by_rule": 106,
+        "n_gating_yes_rule_no": 3,
+        "n_gating_no_rule_yes": 11,
+        "kappa_ci95_resampling_systems": {
+          "n_boot": 1000,
+          "n_clusters": 16,
+          "n_undefined": 0,
+          "ci95": [
+            0.4728,
+            0.9497
+          ]
+        }
+      },
+      "provisional_36": {
+        "n": 36,
+        "n_agree": 30,
+        "agreement": 0.8333,
+        "kappa": 0.6677,
+        "n_supported_by_gating": 17,
+        "n_accepted_by_rule": 19,
+        "n_gating_yes_rule_no": 2,
+        "n_gating_no_rule_yes": 4,
+        "kappa_ci95_resampling_systems": {
+          "n_boot": 1000,
+          "n_clusters": 4,
+          "n_undefined": 0,
+          "ci95": [
+            0.3662,
+            0.8875
+          ]
+        }
+      },
+      "supported_in_every_map": {
+        "n": 81,
+        "n_agree": 80,
+        "agreement": 0.9877,
+        "kappa": null,
+        "n_supported_by_gating": 81,
+        "n_accepted_by_rule": 80,
+        "n_gating_yes_rule_no": 1,
+        "n_gating_no_rule_yes": 0
+      },
+      "supported_in_no_map": {
+        "n": 24,
+        "n_agree": 17,
+        "agreement": 0.7083,
+        "kappa": null,
+        "n_supported_by_gating": 0,
+        "n_accepted_by_rule": 7,
+        "n_gating_yes_rule_no": 0,
+        "n_gating_no_rule_yes": 7
+      },
+      "pooled_map_16": {
+        "n": 16,
+        "n_agree": 15,
+        "agreement": 0.9375,
+        "kappa": 0.8182,
+        "n_supported_by_gating": 12,
+        "n_accepted_by_rule": 13,
+        "n_gating_yes_rule_no": 0,
+        "n_gating_no_rule_yes": 1
+      }
+    },
+    "count_based_rule": {
+      "all_141": {
+        "n": 141,
+        "n_agree": 132,
+        "agreement": 0.9362,
+        "kappa": 0.84,
+        "n_supported_by_gating": 98,
+        "n_accepted_by_rule": 107,
+        "n_gating_yes_rule_no": 0,
+        "n_gating_no_rule_yes": 9,
+        "kappa_ci95_resampling_systems": {
+          "n_boot": 1000,
+          "n_clusters": 16,
+          "n_undefined": 1,
+          "ci95": [
+            0.506,
+            1.0
+          ]
+        }
+      },
+      "provisional_36": {
+        "n": 36,
+        "n_agree": 27,
+        "agreement": 0.75,
+        "kappa": 0.512,
+        "n_supported_by_gating": 17,
+        "n_accepted_by_rule": 26,
+        "n_gating_yes_rule_no": 0,
+        "n_gating_no_rule_yes": 9,
+        "kappa_ci95_resampling_systems": {
+          "n_boot": 1000,
+          "n_clusters": 4,
+          "n_undefined": 0,
+          "ci95": [
+            0.08,
+            1.0
+          ]
+        }
+      },
+      "supported_in_every_map": {
+        "n": 81,
+        "n_agree": 81,
+        "agreement": 1.0,
+        "kappa": null,
+        "n_supported_by_gating": 81,
+        "n_accepted_by_rule": 81,
+        "n_gating_yes_rule_no": 0,
+        "n_gating_no_rule_yes": 0
+      },
+      "supported_in_no_map": {
+        "n": 24,
+        "n_agree": 24,
+        "agreement": 1.0,
+        "kappa": null,
+        "n_supported_by_gating": 0,
+        "n_accepted_by_rule": 0,
+        "n_gating_yes_rule_no": 0,
+        "n_gating_no_rule_yes": 0
+      }
+    }
+  },
+  "per_system": {
+    "B20": {
+      "system_desc": "Exterior Enclosure",
+      "n_pairs": 9,
+      "group": "supported_in_every_map",
+      "n_supported_by_gating": 9,
+      "n_accepted_count_based_rule": 9,
+      "n_accepted_reml_p0.5": 9,
+      "n_accepted_reml_p0.8": 8,
+      "n_accepted_reml_p0.9": 1,
+      "n_accepted_dl_p0.8": 4,
+      "n_accepted_reml_p0.8_min3peers": 8,
+      "k_range": [
+        6,
+        7
+      ],
+      "P_median": 0.8523,
+      "P_range": [
+        0.7992,
+        0.9644
+      ],
+      "tau_median": 0.3387,
+      "n_pairs_tau_zero": 0
+    },
+    "B30": {
+      "system_desc": "Roofing",
+      "n_pairs": 9,
+      "group": "provisional",
+      "n_supported_by_gating": 8,
+      "n_accepted_count_based_rule": 8,
+      "n_accepted_reml_p0.5": 9,
+      "n_accepted_reml_p0.8": 8,
+      "n_accepted_reml_p0.9": 8,
+      "n_accepted_dl_p0.8": 8,
+      "n_accepted_reml_p0.8_min3peers": 8,
+      "k_range": [
+        3,
+        6
+      ],
+      "P_median": 0.9976,
+      "P_range": [
+        0.5899,
+        0.9996
+      ],
+      "tau_median": 0.0,
+      "n_pairs_tau_zero": 8
+    },
+    "C10": {
+      "system_desc": "Interior Construction",
+      "n_pairs": 9,
+      "group": "supported_in_every_map",
+      "n_supported_by_gating": 9,
+      "n_accepted_count_based_rule": 9,
+      "n_accepted_reml_p0.5": 9,
+      "n_accepted_reml_p0.8": 9,
+      "n_accepted_reml_p0.9": 9,
+      "n_accepted_dl_p0.8": 9,
+      "n_accepted_reml_p0.8_min3peers": 9,
+      "k_range": [
+        7,
+        8
+      ],
+      "P_median": 0.9225,
+      "P_range": [
+        0.9008,
+        0.9466
+      ],
+      "tau_median": 0.4291,
+      "n_pairs_tau_zero": 0
+    },
+    "C20": {
+      "system_desc": "Stairs",
+      "n_pairs": 9,
+      "group": "supported_in_no_map",
+      "n_supported_by_gating": 0,
+      "n_accepted_count_based_rule": 0,
+      "n_accepted_reml_p0.5": 8,
+      "n_accepted_reml_p0.8": 7,
+      "n_accepted_reml_p0.9": 4,
+      "n_accepted_dl_p0.8": 7,
+      "n_accepted_reml_p0.8_min3peers": 7,
+      "k_range": [
+        4,
+        5
+      ],
+      "P_median": 0.8947,
+      "P_range": [
+        0.4366,
+        0.9603
+      ],
+      "tau_median": 0.0,
+      "n_pairs_tau_zero": 5
+    },
+    "C30": {
+      "system_desc": "Interior Finishes",
+      "n_pairs": 9,
+      "group": "supported_in_every_map",
+      "n_supported_by_gating": 9,
+      "n_accepted_count_based_rule": 9,
+      "n_accepted_reml_p0.5": 9,
+      "n_accepted_reml_p0.8": 9,
+      "n_accepted_reml_p0.9": 9,
+      "n_accepted_dl_p0.8": 9,
+      "n_accepted_reml_p0.8_min3peers": 9,
+      "k_range": [
+        7,
+        8
+      ],
+      "P_median": 0.9265,
+      "P_range": [
+        0.9039,
+        0.9629
+      ],
+      "tau_median": 0.3828,
+      "n_pairs_tau_zero": 0
+    },
+    "D10": {
+      "system_desc": "Conveying",
+      "n_pairs": 9,
+      "group": "provisional",
+      "n_supported_by_gating": 2,
+      "n_accepted_count_based_rule": 9,
+      "n_accepted_reml_p0.5": 8,
+      "n_accepted_reml_p0.8": 1,
+      "n_accepted_reml_p0.9": 1,
+      "n_accepted_dl_p0.8": 1,
+      "n_accepted_reml_p0.8_min3peers": 1,
+      "k_range": [
+        6,
+        7
+      ],
+      "P_median": 0.7143,
+      "P_range": [
+        0.3835,
+        0.9206
+      ],
+      "tau_median": 0.5834,
+      "n_pairs_tau_zero": 0
+    },
+    "D20": {
+      "system_desc": "Plumbing",
+      "n_pairs": 9,
+      "group": "supported_in_every_map",
+      "n_supported_by_gating": 9,
+      "n_accepted_count_based_rule": 9,
+      "n_accepted_reml_p0.5": 9,
+      "n_accepted_reml_p0.8": 9,
+      "n_accepted_reml_p0.9": 9,
+      "n_accepted_dl_p0.8": 9,
+      "n_accepted_reml_p0.8_min3peers": 9,
+      "k_range": [
+        7,
+        8
+      ],
+      "P_median": 0.9624,
+      "P_range": [
+        0.9559,
+        0.9879
+      ],
+      "tau_median": 0.367,
+      "n_pairs_tau_zero": 0
+    },
+    "D30": {
+      "system_desc": "HVAC",
+      "n_pairs": 9,
+      "group": "supported_in_every_map",
+      "n_supported_by_gating": 9,
+      "n_accepted_count_based_rule": 9,
+      "n_accepted_reml_p0.5": 9,
+      "n_accepted_reml_p0.8": 9,
+      "n_accepted_reml_p0.9": 9,
+      "n_accepted_dl_p0.8": 9,
+      "n_accepted_reml_p0.8_min3peers": 9,
+      "k_range": [
+        8,
+        8
+      ],
+      "P_median": 0.9449,
+      "P_range": [
+        0.9129,
+        0.9736
+      ],
+      "tau_median": 0.413,
+      "n_pairs_tau_zero": 0
+    },
+    "D40": {
+      "system_desc": "Fire Protection",
+      "n_pairs": 9,
+      "group": "supported_in_every_map",
+      "n_supported_by_gating": 9,
+      "n_accepted_count_based_rule": 9,
+      "n_accepted_reml_p0.5": 9,
+      "n_accepted_reml_p0.8": 9,
+      "n_accepted_reml_p0.9": 9,
+      "n_accepted_dl_p0.8": 9,
+      "n_accepted_reml_p0.8_min3peers": 9,
+      "k_range": [
+        8,
+        8
+      ],
+      "P_median": 0.9535,
+      "P_range": [
+        0.929,
+        0.9879
+      ],
+      "tau_median": 0.2822,
+      "n_pairs_tau_zero": 0
+    },
+    "D50": {
+      "system_desc": "Electrical",
+      "n_pairs": 9,
+      "group": "supported_in_every_map",
+      "n_supported_by_gating": 9,
+      "n_accepted_count_based_rule": 9,
+      "n_accepted_reml_p0.5": 9,
+      "n_accepted_reml_p0.8": 9,
+      "n_accepted_reml_p0.9": 8,
+      "n_accepted_dl_p0.8": 9,
+      "n_accepted_reml_p0.8_min3peers": 9,
+      "k_range": [
+        7,
+        8
+      ],
+      "P_median": 0.9255,
+      "P_range": [
+        0.8995,
+        0.9638
+      ],
+      "tau_median": 0.4246,
+      "n_pairs_tau_zero": 0
+    },
+    "E10": {
+      "system_desc": "Equipment",
+      "n_pairs": 9,
+      "group": "supported_in_every_map",
+      "n_supported_by_gating": 9,
+      "n_accepted_count_based_rule": 9,
+      "n_accepted_reml_p0.5": 9,
+      "n_accepted_reml_p0.8": 9,
+      "n_accepted_reml_p0.9": 9,
+      "n_accepted_dl_p0.8": 9,
+      "n_accepted_reml_p0.8_min3peers": 9,
+      "k_range": [
+        7,
+        8
+      ],
+      "P_median": 0.9973,
+      "P_range": [
+        0.9952,
+        0.998
+      ],
+      "tau_median": 0.2156,
+      "n_pairs_tau_zero": 0
+    },
+    "E20": {
+      "system_desc": "Furnishings",
+      "n_pairs": 9,
+      "group": "supported_in_every_map",
+      "n_supported_by_gating": 9,
+      "n_accepted_count_based_rule": 9,
+      "n_accepted_reml_p0.5": 9,
+      "n_accepted_reml_p0.8": 9,
+      "n_accepted_reml_p0.9": 7,
+      "n_accepted_dl_p0.8": 9,
+      "n_accepted_reml_p0.8_min3peers": 9,
+      "k_range": [
+        6,
+        7
+      ],
+      "P_median": 0.9249,
+      "P_range": [
+        0.8108,
+        0.9545
+      ],
+      "tau_median": 0.2508,
+      "n_pairs_tau_zero": 0
+    },
+    "F10": {
+      "system_desc": "Special Construction",
+      "n_pairs": 9,
+      "group": "provisional",
+      "n_supported_by_gating": 3,
+      "n_accepted_count_based_rule": 5,
+      "n_accepted_reml_p0.5": 9,
+      "n_accepted_reml_p0.8": 8,
+      "n_accepted_reml_p0.9": 6,
+      "n_accepted_dl_p0.8": 8,
+      "n_accepted_reml_p0.8_min3peers": 6,
+      "k_range": [
+        2,
+        3
+      ],
+      "P_median": 0.9277,
+      "P_range": [
+        0.77,
+        1.0
+      ],
+      "tau_median": 0.0,
+      "n_pairs_tau_zero": 6
+    },
+    "F20": {
+      "system_desc": "Selective Building Demolition",
+      "n_pairs": 8,
+      "group": "supported_in_no_map",
+      "n_supported_by_gating": 0,
+      "n_accepted_count_based_rule": 0,
+      "n_accepted_reml_p0.5": 0,
+      "n_accepted_reml_p0.8": 0,
+      "n_accepted_reml_p0.9": 0,
+      "n_accepted_dl_p0.8": 0,
+      "n_accepted_reml_p0.8_min3peers": 0,
+      "k_range": [
+        1,
+        1
+      ],
+      "P_median": null,
+      "P_range": null,
+      "tau_median": null,
+      "n_pairs_tau_zero": 0
+    },
+    "G20": {
+      "system_desc": "Site Improvements",
+      "n_pairs": 9,
+      "group": "provisional",
+      "n_supported_by_gating": 4,
+      "n_accepted_count_based_rule": 4,
+      "n_accepted_reml_p0.5": 8,
+      "n_accepted_reml_p0.8": 8,
+      "n_accepted_reml_p0.9": 6,
+      "n_accepted_dl_p0.8": 8,
+      "n_accepted_reml_p0.8_min3peers": 4,
+      "k_range": [
+        1,
+        3
+      ],
+      "P_median": 0.954,
+      "P_range": [
+        0.8881,
+        1.0
+      ],
+      "tau_median": 0.0775,
+      "n_pairs_tau_zero": 4
+    },
+    "G30": {
+      "system_desc": "Site Mechanical Utilities",
+      "n_pairs": 7,
+      "group": "supported_in_no_map",
+      "n_supported_by_gating": 0,
+      "n_accepted_count_based_rule": 0,
+      "n_accepted_reml_p0.5": 0,
+      "n_accepted_reml_p0.8": 0,
+      "n_accepted_reml_p0.9": 0,
+      "n_accepted_dl_p0.8": 0,
+      "n_accepted_reml_p0.8_min3peers": 0,
+      "k_range": [
+        1,
+        1
+      ],
+      "P_median": null,
+      "P_range": null,
+      "tau_median": null,
+      "n_pairs_tau_zero": 0
+    }
+  },
+  "disagreements": {
+    "reml_p0.5": [
+      {
+        "campus": "1",
+        "system": "C20",
+        "gating_supported": false,
+        "pooled_rule_accepted": true,
+        "P": 0.8771,
+        "tau": 0.218,
+        "k": 4,
+        "form": "t",
+        "pooled_mean_lift": 3.2617,
+        "S": 0.5,
+        "frac_2x": 1.0,
+        "transfer_stability": 0.5,
+        "risk_gradient": 0.5,
+        "heldout_evaluable": true,
+        "heldout_lift": 1.83
+      },
+      {
+        "campus": "1",
+        "system": "D10",
+        "gating_supported": false,
+        "pooled_rule_accepted": true,
+        "P": 0.7143,
+        "tau": 0.5638,
+        "k": 6,
+        "form": "t",
+        "pooled_mean_lift": 2.9361,
+        "S": 0.6,
+        "frac_2x": 0.667,
+        "transfer_stability": 0.5,
+        "risk_gradient": 0.5,
+        "heldout_evaluable": true,
+        "heldout_lift": 3.633
+      },
+      {
+        "campus": "1",
+        "system": "G20",
+        "gating_supported": false,
+        "pooled_rule_accepted": true,
+        "P": 1.0,
+        "tau": 0.0,
+        "k": 2,
+        "form": "normal_k2",
+        "pooled_mean_lift": 3.9427,
+        "S": 0.5,
+        "frac_2x": 1.0,
+        "transfer_stability": 0.5,
+        "risk_gradient": 0.5,
+        "heldout_evaluable": true,
+        "heldout_lift": 7.228
+      },
+      {
+        "campus": "10",
+        "system": "C20",
+        "gating_supported": false,
+        "pooled_rule_accepted": true,
+        "P": 0.8199,
+        "tau": 0.0,
+        "k": 4,
+        "form": "t",
+        "pooled_mean_lift": 2.4856,
+        "S": 0.4,
+        "frac_2x": 1.0,
+        "transfer_stability": 0.5,
+        "risk_gradient": 0.0,
+        "heldout_evaluable": true,
+        "heldout_lift": 1.996
+      },
+      {
+        "campus": "10",
+        "system": "D10",
+        "gating_supported": false,
+        "pooled_rule_accepted": true,
+        "P": 0.7821,
+        "tau": 0.4913,
+        "k": 6,
+        "form": "t",
+        "pooled_mean_lift": 3.1988,
+        "S": 0.6,
+        "frac_2x": 0.667,
+        "transfer_stability": 0.5,
+        "risk_gradient": 0.5,
+        "heldout_evaluable": true,
+        "heldout_lift": 1.07
+      },
+      {
+        "campus": "10",
+        "system": "F10",
+        "gating_supported": false,
+        "pooled_rule_accepted": true,
+        "P": 1.0,
+        "tau": 0.0,
+        "k": 2,
+        "form": "normal_k2",
+        "pooled_mean_lift": 6.0825,
+        "S": 0.5,
+        "frac_2x": 1.0,
+        "transfer_stability": 0.5,
+        "risk_gradient": 0.5,
+        "heldout_evaluable": true,
+        "heldout_lift": 3.829
+      },
+      {
+        "campus": "10",
+        "system": "G20",
+        "gating_supported": false,
+        "pooled_rule_accepted": true,
+        "P": 1.0,
+        "tau": 0.0,
+        "k": 2,
+        "form": "normal_k2",
+        "pooled_mean_lift": 3.8398,
+        "S": 0.5,
+        "frac_2x": 1.0,
+        "transfer_stability": 0.5,
+        "risk_gradient": 1.0,
+        "heldout_evaluable": false,
+        "heldout_lift": null
+      },
+      {
+        "campus": "11",
+        "system": "D10",
+        "gating_supported": false,
+        "pooled_rule_accepted": true,
+        "P": 0.6257,
+        "tau": 0.6766,
+        "k": 6,
+        "form": "t",
+        "pooled_mean_lift": 2.5822,
+        "S": 0.5,
+        "frac_2x": 0.5,
+        "transfer_stability": 0.0,
+        "risk_gradient": 0.5,
+        "heldout_evaluable": true,
+        "heldout_lift": 4.511
+      },
+      {
+        "campus": "11",
+        "system": "F10",
+        "gating_supported": false,
+        "pooled_rule_accepted": true,
+        "P": 0.77,
+        "tau": 0.2362,
+        "k": 2,
+        "form": "normal_k2",
+        "pooled_mean_lift": 2.6835,
+        "S": 0.0,
+        "frac_2x": 0.5,
+        "transfer_stability": 0.0,
+        "risk_gradient": 0.5,
+        "heldout_evaluable": true,
+        "heldout_lift": 5.482
+      },
+      {
+        "campus": "2",
+        "system": "B30",
+        "gating_supported": false,
+        "pooled_rule_accepted": true,
+        "P": 0.9976,
+        "tau": 0.0,
+        "k": 4,
+        "form": "t",
+        "pooled_mean_lift": 4.4607,
+        "S": 0.5,
+        "frac_2x": 1.0,
+        "transfer_stability": 0.5,
+        "risk_gradient": 0.5,
+        "heldout_evaluable": true,
+        "heldout_lift": 4.261
+      },
+      {
+        "campus": "2",
+        "system": "C20",
+        "gating_supported": false,
+        "pooled_rule_accepted": true,
+        "P": 0.7613,
+        "tau": 0.0,
+        "k": 5,
+        "form": "t",
+        "pooled_mean_lift": 2.2847,
+        "S": 0.4,
+        "frac_2x": 0.8,
+        "transfer_stability": 0.5,
+        "risk_gradient": 0.0,
+        "heldout_evaluable": false,
+        "heldout_lift": null
+      },
+      {
+        "campus": "2",
+        "system": "G20",
+        "gating_supported": false,
+        "pooled_rule_accepted": true,
+        "P": 1.0,
+        "tau": 0.0,
+        "k": 2,
+        "form": "normal_k2",
+        "pooled_mean_lift": 3.7586,
+        "S": 0.5,
+        "frac_2x": 1.0,
+        "transfer_stability": 0.5,
+        "risk_gradient": 0.5,
+        "heldout_evaluable": false,
+        "heldout_lift": null
+      },
+      {
+        "campus": "3",
+        "system": "C20",
+        "gating_supported": false,
+        "pooled_rule_accepted": true,
+        "P": 0.9025,
+        "tau": 0.0,
+        "k": 4,
+        "form": "t",
+        "pooled_mean_lift": 2.8058,
+        "S": 0.5,
+        "frac_2x": 1.0,
+        "transfer_stability": 0.5,
+        "risk_gradient": 0.5,
+        "heldout_evaluable": true,
+        "heldout_lift": 2.053
+      },
+      {
+        "campus": "3",
+        "system": "D10",
+        "gating_supported": false,
+        "pooled_rule_accepted": true,
+        "P": 0.5845,
+        "tau": 0.7638,
+        "k": 6,
+        "form": "t",
+        "pooled_mean_lift": 2.4186,
+        "S": 0.6,
+        "frac_2x": 0.667,
+        "transfer_stability": 0.5,
+        "risk_gradient": 0.5,
+        "heldout_evaluable": true,
+        "heldout_lift": 1.664
+      },
+      {
+        "campus": "3",
+        "system": "F10",
+        "gating_supported": false,
+        "pooled_rule_accepted": true,
+        "P": 0.9319,
+        "tau": 0.0,
+        "k": 3,
+        "form": "t",
+        "pooled_mean_lift": 4.6882,
+        "S": 0.6,
+        "frac_2x": 1.0,
+        "transfer_stability": 0.5,
+        "risk_gradient": 0.5,
+        "heldout_evaluable": false,
+        "heldout_lift": null
+      },
+      {
+        "campus": "4",
+        "system": "C20",
+        "gating_supported": false,
+        "pooled_rule_accepted": true,
+        "P": 0.9,
+        "tau": 0.1849,
+        "k": 5,
+        "form": "t",
+        "pooled_mean_lift": 3.0368,
+        "S": 0.5,
+        "frac_2x": 0.8,
+        "transfer_stability": 0.5,
+        "risk_gradient": 0.5,
+        "heldout_evaluable": false,
+        "heldout_lift": null
+      },
+      {
+        "campus": "4",
+        "system": "D10",
+        "gating_supported": false,
+        "pooled_rule_accepted": true,
+        "P": 0.5661,
+        "tau": 0.6944,
+        "k": 6,
+        "form": "t",
+        "pooled_mean_lift": 2.2913,
+        "S": 0.5,
+        "frac_2x": 0.5,
+        "transfer_stability": 0.0,
+        "risk_gradient": 0.5,
+        "heldout_evaluable": true,
+        "heldout_lift": 3.536
+      },
+      {
+        "campus": "4",
+        "system": "F10",
+        "gating_supported": false,
+        "pooled_rule_accepted": true,
+        "P": 0.9359,
+        "tau": 0.0,
+        "k": 3,
+        "form": "t",
+        "pooled_mean_lift": 4.9594,
+        "S": 0.5,
+        "frac_2x": 1.0,
+        "transfer_stability": 0.5,
+        "risk_gradient": 1.0,
+        "heldout_evaluable": false,
+        "heldout_lift": null
+      },
+      {
+        "campus": "4",
+        "system": "G20",
+        "gating_supported": false,
+        "pooled_rule_accepted": true,
+        "P": 0.9977,
+        "tau": 0.0,
+        "k": 2,
+        "form": "normal_k2",
+        "pooled_mean_lift": 3.7985,
+        "S": 0.5,
+        "frac_2x": 1.0,
+        "transfer_stability": 0.5,
+        "risk_gradient": 1.0,
+        "heldout_evaluable": true,
+        "heldout_lift": 3.769
+      },
+      {
+        "campus": "5",
+        "system": "C20",
+        "gating_supported": false,
+        "pooled_rule_accepted": true,
+        "P": 0.9603,
+        "tau": 0.0,
+        "k": 5,
+        "form": "t",
+        "pooled_mean_lift": 3.0357,
+        "S": 0.4,
+        "frac_2x": 0.6,
+        "transfer_stability": 0.5,
+        "risk_gradient": 0.0,
+        "heldout_evaluable": false,
+        "heldout_lift": null
+      },
+      {
+        "campus": "5",
+        "system": "F10",
+        "gating_supported": false,
+        "pooled_rule_accepted": true,
+        "P": 0.8466,
+        "tau": 0.2504,
+        "k": 3,
+        "form": "t",
+        "pooled_mean_lift": 3.9703,
+        "S": 0.6,
+        "frac_2x": 0.667,
+        "transfer_stability": 0.5,
+        "risk_gradient": 0.5,
+        "heldout_evaluable": false,
+        "heldout_lift": null
+      },
+      {
+        "campus": "6",
+        "system": "C20",
+        "gating_supported": false,
+        "pooled_rule_accepted": true,
+        "P": 0.8947,
+        "tau": 0.0,
+        "k": 4,
+        "form": "t",
+        "pooled_mean_lift": 2.7291,
+        "S": 0.5,
+        "frac_2x": 1.0,
+        "transfer_stability": 0.5,
+        "risk_gradient": 0.5,
+        "heldout_evaluable": true,
+        "heldout_lift": 3.289
+      },
+      {
+        "campus": "6",
+        "system": "F10",
+        "gating_supported": false,
+        "pooled_rule_accepted": true,
+        "P": 0.8124,
+        "tau": 0.5007,
+        "k": 2,
+        "form": "normal_k2",
+        "pooled_mean_lift": 3.5711,
+        "S": 0.5,
+        "frac_2x": 1.0,
+        "transfer_stability": 0.5,
+        "risk_gradient": 1.0,
+        "heldout_evaluable": true,
+        "heldout_lift": 4.967
+      },
+      {
+        "campus": "7",
+        "system": "C20",
+        "gating_supported": false,
+        "pooled_rule_accepted": true,
+        "P": 0.9084,
+        "tau": 0.0825,
+        "k": 5,
+        "form": "t",
+        "pooled_mean_lift": 2.7591,
+        "S": 0.5,
+        "frac_2x": 0.8,
+        "transfer_stability": 0.5,
+        "risk_gradient": 0.5,
+        "heldout_evaluable": false,
+        "heldout_lift": null
+      },
+      {
+        "campus": "7",
+        "system": "D10",
+        "gating_supported": false,
+        "pooled_rule_accepted": true,
+        "P": 0.7281,
+        "tau": 0.5834,
+        "k": 7,
+        "form": "t",
+        "pooled_mean_lift": 3.0237,
+        "S": 0.6,
+        "frac_2x": 0.714,
+        "transfer_stability": 0.5,
+        "risk_gradient": 0.5,
+        "heldout_evaluable": false,
+        "heldout_lift": null
+      }
+    ],
+    "reml_p0.8": [
+      {
+        "campus": "1",
+        "system": "C20",
+        "gating_supported": false,
+        "pooled_rule_accepted": true,
+        "P": 0.8771,
+        "tau": 0.218,
+        "k": 4,
+        "form": "t",
+        "pooled_mean_lift": 3.2617,
+        "S": 0.5,
+        "frac_2x": 1.0,
+        "transfer_stability": 0.5,
+        "risk_gradient": 0.5,
+        "heldout_evaluable": true,
+        "heldout_lift": 1.83
+      },
+      {
+        "campus": "1",
+        "system": "G20",
+        "gating_supported": false,
+        "pooled_rule_accepted": true,
+        "P": 1.0,
+        "tau": 0.0,
+        "k": 2,
+        "form": "normal_k2",
+        "pooled_mean_lift": 3.9427,
+        "S": 0.5,
+        "frac_2x": 1.0,
+        "transfer_stability": 0.5,
+        "risk_gradient": 0.5,
+        "heldout_evaluable": true,
+        "heldout_lift": 7.228
+      },
+      {
+        "campus": "10",
+        "system": "C20",
+        "gating_supported": false,
+        "pooled_rule_accepted": true,
+        "P": 0.8199,
+        "tau": 0.0,
+        "k": 4,
+        "form": "t",
+        "pooled_mean_lift": 2.4856,
+        "S": 0.4,
+        "frac_2x": 1.0,
+        "transfer_stability": 0.5,
+        "risk_gradient": 0.0,
+        "heldout_evaluable": true,
+        "heldout_lift": 1.996
+      },
+      {
+        "campus": "10",
+        "system": "F10",
+        "gating_supported": false,
+        "pooled_rule_accepted": true,
+        "P": 1.0,
+        "tau": 0.0,
+        "k": 2,
+        "form": "normal_k2",
+        "pooled_mean_lift": 6.0825,
+        "S": 0.5,
+        "frac_2x": 1.0,
+        "transfer_stability": 0.5,
+        "risk_gradient": 0.5,
+        "heldout_evaluable": true,
+        "heldout_lift": 3.829
+      },
+      {
+        "campus": "10",
+        "system": "G20",
+        "gating_supported": false,
+        "pooled_rule_accepted": true,
+        "P": 1.0,
+        "tau": 0.0,
+        "k": 2,
+        "form": "normal_k2",
+        "pooled_mean_lift": 3.8398,
+        "S": 0.5,
+        "frac_2x": 1.0,
+        "transfer_stability": 0.5,
+        "risk_gradient": 1.0,
+        "heldout_evaluable": false,
+        "heldout_lift": null
+      },
+      {
+        "campus": "2",
+        "system": "B30",
+        "gating_supported": false,
+        "pooled_rule_accepted": true,
+        "P": 0.9976,
+        "tau": 0.0,
+        "k": 4,
+        "form": "t",
+        "pooled_mean_lift": 4.4607,
+        "S": 0.5,
+        "frac_2x": 1.0,
+        "transfer_stability": 0.5,
+        "risk_gradient": 0.5,
+        "heldout_evaluable": true,
+        "heldout_lift": 4.261
+      },
+      {
+        "campus": "2",
+        "system": "G20",
+        "gating_supported": false,
+        "pooled_rule_accepted": true,
+        "P": 1.0,
+        "tau": 0.0,
+        "k": 2,
+        "form": "normal_k2",
+        "pooled_mean_lift": 3.7586,
+        "S": 0.5,
+        "frac_2x": 1.0,
+        "transfer_stability": 0.5,
+        "risk_gradient": 0.5,
+        "heldout_evaluable": false,
+        "heldout_lift": null
+      },
+      {
+        "campus": "3",
+        "system": "C20",
+        "gating_supported": false,
+        "pooled_rule_accepted": true,
+        "P": 0.9025,
+        "tau": 0.0,
+        "k": 4,
+        "form": "t",
+        "pooled_mean_lift": 2.8058,
+        "S": 0.5,
+        "frac_2x": 1.0,
+        "transfer_stability": 0.5,
+        "risk_gradient": 0.5,
+        "heldout_evaluable": true,
+        "heldout_lift": 2.053
+      },
+      {
+        "campus": "3",
+        "system": "F10",
+        "gating_supported": false,
+        "pooled_rule_accepted": true,
+        "P": 0.9319,
+        "tau": 0.0,
+        "k": 3,
+        "form": "t",
+        "pooled_mean_lift": 4.6882,
+        "S": 0.6,
+        "frac_2x": 1.0,
+        "transfer_stability": 0.5,
+        "risk_gradient": 0.5,
+        "heldout_evaluable": false,
+        "heldout_lift": null
+      },
+      {
+        "campus": "4",
+        "system": "C20",
+        "gating_supported": false,
+        "pooled_rule_accepted": true,
+        "P": 0.9,
+        "tau": 0.1849,
+        "k": 5,
+        "form": "t",
+        "pooled_mean_lift": 3.0368,
+        "S": 0.5,
+        "frac_2x": 0.8,
+        "transfer_stability": 0.5,
+        "risk_gradient": 0.5,
+        "heldout_evaluable": false,
+        "heldout_lift": null
+      },
+      {
+        "campus": "4",
+        "system": "F10",
+        "gating_supported": false,
+        "pooled_rule_accepted": true,
+        "P": 0.9359,
+        "tau": 0.0,
+        "k": 3,
+        "form": "t",
+        "pooled_mean_lift": 4.9594,
+        "S": 0.5,
+        "frac_2x": 1.0,
+        "transfer_stability": 0.5,
+        "risk_gradient": 1.0,
+        "heldout_evaluable": false,
+        "heldout_lift": null
+      },
+      {
+        "campus": "4",
+        "system": "G20",
+        "gating_supported": false,
+        "pooled_rule_accepted": true,
+        "P": 0.9977,
+        "tau": 0.0,
+        "k": 2,
+        "form": "normal_k2",
+        "pooled_mean_lift": 3.7985,
+        "S": 0.5,
+        "frac_2x": 1.0,
+        "transfer_stability": 0.5,
+        "risk_gradient": 1.0,
+        "heldout_evaluable": true,
+        "heldout_lift": 3.769
+      },
+      {
+        "campus": "5",
+        "system": "B20",
+        "gating_supported": true,
+        "pooled_rule_accepted": false,
+        "P": 0.7992,
+        "tau": 0.2623,
+        "k": 6,
+        "form": "t",
+        "pooled_mean_lift": 2.647,
+        "S": 1.0,
+        "frac_2x": 0.833,
+        "transfer_stability": 1.0,
+        "risk_gradient": 1.0,
+        "heldout_evaluable": true,
+        "heldout_lift": 4.823
+      },
+      {
+        "campus": "5",
+        "system": "B30",
+        "gating_supported": true,
+        "pooled_rule_accepted": false,
+        "P": 0.5899,
+        "tau": 0.7729,
+        "k": 6,
+        "form": "t",
+        "pooled_mean_lift": 2.4549,
+        "S": 0.7,
+        "frac_2x": 0.833,
+        "transfer_stability": 1.0,
+        "risk_gradient": 0.5,
+        "heldout_evaluable": true,
+        "heldout_lift": 4.323
+      },
+      {
+        "campus": "5",
+        "system": "C20",
+        "gating_supported": false,
+        "pooled_rule_accepted": true,
+        "P": 0.9603,
+        "tau": 0.0,
+        "k": 5,
+        "form": "t",
+        "pooled_mean_lift": 3.0357,
+        "S": 0.4,
+        "frac_2x": 0.6,
+        "transfer_stability": 0.5,
+        "risk_gradient": 0.0,
+        "heldout_evaluable": false,
+        "heldout_lift": null
+      },
+      {
+        "campus": "5",
+        "system": "F10",
+        "gating_supported": false,
+        "pooled_rule_accepted": true,
+        "P": 0.8466,
+        "tau": 0.2504,
+        "k": 3,
+        "form": "t",
+        "pooled_mean_lift": 3.9703,
+        "S": 0.6,
+        "frac_2x": 0.667,
+        "transfer_stability": 0.5,
+        "risk_gradient": 0.5,
+        "heldout_evaluable": false,
+        "heldout_lift": null
+      },
+      {
+        "campus": "6",
+        "system": "C20",
+        "gating_supported": false,
+        "pooled_rule_accepted": true,
+        "P": 0.8947,
+        "tau": 0.0,
+        "k": 4,
+        "form": "t",
+        "pooled_mean_lift": 2.7291,
+        "S": 0.5,
+        "frac_2x": 1.0,
+        "transfer_stability": 0.5,
+        "risk_gradient": 0.5,
+        "heldout_evaluable": true,
+        "heldout_lift": 3.289
+      },
+      {
+        "campus": "6",
+        "system": "D10",
+        "gating_supported": true,
+        "pooled_rule_accepted": false,
+        "P": 0.7761,
+        "tau": 0.4805,
+        "k": 7,
+        "form": "t",
+        "pooled_mean_lift": 3.0884,
+        "S": 0.7,
+        "frac_2x": 0.857,
+        "transfer_stability": 1.0,
+        "risk_gradient": 0.5,
+        "heldout_evaluable": false,
+        "heldout_lift": null
+      },
+      {
+        "campus": "6",
+        "system": "F10",
+        "gating_supported": false,
+        "pooled_rule_accepted": true,
+        "P": 0.8124,
+        "tau": 0.5007,
+        "k": 2,
+        "form": "normal_k2",
+        "pooled_mean_lift": 3.5711,
+        "S": 0.5,
+        "frac_2x": 1.0,
+        "transfer_stability": 0.5,
+        "risk_gradient": 1.0,
+        "heldout_evaluable": true,
+        "heldout_lift": 4.967
+      },
+      {
+        "campus": "7",
+        "system": "C20",
+        "gating_supported": false,
+        "pooled_rule_accepted": true,
+        "P": 0.9084,
+        "tau": 0.0825,
+        "k": 5,
+        "form": "t",
+        "pooled_mean_lift": 2.7591,
+        "S": 0.5,
+        "frac_2x": 0.8,
+        "transfer_stability": 0.5,
+        "risk_gradient": 0.5,
+        "heldout_evaluable": false,
+        "heldout_lift": null
+      }
+    ],
+    "reml_p0.9": [
+      {
+        "campus": "1",
+        "system": "B20",
+        "gating_supported": true,
+        "pooled_rule_accepted": false,
+        "P": 0.8177,
+        "tau": 0.3833,
+        "k": 6,
+        "form": "t",
+        "pooled_mean_lift": 3.0824,
+        "S": 0.9,
+        "frac_2x": 0.833,
+        "transfer_stability": 1.0,
+        "risk_gradient": 1.0,
+        "heldout_evaluable": true,
+        "heldout_lift": 3.32
+      },
+      {
+        "campus": "1",
+        "system": "G20",
+        "gating_supported": false,
+        "pooled_rule_accepted": true,
+        "P": 1.0,
+        "tau": 0.0,
+        "k": 2,
+        "form": "normal_k2",
+        "pooled_mean_lift": 3.9427,
+        "S": 0.5,
+        "frac_2x": 1.0,
+        "transfer_stability": 0.5,
+        "risk_gradient": 0.5,
+        "heldout_evaluable": true,
+        "heldout_lift": 7.228
+      },
+      {
+        "campus": "10",
+        "system": "B20",
+        "gating_supported": true,
+        "pooled_rule_accepted": false,
+        "P": 0.8051,
+        "tau": 0.3779,
+        "k": 6,
+        "form": "t",
+        "pooled_mean_lift": 3.0042,
+        "S": 0.9,
+        "frac_2x": 0.833,
+        "transfer_stability": 1.0,
+        "risk_gradient": 1.0,
+        "heldout_evaluable": true,
+        "heldout_lift": 3.565
+      },
+      {
+        "campus": "10",
+        "system": "D50",
+        "gating_supported": true,
+        "pooled_rule_accepted": false,
+        "P": 0.8995,
+        "tau": 0.4524,
+        "k": 7,
+        "form": "t",
+        "pooled_mean_lift": 4.0804,
+        "S": 1.0,
+        "frac_2x": 1.0,
+        "transfer_stability": 1.0,
+        "risk_gradient": 1.0,
+        "heldout_evaluable": true,
+        "heldout_lift": 5.375
+      },
+      {
+        "campus": "10",
+        "system": "E20",
+        "gating_supported": true,
+        "pooled_rule_accepted": false,
+        "P": 0.8383,
+        "tau": 0.321,
+        "k": 6,
+        "form": "t",
+        "pooled_mean_lift": 2.9917,
+        "S": 0.9,
+        "frac_2x": 0.667,
+        "transfer_stability": 0.5,
+        "risk_gradient": 1.0,
+        "heldout_evaluable": true,
+        "heldout_lift": 5.395
+      },
+      {
+        "campus": "10",
+        "system": "F10",
+        "gating_supported": false,
+        "pooled_rule_accepted": true,
+        "P": 1.0,
+        "tau": 0.0,
+        "k": 2,
+        "form": "normal_k2",
+        "pooled_mean_lift": 6.0825,
+        "S": 0.5,
+        "frac_2x": 1.0,
+        "transfer_stability": 0.5,
+        "risk_gradient": 0.5,
+        "heldout_evaluable": true,
+        "heldout_lift": 3.829
+      },
+      {
+        "campus": "10",
+        "system": "G20",
+        "gating_supported": false,
+        "pooled_rule_accepted": true,
+        "P": 1.0,
+        "tau": 0.0,
+        "k": 2,
+        "form": "normal_k2",
+        "pooled_mean_lift": 3.8398,
+        "S": 0.5,
+        "frac_2x": 1.0,
+        "transfer_stability": 0.5,
+        "risk_gradient": 1.0,
+        "heldout_evaluable": false,
+        "heldout_lift": null
+      },
+      {
+        "campus": "11",
+        "system": "B20",
+        "gating_supported": true,
+        "pooled_rule_accepted": false,
+        "P": 0.8668,
+        "tau": 0.3253,
+        "k": 6,
+        "form": "t",
+        "pooled_mean_lift": 3.1946,
+        "S": 0.9,
+        "frac_2x": 1.0,
+        "transfer_stability": 1.0,
+        "risk_gradient": 1.0,
+        "heldout_evaluable": true,
+        "heldout_lift": 4.379
+      },
+      {
+        "campus": "2",
+        "system": "B20",
+        "gating_supported": true,
+        "pooled_rule_accepted": false,
+        "P": 0.8545,
+        "tau": 0.345,
+        "k": 7,
+        "form": "t",
+        "pooled_mean_lift": 3.1277,
+        "S": 0.9,
+        "frac_2x": 0.857,
+        "transfer_stability": 1.0,
+        "risk_gradient": 1.0,
+        "heldout_evaluable": false,
+        "heldout_lift": null
+      },
+      {
+        "campus": "2",
+        "system": "B30",
+        "gating_supported": false,
+        "pooled_rule_accepted": true,
+        "P": 0.9976,
+        "tau": 0.0,
+        "k": 4,
+        "form": "t",
+        "pooled_mean_lift": 4.4607,
+        "S": 0.5,
+        "frac_2x": 1.0,
+        "transfer_stability": 0.5,
+        "risk_gradient": 0.5,
+        "heldout_evaluable": true,
+        "heldout_lift": 4.261
+      },
+      {
+        "campus": "2",
+        "system": "G20",
+        "gating_supported": false,
+        "pooled_rule_accepted": true,
+        "P": 1.0,
+        "tau": 0.0,
+        "k": 2,
+        "form": "normal_k2",
+        "pooled_mean_lift": 3.7586,
+        "S": 0.5,
+        "frac_2x": 1.0,
+        "transfer_stability": 0.5,
+        "risk_gradient": 0.5,
+        "heldout_evaluable": false,
+        "heldout_lift": null
+      },
+      {
+        "campus": "3",
+        "system": "B20",
+        "gating_supported": true,
+        "pooled_rule_accepted": false,
+        "P": 0.8523,
+        "tau": 0.3288,
+        "k": 6,
+        "form": "t",
+        "pooled_mean_lift": 3.1008,
+        "S": 0.9,
+        "frac_2x": 0.833,
+        "transfer_stability": 1.0,
+        "risk_gradient": 1.0,
+        "heldout_evaluable": true,
+        "heldout_lift": 3.07
+      },
+      {
+        "campus": "3",
+        "system": "C20",
+        "gating_supported": false,
+        "pooled_rule_accepted": true,
+        "P": 0.9025,
+        "tau": 0.0,
+        "k": 4,
+        "form": "t",
+        "pooled_mean_lift": 2.8058,
+        "S": 0.5,
+        "frac_2x": 1.0,
+        "transfer_stability": 0.5,
+        "risk_gradient": 0.5,
+        "heldout_evaluable": true,
+        "heldout_lift": 2.053
+      },
+      {
+        "campus": "3",
+        "system": "F10",
+        "gating_supported": false,
+        "pooled_rule_accepted": true,
+        "P": 0.9319,
+        "tau": 0.0,
+        "k": 3,
+        "form": "t",
+        "pooled_mean_lift": 4.6882,
+        "S": 0.6,
+        "frac_2x": 1.0,
+        "transfer_stability": 0.5,
+        "risk_gradient": 0.5,
+        "heldout_evaluable": false,
+        "heldout_lift": null
+      },
+      {
+        "campus": "4",
+        "system": "B20",
+        "gating_supported": true,
+        "pooled_rule_accepted": false,
+        "P": 0.8687,
+        "tau": 0.3471,
+        "k": 6,
+        "form": "t",
+        "pooled_mean_lift": 3.303,
+        "S": 0.9,
+        "frac_2x": 0.833,
+        "transfer_stability": 1.0,
+        "risk_gradient": 1.0,
+        "heldout_evaluable": true,
+        "heldout_lift": 2.277
+      },
+      {
+        "campus": "4",
+        "system": "C20",
+        "gating_supported": false,
+        "pooled_rule_accepted": true,
+        "P": 0.9,
+        "tau": 0.1849,
+        "k": 5,
+        "form": "t",
+        "pooled_mean_lift": 3.0368,
+        "S": 0.5,
+        "frac_2x": 0.8,
+        "transfer_stability": 0.5,
+        "risk_gradient": 0.5,
+        "heldout_evaluable": false,
+        "heldout_lift": null
+      },
+      {
+        "campus": "4",
+        "system": "F10",
+        "gating_supported": false,
+        "pooled_rule_accepted": true,
+        "P": 0.9359,
+        "tau": 0.0,
+        "k": 3,
+        "form": "t",
+        "pooled_mean_lift": 4.9594,
+        "S": 0.5,
+        "frac_2x": 1.0,
+        "transfer_stability": 0.5,
+        "risk_gradient": 1.0,
+        "heldout_evaluable": false,
+        "heldout_lift": null
+      },
+      {
+        "campus": "4",
+        "system": "G20",
+        "gating_supported": false,
+        "pooled_rule_accepted": true,
+        "P": 0.9977,
+        "tau": 0.0,
+        "k": 2,
+        "form": "normal_k2",
+        "pooled_mean_lift": 3.7985,
+        "S": 0.5,
+        "frac_2x": 1.0,
+        "transfer_stability": 0.5,
+        "risk_gradient": 1.0,
+        "heldout_evaluable": true,
+        "heldout_lift": 3.769
+      },
+      {
+        "campus": "5",
+        "system": "B20",
+        "gating_supported": true,
+        "pooled_rule_accepted": false,
+        "P": 0.7992,
+        "tau": 0.2623,
+        "k": 6,
+        "form": "t",
+        "pooled_mean_lift": 2.647,
+        "S": 1.0,
+        "frac_2x": 0.833,
+        "transfer_stability": 1.0,
+        "risk_gradient": 1.0,
+        "heldout_evaluable": true,
+        "heldout_lift": 4.823
+      },
+      {
+        "campus": "5",
+        "system": "B30",
+        "gating_supported": true,
+        "pooled_rule_accepted": false,
+        "P": 0.5899,
+        "tau": 0.7729,
+        "k": 6,
+        "form": "t",
+        "pooled_mean_lift": 2.4549,
+        "S": 0.7,
+        "frac_2x": 0.833,
+        "transfer_stability": 1.0,
+        "risk_gradient": 0.5,
+        "heldout_evaluable": true,
+        "heldout_lift": 4.323
+      },
+      {
+        "campus": "5",
+        "system": "C20",
+        "gating_supported": false,
+        "pooled_rule_accepted": true,
+        "P": 0.9603,
+        "tau": 0.0,
+        "k": 5,
+        "form": "t",
+        "pooled_mean_lift": 3.0357,
+        "S": 0.4,
+        "frac_2x": 0.6,
+        "transfer_stability": 0.5,
+        "risk_gradient": 0.0,
+        "heldout_evaluable": false,
+        "heldout_lift": null
+      },
+      {
+        "campus": "5",
+        "system": "E20",
+        "gating_supported": true,
+        "pooled_rule_accepted": false,
+        "P": 0.8108,
+        "tau": 0.4068,
+        "k": 6,
+        "form": "t",
+        "pooled_mean_lift": 3.1252,
+        "S": 0.9,
+        "frac_2x": 0.833,
+        "transfer_stability": 1.0,
+        "risk_gradient": 0.5,
+        "heldout_evaluable": true,
+        "heldout_lift": 2.73
+      },
+      {
+        "campus": "5",
+        "system": "G20",
+        "gating_supported": true,
+        "pooled_rule_accepted": false,
+        "P": 0.8883,
+        "tau": 0.25,
+        "k": 3,
+        "form": "t",
+        "pooled_mean_lift": 4.6999,
+        "S": 0.7,
+        "frac_2x": 1.0,
+        "transfer_stability": 0.5,
+        "risk_gradient": 0.5,
+        "heldout_evaluable": false,
+        "heldout_lift": null
+      },
+      {
+        "campus": "6",
+        "system": "D10",
+        "gating_supported": true,
+        "pooled_rule_accepted": false,
+        "P": 0.7761,
+        "tau": 0.4805,
+        "k": 7,
+        "form": "t",
+        "pooled_mean_lift": 3.0884,
+        "S": 0.7,
+        "frac_2x": 0.857,
+        "transfer_stability": 1.0,
+        "risk_gradient": 0.5,
+        "heldout_evaluable": false,
+        "heldout_lift": null
+      },
+      {
+        "campus": "6",
+        "system": "G20",
+        "gating_supported": true,
+        "pooled_rule_accepted": false,
+        "P": 0.8881,
+        "tau": 0.2443,
+        "k": 3,
+        "form": "t",
+        "pooled_mean_lift": 4.6054,
+        "S": 0.7,
+        "frac_2x": 1.0,
+        "transfer_stability": 0.5,
+        "risk_gradient": 0.5,
+        "heldout_evaluable": false,
+        "heldout_lift": null
+      },
+      {
+        "campus": "7",
+        "system": "B20",
+        "gating_supported": true,
+        "pooled_rule_accepted": false,
+        "P": 0.8493,
+        "tau": 0.3387,
+        "k": 7,
+        "form": "t",
+        "pooled_mean_lift": 3.0711,
+        "S": 0.9,
+        "frac_2x": 0.857,
+        "transfer_stability": 1.0,
+        "risk_gradient": 1.0,
+        "heldout_evaluable": false,
+        "heldout_lift": null
+      },
+      {
+        "campus": "7",
+        "system": "C20",
+        "gating_supported": false,
+        "pooled_rule_accepted": true,
+        "P": 0.9084,
+        "tau": 0.0825,
+        "k": 5,
+        "form": "t",
+        "pooled_mean_lift": 2.7591,
+        "S": 0.5,
+        "frac_2x": 0.8,
+        "transfer_stability": 0.5,
+        "risk_gradient": 0.5,
+        "heldout_evaluable": false,
+        "heldout_lift": null
+      }
+    ],
+    "dl_p0.8": [
+      {
+        "campus": "1",
+        "system": "B20",
+        "gating_supported": true,
+        "pooled_rule_accepted": false,
+        "P": 0.8177,
+        "tau": 0.3833,
+        "k": 6,
+        "form": "t",
+        "pooled_mean_lift": 3.0824,
+        "S": 0.9,
+        "frac_2x": 0.833,
+        "transfer_stability": 1.0,
+        "risk_gradient": 1.0,
+        "heldout_evaluable": true,
+        "heldout_lift": 3.32
+      },
+      {
+        "campus": "1",
+        "system": "C20",
+        "gating_supported": false,
+        "pooled_rule_accepted": true,
+        "P": 0.8771,
+        "tau": 0.218,
+        "k": 4,
+        "form": "t",
+        "pooled_mean_lift": 3.2617,
+        "S": 0.5,
+        "frac_2x": 1.0,
+        "transfer_stability": 0.5,
+        "risk_gradient": 0.5,
+        "heldout_evaluable": true,
+        "heldout_lift": 1.83
+      },
+      {
+        "campus": "1",
+        "system": "G20",
+        "gating_supported": false,
+        "pooled_rule_accepted": true,
+        "P": 1.0,
+        "tau": 0.0,
+        "k": 2,
+        "form": "normal_k2",
+        "pooled_mean_lift": 3.9427,
+        "S": 0.5,
+        "frac_2x": 1.0,
+        "transfer_stability": 0.5,
+        "risk_gradient": 0.5,
+        "heldout_evaluable": true,
+        "heldout_lift": 7.228
+      },
+      {
+        "campus": "10",
+        "system": "B20",
+        "gating_supported": true,
+        "pooled_rule_accepted": false,
+        "P": 0.8051,
+        "tau": 0.3779,
+        "k": 6,
+        "form": "t",
+        "pooled_mean_lift": 3.0042,
+        "S": 0.9,
+        "frac_2x": 0.833,
+        "transfer_stability": 1.0,
+        "risk_gradient": 1.0,
+        "heldout_evaluable": true,
+        "heldout_lift": 3.565
+      },
+      {
+        "campus": "10",
+        "system": "C20",
+        "gating_supported": false,
+        "pooled_rule_accepted": true,
+        "P": 0.8199,
+        "tau": 0.0,
+        "k": 4,
+        "form": "t",
+        "pooled_mean_lift": 2.4856,
+        "S": 0.4,
+        "frac_2x": 1.0,
+        "transfer_stability": 0.5,
+        "risk_gradient": 0.0,
+        "heldout_evaluable": true,
+        "heldout_lift": 1.996
+      },
+      {
+        "campus": "10",
+        "system": "F10",
+        "gating_supported": false,
+        "pooled_rule_accepted": true,
+        "P": 1.0,
+        "tau": 0.0,
+        "k": 2,
+        "form": "normal_k2",
+        "pooled_mean_lift": 6.0825,
+        "S": 0.5,
+        "frac_2x": 1.0,
+        "transfer_stability": 0.5,
+        "risk_gradient": 0.5,
+        "heldout_evaluable": true,
+        "heldout_lift": 3.829
+      },
+      {
+        "campus": "10",
+        "system": "G20",
+        "gating_supported": false,
+        "pooled_rule_accepted": true,
+        "P": 1.0,
+        "tau": 0.0,
+        "k": 2,
+        "form": "normal_k2",
+        "pooled_mean_lift": 3.8398,
+        "S": 0.5,
+        "frac_2x": 1.0,
+        "transfer_stability": 0.5,
+        "risk_gradient": 1.0,
+        "heldout_evaluable": false,
+        "heldout_lift": null
+      },
+      {
+        "campus": "2",
+        "system": "B20",
+        "gating_supported": true,
+        "pooled_rule_accepted": false,
+        "P": 0.8545,
+        "tau": 0.345,
+        "k": 7,
+        "form": "t",
+        "pooled_mean_lift": 3.1277,
+        "S": 0.9,
+        "frac_2x": 0.857,
+        "transfer_stability": 1.0,
+        "risk_gradient": 1.0,
+        "heldout_evaluable": false,
+        "heldout_lift": null
+      },
+      {
+        "campus": "2",
+        "system": "B30",
+        "gating_supported": false,
+        "pooled_rule_accepted": true,
+        "P": 0.9976,
+        "tau": 0.0,
+        "k": 4,
+        "form": "t",
+        "pooled_mean_lift": 4.4607,
+        "S": 0.5,
+        "frac_2x": 1.0,
+        "transfer_stability": 0.5,
+        "risk_gradient": 0.5,
+        "heldout_evaluable": true,
+        "heldout_lift": 4.261
+      },
+      {
+        "campus": "2",
+        "system": "G20",
+        "gating_supported": false,
+        "pooled_rule_accepted": true,
+        "P": 1.0,
+        "tau": 0.0,
+        "k": 2,
+        "form": "normal_k2",
+        "pooled_mean_lift": 3.7586,
+        "S": 0.5,
+        "frac_2x": 1.0,
+        "transfer_stability": 0.5,
+        "risk_gradient": 0.5,
+        "heldout_evaluable": false,
+        "heldout_lift": null
+      },
+      {
+        "campus": "3",
+        "system": "C20",
+        "gating_supported": false,
+        "pooled_rule_accepted": true,
+        "P": 0.9025,
+        "tau": 0.0,
+        "k": 4,
+        "form": "t",
+        "pooled_mean_lift": 2.8058,
+        "S": 0.5,
+        "frac_2x": 1.0,
+        "transfer_stability": 0.5,
+        "risk_gradient": 0.5,
+        "heldout_evaluable": true,
+        "heldout_lift": 2.053
+      },
+      {
+        "campus": "3",
+        "system": "F10",
+        "gating_supported": false,
+        "pooled_rule_accepted": true,
+        "P": 0.9319,
+        "tau": 0.0,
+        "k": 3,
+        "form": "t",
+        "pooled_mean_lift": 4.6882,
+        "S": 0.6,
+        "frac_2x": 1.0,
+        "transfer_stability": 0.5,
+        "risk_gradient": 0.5,
+        "heldout_evaluable": false,
+        "heldout_lift": null
+      },
+      {
+        "campus": "4",
+        "system": "C20",
+        "gating_supported": false,
+        "pooled_rule_accepted": true,
+        "P": 0.9,
+        "tau": 0.1849,
+        "k": 5,
+        "form": "t",
+        "pooled_mean_lift": 3.0368,
+        "S": 0.5,
+        "frac_2x": 0.8,
+        "transfer_stability": 0.5,
+        "risk_gradient": 0.5,
+        "heldout_evaluable": false,
+        "heldout_lift": null
+      },
+      {
+        "campus": "4",
+        "system": "F10",
+        "gating_supported": false,
+        "pooled_rule_accepted": true,
+        "P": 0.9359,
+        "tau": 0.0,
+        "k": 3,
+        "form": "t",
+        "pooled_mean_lift": 4.9594,
+        "S": 0.5,
+        "frac_2x": 1.0,
+        "transfer_stability": 0.5,
+        "risk_gradient": 1.0,
+        "heldout_evaluable": false,
+        "heldout_lift": null
+      },
+      {
+        "campus": "4",
+        "system": "G20",
+        "gating_supported": false,
+        "pooled_rule_accepted": true,
+        "P": 0.9977,
+        "tau": 0.0,
+        "k": 2,
+        "form": "normal_k2",
+        "pooled_mean_lift": 3.7985,
+        "S": 0.5,
+        "frac_2x": 1.0,
+        "transfer_stability": 0.5,
+        "risk_gradient": 1.0,
+        "heldout_evaluable": true,
+        "heldout_lift": 3.769
+      },
+      {
+        "campus": "5",
+        "system": "B20",
+        "gating_supported": true,
+        "pooled_rule_accepted": false,
+        "P": 0.7992,
+        "tau": 0.2623,
+        "k": 6,
+        "form": "t",
+        "pooled_mean_lift": 2.647,
+        "S": 1.0,
+        "frac_2x": 0.833,
+        "transfer_stability": 1.0,
+        "risk_gradient": 1.0,
+        "heldout_evaluable": true,
+        "heldout_lift": 4.823
+      },
+      {
+        "campus": "5",
+        "system": "B30",
+        "gating_supported": true,
+        "pooled_rule_accepted": false,
+        "P": 0.5899,
+        "tau": 0.7729,
+        "k": 6,
+        "form": "t",
+        "pooled_mean_lift": 2.4549,
+        "S": 0.7,
+        "frac_2x": 0.833,
+        "transfer_stability": 1.0,
+        "risk_gradient": 0.5,
+        "heldout_evaluable": true,
+        "heldout_lift": 4.323
+      },
+      {
+        "campus": "5",
+        "system": "C20",
+        "gating_supported": false,
+        "pooled_rule_accepted": true,
+        "P": 0.9603,
+        "tau": 0.0,
+        "k": 5,
+        "form": "t",
+        "pooled_mean_lift": 3.0357,
+        "S": 0.4,
+        "frac_2x": 0.6,
+        "transfer_stability": 0.5,
+        "risk_gradient": 0.0,
+        "heldout_evaluable": false,
+        "heldout_lift": null
+      },
+      {
+        "campus": "5",
+        "system": "F10",
+        "gating_supported": false,
+        "pooled_rule_accepted": true,
+        "P": 0.8466,
+        "tau": 0.2504,
+        "k": 3,
+        "form": "t",
+        "pooled_mean_lift": 3.9703,
+        "S": 0.6,
+        "frac_2x": 0.667,
+        "transfer_stability": 0.5,
+        "risk_gradient": 0.5,
+        "heldout_evaluable": false,
+        "heldout_lift": null
+      },
+      {
+        "campus": "6",
+        "system": "C20",
+        "gating_supported": false,
+        "pooled_rule_accepted": true,
+        "P": 0.8947,
+        "tau": 0.0,
+        "k": 4,
+        "form": "t",
+        "pooled_mean_lift": 2.7291,
+        "S": 0.5,
+        "frac_2x": 1.0,
+        "transfer_stability": 0.5,
+        "risk_gradient": 0.5,
+        "heldout_evaluable": true,
+        "heldout_lift": 3.289
+      },
+      {
+        "campus": "6",
+        "system": "D10",
+        "gating_supported": true,
+        "pooled_rule_accepted": false,
+        "P": 0.7761,
+        "tau": 0.4805,
+        "k": 7,
+        "form": "t",
+        "pooled_mean_lift": 3.0884,
+        "S": 0.7,
+        "frac_2x": 0.857,
+        "transfer_stability": 1.0,
+        "risk_gradient": 0.5,
+        "heldout_evaluable": false,
+        "heldout_lift": null
+      },
+      {
+        "campus": "6",
+        "system": "F10",
+        "gating_supported": false,
+        "pooled_rule_accepted": true,
+        "P": 0.8124,
+        "tau": 0.5007,
+        "k": 2,
+        "form": "normal_k2",
+        "pooled_mean_lift": 3.5711,
+        "S": 0.5,
+        "frac_2x": 1.0,
+        "transfer_stability": 0.5,
+        "risk_gradient": 1.0,
+        "heldout_evaluable": true,
+        "heldout_lift": 4.967
+      },
+      {
+        "campus": "7",
+        "system": "B20",
+        "gating_supported": true,
+        "pooled_rule_accepted": false,
+        "P": 0.8493,
+        "tau": 0.3387,
+        "k": 7,
+        "form": "t",
+        "pooled_mean_lift": 3.0711,
+        "S": 0.9,
+        "frac_2x": 0.857,
+        "transfer_stability": 1.0,
+        "risk_gradient": 1.0,
+        "heldout_evaluable": false,
+        "heldout_lift": null
+      },
+      {
+        "campus": "7",
+        "system": "C20",
+        "gating_supported": false,
+        "pooled_rule_accepted": true,
+        "P": 0.9084,
+        "tau": 0.0825,
+        "k": 5,
+        "form": "t",
+        "pooled_mean_lift": 2.7591,
+        "S": 0.5,
+        "frac_2x": 0.8,
+        "transfer_stability": 0.5,
+        "risk_gradient": 0.5,
+        "heldout_evaluable": false,
+        "heldout_lift": null
+      }
+    ],
+    "reml_p0.8_min3peers": [
+      {
+        "campus": "1",
+        "system": "C20",
+        "gating_supported": false,
+        "pooled_rule_accepted": true,
+        "P": 0.8771,
+        "tau": 0.218,
+        "k": 4,
+        "form": "t",
+        "pooled_mean_lift": 3.2617,
+        "S": 0.5,
+        "frac_2x": 1.0,
+        "transfer_stability": 0.5,
+        "risk_gradient": 0.5,
+        "heldout_evaluable": true,
+        "heldout_lift": 1.83
+      },
+      {
+        "campus": "10",
+        "system": "C20",
+        "gating_supported": false,
+        "pooled_rule_accepted": true,
+        "P": 0.8199,
+        "tau": 0.0,
+        "k": 4,
+        "form": "t",
+        "pooled_mean_lift": 2.4856,
+        "S": 0.4,
+        "frac_2x": 1.0,
+        "transfer_stability": 0.5,
+        "risk_gradient": 0.0,
+        "heldout_evaluable": true,
+        "heldout_lift": 1.996
+      },
+      {
+        "campus": "2",
+        "system": "B30",
+        "gating_supported": false,
+        "pooled_rule_accepted": true,
+        "P": 0.9976,
+        "tau": 0.0,
+        "k": 4,
+        "form": "t",
+        "pooled_mean_lift": 4.4607,
+        "S": 0.5,
+        "frac_2x": 1.0,
+        "transfer_stability": 0.5,
+        "risk_gradient": 0.5,
+        "heldout_evaluable": true,
+        "heldout_lift": 4.261
+      },
+      {
+        "campus": "3",
+        "system": "C20",
+        "gating_supported": false,
+        "pooled_rule_accepted": true,
+        "P": 0.9025,
+        "tau": 0.0,
+        "k": 4,
+        "form": "t",
+        "pooled_mean_lift": 2.8058,
+        "S": 0.5,
+        "frac_2x": 1.0,
+        "transfer_stability": 0.5,
+        "risk_gradient": 0.5,
+        "heldout_evaluable": true,
+        "heldout_lift": 2.053
+      },
+      {
+        "campus": "3",
+        "system": "F10",
+        "gating_supported": false,
+        "pooled_rule_accepted": true,
+        "P": 0.9319,
+        "tau": 0.0,
+        "k": 3,
+        "form": "t",
+        "pooled_mean_lift": 4.6882,
+        "S": 0.6,
+        "frac_2x": 1.0,
+        "transfer_stability": 0.5,
+        "risk_gradient": 0.5,
+        "heldout_evaluable": false,
+        "heldout_lift": null
+      },
+      {
+        "campus": "4",
+        "system": "C20",
+        "gating_supported": false,
+        "pooled_rule_accepted": true,
+        "P": 0.9,
+        "tau": 0.1849,
+        "k": 5,
+        "form": "t",
+        "pooled_mean_lift": 3.0368,
+        "S": 0.5,
+        "frac_2x": 0.8,
+        "transfer_stability": 0.5,
+        "risk_gradient": 0.5,
+        "heldout_evaluable": false,
+        "heldout_lift": null
+      },
+      {
+        "campus": "4",
+        "system": "F10",
+        "gating_supported": false,
+        "pooled_rule_accepted": true,
+        "P": 0.9359,
+        "tau": 0.0,
+        "k": 3,
+        "form": "t",
+        "pooled_mean_lift": 4.9594,
+        "S": 0.5,
+        "frac_2x": 1.0,
+        "transfer_stability": 0.5,
+        "risk_gradient": 1.0,
+        "heldout_evaluable": false,
+        "heldout_lift": null
+      },
+      {
+        "campus": "5",
+        "system": "B20",
+        "gating_supported": true,
+        "pooled_rule_accepted": false,
+        "P": 0.7992,
+        "tau": 0.2623,
+        "k": 6,
+        "form": "t",
+        "pooled_mean_lift": 2.647,
+        "S": 1.0,
+        "frac_2x": 0.833,
+        "transfer_stability": 1.0,
+        "risk_gradient": 1.0,
+        "heldout_evaluable": true,
+        "heldout_lift": 4.823
+      },
+      {
+        "campus": "5",
+        "system": "B30",
+        "gating_supported": true,
+        "pooled_rule_accepted": false,
+        "P": 0.5899,
+        "tau": 0.7729,
+        "k": 6,
+        "form": "t",
+        "pooled_mean_lift": 2.4549,
+        "S": 0.7,
+        "frac_2x": 0.833,
+        "transfer_stability": 1.0,
+        "risk_gradient": 0.5,
+        "heldout_evaluable": true,
+        "heldout_lift": 4.323
+      },
+      {
+        "campus": "5",
+        "system": "C20",
+        "gating_supported": false,
+        "pooled_rule_accepted": true,
+        "P": 0.9603,
+        "tau": 0.0,
+        "k": 5,
+        "form": "t",
+        "pooled_mean_lift": 3.0357,
+        "S": 0.4,
+        "frac_2x": 0.6,
+        "transfer_stability": 0.5,
+        "risk_gradient": 0.0,
+        "heldout_evaluable": false,
+        "heldout_lift": null
+      },
+      {
+        "campus": "5",
+        "system": "F10",
+        "gating_supported": false,
+        "pooled_rule_accepted": true,
+        "P": 0.8466,
+        "tau": 0.2504,
+        "k": 3,
+        "form": "t",
+        "pooled_mean_lift": 3.9703,
+        "S": 0.6,
+        "frac_2x": 0.667,
+        "transfer_stability": 0.5,
+        "risk_gradient": 0.5,
+        "heldout_evaluable": false,
+        "heldout_lift": null
+      },
+      {
+        "campus": "6",
+        "system": "C20",
+        "gating_supported": false,
+        "pooled_rule_accepted": true,
+        "P": 0.8947,
+        "tau": 0.0,
+        "k": 4,
+        "form": "t",
+        "pooled_mean_lift": 2.7291,
+        "S": 0.5,
+        "frac_2x": 1.0,
+        "transfer_stability": 0.5,
+        "risk_gradient": 0.5,
+        "heldout_evaluable": true,
+        "heldout_lift": 3.289
+      },
+      {
+        "campus": "6",
+        "system": "D10",
+        "gating_supported": true,
+        "pooled_rule_accepted": false,
+        "P": 0.7761,
+        "tau": 0.4805,
+        "k": 7,
+        "form": "t",
+        "pooled_mean_lift": 3.0884,
+        "S": 0.7,
+        "frac_2x": 0.857,
+        "transfer_stability": 1.0,
+        "risk_gradient": 0.5,
+        "heldout_evaluable": false,
+        "heldout_lift": null
+      },
+      {
+        "campus": "7",
+        "system": "C20",
+        "gating_supported": false,
+        "pooled_rule_accepted": true,
+        "P": 0.9084,
+        "tau": 0.0825,
+        "k": 5,
+        "form": "t",
+        "pooled_mean_lift": 2.7591,
+        "S": 0.5,
+        "frac_2x": 0.8,
+        "transfer_stability": 0.5,
+        "risk_gradient": 0.5,
+        "heldout_evaluable": false,
+        "heldout_lift": null
+      }
+    ]
+  },
+  "heldout_check": {
+    "n_evaluable": 95,
+    "evidence_gating": {
+      "accepted": {
+        "n": 77,
+        "n_lift_ge_2": 74,
+        "share_lift_ge_2": 0.961,
+        "share_lift_ge_2_wilson95": [
+          0.8916,
+          0.9867
+        ],
+        "median_lift": 4.254
+      },
+      "not_accepted": {
+        "n": 18,
+        "n_lift_ge_2": 14,
+        "share_lift_ge_2": 0.7778,
+        "share_lift_ge_2_wilson95": [
+          0.5479,
+          0.91
+        ],
+        "median_lift": 3.701
+      }
+    },
+    "count_based_rule": {
+      "accepted": {
+        "n": 83,
+        "n_lift_ge_2": 78,
+        "share_lift_ge_2": 0.9398,
+        "share_lift_ge_2_wilson95": [
+          0.8666,
+          0.974
+        ],
+        "median_lift": 4.215
+      },
+      "not_accepted": {
+        "n": 12,
+        "n_lift_ge_2": 10,
+        "share_lift_ge_2": 0.8333,
+        "share_lift_ge_2_wilson95": [
+          0.552,
+          0.953
+        ],
+        "median_lift": 3.799
+      }
+    },
+    "accept_every_pair": {
+      "accepted": {
+        "n": 95,
+        "n_lift_ge_2": 88,
+        "share_lift_ge_2": 0.9263,
+        "share_lift_ge_2_wilson95": [
+          0.8556,
+          0.9639
+        ],
+        "median_lift": 4.046
+      },
+      "not_accepted": {
+        "n": 0,
+        "n_lift_ge_2": 0,
+        "share_lift_ge_2": null,
+        "share_lift_ge_2_wilson95": null,
+        "median_lift": null
+      }
+    },
+    "partially_pooled_reml_p0.5": {
+      "accepted": {
+        "n": 92,
+        "n_lift_ge_2": 85,
+        "share_lift_ge_2": 0.9239,
+        "share_lift_ge_2_wilson95": [
+          0.8512,
+          0.9627
+        ],
+        "median_lift": 4.124
+      },
+      "not_accepted": {
+        "n": 3,
+        "n_lift_ge_2": 3,
+        "share_lift_ge_2": 1.0,
+        "share_lift_ge_2_wilson95": [
+          0.4385,
+          1.0
+        ],
+        "median_lift": 3.918
+      }
+    },
+    "partially_pooled_reml_p0.8": {
+      "accepted": {
+        "n": 84,
+        "n_lift_ge_2": 79,
+        "share_lift_ge_2": 0.9405,
+        "share_lift_ge_2_wilson95": [
+          0.8681,
+          0.9743
+        ],
+        "median_lift": 4.124
+      },
+      "not_accepted": {
+        "n": 11,
+        "n_lift_ge_2": 9,
+        "share_lift_ge_2": 0.8182,
+        "share_lift_ge_2_wilson95": [
+          0.523,
+          0.9486
+        ],
+        "median_lift": 3.918
+      }
+    },
+    "partially_pooled_reml_p0.9": {
+      "accepted": {
+        "n": 72,
+        "n_lift_ge_2": 69,
+        "share_lift_ge_2": 0.9583,
+        "share_lift_ge_2_wilson95": [
+          0.8845,
+          0.9857
+        ],
+        "median_lift": 4.234
+      },
+      "not_accepted": {
+        "n": 23,
+        "n_lift_ge_2": 19,
+        "share_lift_ge_2": 0.8261,
+        "share_lift_ge_2_wilson95": [
+          0.6286,
+          0.9302
+        ],
+        "median_lift": 3.565
+      }
+    },
+    "partially_pooled_dl_p0.8": {
+      "accepted": {
+        "n": 82,
+        "n_lift_ge_2": 77,
+        "share_lift_ge_2": 0.939,
+        "share_lift_ge_2_wilson95": [
+          0.8651,
+          0.9737
+        ],
+        "median_lift": 4.208
+      },
+      "not_accepted": {
+        "n": 13,
+        "n_lift_ge_2": 11,
+        "share_lift_ge_2": 0.8462,
+        "share_lift_ge_2_wilson95": [
+          0.5777,
+          0.9567
+        ],
+        "median_lift": 3.633
+      }
+    },
+    "partially_pooled_reml_p0.8_min3peers": {
+      "accepted": {
+        "n": 80,
+        "n_lift_ge_2": 75,
+        "share_lift_ge_2": 0.9375,
+        "share_lift_ge_2_wilson95": [
+          0.8619,
+          0.973
+        ],
+        "median_lift": 4.124
+      },
+      "not_accepted": {
+        "n": 15,
+        "n_lift_ge_2": 13,
+        "share_lift_ge_2": 0.8667,
+        "share_lift_ge_2_wilson95": [
+          0.6212,
+          0.9626
+        ],
+        "median_lift": 3.918
+      }
+    },
+    "disagreeing_pairs": {
+      "reml_p0.5": {
+        "gating_no_rule_yes": {
+          "n": 25,
+          "n_heldout_evaluable": 15,
+          "n_heldout_lift_ge_2": 11,
+          "heldout_lifts": {
+            "1/C20": 1.83,
+            "1/D10": 3.633,
+            "1/G20": 7.228,
+            "10/C20": 1.996,
+            "10/D10": 1.07,
+            "10/F10": 3.829,
+            "11/D10": 4.511,
+            "11/F10": 5.482,
+            "2/B30": 4.261,
+            "3/C20": 2.053,
+            "3/D10": 1.664,
+            "4/D10": 3.536,
+            "4/G20": 3.769,
+            "6/C20": 3.289,
+            "6/F10": 4.967
+          }
+        },
+        "gating_yes_rule_no": {
+          "n": 0,
+          "n_heldout_evaluable": 0,
+          "n_heldout_lift_ge_2": 0,
+          "heldout_lifts": {}
+        }
+      },
+      "reml_p0.8": {
+        "gating_no_rule_yes": {
+          "n": 17,
+          "n_heldout_evaluable": 9,
+          "n_heldout_lift_ge_2": 7,
+          "heldout_lifts": {
+            "1/C20": 1.83,
+            "1/G20": 7.228,
+            "10/C20": 1.996,
+            "10/F10": 3.829,
+            "2/B30": 4.261,
+            "3/C20": 2.053,
+            "4/G20": 3.769,
+            "6/C20": 3.289,
+            "6/F10": 4.967
+          }
+        },
+        "gating_yes_rule_no": {
+          "n": 3,
+          "n_heldout_evaluable": 2,
+          "n_heldout_lift_ge_2": 2,
+          "heldout_lifts": {
+            "5/B20": 4.823,
+            "5/B30": 4.323
+          }
+        }
+      },
+      "reml_p0.9": {
+        "gating_no_rule_yes": {
+          "n": 12,
+          "n_heldout_evaluable": 5,
+          "n_heldout_lift_ge_2": 5,
+          "heldout_lifts": {
+            "1/G20": 7.228,
+            "10/F10": 3.829,
+            "2/B30": 4.261,
+            "3/C20": 2.053,
+            "4/G20": 3.769
+          }
+        },
+        "gating_yes_rule_no": {
+          "n": 15,
+          "n_heldout_evaluable": 10,
+          "n_heldout_lift_ge_2": 10,
+          "heldout_lifts": {
+            "1/B20": 3.32,
+            "10/B20": 3.565,
+            "10/D50": 5.375,
+            "10/E20": 5.395,
+            "11/B20": 4.379,
+            "3/B20": 3.07,
+            "4/B20": 2.277,
+            "5/B20": 4.823,
+            "5/B30": 4.323,
+            "5/E20": 2.73
+          }
+        }
+      },
+      "dl_p0.8": {
+        "gating_no_rule_yes": {
+          "n": 17,
+          "n_heldout_evaluable": 9,
+          "n_heldout_lift_ge_2": 7,
+          "heldout_lifts": {
+            "1/C20": 1.83,
+            "1/G20": 7.228,
+            "10/C20": 1.996,
+            "10/F10": 3.829,
+            "2/B30": 4.261,
+            "3/C20": 2.053,
+            "4/G20": 3.769,
+            "6/C20": 3.289,
+            "6/F10": 4.967
+          }
+        },
+        "gating_yes_rule_no": {
+          "n": 7,
+          "n_heldout_evaluable": 4,
+          "n_heldout_lift_ge_2": 4,
+          "heldout_lifts": {
+            "1/B20": 3.32,
+            "10/B20": 3.565,
+            "5/B20": 4.823,
+            "5/B30": 4.323
+          }
+        }
+      },
+      "reml_p0.8_min3peers": {
+        "gating_no_rule_yes": {
+          "n": 11,
+          "n_heldout_evaluable": 5,
+          "n_heldout_lift_ge_2": 3,
+          "heldout_lifts": {
+            "1/C20": 1.83,
+            "10/C20": 1.996,
+            "2/B30": 4.261,
+            "3/C20": 2.053,
+            "6/C20": 3.289
+          }
+        },
+        "gating_yes_rule_no": {
+          "n": 3,
+          "n_heldout_evaluable": 2,
+          "n_heldout_lift_ge_2": 2,
+          "heldout_lifts": {
+            "5/B20": 4.823,
+            "5/B30": 4.323
+          }
+        }
+      },
+      "count_based_rule": {
+        "gating_no_rule_yes": {
+          "n": 9,
+          "n_heldout_evaluable": 6,
+          "n_heldout_lift_ge_2": 4,
+          "heldout_lifts": {
+            "1/D10": 3.633,
+            "10/D10": 1.07,
+            "11/D10": 4.511,
+            "3/D10": 1.664,
+            "4/D10": 3.536,
+            "5/D10": 7.573
+          }
+        },
+        "gating_yes_rule_no": {
+          "n": 0,
+          "n_heldout_evaluable": 0,
+          "n_heldout_lift_ge_2": 0,
+          "heldout_lifts": {}
+        }
+      }
+    }
+  },
+  "rank_correlation": {
+    "spearman_P_vs_heldout_lift_pairs_with_estimate": {
+      "rho": 0.1682,
+      "p_value": 0.1051,
+      "n": 94
+    },
+    "spearman_S_vs_heldout_lift_same_pairs": {
+      "rho": 0.2632,
+      "p_value": 0.01037,
+      "n": 94
+    },
+    "spearman_P_vs_heldout_lift_all_95_P0_if_no_estimate": {
+      "rho": 0.1693,
+      "p_value": 0.1009,
+      "n": 95
+    },
+    "spearman_S_vs_heldout_lift_all_95": {
+      "rho": 0.2628,
+      "p_value": 0.01008,
+      "n": 95
+    },
+    "n_heldout_pairs_without_estimate": 1,
+    "spearman_P_vs_S_141_pairs_with_estimate": {
+      "rho": 0.3151,
+      "p_value": 0.0003455,
+      "n": 125
+    }
+  },
+  "pooled_map": {
+    "B20": {
+      "system_desc": "Exterior Enclosure",
+      "k": 7,
+      "form": "t",
+      "pooled_mean_lift": 3.1816,
+      "tau": 0.3502,
+      "P": 0.8597,
+      "pred_lift_95": [
+        1.1858,
+        8.5369
+      ],
+      "accepted_p0.8": true,
+      "accepted_p0.5": true,
+      "accepted_p0.9": false,
+      "P_dl": 0.8053,
+      "S": 0.9,
+      "supported": true,
+      "frac_2x": 0.857,
+      "peer_lifts": {
+        "1": 3.32,
+        "10": 3.565,
+        "11": 4.379,
+        "3": 3.07,
+        "4": 2.277,
+        "5": 4.823,
+        "6": 1.9
+      }
+    },
+    "B30": {
+      "system_desc": "Roofing",
+      "k": 5,
+      "form": "t",
+      "pooled_mean_lift": 4.3726,
+      "tau": 0.0,
+      "P": 0.9996,
+      "pred_lift_95": [
+        3.6742,
+        5.2038
+      ],
+      "accepted_p0.8": true,
+      "accepted_p0.5": true,
+      "accepted_p0.9": true,
+      "P_dl": 0.9996,
+      "S": 0.7,
+      "supported": true,
+      "frac_2x": 1.0,
+      "peer_lifts": {
+        "11": 4.873,
+        "2": 4.261,
+        "4": 2.716,
+        "5": 4.323,
+        "6": 4.375
+      }
+    },
+    "C10": {
+      "system_desc": "Interior Construction",
+      "k": 8,
+      "form": "t",
+      "pooled_mean_lift": 4.3389,
+      "tau": 0.4293,
+      "P": 0.9298,
+      "pred_lift_95": [
+        1.4216,
+        13.2428
+      ],
+      "accepted_p0.8": true,
+      "accepted_p0.5": true,
+      "accepted_p0.9": true,
+      "P_dl": 0.922,
+      "S": 1.0,
+      "supported": true,
+      "frac_2x": 1.0,
+      "peer_lifts": {
+        "1": 3.693,
+        "10": 4.784,
+        "11": 7.943,
+        "2": 4.046,
+        "3": 6.139,
+        "4": 2.383,
+        "5": 5.993,
+        "6": 2.456
+      }
+    },
+    "C20": {
+      "system_desc": "Stairs",
+      "k": 5,
+      "form": "t",
+      "pooled_mean_lift": 2.3484,
+      "tau": 0.0,
+      "P": 0.8003,
+      "pred_lift_95": [
+        1.3939,
+        3.9566
+      ],
+      "accepted_p0.8": true,
+      "accepted_p0.5": true,
+      "accepted_p0.9": false,
+      "P_dl": 0.8003,
+      "S": 0.4,
+      "supported": false,
+      "frac_2x": 0.6,
+      "peer_lifts": {
+        "1": 1.83,
+        "10": 1.996,
+        "11": 3.117,
+        "3": 2.053,
+        "6": 3.289
+      }
+    },
+    "C30": {
+      "system_desc": "Interior Finishes",
+      "k": 8,
+      "form": "t",
+      "pooled_mean_lift": 3.9805,
+      "tau": 0.3555,
+      "P": 0.9404,
+      "pred_lift_95": [
+        1.5749,
+        10.0606
+      ],
+      "accepted_p0.8": true,
+      "accepted_p0.5": true,
+      "accepted_p0.9": true,
+      "P_dl": 0.8913,
+      "S": 1.0,
+      "supported": true,
+      "frac_2x": 1.0,
+      "peer_lifts": {
+        "1": 3.978,
+        "10": 4.419,
+        "11": 7.697,
+        "2": 4.58,
+        "3": 4.406,
+        "4": 3.369,
+        "5": 3.055,
+        "6": 2.265
+      }
+    },
+    "D10": {
+      "system_desc": "Conveying",
+      "k": 7,
+      "form": "t",
+      "pooled_mean_lift": 3.2453,
+      "tau": 0.5555,
+      "P": 0.7701,
+      "pred_lift_95": [
+        0.6855,
+        15.3648
+      ],
+      "accepted_p0.8": false,
+      "accepted_p0.5": true,
+      "accepted_p0.9": false,
+      "P_dl": 0.7344,
+      "S": 0.6,
+      "supported": false,
+      "frac_2x": 0.714,
+      "peer_lifts": {
+        "1": 3.633,
+        "10": 1.07,
+        "11": 4.511,
+        "2": 2.098,
+        "3": 1.664,
+        "4": 3.536,
+        "5": 7.573
+      }
+    },
+    "D20": {
+      "system_desc": "Plumbing",
+      "k": 8,
+      "form": "t",
+      "pooled_mean_lift": 4.8088,
+      "tau": 0.3461,
+      "P": 0.9728,
+      "pred_lift_95": [
+        1.9546,
+        11.8303
+      ],
+      "accepted_p0.8": true,
+      "accepted_p0.5": true,
+      "accepted_p0.9": true,
+      "P_dl": 0.9641,
+      "S": 1.0,
+      "supported": true,
+      "frac_2x": 1.0,
+      "peer_lifts": {
+        "1": 4.034,
+        "10": 5.828,
+        "11": 7.817,
+        "2": 4.393,
+        "3": 6.057,
+        "4": 3.465,
+        "5": 6.032,
+        "6": 2.695
+      }
+    },
+    "D30": {
+      "system_desc": "HVAC",
+      "k": 9,
+      "form": "t",
+      "pooled_mean_lift": 4.6753,
+      "tau": 0.4015,
+      "P": 0.957,
+      "pred_lift_95": [
+        1.7111,
+        12.775
+      ],
+      "accepted_p0.8": true,
+      "accepted_p0.5": true,
+      "accepted_p0.9": true,
+      "P_dl": 0.9573,
+      "S": 1.0,
+      "supported": true,
+      "frac_2x": 0.889,
+      "peer_lifts": {
+        "1": 4.705,
+        "10": 6.156,
+        "11": 7.901,
+        "2": 3.954,
+        "3": 6.763,
+        "4": 4.744,
+        "5": 5.391,
+        "6": 2.47,
+        "7": 1.629
+      }
+    },
+    "D40": {
+      "system_desc": "Fire Protection",
+      "k": 9,
+      "form": "t",
+      "pooled_mean_lift": 3.6424,
+      "tau": 0.3087,
+      "P": 0.9443,
+      "pred_lift_95": [
+        1.6723,
+        7.9336
+      ],
+      "accepted_p0.8": true,
+      "accepted_p0.5": true,
+      "accepted_p0.9": true,
+      "P_dl": 0.9555,
+      "S": 1.0,
+      "supported": true,
+      "frac_2x": 0.889,
+      "peer_lifts": {
+        "1": 5.212,
+        "10": 3.302,
+        "11": 5.694,
+        "2": 1.679,
+        "3": 3.067,
+        "4": 4.254,
+        "5": 3.997,
+        "6": 2.878,
+        "7": 3.694
+      }
+    },
+    "D50": {
+      "system_desc": "Electrical",
+      "k": 8,
+      "form": "t",
+      "pooled_mean_lift": 4.3806,
+      "tau": 0.4173,
+      "P": 0.9363,
+      "pred_lift_95": [
+        1.4802,
+        12.9643
+      ],
+      "accepted_p0.8": true,
+      "accepted_p0.5": true,
+      "accepted_p0.9": true,
+      "P_dl": 0.9068,
+      "S": 1.0,
+      "supported": true,
+      "frac_2x": 1.0,
+      "peer_lifts": {
+        "1": 3.529,
+        "10": 5.375,
+        "11": 7.784,
+        "2": 3.565,
+        "3": 6.759,
+        "4": 3.165,
+        "5": 5.213,
+        "6": 2.248
+      }
+    },
+    "E10": {
+      "system_desc": "Equipment",
+      "k": 8,
+      "form": "t",
+      "pooled_mean_lift": 5.5427,
+      "tau": 0.2163,
+      "P": 0.9977,
+      "pred_lift_95": [
+        3.1431,
+        9.7744
+      ],
+      "accepted_p0.8": true,
+      "accepted_p0.5": true,
+      "accepted_p0.9": true,
+      "P_dl": 0.9975,
+      "S": 1.0,
+      "supported": true,
+      "frac_2x": 1.0,
+      "peer_lifts": {
+        "1": 5.752,
+        "10": 6.905,
+        "11": 7.363,
+        "2": 5.089,
+        "3": 6.798,
+        "4": 4.571,
+        "5": 4.264,
+        "6": 4.202
+      }
+    },
+    "E20": {
+      "system_desc": "Furnishings",
+      "k": 7,
+      "form": "t",
+      "pooled_mean_lift": 3.3835,
+      "tau": 0.2215,
+      "P": 0.9568,
+      "pred_lift_95": [
+        1.7936,
+        6.3826
+      ],
+      "accepted_p0.8": true,
+      "accepted_p0.5": true,
+      "accepted_p0.9": true,
+      "P_dl": 0.9548,
+      "S": 1.0,
+      "supported": true,
+      "frac_2x": 1.0,
+      "peer_lifts": {
+        "1": 4.215,
+        "10": 5.395,
+        "2": 3.563,
+        "3": 3.404,
+        "4": 3.995,
+        "5": 2.73,
+        "6": 2.522
+      }
+    },
+    "F10": {
+      "system_desc": "Special Construction",
+      "k": 3,
+      "form": "t",
+      "pooled_mean_lift": 4.8524,
+      "tau": 0.0,
+      "P": 0.9418,
+      "pred_lift_95": [
+        0.6043,
+        38.9622
+      ],
+      "accepted_p0.8": true,
+      "accepted_p0.5": true,
+      "accepted_p0.9": true,
+      "P_dl": 0.9418,
+      "S": 0.7,
+      "supported": true,
+      "frac_2x": 1.0,
+      "peer_lifts": {
+        "10": 3.829,
+        "11": 5.482,
+        "6": 4.967
+      }
+    },
+    "F20": {
+      "system_desc": "Selective Building Demolition",
+      "k": 1,
+      "form": "none",
+      "pooled_mean_lift": null,
+      "tau": null,
+      "P": null,
+      "pred_lift_95": [
+        null,
+        null
+      ],
+      "accepted_p0.8": false,
+      "accepted_p0.5": false,
+      "accepted_p0.9": false,
+      "P_dl": null,
+      "S": 0.5,
+      "supported": false,
+      "frac_2x": 1.0,
+      "peer_lifts": {
+        "11": 4.785
+      }
+    },
+    "G20": {
+      "system_desc": "Site Improvements",
+      "k": 3,
+      "form": "t",
+      "pooled_mean_lift": 4.5637,
+      "tau": 0.2715,
+      "P": 0.8763,
+      "pred_lift_95": [
+        0.0623,
+        334.2504
+      ],
+      "accepted_p0.8": true,
+      "accepted_p0.5": true,
+      "accepted_p0.9": false,
+      "P_dl": 0.8766,
+      "S": 0.7,
+      "supported": true,
+      "frac_2x": 1.0,
+      "peer_lifts": {
+        "1": 7.228,
+        "11": 3.918,
+        "4": 3.769
+      }
+    },
+    "G30": {
+      "system_desc": "Site Mechanical Utilities",
+      "k": 1,
+      "form": "none",
+      "pooled_mean_lift": null,
+      "tau": null,
+      "P": null,
+      "pred_lift_95": [
+        null,
+        null
+      ],
+      "accepted_p0.8": false,
+      "accepted_p0.5": false,
+      "accepted_p0.9": false,
+      "P_dl": null,
+      "S": 0.5,
+      "supported": false,
+      "frac_2x": 1.0,
+      "peer_lifts": {
+        "5": 3.434
+      }
+    }
+  },
+  "runtime_seconds": 43.7
+}

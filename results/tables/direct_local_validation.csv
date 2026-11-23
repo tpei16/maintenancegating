@@ -1,0 +1,160 @@
+campus,system,system_desc,in_heldout_maps,evaluable_2017_2019,lift_2017_2019,holds_2017_2019,S_peer,supported_peer,verdict_peer,S_local_history,supported_local_history,verdict_local_history,all_n_rows,all_n_pos,all_n_buildings,all_n_quarters,all_evaluable,all_lift,all_lift_ci_lo,all_lift_ci_hi,all_n_boot,all_verdict,all_verdict_margin,last8_n_rows,last8_n_pos,last8_n_buildings,last8_n_quarters,last8_evaluable,last8_lift,last8_lift_ci_lo,last8_lift_ci_hi,last8_n_boot,last8_verdict,last8_verdict_margin
+1,A10,Foundations,False,False,,,,False,False,,False,False,3,0,1,3,False,,,,0,no local evaluation,no local evaluation,3,0,1,3,False,,,,0,no local evaluation,no local evaluation
+1,B10,Superstructure,False,False,,,,False,False,,False,False,40,2,8,7,False,,,,0,no local evaluation,no local evaluation,40,2,8,7,False,,,,0,no local evaluation,no local evaluation
+1,B20,Exterior Enclosure,True,True,1.817,False,0.7,True,True,,False,False,723,4,103,10,False,,,,0,no local evaluation,no local evaluation,715,4,103,8,False,,,,0,no local evaluation,no local evaluation
+1,B30,Roofing,True,False,,,0.0,False,True,,False,False,458,0,66,10,False,,,,0,no local evaluation,no local evaluation,447,0,66,8,False,,,,0,no local evaluation,no local evaluation
+1,C10,Interior Construction,True,True,3.615,True,0.8,True,True,0.5,False,True,1058,247,134,15,True,3.435,2.889,4.179,1000,validated,validated,963,226,134,8,True,3.514,2.935,4.285,1000,validated,validated
+1,C20,Stairs,True,True,2.986,True,0.0,False,True,0.0,False,True,489,26,87,10,True,2.687,0.664,4.471,1000,validated,not validated,487,26,87,8,True,2.676,0.658,4.474,1000,validated,not validated
+1,C30,Interior Finishes,True,True,4.19,True,0.7,True,True,0.5,False,True,963,188,120,16,True,3.116,2.495,4.056,1000,validated,validated,856,161,120,8,True,3.277,2.612,4.295,1000,validated,validated
+1,D10,Conveying,True,True,3.494,True,0.5,False,True,,False,False,356,16,59,11,True,3.09,0.725,5.755,1000,validated,not validated,340,16,59,8,True,2.5,0.687,5.649,1000,validated,not validated
+1,D20,Plumbing,True,True,3.91,True,0.8,True,True,0.8,True,True,1272,342,148,17,True,3.545,2.956,4.202,1000,validated,validated,1116,298,148,8,True,3.578,2.947,4.393,1000,validated,validated
+1,D30,HVAC,True,True,4.642,True,0.8,True,True,0.8,True,True,1246,254,145,16,True,4.121,3.495,5.075,1000,validated,validated,1052,223,145,8,True,4.183,3.407,5.107,1000,validated,validated
+1,D40,Fire Protection,True,True,4.519,True,0.5,False,True,0.5,False,True,1292,92,140,15,True,4.753,3.565,5.79,1000,validated,validated,1067,82,140,8,True,4.864,3.634,5.986,1000,validated,validated
+1,D50,Electrical,True,True,3.081,True,0.8,True,True,0.8,True,True,1288,412,146,15,True,3.126,2.648,3.815,1000,validated,validated,1087,356,146,8,True,3.053,2.551,3.833,1000,validated,validated
+1,D90,General,False,False,,,,False,False,,False,False,369,0,52,12,False,,,,0,no local evaluation,no local evaluation,360,0,52,8,False,,,,0,no local evaluation,no local evaluation
+1,E10,Equipment,True,True,6.692,True,0.8,True,True,0.5,False,True,676,58,92,14,True,4.799,2.802,6.286,1000,validated,validated,628,53,92,8,True,5.266,2.939,6.572,1000,validated,validated
+1,E20,Furnishings,True,True,3.712,True,0.5,False,True,0.5,False,True,610,63,91,14,True,2.857,1.667,4.207,1000,validated,not validated,588,59,91,8,True,3.041,1.74,4.38,1000,validated,not validated
+1,F10,Special Construction,True,False,,,0.5,False,True,,False,False,23,1,6,8,False,,,,0,no local evaluation,no local evaluation,23,1,6,8,False,,,,0,no local evaluation,no local evaluation
+1,G20,Site Improvements,True,False,,,0.5,False,True,,False,False,448,3,66,8,False,,,,0,no local evaluation,no local evaluation,448,3,66,8,False,,,,0,no local evaluation,no local evaluation
+1,G30,Site Mechanical Utilities,True,False,,,0.5,False,True,,False,False,78,0,10,11,False,,,,0,no local evaluation,no local evaluation,72,0,10,8,False,,,,0,no local evaluation,no local evaluation
+10,A10,Foundations,False,False,,,,False,False,,False,False,0,0,0,0,False,,,,0,no local evaluation,no local evaluation,0,0,0,0,False,,,,0,no local evaluation,no local evaluation
+10,B10,Superstructure,False,False,,,,False,False,,False,False,3,0,1,3,False,,,,0,no local evaluation,no local evaluation,3,0,1,3,False,,,,0,no local evaluation,no local evaluation
+10,B20,Exterior Enclosure,True,True,3.367,True,0.5,False,True,0.5,False,True,658,40,199,10,True,3.489,2.243,4.811,1000,validated,validated,652,40,199,8,True,3.458,2.251,4.834,1000,validated,validated
+10,B30,Roofing,True,False,,,0.5,False,True,,False,False,464,0,129,8,False,,,,0,no local evaluation,no local evaluation,464,0,129,8,False,,,,0,no local evaluation,no local evaluation
+10,C10,Interior Construction,True,True,4.047,True,0.8,True,True,0.5,False,True,702,184,192,9,True,2.848,2.34,3.358,1000,validated,validated,701,184,192,8,True,2.844,2.337,3.364,1000,validated,validated
+10,C20,Stairs,True,True,0.996,False,0.0,False,True,,False,False,100,0,38,4,False,,,,0,no local evaluation,no local evaluation,100,0,38,4,False,,,,0,no local evaluation,no local evaluation
+10,C30,Interior Finishes,True,True,4.23,True,0.7,True,True,0.5,False,True,599,61,153,9,True,3.11,2.013,4.098,1000,validated,validated,598,61,153,8,True,3.104,2.013,4.063,1000,validated,validated
+10,D10,Conveying,True,True,1.361,False,0.7,True,True,,False,False,196,3,53,22,False,,,,0,no local evaluation,no local evaluation,154,3,53,8,False,,,,0,no local evaluation,no local evaluation
+10,D20,Plumbing,True,True,4.984,True,0.8,True,True,0.5,False,True,1531,165,283,54,True,5.242,4.537,6.239,1000,validated,validated,1244,164,283,8,True,4.673,4.052,5.536,1000,validated,validated
+10,D30,HVAC,True,True,4.897,True,0.8,True,True,0.5,False,True,2184,144,305,54,True,5.402,4.43,6.347,1000,validated,validated,1345,144,305,8,True,3.874,3.027,4.745,1000,validated,validated
+10,D40,Fire Protection,True,True,2.522,True,0.6,False,True,0.0,False,True,1095,159,220,56,True,2.817,2.193,3.571,1000,validated,validated,964,159,220,8,True,2.688,2.013,3.273,1000,validated,validated
+10,D50,Electrical,True,True,4.58,True,0.8,True,True,0.0,False,True,1357,317,355,47,True,4.06,3.418,4.749,1000,validated,validated,1282,317,355,8,True,3.825,3.26,4.49,1000,validated,validated
+10,D90,General,False,False,,,,False,False,,False,False,274,0,93,21,False,,,,0,no local evaluation,no local evaluation,259,0,93,8,False,,,,0,no local evaluation,no local evaluation
+10,E10,Equipment,True,True,6.882,True,0.8,True,True,0.5,False,True,639,89,168,11,True,4.936,4.071,5.935,1000,validated,validated,630,89,168,8,True,4.944,4.051,5.92,1000,validated,validated
+10,E20,Furnishings,True,True,3.799,True,0.7,True,True,,False,False,256,12,84,6,True,4.923,1.385,6.515,1000,validated,not validated,256,12,84,6,True,4.923,1.385,6.515,1000,validated,not validated
+10,F10,Special Construction,True,True,1.656,False,,False,False,,False,False,145,1,36,56,False,,,,0,no local evaluation,no local evaluation,97,1,36,8,False,,,,0,no local evaluation,no local evaluation
+10,F20,Selective Building Demolition,True,False,,,,False,False,,False,False,2,0,1,2,False,,,,0,no local evaluation,no local evaluation,2,0,1,2,False,,,,0,no local evaluation,no local evaluation
+10,G10,Site Preparation,False,False,,,,False,False,,False,False,0,0,0,0,False,,,,0,no local evaluation,no local evaluation,0,0,0,0,False,,,,0,no local evaluation,no local evaluation
+10,G20,Site Improvements,True,False,,,0.5,False,True,,False,False,23,0,8,5,False,,,,0,no local evaluation,no local evaluation,23,0,8,5,False,,,,0,no local evaluation,no local evaluation
+10,G30,Site Mechanical Utilities,True,False,,,0.5,False,True,,False,False,0,0,0,0,False,,,,0,no local evaluation,no local evaluation,0,0,0,0,False,,,,0,no local evaluation,no local evaluation
+10,G40,Site Electrical Utilities,False,False,,,,False,False,,False,False,2,0,1,2,False,,,,0,no local evaluation,no local evaluation,2,0,1,2,False,,,,0,no local evaluation,no local evaluation
+11,A10,Foundations,False,False,,,,False,False,,False,False,3,0,1,3,False,,,,0,no local evaluation,no local evaluation,3,0,1,3,False,,,,0,no local evaluation,no local evaluation
+11,B10,Superstructure,False,False,,,,False,False,,False,False,0,0,0,0,False,,,,0,no local evaluation,no local evaluation,0,0,0,0,False,,,,0,no local evaluation,no local evaluation
+11,B20,Exterior Enclosure,True,True,3.953,True,0.7,True,True,0.5,False,True,1180,28,185,8,True,3.929,1.662,5.848,1000,validated,not validated,1180,28,185,8,True,3.929,1.662,5.848,1000,validated,not validated
+11,B30,Roofing,True,True,5.997,True,0.5,False,True,0.0,False,True,932,22,154,8,True,2.253,0.829,4.183,1000,validated,not validated,932,22,154,8,True,2.253,0.829,4.183,1000,validated,not validated
+11,C10,Interior Construction,True,True,8.186,True,0.8,True,True,0.5,False,True,1667,117,254,8,True,6.911,5.861,7.72,1000,validated,validated,1667,117,254,8,True,6.911,5.861,7.72,1000,validated,validated
+11,C20,Stairs,True,False,,,0.5,False,True,,False,False,378,3,67,8,False,,,,0,no local evaluation,no local evaluation,378,3,67,8,False,,,,0,no local evaluation,no local evaluation
+11,C30,Interior Finishes,True,True,7.444,True,0.7,True,True,0.5,False,True,1323,57,193,8,True,6.632,5.13,8.028,1000,validated,validated,1323,57,193,8,True,6.632,5.13,8.028,1000,validated,validated
+11,D10,Conveying,True,True,6.954,True,0.7,True,True,,False,False,593,9,82,8,False,,,,0,no local evaluation,no local evaluation,593,9,82,8,False,,,,0,no local evaluation,no local evaluation
+11,D20,Plumbing,True,True,7.82,True,0.8,True,True,0.5,False,True,2316,223,360,8,True,6.715,5.919,7.497,1000,validated,validated,2316,223,360,8,True,6.715,5.919,7.497,1000,validated,validated
+11,D30,HVAC,True,True,7.72,True,0.8,True,True,0.5,False,True,2116,119,313,8,True,6.207,5.147,7.546,1000,validated,validated,2116,119,313,8,True,6.207,5.147,7.546,1000,validated,validated
+11,D40,Fire Protection,True,True,5.91,True,0.6,False,True,0.5,False,True,1472,85,221,8,True,5.5,4.458,6.63,1000,validated,validated,1472,85,221,8,True,5.5,4.458,6.63,1000,validated,validated
+11,D50,Electrical,True,True,7.851,True,0.7,True,True,0.5,False,True,2286,166,350,8,True,6.014,4.79,6.95,1000,validated,validated,2286,166,350,8,True,6.014,4.79,6.95,1000,validated,validated
+11,D90,General,False,False,,,,False,False,,False,False,1157,0,178,8,False,,,,0,no local evaluation,no local evaluation,1157,0,178,8,False,,,,0,no local evaluation,no local evaluation
+11,E10,Equipment,True,True,7.682,True,0.8,True,True,0.5,False,True,1505,163,227,8,True,5.809,4.738,7.022,1000,validated,validated,1505,163,227,8,True,5.809,4.738,7.022,1000,validated,validated
+11,E20,Furnishings,True,False,,,0.6,False,True,,False,False,1012,6,154,8,False,,,,0,no local evaluation,no local evaluation,1012,6,154,8,False,,,,0,no local evaluation,no local evaluation
+11,F10,Special Construction,True,True,4.439,True,,False,False,0.5,False,True,716,27,161,8,True,4.42,0.941,6.714,1000,validated,not validated,716,27,161,8,True,4.42,0.941,6.714,1000,validated,not validated
+11,F20,Selective Building Demolition,False,True,5.137,True,,False,False,,False,False,485,4,101,8,False,,,,0,no local evaluation,no local evaluation,485,4,101,8,False,,,,0,no local evaluation,no local evaluation
+11,G10,Site Preparation,False,False,,,,False,False,,False,False,34,0,6,8,False,,,,0,no local evaluation,no local evaluation,34,0,6,8,False,,,,0,no local evaluation,no local evaluation
+11,G20,Site Improvements,True,True,4.4,True,0.5,False,True,0.0,False,True,1518,38,262,8,True,2.365,0.666,4.37,1000,validated,not validated,1518,38,262,8,True,2.365,0.666,4.37,1000,validated,not validated
+11,G30,Site Mechanical Utilities,False,False,,,,False,False,,False,False,638,1,128,8,False,,,,0,no local evaluation,no local evaluation,638,1,128,8,False,,,,0,no local evaluation,no local evaluation
+11,G40,Site Electrical Utilities,False,False,,,,False,False,,False,False,98,0,24,8,False,,,,0,no local evaluation,no local evaluation,98,0,24,8,False,,,,0,no local evaluation,no local evaluation
+2,B10,Superstructure,False,False,,,,False,False,,False,False,0,0,0,0,False,,,,0,no local evaluation,no local evaluation,0,0,0,0,False,,,,0,no local evaluation,no local evaluation
+2,B20,Exterior Enclosure,True,False,,,0.7,True,True,,False,False,5,0,4,2,False,,,,0,no local evaluation,no local evaluation,5,0,4,2,False,,,,0,no local evaluation,no local evaluation
+2,B30,Roofing,True,True,3.984,True,0.5,False,True,,False,False,6,0,3,2,False,,,,0,no local evaluation,no local evaluation,6,0,3,2,False,,,,0,no local evaluation,no local evaluation
+2,C10,Interior Construction,True,True,3.968,True,1.0,True,True,,False,False,11,0,6,2,False,,,,0,no local evaluation,no local evaluation,11,0,6,2,False,,,,0,no local evaluation,no local evaluation
+2,C30,Interior Finishes,True,True,4.133,True,0.9,True,True,,False,False,5,0,3,2,False,,,,0,no local evaluation,no local evaluation,5,0,3,2,False,,,,0,no local evaluation,no local evaluation
+2,D10,Conveying,True,True,2.291,True,0.6,False,True,,False,False,13,0,13,1,False,,,,0,no local evaluation,no local evaluation,13,0,13,1,False,,,,0,no local evaluation,no local evaluation
+2,D20,Plumbing,True,True,4.41,True,1.0,True,True,,False,False,18,1,10,2,False,,,,0,no local evaluation,no local evaluation,18,1,10,2,False,,,,0,no local evaluation,no local evaluation
+2,D30,HVAC,True,True,3.897,True,1.0,True,True,,False,False,24,2,18,2,False,,,,0,no local evaluation,no local evaluation,24,2,18,2,False,,,,0,no local evaluation,no local evaluation
+2,D40,Fire Protection,True,True,1.874,False,0.9,True,True,,False,False,4,0,2,2,False,,,,0,no local evaluation,no local evaluation,4,0,2,2,False,,,,0,no local evaluation,no local evaluation
+2,D50,Electrical,True,True,3.512,True,1.0,True,True,,False,False,5,1,3,2,False,,,,0,no local evaluation,no local evaluation,5,1,3,2,False,,,,0,no local evaluation,no local evaluation
+2,D90,General,False,False,,,,False,False,,False,False,6,0,3,2,False,,,,0,no local evaluation,no local evaluation,6,0,3,2,False,,,,0,no local evaluation,no local evaluation
+2,E10,Equipment,True,True,5.268,True,1.0,True,True,,False,False,38,0,19,2,False,,,,0,no local evaluation,no local evaluation,38,0,19,2,False,,,,0,no local evaluation,no local evaluation
+2,E20,Furnishings,True,True,2.912,True,0.6,False,True,,False,False,2,0,2,1,False,,,,0,no local evaluation,no local evaluation,2,0,2,1,False,,,,0,no local evaluation,no local evaluation
+2,F10,Special Construction,True,False,,,0.5,False,True,,False,False,0,0,0,0,False,,,,0,no local evaluation,no local evaluation,0,0,0,0,False,,,,0,no local evaluation,no local evaluation
+2,G10,Site Preparation,False,False,,,,False,False,,False,False,0,0,0,0,False,,,,0,no local evaluation,no local evaluation,0,0,0,0,False,,,,0,no local evaluation,no local evaluation
+2,G20,Site Improvements,True,False,,,0.5,False,True,,False,False,0,0,0,0,False,,,,0,no local evaluation,no local evaluation,0,0,0,0,False,,,,0,no local evaluation,no local evaluation
+3,A10,Foundations,False,False,,,,False,False,,False,False,130,0,4,42,False,,,,0,no local evaluation,no local evaluation,32,0,4,8,False,,,,0,no local evaluation,no local evaluation
+3,B10,Superstructure,False,False,,,,False,False,,False,False,760,0,28,42,False,,,,0,no local evaluation,no local evaluation,224,0,28,8,False,,,,0,no local evaluation,no local evaluation
+3,B20,Exterior Enclosure,True,False,,,0.7,True,True,,False,False,2579,10,128,42,True,3.998,0.0,6.662,1000,validated,not validated,813,7,125,8,False,,,,0,no local evaluation,no local evaluation
+3,B30,Roofing,True,False,,,0.5,False,True,,False,False,4404,3,150,43,False,,,,0,no local evaluation,no local evaluation,1144,1,145,8,False,,,,0,no local evaluation,no local evaluation
+3,C10,Interior Construction,True,True,4.574,True,0.8,True,True,0.8,True,True,7421,263,240,43,True,6.456,5.722,7.19,1000,validated,validated,1718,157,222,8,True,4.835,3.847,6.073,1000,validated,validated
+3,C20,Stairs,True,True,2.172,True,0.0,False,True,0.0,False,True,3497,38,122,42,True,2.366,0.369,4.237,1000,validated,not validated,949,23,122,8,True,3.04,0.588,5.449,1000,validated,not validated
+3,C30,Interior Finishes,True,True,4.442,True,0.8,True,True,0.5,False,True,5659,130,174,43,True,5.076,4.092,5.977,1000,validated,validated,1274,81,165,8,True,3.563,2.16,4.754,1000,validated,validated
+3,D10,Conveying,True,False,,,0.6,False,True,,False,False,1607,6,52,43,False,,,,0,no local evaluation,no local evaluation,408,4,51,8,False,,,,0,no local evaluation,no local evaluation
+3,D20,Plumbing,True,True,5.804,True,0.8,True,True,0.8,True,True,7818,304,262,43,True,6.413,5.588,7.049,1000,validated,validated,1813,157,242,8,True,5.647,4.432,6.685,1000,validated,validated
+3,D30,HVAC,True,True,7.53,True,0.8,True,True,0.9,True,True,8140,241,287,43,True,6.598,5.62,7.279,1000,validated,validated,1961,128,267,8,True,6.844,5.778,7.805,1000,validated,validated
+3,D40,Fire Protection,True,True,3.82,True,0.6,False,True,0.6,False,True,5923,154,203,43,True,3.956,2.941,5.037,1000,validated,validated,1495,80,193,8,True,3.738,2.404,4.882,1000,validated,validated
+3,D50,Electrical,True,True,6.009,True,0.7,True,True,0.8,True,True,10939,399,372,43,True,7.042,6.34,7.545,1000,validated,validated,2460,239,340,8,True,6.067,5.234,6.703,1000,validated,validated
+3,D90,General,False,False,,,,False,False,,False,False,2556,0,147,42,False,,,,0,no local evaluation,no local evaluation,1056,0,143,8,False,,,,0,no local evaluation,no local evaluation
+3,E10,Equipment,True,True,6.927,True,0.8,True,True,0.7,True,True,5945,193,200,43,True,7.196,6.251,7.957,1000,validated,validated,1444,93,191,8,True,6.639,5.456,7.828,1000,validated,validated
+3,E20,Furnishings,True,True,4.192,True,0.6,False,True,0.5,False,True,4827,48,161,42,True,5.413,3.256,6.939,1000,validated,validated,1172,35,152,8,True,3.405,1.348,5.418,1000,validated,not validated
+3,F10,Special Construction,True,False,,,0.5,False,True,,False,False,434,0,17,42,False,,,,0,no local evaluation,no local evaluation,118,0,16,8,False,,,,0,no local evaluation,no local evaluation
+3,F20,Selective Building Demolition,True,False,,,,False,False,,False,False,903,4,40,42,False,,,,0,no local evaluation,no local evaluation,284,2,37,8,False,,,,0,no local evaluation,no local evaluation
+3,G10,Site Preparation,False,False,,,,False,False,,False,False,74,0,2,39,False,,,,0,no local evaluation,no local evaluation,16,0,2,8,False,,,,0,no local evaluation,no local evaluation
+3,G20,Site Improvements,True,False,,,0.5,False,True,,False,False,2760,2,102,43,False,,,,0,no local evaluation,no local evaluation,740,0,95,8,False,,,,0,no local evaluation,no local evaluation
+3,G30,Site Mechanical Utilities,True,False,,,0.5,False,True,,False,False,411,0,15,43,False,,,,0,no local evaluation,no local evaluation,104,0,14,8,False,,,,0,no local evaluation,no local evaluation
+3,G40,Site Electrical Utilities,False,False,,,,False,False,,False,False,1446,3,59,42,False,,,,0,no local evaluation,no local evaluation,432,2,57,8,False,,,,0,no local evaluation,no local evaluation
+4,B20,Exterior Enclosure,True,True,3.052,True,0.7,True,True,0.0,False,True,672,39,94,11,True,2.027,0.666,2.857,1000,validated,not validated,618,35,94,8,True,1.994,0.658,3.165,1000,not validated,not validated
+4,B30,Roofing,True,False,,,0.5,False,True,,False,False,740,3,81,11,False,,,,0,no local evaluation,no local evaluation,623,2,81,8,False,,,,0,no local evaluation,no local evaluation
+4,C10,Interior Construction,True,True,2.391,True,0.8,True,True,0.8,True,True,923,433,107,12,True,2.132,1.817,2.586,1000,validated,not validated,777,354,107,8,True,2.195,1.849,2.721,1000,validated,not validated
+4,C20,Stairs,True,False,,,0.5,False,True,,False,False,321,1,53,12,False,,,,0,no local evaluation,no local evaluation,301,1,53,8,False,,,,0,no local evaluation,no local evaluation
+4,C30,Interior Finishes,True,True,3.543,True,0.7,True,True,0.7,True,True,801,183,98,12,True,3.08,2.419,3.8,1000,validated,validated,686,154,98,8,True,2.97,2.404,3.905,1000,validated,validated
+4,D10,Conveying,True,True,1.108,False,0.0,False,True,,False,False,677,13,68,12,True,2.298,0.0,5.61,1000,validated,not validated,504,11,68,8,True,0.898,0.0,3.969,1000,not validated,not validated
+4,D20,Plumbing,True,True,3.551,True,0.8,True,True,0.8,True,True,1032,328,114,14,True,3.056,2.5,3.882,1000,validated,validated,835,265,114,8,True,3.076,2.465,4.028,1000,validated,validated
+4,D30,HVAC,True,True,5.027,True,0.8,True,True,0.7,True,True,1034,193,111,14,True,4.018,3.307,5.05,1000,validated,validated,813,163,111,8,True,4.075,3.13,4.969,1000,validated,validated
+4,D40,Fire Protection,True,True,3.813,True,0.6,False,True,0.7,True,True,999,103,109,16,True,3.589,2.754,4.795,1000,validated,validated,800,87,109,8,True,3.678,2.68,4.802,1000,validated,validated
+4,D50,Electrical,True,True,2.913,True,0.8,True,True,0.8,True,True,1190,445,124,16,True,2.652,2.243,3.206,1000,validated,validated,957,363,124,8,True,2.636,2.187,3.205,1000,validated,validated
+4,D90,General,False,False,,,,False,False,,False,False,707,0,79,12,False,,,,0,no local evaluation,no local evaluation,594,0,79,8,False,,,,0,no local evaluation,no local evaluation
+4,E10,Equipment,True,True,5.084,True,0.8,True,True,0.5,False,True,815,74,101,14,True,4.164,2.712,5.422,1000,validated,validated,724,62,101,8,True,4.639,2.933,6.066,1000,validated,validated
+4,E20,Furnishings,True,True,3.304,True,0.6,False,True,0.5,False,True,701,114,91,11,True,2.685,2.115,3.831,1000,validated,validated,634,96,91,8,True,2.993,2.224,4.235,1000,validated,validated
+4,F10,Special Construction,True,False,,,0.5,False,True,,False,False,79,1,12,10,False,,,,0,no local evaluation,no local evaluation,75,1,12,8,False,,,,0,no local evaluation,no local evaluation
+4,F20,Selective Building Demolition,True,False,,,,False,False,,False,False,9,0,1,9,False,,,,0,no local evaluation,no local evaluation,8,0,1,8,False,,,,0,no local evaluation,no local evaluation
+4,G20,Site Improvements,True,True,3.759,True,0.5,False,True,0.5,False,True,736,80,109,11,True,3.357,2.13,4.391,1000,validated,validated,686,70,109,8,True,3.693,2.314,5.033,1000,validated,validated
+5,B20,Exterior Enclosure,True,True,2.388,True,0.0,False,True,0.9,True,True,16290,769,417,56,True,3.719,2.88,4.623,1000,validated,validated,2897,116,375,8,True,4.564,3.447,5.666,1000,validated,validated
+5,B30,Roofing,True,True,2.711,True,0.5,False,True,0.8,True,True,19545,785,550,56,True,4.394,3.879,5.024,1000,validated,validated,3468,159,463,8,True,5.217,4.434,6.107,1000,validated,validated
+5,C10,Interior Construction,True,True,6.685,True,0.8,True,True,1.0,True,True,11767,737,303,58,True,5.63,4.892,6.411,1000,validated,validated,2098,148,276,8,True,5.94,4.873,6.945,1000,validated,validated
+5,C20,Stairs,True,False,,,0.0,False,True,,False,False,177,0,16,54,False,,,,0,no local evaluation,no local evaluation,94,0,16,8,False,,,,0,no local evaluation,no local evaluation
+5,C30,Interior Finishes,True,True,2.351,True,0.6,False,True,0.9,True,True,8389,514,223,56,True,2.957,2.122,3.759,1000,validated,validated,1563,197,206,8,True,3.588,2.69,4.329,1000,validated,validated
+5,D10,Conveying,True,False,,,0.5,False,True,0.5,False,True,5221,118,112,56,True,6.937,6.061,7.806,1000,validated,validated,858,3,108,8,False,,,,0,no local evaluation,no local evaluation
+5,D20,Plumbing,True,True,5.291,True,0.8,True,True,1.0,True,True,18123,1811,454,57,True,6.309,5.671,7.015,1000,validated,validated,3004,424,395,8,True,6.026,5.159,6.955,1000,validated,validated
+5,D30,HVAC,True,True,3.903,True,0.8,True,True,1.0,True,True,18362,2812,457,57,True,5.52,4.875,6.133,1000,validated,validated,2919,619,381,8,True,4.538,3.913,5.324,1000,validated,validated
+5,D40,Fire Protection,True,True,4.143,True,0.7,True,True,0.5,False,True,8155,56,318,56,True,4.283,2.39,5.853,1000,validated,validated,1719,13,312,8,True,3.075,0.0,6.143,1000,validated,not validated
+5,D50,Electrical,True,True,4.823,True,0.8,True,True,0.8,True,True,10740,375,281,56,True,5.6,4.69,6.396,1000,validated,validated,1984,35,267,8,True,4.558,2.853,6.432,1000,validated,validated
+5,D90,General,False,False,,,,False,False,,False,False,729,0,14,54,False,,,,0,no local evaluation,no local evaluation,112,0,14,8,False,,,,0,no local evaluation,no local evaluation
+5,E10,Equipment,True,True,5.384,True,0.7,True,True,1.0,True,True,5681,623,143,57,True,4.375,3.352,5.497,1000,validated,validated,1030,130,137,8,True,4.385,3.349,5.727,1000,validated,validated
+5,E20,Furnishings,True,True,1.698,False,0.5,False,True,0.6,False,True,5985,127,166,56,True,3.698,2.797,4.6,1000,validated,validated,1277,61,164,8,True,2.78,1.59,3.934,1000,validated,not validated
+5,F20,Selective Building Demolition,True,False,,,,False,False,,False,False,517,0,12,55,False,,,,0,no local evaluation,no local evaluation,88,0,11,8,False,,,,0,no local evaluation,no local evaluation
+5,G20,Site Improvements,True,False,,,0.5,False,True,,False,False,35,0,1,35,False,,,,0,no local evaluation,no local evaluation,8,0,1,8,False,,,,0,no local evaluation,no local evaluation
+5,G30,Site Mechanical Utilities,False,False,,,,False,False,0.5,False,True,692,24,22,56,True,4.531,0.0,7.481,991,validated,not validated,148,4,20,8,False,,,,0,no local evaluation,no local evaluation
+6,A10,Foundations,False,False,,,,False,False,,False,False,0,0,0,0,False,,,,0,no local evaluation,no local evaluation,0,0,0,0,False,,,,0,no local evaluation,no local evaluation
+6,B20,Exterior Enclosure,True,True,1.833,False,0.7,True,True,,False,False,0,0,0,0,False,,,,0,no local evaluation,no local evaluation,0,0,0,0,False,,,,0,no local evaluation,no local evaluation
+6,B30,Roofing,True,True,3.333,True,0.5,False,True,,False,False,0,0,0,0,False,,,,0,no local evaluation,no local evaluation,0,0,0,0,False,,,,0,no local evaluation,no local evaluation
+6,C10,Interior Construction,True,True,2.393,True,1.0,True,True,,False,False,0,0,0,0,False,,,,0,no local evaluation,no local evaluation,0,0,0,0,False,,,,0,no local evaluation,no local evaluation
+6,C20,Stairs,True,True,2.902,True,0.0,False,True,,False,False,0,0,0,0,False,,,,0,no local evaluation,no local evaluation,0,0,0,0,False,,,,0,no local evaluation,no local evaluation
+6,C30,Interior Finishes,True,True,2.3,True,0.9,True,True,,False,False,0,0,0,0,False,,,,0,no local evaluation,no local evaluation,0,0,0,0,False,,,,0,no local evaluation,no local evaluation
+6,D10,Conveying,True,False,,,0.6,False,True,,False,False,0,0,0,0,False,,,,0,no local evaluation,no local evaluation,0,0,0,0,False,,,,0,no local evaluation,no local evaluation
+6,D20,Plumbing,True,True,2.587,True,1.0,True,True,,False,False,0,0,0,0,False,,,,0,no local evaluation,no local evaluation,0,0,0,0,False,,,,0,no local evaluation,no local evaluation
+6,D30,HVAC,True,True,2.448,True,1.0,True,True,,False,False,0,0,0,0,False,,,,0,no local evaluation,no local evaluation,0,0,0,0,False,,,,0,no local evaluation,no local evaluation
+6,D40,Fire Protection,True,True,2.844,True,0.9,True,True,,False,False,0,0,0,0,False,,,,0,no local evaluation,no local evaluation,0,0,0,0,False,,,,0,no local evaluation,no local evaluation
+6,D50,Electrical,True,True,2.155,True,1.0,True,True,,False,False,0,0,0,0,False,,,,0,no local evaluation,no local evaluation,0,0,0,0,False,,,,0,no local evaluation,no local evaluation
+6,D90,General,False,False,,,,False,False,,False,False,0,0,0,0,False,,,,0,no local evaluation,no local evaluation,0,0,0,0,False,,,,0,no local evaluation,no local evaluation
+6,E10,Equipment,True,True,4.259,True,1.0,True,True,,False,False,0,0,0,0,False,,,,0,no local evaluation,no local evaluation,0,0,0,0,False,,,,0,no local evaluation,no local evaluation
+6,E20,Furnishings,True,True,2.471,True,0.7,True,True,,False,False,0,0,0,0,False,,,,0,no local evaluation,no local evaluation,0,0,0,0,False,,,,0,no local evaluation,no local evaluation
+6,F10,Special Construction,True,True,5.228,True,0.5,False,True,,False,False,0,0,0,0,False,,,,0,no local evaluation,no local evaluation,0,0,0,0,False,,,,0,no local evaluation,no local evaluation
+6,F20,Selective Building Demolition,True,False,,,,False,False,,False,False,0,0,0,0,False,,,,0,no local evaluation,no local evaluation,0,0,0,0,False,,,,0,no local evaluation,no local evaluation
+6,G20,Site Improvements,True,False,,,0.5,False,True,,False,False,0,0,0,0,False,,,,0,no local evaluation,no local evaluation,0,0,0,0,False,,,,0,no local evaluation,no local evaluation
+6,G30,Site Mechanical Utilities,True,False,,,0.5,False,True,,False,False,0,0,0,0,False,,,,0,no local evaluation,no local evaluation,0,0,0,0,False,,,,0,no local evaluation,no local evaluation
+7,B10,Superstructure,False,False,,,,False,False,,False,False,0,0,0,0,False,,,,0,no local evaluation,no local evaluation,0,0,0,0,False,,,,0,no local evaluation,no local evaluation
+7,B20,Exterior Enclosure,True,False,,,0.7,True,True,,False,False,0,0,0,0,False,,,,0,no local evaluation,no local evaluation,0,0,0,0,False,,,,0,no local evaluation,no local evaluation
+7,C10,Interior Construction,True,False,,,1.0,True,True,,False,False,0,0,0,0,False,,,,0,no local evaluation,no local evaluation,0,0,0,0,False,,,,0,no local evaluation,no local evaluation
+7,C30,Interior Finishes,True,False,,,0.9,True,True,,False,False,0,0,0,0,False,,,,0,no local evaluation,no local evaluation,0,0,0,0,False,,,,0,no local evaluation,no local evaluation
+7,D10,Conveying,True,False,,,0.7,True,True,,False,False,0,0,0,0,False,,,,0,no local evaluation,no local evaluation,0,0,0,0,False,,,,0,no local evaluation,no local evaluation
+7,D20,Plumbing,True,False,,,1.0,True,True,,False,False,6,0,2,3,False,,,,0,no local evaluation,no local evaluation,6,0,2,3,False,,,,0,no local evaluation,no local evaluation
+7,D30,HVAC,True,True,1.486,False,1.0,True,True,,False,False,7,0,2,6,False,,,,0,no local evaluation,no local evaluation,7,0,2,6,False,,,,0,no local evaluation,no local evaluation
+7,D40,Fire Protection,True,True,1.791,False,0.9,True,True,,False,False,0,0,0,0,False,,,,0,no local evaluation,no local evaluation,0,0,0,0,False,,,,0,no local evaluation,no local evaluation
+7,D50,Electrical,True,True,1.828,False,1.0,True,True,,False,False,3,0,1,3,False,,,,0,no local evaluation,no local evaluation,3,0,1,3,False,,,,0,no local evaluation,no local evaluation
+7,D90,General,False,False,,,,False,False,,False,False,1,0,1,1,False,,,,0,no local evaluation,no local evaluation,1,0,1,1,False,,,,0,no local evaluation,no local evaluation
+7,E10,Equipment,True,False,,,1.0,True,True,,False,False,0,0,0,0,False,,,,0,no local evaluation,no local evaluation,0,0,0,0,False,,,,0,no local evaluation,no local evaluation
+7,E20,Furnishings,True,False,,,0.7,True,True,,False,False,0,0,0,0,False,,,,0,no local evaluation,no local evaluation,0,0,0,0,False,,,,0,no local evaluation,no local evaluation

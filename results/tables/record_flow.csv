@@ -1,0 +1,8 @@
+step,description,work_orders_removed,work_orders_remaining,preventive_remaining,reactive_remaining,uncategorized_remaining,building_systems_remaining,buildings_remaining
+0,"work orders in the raw file, 12 universities",0,3731442,2224663,1469204,37575,,
+1,"records of the 3 universities without building identifiers (8, 9, 12) removed",820330,2911112,1962908,930570,17634,,
+2,records without a building identifier removed (nine campuses),18958,2892154,1959627,915322,17205,,
+3,records without a building-system code removed,37481,2854673,1946826,907847,0,23593.0,3922.0
+4,records without a parseable start date removed,0,2854673,1946826,907847,0,23593.0,3922.0
+5,records with no maintenance category removed; the reconstructed work-order stream,0,2854673,1946826,907847,0,23593.0,3922.0
+6,"work orders dated in the last active quarter of their building removed: that quarter has no next quarter on record, so its units carry no outcome and leave the panel",58691,2795982,1909259,886723,0,22546.0,3400.0
