@@ -54,25 +54,33 @@ def fig_louo_per_campus():
             (d.layer == "M1") & (d.model == "gbdt")].copy()
     sub["u"] = sub["held_out_university"].astype(str)
     sub = sub.sort_values("lift_top10", ascending=False)
-    fig, ax = plt.subplots(figsize=(7.6, 3.4))
+    fig, ax = plt.subplots(figsize=(7.55, 3.4))
     x = np.arange(len(sub))
     yerr = np.vstack([sub["lift_top10"] - sub["lift_top10_ci_lo"],
                       sub["lift_top10_ci_hi"] - sub["lift_top10"]])
-    ax.bar(x, sub["lift_top10"], yerr=yerr, capsize=3, color=NAVY,
-           ecolor=SLATE, label="Screening model")
+    ax.bar(x, sub["lift_top10"], width=0.7, color=NAVY, label="Screening model")
+    eb = ax.errorbar(x, sub["lift_top10"], yerr=yerr, fmt="none", ecolor=SLATE,
+                     elinewidth=1.2, capsize=3, capthick=1.2, zorder=4,
+                     label="95% interval")
+    # best_rule_lift_top10 is the highest top-k lift among the four unfitted rules
+    # of fmscreen.baselines, chosen separately on each held-out campus (the
+    # prior-year count rule on some campuses, prior-year labor on the others).
     ax.scatter(x, sub["best_rule_lift_top10"], color=CORAL_D, zorder=5,
-               marker="D", s=40, edgecolor="white", linewidth=0.6,
-               label="Best simple rule")
-    ax.axhline(2.0, ls="--", color=SLATE, lw=1.2, label="Two-fold bar")
+               marker="D", s=36, edgecolor="white", linewidth=0.6,
+               label="Best unfitted rule")
+    ax.axhline(2.0, ls="--", color=SLATE, lw=1.2, label="Two-fold lift")
     # campuses are numbered as in the manuscript tables (no "U" prefix)
     ax.set_xticks(x); ax.set_xticklabels(sub["u"])
-    ax.set_xlabel("Held-out campus"); ax.set_ylabel("Top-decile precision lift")
-    # Legend ordering: main series first, then rule, then reference bar.
+    ax.set_xlim(-0.6, len(sub) - 0.4)
+    ax.set_ylim(0, 10)
+    ax.grid(axis="x", visible=False)
+    ax.set_xlabel("Held-out campus"); ax.set_ylabel("Top-decile lift")
+    # Legend ordering: main series first, then its interval, rule, reference.
     h, lab = ax.get_legend_handles_labels()
-    order = ["Screening model", "Best simple rule", "Two-fold bar"]
+    order = ["Screening model", "95% interval", "Best unfitted rule", "Two-fold lift"]
     idx = [lab.index(o) for o in order if o in lab]
-    ax.legend([h[i] for i in idx], [lab[i] for i in idx],
-              frameon=False, loc="upper right", ncol=1)
+    figstyle.boxed_legend(ax, [h[i] for i in idx], [lab[i] for i in idx],
+                          loc="upper right", ncol=2, columnspacing=1.2)
     figstyle.despine(ax)
     save(fig, "fig_louo_per_campus_lift")
 

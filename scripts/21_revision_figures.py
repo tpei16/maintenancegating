@@ -33,30 +33,31 @@ def fig_lorenz():
     d = pd.read_csv(C.TABLES / "lorenz_curve_cells.csv")
     bs = json.load(open(C.METRICS / "burden_structure.json"))
     bsys = pd.read_csv(C.TABLES / "burden_by_system.csv").head(8).iloc[::-1]
-    fig, (a1, a2) = plt.subplots(1, 2, figsize=(6.3, 3.1))
-    a1.plot(d["pop_frac"] * 100, d["labour_frac"] * 100, color=NAVY_D, lw=2.4, zorder=3)
-    a1.plot([0, 100], [0, 100], ls="--", color=SLATE, lw=1.2, label="equality")
+    fig, (a1, a2) = plt.subplots(1, 2, figsize=(6.6, 3.1))
+    a1.plot(d["pop_frac"] * 100, d["labour_frac"] * 100, color=NAVY_D, lw=2.2, zorder=3,
+            label="Lorenz curve")
+    a1.plot([0, 100], [0, 100], ls="--", color=SLATE, lw=1.2, label="Line of equality")
     a1.fill_between(d["pop_frac"] * 100, d["labour_frac"] * 100, d["pop_frac"] * 100,
-                    color=NAVY, alpha=0.45, zorder=2)
+                    color=NAVY, alpha=0.45, zorder=2, lw=0)
     a1.set_xlabel("Cumulative share of building systems\nof individual buildings (%)")
     a1.set_ylabel("Cumulative share of reactive labor (%)")
     a1.set_xlim(0, 100); a1.set_ylim(0, 100)
-    # anchor annotation to the actual curve point near x=90
+    # The top-decile share is 100 minus the curve height at x = 90, which no axis
+    # shows directly, so it stays as a short label beside its point (no leader).
     idx90 = (d["pop_frac"] - 0.90).abs().idxmin()
     x90 = d.loc[idx90, "pop_frac"] * 100
     y90 = d.loc[idx90, "labour_frac"] * 100
-    a1.scatter([x90], [y90], s=28, color=NAVY_D, zorder=4)
-    a1.annotate(f"top decile\n= {bs['cell_top10_share']:.0%} of labor",
-                xy=(x90, y90), xytext=(32, 56), fontsize=9,
-                arrowprops=dict(arrowstyle="->", color=INK, lw=1.2))
-    a1.legend(frameon=False, loc="upper left")
-    bars = a2.barh(bsys[C.COL_SYSTEM_DESC].astype(str),
-                   bsys["share_of_total_upm_labour"] * 100, color=NAVY)
+    a1.scatter([x90], [y90], s=24, color=NAVY_D, zorder=4)
+    a1.text(x90 - 3, y90 + 4, f"Top 10%: {bs['cell_top10_share']:.0%} of labor",
+            ha="right", va="bottom", fontsize=9, color=INK, zorder=5)
+    figstyle.boxed_legend(a1, loc="upper left")
+    a2.barh(bsys[C.COL_SYSTEM_DESC].astype(str),
+            bsys["share_of_total_upm_labour"] * 100, color=NAVY, height=0.7)
     a2.set_xlabel("Share of total reactive labor (%)")
-    a2.set_xlim(0, max(bsys["share_of_total_upm_labour"] * 100) * 1.18)
-    figstyle.barlabels(a2, bars, fmt="{:.0f}%")
+    a2.set_xlim(0, np.ceil(bsys["share_of_total_upm_labour"].max() * 100 / 5) * 5)
+    a2.grid(axis="y", visible=False)
     figstyle.despine(a1); figstyle.despine(a2)
-    fig.tight_layout()
+    fig.tight_layout(w_pad=2.0)
     save(fig, "fig_burden_structure")
 
 
@@ -163,39 +164,32 @@ def fig_budget():
                                   cap_q1=("capture", lambda s: s.quantile(.25)),
                                   cap_q3=("capture", lambda s: s.quantile(.75))).reset_index()
     x = agg["budget"] * 100
-    fig, (a1, a2) = plt.subplots(2, 1, figsize=(6.3, 5.4), sharex=True,
-                                 gridspec_kw=dict(hspace=0.14))
+    fig, (a1, a2) = plt.subplots(2, 1, figsize=(6.6, 5.2), sharex=True)
 
-    a1.plot(x, agg["lift"], "o-", color=NAVY_D, lw=2.4, ms=6.5,
-            label="median across held-out campuses", zorder=4)
+    # The values at the 10% operating point are read off the axes and quoted in
+    # the text, so neither panel carries an in-plot number or a leader line.
+    # Both bands are the interquartile range and share one fill.
+    a1.plot(x, agg["lift"], "o-", color=NAVY_D, lw=2.2, ms=6,
+            label="Median over held-out campuses", zorder=4)
     a1.fill_between(x, agg["lift_q1"], agg["lift_q3"], color=NAVY, alpha=0.5,
-                    label="interquartile range across campuses", lw=0)
-    a1.axhline(2.0, ls="--", color=SLATE, lw=1.4, label="Two-fold bar")
-    lift10 = float(agg.loc[agg["budget"] == 0.10, "lift"].iloc[0])
-    # placed below-left of the marked point: to the upper right it collided
-    # with the legend's "interquartile range across campuses" entry
-    a1.annotate(f"top 10%: lift $\\approx$ {lift10:.1f}", xy=(10, lift10),
-                xytext=(11.0, lift10 - 2.0), ha="left", fontsize=8.8, color=INK,
-                arrowprops=dict(arrowstyle="->", color=INK, lw=1.1))
+                    label="Interquartile range", lw=0)
+    a1.axhline(2.0, ls="--", color=SLATE, lw=1.3, label="Two-fold lift")
     a1.set_xticks([5, 10, 15, 20])
-    a1.set_ylabel("Precision lift over base rate")
-    a1.set_ylim(0, None)
-    a1.legend(frameon=False, loc="upper right", fontsize=8.6)
+    a1.set_ylabel("Top-$k$ lift")
+    a1.set_ylim(0, np.ceil(agg["lift_q3"].max() / 2) * 2)
+    figstyle.boxed_legend(a1, loc="upper right")
     figstyle.despine(a1)
 
-    a2.plot(x, agg["cap"] * 100, "o-", color=NAVY_D, lw=2.4, ms=6.5, zorder=4)
+    a2.plot(x, agg["cap"] * 100, "o-", color=NAVY_D, lw=2.2, ms=6, zorder=4)
     a2.fill_between(x, agg["cap_q1"] * 100, agg["cap_q3"] * 100, color=NAVY,
-                    alpha=0.15, lw=0)
-    cap10 = float(agg.loc[agg["budget"] == 0.10, "cap"].iloc[0]) * 100
-    a2.annotate(f"top 10%: capture $\\approx$ {cap10:.0f}%", xy=(10, cap10),
-                xytext=(11.5, cap10 - 18), ha="left", fontsize=8.8, color=INK,
-                arrowprops=dict(arrowstyle="->", color=INK, lw=1.1))
-    a2.set_ylabel("High-burden events\ncaptured (%)")
+                    alpha=0.5, lw=0)
+    a2.set_ylabel("Capture (%)")
     a2.set_ylim(0, 100)
-    a2.set_xlabel("Screening capacity (top-k % of units)")
+    a2.set_xlabel("Flagged share of units (%)")
     figstyle.despine(a2)
 
-    fig.tight_layout()
+    fig.tight_layout(h_pad=1.6)
+    fig.align_ylabels([a1, a2])
     save(fig, "fig_budget_curve")
 
 

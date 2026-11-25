@@ -111,6 +111,21 @@ def despine(ax, left=True, bottom=True):
     ax.tick_params(length=3, color="#9aa3ab")
 
 
+def boxed_legend(ax, *args, **kw):
+    """Legend in a thin black hard-corner box on an opaque white ground, so the
+    meaning of every colour and marker is stated in one bordered key."""
+    kw.setdefault("frameon", True)
+    kw.setdefault("fancybox", False)
+    kw.setdefault("framealpha", 1.0)
+    kw.setdefault("edgecolor", INK)
+    kw.setdefault("facecolor", "white")
+    kw.setdefault("borderpad", 0.5)
+    kw.setdefault("handlelength", 1.8)
+    leg = ax.legend(*args, **kw)
+    leg.get_frame().set_linewidth(0.5)
+    return leg
+
+
 def barlabels(ax, bars, fmt="{:.2f}", pad=3, fontsize=8.5, color=INK, tops=None):
     """Annotate bar ends with their values.
 

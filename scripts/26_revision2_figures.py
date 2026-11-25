@@ -48,42 +48,54 @@ FEATURE_DISPLAY = {
 }
 
 
+FEATURE_DISPLAY_EXTRA = {
+    "Active-quarter share (data density)": "Active-quarter share",
+    "Max temperature": "Maximum temperature",
+    "Min temperature": "Minimum temperature",
+}
+
+
 def fig_feature_importance():
     imp = pd.read_csv(C.TABLES / "feature_importance.csv").head(15).iloc[::-1]
-    cmap = {"record_history": NAVY, "premium": GREEN, "taxonomy": AMBER, "weather_season": LGREY}
-    colors = [cmap[g] for g in imp["group"]]
-    fig, ax = plt.subplots(figsize=(6.3, 4.8))
-    bars = ax.barh(np.arange(len(imp)), imp["mean_abs_shap"], color=colors,
-                   edgecolor="white", lw=0.5)
+    # Pale fills of near-equal luminance, so each group also carries its own
+    # hatch: the three groups stay apart in greyscale. No amber or yellow.
+    style = {"record_history": dict(fc=NAVY, hatch="", hc=NAVY_D, label="Record history"),
+             "taxonomy": dict(fc=CORAL, hatch="////", hc=CORAL_D, label="System taxonomy"),
+             "weather_season": dict(fc=LGREY, hatch="....", hc=SLATE, label="Weather and season"),
+             "premium": dict(fc=GREEN, hatch="\\\\\\\\", hc=figstyle.GREEN_D,
+                             label="Reactive premium")}
+    fig, ax = plt.subplots(figsize=(5.45, 4.6))
+    plt.rcParams["hatch.linewidth"] = 0.6
+    y = np.arange(len(imp))
+    for yi, (g, v) in zip(y, zip(imp["group"], imp["mean_abs_shap"])):
+        s = style[g]
+        ax.barh(yi, v, height=0.72, color=s["fc"], hatch=s["hatch"],
+                hatchcolor=s["hc"], edgecolor="none", lw=0)
     # Display names in the paper's terms (UPM = reactive, PPM = preventive work
     # orders). The stored labels of 23_feature_importance.py are left as they are.
-    display = imp["label"].map(lambda s: FEATURE_DISPLAY.get(s, s))
+    display = imp["label"].map(lambda s: FEATURE_DISPLAY.get(s, s)) \
+                          .map(lambda s: FEATURE_DISPLAY_EXTRA.get(s, s))
     assert not display.str.contains(r"UPM|PPM|\bCell\b", regex=True).any(), \
         f"retired term in feature labels: {list(display)}"
-    ax.set_yticks(np.arange(len(imp))); ax.set_yticklabels(display)
-    ax.set_xlabel("Mean absolute Shapley attribution  (impact on high-burden score)")
-    ax.set_xlim(0, imp["mean_abs_shap"].max() * 1.05)
-    # value labels at the end of each (horizontal) bar; annotate explicitly so
-    # short bars are not mis-classified by the generic width/height heuristic
-    for b in bars:
-        w = b.get_width()
-        ax.annotate(f"{w:.2f}", (w, b.get_y() + b.get_height() / 2),
-                    xytext=(3, 0), textcoords="offset points",
-                    va="center", ha="left", fontsize=8.5, color=INK)
-    # faint vertical major gridlines only
+    ax.set_yticks(y); ax.set_yticklabels(display)
+    ax.set_ylim(-0.6, len(imp) - 0.4)
+    ax.set_xlabel("Mean absolute Shapley attribution (impact on high-burden score)")
+    ax.set_xlim(0, np.ceil(imp["mean_abs_shap"].max() * 10) / 10)
+    # The point of the figure is the ordering; the values are read off the axis
+    # and the text quotes the shares it needs, so the bars carry no labels.
     ax.grid(axis="y", visible=False)
     ax.grid(axis="x", color=figstyle.GRIDC, lw=0.6, alpha=0.7)
     figstyle.despine(ax)
-    # legend: only groups that actually appear in the top-15
+    # legend: only groups that actually appear in the top 15, in a bordered key
     from matplotlib.patches import Patch
-    present = set(imp["group"])
-    legend = [Patch(fc=NAVY, label="Record history"),
-              Patch(fc=AMBER, label="System taxonomy"),
-              Patch(fc=LGREY, label="Weather / season")]
-    if "premium" in present:
-        legend.append(Patch(fc=GREEN, label="Reactive premium"))
-    ax.legend(handles=legend, loc="lower right")
+    order = ["record_history", "taxonomy", "weather_season", "premium"]
+    legend = [Patch(fc=style[g]["fc"], hatch=style[g]["hatch"], hatchcolor=style[g]["hc"],
+                    ec="none", label=style[g]["label"])
+              for g in order if g in set(imp["group"])]
+    figstyle.boxed_legend(ax, handles=legend, loc="lower right", handlelength=2.2,
+                          handleheight=1.1)
     save(fig, "fig_feature_importance")
+    plt.rcParams["hatch.linewidth"] = 1.0
 
 
 def fig_coesc_robustness():
